@@ -21,20 +21,20 @@ public class FlipfitApplication {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
-		
-		int userInput;	
+
+		int userInput;
 //		//create the main menu
 //		createMainMenu();
 //		userInput=sc.nextInt();
 		try
 		{
-			
+
 		//until user do not exit the application
 		do{
 			createMainMenu();
 			userInput = sc.nextInt();
 			switch(userInput)
-			{	
+			{
 				case 1:
 					//login
 					login();
@@ -42,7 +42,7 @@ public class FlipfitApplication {
 				case 2:
 					//student registration
 					register();
-					break;	
+					break;
 				case 3:
 					updatePassword();
 					break;
@@ -52,7 +52,7 @@ public class FlipfitApplication {
 				default:
 					System.out.println("Invalid Input");
 			}
-			
+
 		} while(userInput != 4);
 		} catch(Exception ex) {
 			System.out.println("Error occured "+ex);
@@ -60,10 +60,10 @@ public class FlipfitApplication {
 		finally {
 			sc.close();
 		}
-		
+
 
 	}
-	
+
 	public static void createMainMenu() {
 		System.out.println("------------ Welcome to FlipFit Gym Slot Booking Application------------");
 		System.out.println("1. Login");
@@ -92,7 +92,7 @@ public class FlipfitApplication {
 		switch(userRole) {
 		case 1:
 			 GymAdminFlipFitMenu gymAdminFlipFitMenu = new GymAdminFlipFitMenu();
-//			 gymAdminFlipFitMenu.displayAdminMenu();
+			 gymAdminFlipFitMenu.displayAdminMenu();
 			break;
 		case 2:
 			

@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class GymAdminFlipFitMenu {
 
     public void displayAdminMenu() {
-        int menuOption = 1;
+        int menuOption;
         do {
             System.out.println("\n\n ------ Gym Admin Menu Options ------ " + "\nPress 1. Browse Gym Registrations"
                     + "\nPress 2. Validate Credentials " + "\nPress 3. Create Login Details "

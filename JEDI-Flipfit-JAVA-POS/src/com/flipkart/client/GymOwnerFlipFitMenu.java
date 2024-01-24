@@ -6,6 +6,6 @@ package com.flipkart.client;
 /**
  * 
  */
-public class GymAdminClient {
+public class GymOwnerFlipFitMenu {
 
 }

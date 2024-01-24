@@ -195,6 +195,8 @@ public class FlipfitApplication {
 		String userName = in.next();
 		System.out.println("Please enter your old password");
 		String password = in.next();
+		System.out.println("Please enter your new password");
+		String newPassword = in.next();
 		System.out.println("\n\033[0mPassword Updated Successfully!\n\033[1m\n");
 	}
 

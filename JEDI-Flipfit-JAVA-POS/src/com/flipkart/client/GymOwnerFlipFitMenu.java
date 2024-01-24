@@ -64,7 +64,11 @@ public class GymOwnerFlipFitMenu {
                     System.out.println("You have selected an invalid option. Please try again!!");
                     break;
             }
+<<<<<<< HEAD
         } while (menuOption != 11);
+=======
+        } while (menuOption != 8);
+>>>>>>> 9d3c29d (fix: update password fixed)
     }
 
 

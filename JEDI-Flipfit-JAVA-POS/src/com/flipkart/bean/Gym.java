@@ -9,6 +9,8 @@ package com.flipkart.bean;
 public class Gym {
     private int gymId;
     private int totalSlots;
+    private boolean approved;
+    private int pincode;
 
     public int getGymId() {
         return gymId;
@@ -42,6 +44,5 @@ public class Gym {
         this.pincode = pincode;
     }
 
-    private boolean approved;
-    private int pincode;
+
 }

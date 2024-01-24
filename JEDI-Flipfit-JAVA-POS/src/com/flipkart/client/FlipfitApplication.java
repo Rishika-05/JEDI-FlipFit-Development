@@ -120,8 +120,10 @@ public class FlipfitApplication {
 		}
 		System.out.println("Please Enter the username: ");
 		String userName = in.next();
+		in.nextLine();
 		System.out.println("Please Enter the password: ");
 		String password = in.next();
+		in.nextLine();
 		String role = userRole == 1 ? "CUSTOMER" : "OWNER";
 		switch(role) {
 			case "CUSTOMER":
@@ -135,9 +137,11 @@ public class FlipfitApplication {
 				customer.setName(name);
 				System.out.println("Please Enter your age: ");
 				int age = in.nextInt();
+				in.nextLine();
 				customer.setAge(age);
 				System.out.println("Please enter your location: ");
 				String location = in.next();
+				in.nextLine();
 				customer.setLocation(location);
 				System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
 				break;
@@ -150,29 +154,35 @@ public class FlipfitApplication {
 				newGymOwner.setRole(role);
 				System.out.println("Please enter your name");
 				name = in.next();
+				in.nextLine();
 				newGymOwner.setName(name);
 				System.out.println("Please enter your address");
 				String address = in.next();
+				in.nextLine();
 				newGymOwner.setAddress(address);
 				System.out.println("Please enter your PIN code");
 				String pinCode = in.next();
+				in.nextLine();
 				newGymOwner.setPincode(pinCode);
 				String panCard,aadharCard,GstIn;
 				do {
 					System.out.println("Please Enter your panCard number. For ex - ABCTY1234D");
 					panCard = in.next();
+					in.nextLine();
 					newGymOwner.setPanCard(panCard);
 				} while(false);
 				
 				do {
 					System.out.println("Please Enter your aadharCard number. For ex - 1234-1234-1234");
 					aadharCard = in.next();
+					in.nextLine();
 					newGymOwner.setAadharCard(aadharCard);
 				} while(false);
 				
 				do {
 					System.out.println("Please Enter your GstIn number. For ex - 22AAAAA0000A1Z5");
 					GstIn = in.next();
+					in.nextLine();
 					newGymOwner.setGstin(GstIn);
 					} while(false);
 				

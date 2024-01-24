@@ -52,29 +52,25 @@ public class FlipfitApplication {
 			userInput=sc.nextInt();
 		}
 		}
-		catch(Exception ex)
-		{
+		catch(Exception ex) {
 			System.out.println("Error occured "+ex);
 		}
-		finally
-		{
+		finally {
 			sc.close();
 		}
 
 	}
 	
-	public static void createMainMenu()
-	{
-		System.out.println("----------Welcome to Course Management System---------");
+	public static void createMainMenu() {
+		System.out.println("---------- Welcome to FlipFit Gym Slot Booking Application---------");
 		System.out.println("1. Login");
-		System.out.println("2. Student Registration");
+		System.out.println("2. Register");
 		System.out.println("3. Update password");
 		System.out.println("4. Exit");
 		System.out.println("Enter user input");
 	}
 	
-	static void login()
-	{
+	static void login() {
 		//multiple exceptions are possible
 		//invalid credential exception
 		//user not found exception
@@ -90,14 +86,8 @@ public class FlipfitApplication {
 		password=sc.next();
 		System.out.println("Role:");
 		String userRole =sc.next();
-//			loggedin = userInterface.verifyCredentials(userId, password);
-		//2 cases
-		//true->role->student->approved
-		
-		switch(userRole)
-		{
+		switch(userRole) {
 		case "ADMIN":
-			
 			 GymAdminFlipFitMenu gymAdminFlipFitMenu=new GymAdminFlipFitMenu();
 			 gymAdminFlipFitMenu.createMenu(new Admin());
 			break;

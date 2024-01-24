@@ -9,21 +9,60 @@ import java.time.LocalDateTime;
  * 
  */
 public class Booking {
-<<<<<<< HEAD
-    private int id;
-    private int user_id;
-    private int gym_id;
-    int slot_id;
 
-
-
-
-=======
     private int bookingId;
     private int userId;
     private int gymId;
     private int slotId;
+
+    public int getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(int bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getGymId() {
+        return gymId;
+    }
+
+    public void setGymId(int gymId) {
+        this.gymId = gymId;
+    }
+
+    public int getSlotId() {
+        return slotId;
+    }
+
+    public void setSlotId(int slotId) {
+        this.slotId = slotId;
+    }
+
+    public LocalDateTime getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(LocalDateTime bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public boolean isCancelled() {
+        return isCancelled;
+    }
+
+    public void setCancelled(boolean cancelled) {
+        isCancelled = cancelled;
+    }
+
     private LocalDateTime bookingDate = LocalDateTime.now();
     private boolean isCancelled;
->>>>>>> f82c245 (feat: added all bean properties)
 }

@@ -16,8 +16,8 @@ public class GymCustomerFlipFitMenu {
             System.out.println("\n\n ------ Gym Customer Menu Options ------ " + "\nPress 1. Browse Gyms"
                     + "\nPress 2. View Gym Details " + "\nPress 3. Book a Slot " + "\nPress 4. Cancel Booking "
                     + "\nPress 5. View Booking History " + "\nPress 6. Browse Waitlist " + "\nPress 7. Modify Booking "
-                    + "\nPress 8. View Plan based on Day " + "\nPress 9. Cancel Waitlist " + "\nPress 10. Payment "
-                    + "\nPress 11. Exit");
+          + "\nPress 8. Cancel Waitlist " + "\nPress 9. Payment "
+                    + "\nPress 10. Exit");
 
             Scanner in = new Scanner(System.in);
             option = in.nextInt();
@@ -45,15 +45,12 @@ public class GymCustomerFlipFitMenu {
                     modifyBooking();
                     break;
                 case 8:
-                    viewPlanBasedOnDay();
-                    break;
-                case 9:
                     cancelWaitlist();
                     break;
-                case 10:
+                case 9:
                     payment();
                     break;
-                case 11:
+                case 10:
                     System.out.println("\033[1mYou have exited the Gym Customer menu\033[0m");
                     break;
                 default:
@@ -62,7 +59,7 @@ public class GymCustomerFlipFitMenu {
             }
 
         }
-        while (option != 11);
+        while (option != 10);
     }
 
     private void browseGyms() {

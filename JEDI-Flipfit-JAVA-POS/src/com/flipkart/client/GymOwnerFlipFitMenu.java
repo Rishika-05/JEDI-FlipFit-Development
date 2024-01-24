@@ -12,8 +12,15 @@ public class GymOwnerFlipFitMenu {
     public void displayGymOwnerMenu() {
         int menuOption;
         do {
-            System.out.println("\n\n ------ Gym Owner Menu Options ------ " + "\nPress 1. Add a new gym Centre"
-                    + "\nPress 2. View Registered Gyms " + "\nPress 3. Register Time Slots " + "\nPress 4. View Profile" +"\nPress 5. Quit");
+            System.out.println("\n\n ----------- Gym Owner Menu Options ---------- " + 
+        "\nPress 1. Add a new gym Centre" +
+        "\nPress 2. View Registered Gyms " +
+        "\nPress 3. Register Slots " + 
+        "\nPress 4. Modify Slots " + 
+        "\nPress 5. View Slots " +  
+        "\nPress 6. View Profile" +
+        "\nPress 7. Update Profile" +
+        "\nPress 8. Quit \n");
             Scanner in = new Scanner(System.in);
             menuOption = in.nextInt();
             switch (menuOption) {
@@ -30,6 +37,15 @@ public class GymOwnerFlipFitMenu {
                     viewProfile();
                     break;
                 case 5:
+                    viewProfile();
+                    break;
+                case 6:
+                    viewProfile();
+                    break;
+                case 7:
+                    viewProfile();
+                    break;
+                case 8:
                     System.out.println("You have exited the Gym Owner menu");
                     break;
                 default:

@@ -65,7 +65,7 @@ public class FlipfitApplication {
 	}
 	
 	public static void createMainMenu() {
-		System.out.println("---------- Welcome to FlipFit Gym Slot Booking Application---------");
+		System.out.println("------------ Welcome to FlipFit Gym Slot Booking Application------------");
 		System.out.println("1. Login");
 		System.out.println("2. Register");
 		System.out.println("3. Update password");
@@ -82,12 +82,12 @@ public class FlipfitApplication {
 
 		String userId,password;
 		
-		System.out.println("-----------------Login------------------");
+		System.out.println("\n\n---------------------------Login---------------------------\n\n");
 		System.out.println("Email:");
 		userId=sc.next();
 		System.out.println("Password:");
 		password=sc.next();
-		System.out.println("Role: 1. Admin   2. Gym Customer   3. Gym Owner");
+		System.out.println("Role: \n1. Admin   \n2. Gym Customer   \n3. Gym Owner\n");
 		int userRole =sc.nextInt();
 		switch(userRole) {
 		case 1:
@@ -113,7 +113,7 @@ public class FlipfitApplication {
 	static void  register() {
 		
 		Scanner in=new Scanner(System.in);
-		System.out.println("\n\n ---------- Please enter the type of user ---------- ");
+		System.out.println("\n\n ------------- Please enter the type of user ----------- \n\n");
 		System.out.println("Press 1. Customer \nPress 2. GymOwner");
 
 		int userRole = in.nextInt();

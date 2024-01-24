@@ -70,6 +70,7 @@ public class GymCustomerFlipFitMenu {
 
     private void browseGyms() {
         // Implement logic to browse available gyms
+        System.out.println("Gym in Bangalore \n1. Bellandur \n2. Whitefield \n3. Indranagar");
     }
 
     private void viewGymDetails() {

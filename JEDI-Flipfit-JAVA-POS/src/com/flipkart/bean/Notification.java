@@ -9,6 +9,8 @@ package com.flipkart.bean;
 public class Notification {
     private int notificationId;
     private int userId;
+    private String notificationType;
+    private String content;
 
     public int getNotificationId() {
         return notificationId;
@@ -42,6 +44,5 @@ public class Notification {
         this.content = content;
     }
 
-    private String notificationType;
-    private String content;
+
 }

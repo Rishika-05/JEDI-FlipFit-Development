@@ -8,7 +8,7 @@ package com.flipkart.bean;
  */
 public class GymOwner extends User {
     private String aadhar;
-
+    private String bank_account;
     public String getAadhar() {
         return aadhar;
     }
@@ -25,5 +25,8 @@ public class GymOwner extends User {
         this.bank_account = bank_account;
     }
 
-    private String bank_account;
+
+
+
+
 }

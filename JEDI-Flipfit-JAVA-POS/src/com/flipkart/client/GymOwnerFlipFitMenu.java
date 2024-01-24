@@ -14,13 +14,16 @@ public class GymOwnerFlipFitMenu {
         do {
             System.out.println("\n\n ----------- Gym Owner Menu Options ---------- " + 
         "\nPress 1. Add a new gym Centre" +
-        "\nPress 2. View Registered Gyms " +
-        "\nPress 3. Register Slots " + 
-        "\nPress 4. Modify Slots " + 
-        "\nPress 5. View Slots " +  
-        "\nPress 6. View Profile" +
-        "\nPress 7. Update Profile" +
-        "\nPress 8. Quit \n");
+        "\nPress 2. View Registered Gyms" +
+        "\nPress 3. Remove Gym" +
+        "\nPress 4. Modify Gym" +
+        "\nPress 5. Register Slots " + 
+        "\nPress 6. Modify Slots " + 
+        "\nPress 7. View Slots " +  
+        "\nPress 8. Remove Slots " +  
+        "\nPress 9. View Profile" +
+        "\nPress 10. Update Profile" +
+        "\nPress 11. Quit \n");
             Scanner in = new Scanner(System.in);
             menuOption = in.nextInt();
             switch (menuOption) {
@@ -46,13 +49,22 @@ public class GymOwnerFlipFitMenu {
                     updateProfile();
                     break;
                 case 8:
+                    viewProfile();
+                    break;
+                case 9:
+                    viewProfile();
+                    break;
+                case 10:
+                    viewProfile();
+                    break;
+                case 11:
                     System.out.println("You have exited the Gym Owner menu");
                     break;
                 default:
                     System.out.println("You have selected an invalid option. Please try again!!");
                     break;
             }
-        } while (menuOption != 5);
+        } while (menuOption != 11);
     }
 
 

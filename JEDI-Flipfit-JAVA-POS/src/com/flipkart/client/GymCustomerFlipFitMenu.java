@@ -13,11 +13,17 @@ public class GymCustomerFlipFitMenu {
     public void displayCustomerMenu() {
         int option;
         do {
-            System.out.println("\n\n ------ Gym Customer Menu Options ------ " + "\nPress 1. Browse Gyms"
-                    + "\nPress 2. View Gym Details " + "\nPress 3. Book a Slot " + "\nPress 4. Cancel Booking "
-                    + "\nPress 5. View Booking History " + "\nPress 6. Browse Waitlist " + "\nPress 7. Modify Booking "
-          + "\nPress 8. Cancel Waitlist " + "\nPress 9. Payment "
-                    + "\nPress 10. Exit");
+            System.out.println("\n\n ------ Gym Customer Menu Options ------ " + 
+				"\nPress 1. Browse Gyms" +
+				"\nPress 2. View Gym Details " + 
+				"\nPress 3. Book a Slot " + 
+				"\nPress 4. Cancel Booking " +
+				"\nPress 5. View Booking History " + 
+				"\nPress 6. Browse Waitlist " + 
+				"\nPress 7. Modify Booking " +
+				"\nPress 8. Cancel Waitlist " + 
+				"\nPress 9. Payment " +
+				"\nPress 10. Exit");
 
             Scanner in = new Scanner(System.in);
             option = in.nextInt();

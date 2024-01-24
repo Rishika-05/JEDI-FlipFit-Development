@@ -13,12 +13,14 @@ public class GymAdminFlipFitMenu {
     public void displayAdminMenu() {
         int menuOption;
         do {
-            System.out.println("\n\n ------ Gym Admin Menu Options ------ " + "\nPress 1. Browse Gym Registrations"
-                     + "\nPress 2. Create Owner Login Details "
-                   + "\nPress 3. Browse Slot Registrations " +
-                     "\nPress 4. Verify Payments " + 
-                   "\nPress 5. Browse Owner Registrations " + 
-                     "\nPress 6. Exit");
+            System.out.println("\n\n ------ Gym Admin Menu Options ------ " +
+				 "\nPress 1. Browse Gym Registrations" +
+				 "\nPress 2. Create Owner Login Details " +
+				 "\nPress 3. Browse Slot Registrations " +
+				 "\nPress 4. Verify Payments " + 
+				 "\nPress 5. Browse Owner Registrations " + 
+				 "\nPress 6. Browse Gyms" + 
+				 "\nPress 7. Exit");
             Scanner in = new Scanner(System.in);
             menuOption = in.nextInt();
             switch (menuOption) {
@@ -38,13 +40,16 @@ public class GymAdminFlipFitMenu {
                     browseOwnerRegistrations();
                     break;
                 case 6:
+                    browseOwnerRegistrations();
+                    break;
+                case 7:
                     System.out.println("\033[1mYou have exited the Gym Admin menu\033[0m");
                     break;
                 default:
                     System.out.println("\033[1mYou have selected an invalid option. Please try again!!\033[0m");
                     break;
             }
-        } while (menuOption != 6);
+        } while (menuOption != 7);
     }
 
     private void browseGymRegistrations() {

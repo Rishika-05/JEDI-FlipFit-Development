@@ -30,8 +30,7 @@ public class FlipfitApplication {
 		{
 			
 		//until user do not exit the application
-		while(userInput!=4)
-		{
+		do{
 			switch(userInput)
 			{	
 				case 1:
@@ -45,14 +44,15 @@ public class FlipfitApplication {
 				case 3:
 					updatePassword();
 					break;
+				case 4:
+					
 				default:
 					System.out.println("Invalid Input");
 			}
 			createMainMenu();
-			userInput=sc.nextInt();
-		}
-		}
-		catch(Exception ex) {
+			userInput = sc.nextInt();
+		} while(userInput != 4);
+		} catch(Exception ex) {
 			System.out.println("Error occured "+ex);
 		}
 		finally {

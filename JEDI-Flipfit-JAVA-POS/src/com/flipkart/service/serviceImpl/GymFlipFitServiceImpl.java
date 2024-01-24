@@ -8,6 +8,6 @@ import com.flipkart.service.GymService;
 /**
  * 
  */
-public class GymServiceImpl implements GymService {
+public class GymFlipFitServiceImpl implements GymService {
 
 }

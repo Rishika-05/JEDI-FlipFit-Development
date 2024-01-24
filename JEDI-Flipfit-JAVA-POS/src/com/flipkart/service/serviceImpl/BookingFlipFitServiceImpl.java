@@ -8,6 +8,6 @@ import com.flipkart.service.BookingService;
 /**
  * 
  */
-public class BookingServiceImpl implements BookingService {
+public class BookingFlipFitServiceImpl implements BookingService {
 
 }

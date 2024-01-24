@@ -8,6 +8,6 @@ import com.flipkart.service.SlotService;
 /**
  * 
  */
-public class SlotServiceImpl implements SlotService {
+public class SlotFlipFitServiceImpl implements SlotService {
 
 }

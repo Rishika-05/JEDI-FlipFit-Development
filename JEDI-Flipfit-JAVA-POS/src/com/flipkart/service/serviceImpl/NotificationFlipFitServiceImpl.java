@@ -8,6 +8,6 @@ import com.flipkart.service.NotificationService;
 /**
  * 
  */
-public class NotificationServiceImpl implements NotificationService {
+public class NotificationFlipFitServiceImpl implements NotificationService {
 
 }

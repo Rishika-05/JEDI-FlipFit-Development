@@ -34,16 +34,16 @@ public class GymOwnerFlipFitMenu {
                     registerTimeSlots();
                     break;
                 case 4:
-                    viewProfile();
+                    modifySlots();
                     break;
                 case 5:
-                    viewProfile();
+                    viewSlots();
                     break;
                 case 6:
                     viewProfile();
                     break;
                 case 7:
-                    viewProfile();
+                    updateProfile();
                     break;
                 case 8:
                     System.out.println("You have exited the Gym Owner menu");
@@ -68,11 +68,21 @@ public class GymOwnerFlipFitMenu {
         // Implement logic to register time slots for a gym
     }
 
-    private void viewProfile() {
-        // Implement logic to view the profile of the Gym Owner
+    private void modifySlots() {
+        // Implement logic to modify the slots
+    }
+  private void viewSlots() {
+        // Implement logic to view the slots
     }
 
-    public static void main(String[] args){
+  private void viewProfile() {
+    // Implement logic to view the profile of the Gym Owner
+  }
+  private void updateProfile() {
+    // Implement logic to update the profile of the Gym Owner
+  }
+
+  public static void main(String[] args){
         GymOwnerFlipFitMenu owner = new GymOwnerFlipFitMenu();
         owner.displayGymOwnerMenu();
     }

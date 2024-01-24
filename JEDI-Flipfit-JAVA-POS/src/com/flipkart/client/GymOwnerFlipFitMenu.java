@@ -64,14 +64,10 @@ public class GymOwnerFlipFitMenu {
                     System.out.println("You have selected an invalid option. Please try again!!");
                     break;
             }
-<<<<<<< HEAD
 
-=======
->>>>>>> 2e7ce98 (fixed bugs)
         } while (menuOption != 11);
 
     }
-
 
     private void addNewGym() {
         // Implement logic to add a new gym center

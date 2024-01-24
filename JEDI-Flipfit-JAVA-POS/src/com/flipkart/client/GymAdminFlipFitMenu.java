@@ -14,9 +14,11 @@ public class GymAdminFlipFitMenu {
         int menuOption;
         do {
             System.out.println("\n\n ------ Gym Admin Menu Options ------ " + "\nPress 1. Browse Gym Registrations"
-                    + "\nPress 2. Validate Credentials " + "\nPress 3. Create Login Details "
-                    + "\nPress 4. Accept Requests " + "\nPress 5. Browse Slot Registrations "
-                    + "\nPress 6. Verify Payments " + "\nPress 7. Browse Owner Registrations " + "\nPress 8. Exit");
+                     + "\nPress 2. Create Owner Login Details "
+                   + "\nPress 3. Browse Slot Registrations " +
+                     "\nPress 4. Verify Payments " + 
+                   "\nPress 5. Browse Owner Registrations " + 
+                     "\nPress 6. Exit");
             Scanner in = new Scanner(System.in);
             menuOption = in.nextInt();
             switch (menuOption) {
@@ -24,31 +26,25 @@ public class GymAdminFlipFitMenu {
                     browseGymRegistrations();
                     break;
                 case 2:
-                    validateCredentials();
-                    break;
-                case 3:
                     createLoginDetails();
                     break;
-                case 4:
-                    acceptRequests();
-                    break;
-                case 5:
+                case 3:
                     browseSlotRegistrations();
                     break;
-                case 6:
+                case 4:
                     verifyPayments();
                     break;
-                case 7:
+                case 5:
                     browseOwnerRegistrations();
                     break;
-                case 8:
+                case 6:
                     System.out.println("\033[1mYou have exited the Gym Admin menu\033[0m");
                     break;
                 default:
                     System.out.println("\033[1mYou have selected an invalid option. Please try again!!\033[0m");
                     break;
             }
-        } while (menuOption != 8);
+        } while (menuOption != 6);
     }
 
     private void browseGymRegistrations() {

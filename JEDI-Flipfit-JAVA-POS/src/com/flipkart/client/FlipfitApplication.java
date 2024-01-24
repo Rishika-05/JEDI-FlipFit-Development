@@ -116,7 +116,7 @@ public class FlipfitApplication {
 		
 		Scanner in=new Scanner(System.in);
 		System.out.println("\n\n ------------- Please enter the type of user ----------- \n\n");
-		System.out.println("Press 1. Customer \nPress 2. GymOwner");
+		System.out.println("Press 1. Customer Registration \nPress 2. Gym Owner Registration");
 
 		int userRole = in.nextInt();
 		while (userRole < 1 || userRole > 2) {

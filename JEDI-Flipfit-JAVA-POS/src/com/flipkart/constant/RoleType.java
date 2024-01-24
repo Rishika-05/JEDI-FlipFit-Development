@@ -6,13 +6,13 @@ package com.flipkart.constant;
 /**
  * 
  */
-public enum Role {
+public enum RoleType {
 	
 	ADMIN("Admin"),
 	GYM_CUSTOMER("Gym Customer"),
 	GYM_OWNER("Gym Owner");
 	
-	private Role(String role) {
+	private RoleType(String role) {
 		this.role = role;
 	}
 	

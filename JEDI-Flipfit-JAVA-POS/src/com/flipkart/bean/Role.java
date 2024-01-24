@@ -1,5 +1,7 @@
 package com.flipkart.bean;
 
+import com.flipkart.constant.RoleType;
+
 public class Role {
     private int userId;
 
@@ -11,13 +13,13 @@ public class Role {
         this.userId = userId;
     }
 
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(RoleType role) {
         this.role = role;
     }
 
-    private String role;
+    private RoleType role;
 }

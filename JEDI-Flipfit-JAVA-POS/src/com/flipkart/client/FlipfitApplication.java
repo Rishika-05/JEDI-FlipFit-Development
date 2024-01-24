@@ -9,7 +9,9 @@ import com.flipkart.bean.Admin;
 import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
-import com.flipkart.constant.Role;
+import com.flipkart.constant.RoleType;
+import com.flipkart.service.UserFlipFitService;
+import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;
 
 /**
  * 
@@ -86,20 +88,25 @@ public class FlipfitApplication {
 		System.out.println("Enter password:");
 		password=sc.next();
 		
-		System.out.println("Role: \n1. Admin   \n2. Gym Customer   \n3. Gym Owner");
-		int userRole =sc.nextInt();
+		int userId = UserFlipFitServiceImpl.getInstance().login(userName, password);
+		if(userId == -1) return;
+		
+	
+		
+//		System.out.println("Role: \n1. Admin   \n2. Gym Customer   \n3. Gym Owner");
+		RoleType userRole = UserFlipFitServiceImpl.getInstance().getUserRole(userId);
 		switch(userRole) {
-		case 1:
+		case ADMIN:
 			 GymAdminFlipFitMenu gymAdminFlipFitMenu = new GymAdminFlipFitMenu();
 			 gymAdminFlipFitMenu.displayAdminMenu();
 			break;
-		case 2:
+		case GYM_CUSTOMER:
 			
 			GymCustomerFlipFitMenu gymCustomerFlipFitMenu = new GymCustomerFlipFitMenu();
 			gymCustomerFlipFitMenu.displayCustomerMenu();
 			
 			break;
-		case 3:
+		case GYM_OWNER:
 			
 			GymOwnerFlipFitMenu gymOwnerFlipFitMenu = new GymOwnerFlipFitMenu();
 			gymOwnerFlipFitMenu.displayGymOwnerMenu();
@@ -126,13 +133,18 @@ public class FlipfitApplication {
 		in.nextLine();
 		System.out.println("Enter password: ");
 		String password = in.next();
-		Role role = userRole == 1 ? Role.GYM_CUSTOMER : Role.GYM_OWNER;
+		RoleType role = userRole == 1 ? RoleType.GYM_CUSTOMER : RoleType.GYM_OWNER;
+		User newUser = new User();
+		newUser.setPassword(password);
+		newUser.setUsername(userName);
+		newUser.setRole(role);
+		UserFlipFitServiceImpl.getInstance().registration(newUser);		
 		switch(role) {
 			case GYM_CUSTOMER:
 				GymCustomer customer = new GymCustomer();
 				customer.setUsername(userName);
 				customer.setPassword(password);
-				customer.setRole(role.toString());
+//				
 				System.out.println("Enter your full name: ");
 				String name = in.next();
 				in.nextLine();
@@ -152,7 +164,7 @@ public class FlipfitApplication {
 				GymOwner newGymOwner = new GymOwner();
 				newGymOwner.setUsername(userName);
 				newGymOwner.setPassword(password);
-				newGymOwner.setRole(role.toString());
+//			
 				System.out.println("Enter your name");
 				name = in.next();
 				in.nextLine();
@@ -189,6 +201,8 @@ public class FlipfitApplication {
 				
 				System.out.println("\n\\033[0mGym Owner Registered!\\033[1m\n");
 				break;
+		default:
+			break;
 		}
 		
 		System.out.println("\033[1mExiting Register menu\033[0m");

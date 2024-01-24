@@ -1,24 +1,31 @@
 package com.flipkart.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.Slot;
 
 public interface AdminFlipfitService {
 	
-	GymOwner verifyGymOwnerRequest(int gym_owner_id, boolean approved);
+	void handleGymOwnerRequest(int gymOwnerId, boolean isApproved);
 	
-	void approveGymRequest(int gym_id);
+	void handleGymRequest(int gymId, boolean isApproved);
 	
-	void rejectGymRequest(int gym_id);
+	void handleGymSlotRequest(int slotId ,  boolean isApproved );
 	
-	List<Gym> getGymRequests();
+	ArrayList<Slot> getSlotRequests();	
 	
-	List<GymOwner> getGymOwnerRequests();
+	ArrayList<Gym> getGymRequests();
 	
-	List<GymCustomer> getAllGymCustomers();
+	ArrayList<GymOwner> getGymOwnerRequests();
 	
-	List<GymOwner> getAllGymOwners();
+	ArrayList<GymCustomer> getAllGymCustomers();
+	
+	ArrayList<GymOwner> getAllGymOwners();
+	
+	ArrayList<Gym> getAllGym();
+	
 }

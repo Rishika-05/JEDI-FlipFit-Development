@@ -9,7 +9,6 @@ package com.flipkart.bean;
 public class GymCustomer extends UserModule {
 	private String username;
 	private String password;
-	private String role;
 	private String name;
 	private String location;
 	/**
@@ -36,18 +35,7 @@ public class GymCustomer extends UserModule {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	/**
-	 * @return the role
-	 */
-	public String getRole() {
-		return role;
-	}
-	/**
-	 * @param role the role to set
-	 */
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
 	/**
 	 * @return the name
 	 */

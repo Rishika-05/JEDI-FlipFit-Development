@@ -10,9 +10,19 @@ public class Gym {
     private int gymId;
     private int totalSlots;
     private boolean approved;
-    private int pincode;
+    private String location;
+    private String gymName;
+    
 
-    public int getGymId() {
+    public Gym(int i, int j, boolean b, String l, String n) {
+    	this.gymId = i;
+    	this.approved = b;
+    	this.totalSlots = j;
+    	this.location = l;
+    	this.gymName = n;
+	}
+
+	public int getGymId() {
         return gymId;
     }
 
@@ -36,13 +46,31 @@ public class Gym {
         this.approved = approved;
     }
 
-    public int getPincode() {
-        return pincode;
-    }
+//    public int getPincode() {
+//        return pincode;
+//    }
+//
+//    public void setPincode(int pincode) {
+//        this.pincode = pincode;
+//    }
 
-    public void setPincode(int pincode) {
-        this.pincode = pincode;
-    }
+	public String getLocation() {
+		// TODO Auto-generated method stub
+		return location;
+	}
+
+	public String getGymName() {
+		return gymName;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public void setGymName(String gymName) {
+		this.gymName = gymName;
+	}
+
 
 
 }

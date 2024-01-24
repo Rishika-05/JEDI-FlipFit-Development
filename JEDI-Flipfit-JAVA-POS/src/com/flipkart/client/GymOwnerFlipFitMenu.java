@@ -58,13 +58,12 @@ public class GymOwnerFlipFitMenu {
                     viewProfile();
                     break;
                 case 11:
-                    System.out.println("You have exited the Gym Owner menu");
+                	System.out.println("\033[1mYou have exited the Gym Owner menu\033[0m");
                     break;
                 default:
-                    System.out.println("You have selected an invalid option. Please try again!!");
+                    System.out.println("\033[1mYou have selected an invalid option. Please try again!!\033[0m");
                     break;
             }
-
         } while (menuOption != 11);
 
     }
@@ -84,20 +83,20 @@ public class GymOwnerFlipFitMenu {
     private void modifySlots() {
         // Implement logic to modify the slots
     }
-  private void viewSlots() {
-        // Implement logic to view the slots
-    }
-
-  private void viewProfile() {
-    // Implement logic to view the profile of the Gym Owner
-  }
-  private void updateProfile() {
-    // Implement logic to update the profile of the Gym Owner
-  }
-
-  public static void main(String[] args){
-        GymOwnerFlipFitMenu owner = new GymOwnerFlipFitMenu();
-        owner.displayGymOwnerMenu();
-    }
+	  private void viewSlots() {
+	        // Implement logic to view the slots
+	    }
+	
+	  private void viewProfile() {
+	    // Implement logic to view the profile of the Gym Owner
+	  }
+	  private void updateProfile() {
+	    // Implement logic to update the profile of the Gym Owner
+	  }
+	
+	  public static void main(String[] args){
+	        GymOwnerFlipFitMenu owner = new GymOwnerFlipFitMenu();
+	        owner.displayGymOwnerMenu();
+	    }
 
 }

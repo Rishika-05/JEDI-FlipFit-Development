@@ -10,6 +10,8 @@ import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 import com.flipkart.constant.Role;
+import com.flipkart.service.UserFlipFitService;
+import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;
 
 /**
  * 
@@ -88,6 +90,8 @@ public class FlipfitApplication {
 		
 		System.out.println("Role: \n1. Admin   \n2. Gym Customer   \n3. Gym Owner");
 		int userRole =sc.nextInt();
+		UserFlipFitService userService = new UserFlipFitServiceImpl();
+		User user = userService.login(userName, password);
 		switch(userRole) {
 		case 1:
 			 GymAdminFlipFitMenu gymAdminFlipFitMenu = new GymAdminFlipFitMenu();
@@ -96,7 +100,7 @@ public class FlipfitApplication {
 		case 2:
 			
 			GymCustomerFlipFitMenu gymCustomerFlipFitMenu = new GymCustomerFlipFitMenu();
-			gymCustomerFlipFitMenu.displayCustomerMenu();
+			gymCustomerFlipFitMenu.displayCustomerMenu(user);
 			
 			break;
 		case 3:

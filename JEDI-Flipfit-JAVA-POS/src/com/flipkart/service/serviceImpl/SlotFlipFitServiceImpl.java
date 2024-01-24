@@ -17,8 +17,7 @@ public class SlotFlipFitServiceImpl implements SlotFlipFitService {
     public boolean isAvailable() {
         return false;
     }
-    
-  
+
 
 	@Override
 	public boolean addSlot(int slotHour, int gymID, int availableSeats) {
@@ -32,6 +31,7 @@ public class SlotFlipFitServiceImpl implements SlotFlipFitService {
 		return true;
 	}
 	
+
 	@Override
 	public ArrayList<Slot> getAllAvailableSlots() {
 		// TODO Auto-generated method stub

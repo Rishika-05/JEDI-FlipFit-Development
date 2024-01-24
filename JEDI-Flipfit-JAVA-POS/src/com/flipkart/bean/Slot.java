@@ -73,4 +73,9 @@ public class Slot {
     }
 
     private int filledSeats;
+
+	public int getSlotHour() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -84,20 +84,20 @@ public class FlipfitApplication {
 		userId=sc.next();
 		System.out.println("Password:");
 		password=sc.next();
-		System.out.println("Role:");
-		String userRole =sc.next();
+		System.out.println("Role: 1. Admin   2. Gym Customer   3. Gym Owner");
+		int userRole =sc.nextInt();
 		switch(userRole) {
-		case "ADMIN":
+		case 1:
 			 GymAdminFlipFitMenu gymAdminFlipFitMenu=new GymAdminFlipFitMenu();
 			 gymAdminFlipFitMenu.createMenu(new Admin());
 			break;
-		case "CUSTOMER":
+		case 2:
 			
 			GymCustomerFlipFitMenu gymCustomerFlipFitMenu=new GymCustomerFlipFitMenu();
 			gymCustomerFlipFitMenu.createMenu(new GymCustomer());
 			
 			break;
-		case "STUDENT":
+		case 3:
 			
 			GymOwnerFlipFitMenu gymOwnerFlipFitMenu=new GymOwnerFlipFitMenu();
 			gymOwnerFlipFitMenu.createMenu(new GymOwner());

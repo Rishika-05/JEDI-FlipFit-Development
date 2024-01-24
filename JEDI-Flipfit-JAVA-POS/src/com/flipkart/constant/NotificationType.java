@@ -11,8 +11,6 @@ public enum NotificationType {
     SMS("SMS");
 
     private NotificationType(String notificationType) {
-        this.notificationType = notificationType;
     }
 
-    private final String notificationType;
 }

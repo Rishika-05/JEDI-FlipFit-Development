@@ -82,12 +82,12 @@ public class FlipfitApplication {
 
 		String userId,password;
 		
-		System.out.println("\n\n---------------------------Login---------------------------\n\n");
+		System.out.println("\n\n---------------------------Login---------------------------");
 		System.out.println("Email:");
 		userId=sc.next();
 		System.out.println("Password:");
 		password=sc.next();
-		System.out.println("Role: \n1. Admin   \n2. Gym Customer   \n3. Gym Owner\n");
+		System.out.println("Role: \n1. Admin   \n2. Gym Customer   \n3. Gym Owner");
 		int userRole =sc.nextInt();
 		switch(userRole) {
 		case 1:
@@ -121,9 +121,9 @@ public class FlipfitApplication {
 			System.out.println("\033[1mInvalid type please try again!!\033[0m");
 			userRole = in.nextInt();
 		}
-		System.out.println("Please Enter the username");
+		System.out.println("Please Enter the username: ");
 		String userName = in.next();
-		System.out.println("Please Enter the password");
+		System.out.println("Please Enter the password: ");
 		String password = in.next();
 		String role = userRole == 1 ? "CUSTOMER" : "OWNER";
 		switch(role) {
@@ -132,16 +132,16 @@ public class FlipfitApplication {
 				customer.setUsername(userName);
 				customer.setPassword(password);
 				customer.setRole(role);
-				System.out.println("Please Enter you full name");
+				System.out.println("Please Enter you full name: ");
 				String name = in.next();
 				customer.setName(name);
-				System.out.println("Please Enter your age");
+				System.out.println("Please Enter your age: ");
 				int age = in.nextInt();
 				customer.setAge(age);
-				System.out.println("Please enter your location");
+				System.out.println("Please enter your location: ");
 				String location = in.next();
 				customer.setLocation(location);
-				System.out.println("Customer Registered Successfully");
+				System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
 				break;
 				
 			case "OWNER":
@@ -178,11 +178,11 @@ public class FlipfitApplication {
 					newGymOwner.setGstin(GstIn);
 					} while(false);
 				
-				System.out.println("Owner Registered Successfully!");
+				System.out.println("\n\\033[0mOwner Registered Successfully!\\033[1m\n");
 				break;
 		}
 		
-		System.out.println("\033[1mExiting register menu\033[0m");
+		System.out.println("\033[1mExiting Register menu\033[0m");
 
 	}
 	
@@ -192,7 +192,7 @@ public class FlipfitApplication {
 		String userName = in.next();
 		System.out.println("Please enter your old password");
 		String password = in.next();
-		System.out.println("Password Updated Successfully!");
+		System.out.println("\n\033[0mPassword Updated Successfully!\n\033[1m\n");
 	}
 
 

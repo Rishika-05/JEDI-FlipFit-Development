@@ -23,14 +23,16 @@ public class FlipfitApplication {
 		Scanner sc = new Scanner(System.in);
 		
 		int userInput;	
-		//create the main menu
-		createMainMenu();
-		userInput=sc.nextInt();
+//		//create the main menu
+//		createMainMenu();
+//		userInput=sc.nextInt();
 		try
 		{
 			
 		//until user do not exit the application
 		do{
+			createMainMenu();
+			userInput = sc.nextInt();
 			switch(userInput)
 			{	
 				case 1:
@@ -45,12 +47,12 @@ public class FlipfitApplication {
 					updatePassword();
 					break;
 				case 4:
-					
+					System.out.println("\033[1mYou have exited the FlipFit Application\033[0m");
+                    break;
 				default:
 					System.out.println("Invalid Input");
 			}
-			createMainMenu();
-			userInput = sc.nextInt();
+			
 		} while(userInput != 4);
 		} catch(Exception ex) {
 			System.out.println("Error occured "+ex);
@@ -58,6 +60,7 @@ public class FlipfitApplication {
 		finally {
 			sc.close();
 		}
+		
 
 	}
 	

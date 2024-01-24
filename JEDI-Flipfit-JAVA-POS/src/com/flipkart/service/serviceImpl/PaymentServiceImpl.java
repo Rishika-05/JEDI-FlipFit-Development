@@ -3,11 +3,11 @@
  */
 package com.flipkart.service.serviceImpl;
 
-import com.flipkart.service.PaymentService;
+import com.flipkart.service.PaymentFlipFitService;
 
 /**
  * 
  */
-public class PaymentServiceImpl implements PaymentService {
+public class PaymentServiceImpl implements PaymentFlipFitService {
 
 }

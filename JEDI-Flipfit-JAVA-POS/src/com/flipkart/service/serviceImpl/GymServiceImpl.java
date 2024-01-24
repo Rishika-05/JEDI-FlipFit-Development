@@ -3,11 +3,11 @@
  */
 package com.flipkart.service.serviceImpl;
 
-import com.flipkart.service.GymService;
+import com.flipkart.service.GymFlipFitService;
 
 /**
  * 
  */
-public class GymServiceImpl implements GymService {
+public class GymServiceImpl implements GymFlipFitService {
 
 }

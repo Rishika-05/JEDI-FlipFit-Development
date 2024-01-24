@@ -3,11 +3,11 @@
  */
 package com.flipkart.service.serviceImpl;
 
-import com.flipkart.service.NotificationService;
+import com.flipkart.service.NotificationFlipFitService;
 
 /**
  * 
  */
-public class NotificationServiceImpl implements NotificationService {
+public class NotificationServiceImpl implements NotificationFlipFitService {
 
 }

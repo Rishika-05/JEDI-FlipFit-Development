@@ -67,7 +67,7 @@ public class FlipfitApplication {
 		System.out.println("2. Register");
 		System.out.println("3. Update password");
 		System.out.println("4. Exit");
-		System.out.println("Enter user input");
+		System.out.println("Enter user input: ");
 	}
 	
 	static void login() {
@@ -88,19 +88,19 @@ public class FlipfitApplication {
 		int userRole =sc.nextInt();
 		switch(userRole) {
 		case 1:
-			 GymAdminFlipFitMenu gymAdminFlipFitMenu=new GymAdminFlipFitMenu();
+			 GymAdminFlipFitMenu gymAdminFlipFitMenu = new GymAdminFlipFitMenu();
 //			 gymAdminFlipFitMenu.createMenu(new Admin());
 			break;
 		case 2:
 			
-			GymCustomerFlipFitMenu gymCustomerFlipFitMenu=new GymCustomerFlipFitMenu();
-//			gymCustomerFlipFitMenu.createMenu(new GymCustomer());
+			GymCustomerFlipFitMenu gymCustomerFlipFitMenu = new GymCustomerFlipFitMenu();
+			gymCustomerFlipFitMenu.displayCustomerMenu();
 			
 			break;
 		case 3:
 			
-			GymOwnerFlipFitMenu gymOwnerFlipFitMenu=new GymOwnerFlipFitMenu();
-//			gymOwnerFlipFitMenu.createMenu(new GymOwner());
+			GymOwnerFlipFitMenu gymOwnerFlipFitMenu = new GymOwnerFlipFitMenu();
+			gymOwnerFlipFitMenu.displayGymOwnerMenu();
 			
 			break;	
 			

@@ -63,15 +63,11 @@ public class FlipfitApplication {
 
 
 	}
-<<<<<<< HEAD
+
 
 	public static void createMainMenu() {
 		System.out.println("------------ Welcome to FlipFit Gym Slot Booking Application------------");
-=======
-	
-	static void createMainMenu() {
-		System.out.println("---------- Welcome to FlipFit Gym Slot Booking Application---------");
->>>>>>> 7bc0864 (fixed)
+
 		System.out.println("1. Login");
 		System.out.println("2. Register");
 		System.out.println("3. Update password");

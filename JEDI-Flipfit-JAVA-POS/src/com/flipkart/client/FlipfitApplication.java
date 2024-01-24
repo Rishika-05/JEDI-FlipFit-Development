@@ -40,7 +40,7 @@ public class FlipfitApplication {
 					login();
 					break;
 				case 2:
-					//student registration
+					// registration
 					register();
 					break;
 				case 3:

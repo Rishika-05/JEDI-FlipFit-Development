@@ -10,6 +10,8 @@ public class User {
     private int userId;
     private String name;
     private  String email;
+    private String number;
+    private String password;
 
     public int getUserId() {
         return userId;
@@ -51,7 +53,6 @@ public class User {
         this.password = password;
     }
 
-    private String number;
-    private String password;
+
 
 }

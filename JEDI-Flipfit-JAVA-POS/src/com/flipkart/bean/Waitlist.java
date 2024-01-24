@@ -1,5 +1,6 @@
 package com.flipkart.bean;
-import java.time.LocalDateTime
+import java.time.LocalDateTime;
+
 public class Waitlist {
     private int id;
     private int user_id;

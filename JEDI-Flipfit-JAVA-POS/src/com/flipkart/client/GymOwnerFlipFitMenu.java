@@ -30,10 +30,10 @@ public class GymOwnerFlipFitMenu {
                     viewProfile();
                     break;
                 case 5:
-                    System.out.println("\033[1mYou have exited the Gym Owner menu\033[0m");
+                    System.out.println("You have exited the Gym Owner menu");
                     break;
                 default:
-                    System.out.println("\033[1mYou have selected an invalid option. Please try again!!\033[0m");
+                    System.out.println("You have selected an invalid option. Please try again!!");
                     break;
             }
         } while (menuOption != 5);

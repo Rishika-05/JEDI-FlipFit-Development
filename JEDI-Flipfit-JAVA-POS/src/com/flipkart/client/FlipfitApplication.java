@@ -23,16 +23,13 @@ public class FlipfitApplication {
 		Scanner sc = new Scanner(System.in);
 
 		int userInput;
-//		//create the main menu
-//		createMainMenu();
-//		userInput=sc.nextInt();
-		try
-		{
-
+		try {
 		//until user do not exit the application
 		do{
+			
 			createMainMenu();
 			userInput = sc.nextInt();
+			
 			switch(userInput)
 			{
 				case 1:
@@ -50,10 +47,12 @@ public class FlipfitApplication {
 					System.out.println("\033[1mYou have exited the FlipFit Application\033[0m");
                     break;
 				default:
-					System.out.println("Invalid Input");
+					System.out.println("\\033[1mInvalid Option Please try again!!\\033[0m");
+					break;
 			}
 
 		} while(userInput != 4);
+		
 		} catch(Exception ex) {
 			System.out.println("Error occured "+ex);
 		}
@@ -66,13 +65,9 @@ public class FlipfitApplication {
 
 
 	public static void createMainMenu() {
-		System.out.println("------------ Welcome to FlipFit Gym Slot Booking Application------------");
-
-		System.out.println("1. Login");
-		System.out.println("2. Register");
-		System.out.println("3. Update password");
-		System.out.println("4. Exit");
-		System.out.println("Enter user input: ");
+		System.out.println("\n\n\033[1m----------------------- Welcome to FlipFit Gym Slot Booking Application---------------------\033[0m");
+		System.out.println("Menu Options: \nPress 1. Login \nPress 2. Register \nPress 3. Update Password \nPress 4. Exit\n");
+		System.out.println("\033[1mEnter option: \033[0m");
 	}
 	
 	static void login() {

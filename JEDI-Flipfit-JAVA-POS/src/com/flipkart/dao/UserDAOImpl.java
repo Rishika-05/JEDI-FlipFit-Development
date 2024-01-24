@@ -6,6 +6,6 @@ package com.flipkart.dao;
 /**
  * 
  */
-public interface AdminDAO {
+public class UserDAOImpl {
 
 }

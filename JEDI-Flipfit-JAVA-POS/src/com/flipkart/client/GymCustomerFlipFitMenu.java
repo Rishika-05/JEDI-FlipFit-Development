@@ -104,4 +104,9 @@ public class GymCustomerFlipFitMenu {
     private void payment() {
         // Implement logic for payment
     }
+
+    public static void main(String[] args) {
+        GymCustomerFlipFitMenu customer = new GymCustomerFlipFitMenu();
+        customer.displayCustomerMenu();
+    }
 }

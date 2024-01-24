@@ -14,6 +14,8 @@ public class Booking {
     private int userId;
     private int gymId;
     private int slotId;
+    private LocalDateTime bookingDate = LocalDateTime.now();
+    private boolean isCancelled;
 
     public int getBookingId() {
         return bookingId;
@@ -63,6 +65,5 @@ public class Booking {
         isCancelled = cancelled;
     }
 
-    private LocalDateTime bookingDate = LocalDateTime.now();
-    private boolean isCancelled;
+
 }

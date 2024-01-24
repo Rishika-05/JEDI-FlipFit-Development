@@ -6,6 +6,6 @@ package com.flipkart.bean;
 /**
  * 
  */
-public class GymCustomer {
+public class GymCustomer extends User {
 
 }

@@ -6,7 +6,7 @@ import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
 
-public interface GymAdminService {
+public interface AdminFlipfitService {
 	
 	GymOwner verifyGymOwnerRequest(int gym_owner_id, boolean approved);
 	

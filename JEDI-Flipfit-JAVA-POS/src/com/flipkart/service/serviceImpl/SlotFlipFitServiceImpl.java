@@ -3,11 +3,11 @@
  */
 package com.flipkart.service.serviceImpl;
 
-import com.flipkart.service.SlotService;
+import com.flipkart.service.SlotFlipFitService;
 
 /**
  * 
  */
-public class SlotFlipFitServiceImpl implements SlotService {
+public class SlotFlipFitServiceImpl implements SlotFlipFitService {
 
 }

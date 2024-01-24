@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.flipkart.bean.Booking;
 
-public interface GymCustomerService {
+public interface GymCustomerFlipFitService {
 	void bookWorkout(Booking booking);
 	
 	void cancelBooking(int bookingId);

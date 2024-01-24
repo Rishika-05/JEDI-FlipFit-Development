@@ -2,7 +2,7 @@ package com.flipkart.service;
 
 import com.flipkart.bean.BookingDetails;
 
-public interface BookingService {
+public interface BookingFlipFitService {
 	
 	boolean updateBooking(int bookingId);
 	

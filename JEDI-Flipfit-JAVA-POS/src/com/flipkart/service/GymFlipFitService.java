@@ -7,5 +7,5 @@ import com.flipkart.bean.Slot;
 public interface GymFlipFitService {
 	List<Slot> getSlots(int userId);
 	
-	GymDetails getGymDetails(int gymId);
+//	GymDetails getGymDetails(int gymId);
 }

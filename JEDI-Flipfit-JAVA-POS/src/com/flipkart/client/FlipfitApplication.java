@@ -89,18 +89,18 @@ public class FlipfitApplication {
 		switch(userRole) {
 		case 1:
 			 GymAdminFlipFitMenu gymAdminFlipFitMenu=new GymAdminFlipFitMenu();
-			 gymAdminFlipFitMenu.createMenu(new Admin());
+//			 gymAdminFlipFitMenu.createMenu(new Admin());
 			break;
 		case 2:
 			
 			GymCustomerFlipFitMenu gymCustomerFlipFitMenu=new GymCustomerFlipFitMenu();
-			gymCustomerFlipFitMenu.createMenu(new GymCustomer());
+//			gymCustomerFlipFitMenu.createMenu(new GymCustomer());
 			
 			break;
 		case 3:
 			
 			GymOwnerFlipFitMenu gymOwnerFlipFitMenu=new GymOwnerFlipFitMenu();
-			gymOwnerFlipFitMenu.createMenu(new GymOwner());
+//			gymOwnerFlipFitMenu.createMenu(new GymOwner());
 			
 			break;	
 			

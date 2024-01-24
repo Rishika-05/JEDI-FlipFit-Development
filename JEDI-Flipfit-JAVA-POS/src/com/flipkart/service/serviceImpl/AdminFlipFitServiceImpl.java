@@ -8,6 +8,7 @@ import com.flipkart.service.AdminFlipfitService;
 /**
  * 
  */
-public class AdminServiceImpl implements AdminFlipfitService {
+
+public class AdminFlipFitServiceImpl implements AdminFlipfitService {
 
 }

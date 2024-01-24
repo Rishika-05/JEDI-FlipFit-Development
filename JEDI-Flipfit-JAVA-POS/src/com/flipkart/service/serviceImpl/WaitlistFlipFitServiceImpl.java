@@ -8,6 +8,6 @@ import com.flipkart.service.WaitlistFlipFitService;
 /**
  * 
  */
-public class WaitlistServiceImpl implements WaitlistFlipFitService {
+public class WaitlistFlipFitServiceImpl implements WaitlistFlipFitService {
 
 }

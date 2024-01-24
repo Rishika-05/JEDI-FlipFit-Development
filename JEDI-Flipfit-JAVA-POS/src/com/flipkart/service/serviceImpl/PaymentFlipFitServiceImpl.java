@@ -8,6 +8,6 @@ import com.flipkart.service.PaymentFlipFitService;
 /**
  * 
  */
-public class PaymentServiceImpl implements PaymentFlipFitService {
+public class PaymentFlipFitServiceImpl implements PaymentFlipFitService {
 
 }

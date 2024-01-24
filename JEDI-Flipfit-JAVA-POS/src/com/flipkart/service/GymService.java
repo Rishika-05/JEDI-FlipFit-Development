@@ -1,5 +1,9 @@
 package com.flipkart.service;
 
-public interface GymService {
+import java.util.List;
 
+import com.flipkart.bean.Slot;
+
+public interface GymService {
+	List<Slot> getSlots(int userId);
 }

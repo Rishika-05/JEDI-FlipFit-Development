@@ -1,5 +1,11 @@
 package com.flipkart.service;
 
-public interface GymOwnerService {
+import java.util.List;
 
+import com.flipkart.bean.Gym;
+
+public interface GymOwnerService {
+	void addGym(Gym gmy);
+	
+	List<Gym> getAllGyms(int userId);
 }

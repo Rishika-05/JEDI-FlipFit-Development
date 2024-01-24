@@ -134,6 +134,7 @@ public class FlipfitApplication {
 				customer.setRole(role);
 				System.out.println("Please Enter you full name: ");
 				String name = in.next();
+				in.nextLine();
 				customer.setName(name);
 				System.out.println("Please Enter your age: ");
 				int age = in.nextInt();

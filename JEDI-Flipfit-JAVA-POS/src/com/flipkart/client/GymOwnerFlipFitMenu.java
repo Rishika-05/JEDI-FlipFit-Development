@@ -3,7 +3,6 @@
  */
 package com.flipkart.client;
 import java.util.ArrayList;
-import com.flipkart.bean.User;
 import java.util.Scanner;
 /**
  *
@@ -55,6 +54,11 @@ public class GymOwnerFlipFitMenu {
 
     private void viewProfile() {
         // Implement logic to view the profile of the Gym Owner
+    }
+
+    public static void main(String[] args){
+        GymOwnerFlipFitMenu owner = new GymOwnerFlipFitMenu();
+        owner.displayGymOwnerMenu();
     }
 
 }

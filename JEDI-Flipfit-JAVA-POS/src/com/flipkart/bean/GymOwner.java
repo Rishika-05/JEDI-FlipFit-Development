@@ -25,6 +25,4 @@ public class GymOwner extends User {
     public void setBankAccount(String bankAccount) {
         this.bankAccount = bankAccount;
     }
-
-
 }

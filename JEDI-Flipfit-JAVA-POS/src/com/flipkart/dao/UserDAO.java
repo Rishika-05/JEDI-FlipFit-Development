@@ -21,7 +21,7 @@ public interface UserDAO {
      * @param id
      */
 
-    public void delete(String id);
+    public void delete(int id);
 
     /**
      * Update user password in the database

@@ -10,7 +10,7 @@ import java.util.function.BinaryOperator;
  * 
  */
 public class GymCustomerFlipFitMenu {
-    public void createMenu() {
+    public void displayCustomerMenu() {
         int option;
         do {
             System.out.println("\n\n ------ Gym Customer Menu Options ------ " + "\nPress 1. Browse Gyms"

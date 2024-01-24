@@ -111,7 +111,7 @@ public class FlipfitApplication {
 			GymOwnerFlipFitMenu gymOwnerFlipFitMenu = new GymOwnerFlipFitMenu();
 			gymOwnerFlipFitMenu.displayGymOwnerMenu();
 			
-			break;	
+			break;
 			
 		}	
 	}

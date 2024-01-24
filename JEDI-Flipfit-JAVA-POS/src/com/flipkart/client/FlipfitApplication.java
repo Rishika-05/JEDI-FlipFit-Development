@@ -92,7 +92,7 @@ public class FlipfitApplication {
 		switch(userRole) {
 		case 1:
 			 GymAdminFlipFitMenu gymAdminFlipFitMenu = new GymAdminFlipFitMenu();
-//			 gymAdminFlipFitMenu.createMenu(new Admin());
+//			 gymAdminFlipFitMenu.displayAdminMenu();
 			break;
 		case 2:
 			

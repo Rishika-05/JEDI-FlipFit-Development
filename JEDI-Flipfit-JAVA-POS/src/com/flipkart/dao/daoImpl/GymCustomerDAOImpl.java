@@ -32,6 +32,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
     @Override
     public boolean register(GymCustomer customer) {
     	customer.setCustomerId(gymCustomers.size());
+    	gymCustomers.add(customer);
         return true;
     }
     
@@ -55,6 +56,17 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
 	@Override
 	public ArrayList<GymCustomer> getAllGymCustomers() {
 		return gymCustomers;
+	}
+
+	@Override
+	public int getGymCustomerIdFromUserId(int userId) {
+		for(GymCustomer gc : gymCustomers) {
+			if(gc.getUserId() == userId) {
+				return gc.getCustomerId();
+			}
+		}
+		
+		return -1;
 	}
 
 }

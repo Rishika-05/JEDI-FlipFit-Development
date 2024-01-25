@@ -40,5 +40,7 @@ public interface GymCustomerDAO {
     public boolean update(int gymCustomerId, GymCustomer newCustomer);
     
     public ArrayList<GymCustomer> getAllGymCustomers();
+    
+    public int getGymCustomerIdFromUserId(int userId);
 
 }

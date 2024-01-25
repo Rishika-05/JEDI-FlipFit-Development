@@ -11,7 +11,7 @@ import com.flipkart.constant.RoleType;
  */
 public interface UserDAO {
 	
-	public boolean createUser(User user);
+	public int createUser(User user);
 	
 	public int verifyUser(String username,String password );
 	

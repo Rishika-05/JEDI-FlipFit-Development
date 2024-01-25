@@ -37,6 +37,12 @@ public class BookingFlipFitServiceImpl implements BookingFlipFitService {
 	}
 
 	@Override
+	public boolean removeBookingOfInactiveGym(int gymId) {
+		return bookingDao.removeBookingOfInactiveGym(gymId);
+
+	}
+
+	@Override
 	public Booking getBooking(int bookingId) {
 		return bookingDao.getBooking(bookingId);
 	}

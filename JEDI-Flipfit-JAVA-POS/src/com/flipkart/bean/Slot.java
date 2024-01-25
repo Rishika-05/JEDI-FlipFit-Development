@@ -3,6 +3,7 @@
  */
 package com.flipkart.bean;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
@@ -13,7 +14,7 @@ public class Slot {
     private int gymId;
     private LocalDateTime startTime = LocalDateTime.now();
     private LocalDateTime endTime = LocalDateTime.now();
-    private LocalDateTime slotTime = LocalDateTime.now();
+    private Duration slotTime;
     private int avilableSeats;
 
     public int getSlotId() {
@@ -48,11 +49,11 @@ public class Slot {
         this.endTime = endTime;
     }
 
-    public LocalDateTime getSlotTime() {
+    public Duration getSlotTime() {
         return slotTime;
     }
 
-    public void setSlotTime(LocalDateTime slotTime) {
+    public void setSlotTime(Duration slotTime) {
         this.slotTime = slotTime;
     }
 

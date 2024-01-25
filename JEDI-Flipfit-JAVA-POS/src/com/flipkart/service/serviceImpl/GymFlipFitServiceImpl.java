@@ -8,64 +8,73 @@ import java.util.List;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.Slot;
+import com.flipkart.dao.GymDAO;
+import com.flipkart.dao.daoImpl.GymDAOImpl;
 import com.flipkart.service.GymFlipFitService;
+import com.flipkart.service.UserFlipFitService;
 
 /**
  * 
  */
 public class GymFlipFitServiceImpl implements GymFlipFitService {
 	
+private static GymFlipFitService gymServiceObj = null;
+	
 	public GymFlipFitServiceImpl() {
+		
 	}
+	
+	public static synchronized GymFlipFitService getInstance() {
+		if (gymServiceObj == null)
+			gymServiceObj = new GymFlipFitServiceImpl();
 
+		return gymServiceObj;
+	}
+	
+	GymDAO gymDAO = GymDAOImpl.getInstance();
 
 	@Override
 	public List<Gym> viewAllGyms() {
-		// TODO Auto-generated method stub
-		Gym g = new Gym(77, 10, false, "Bellandur", "Cultfit");
-		List<Gym> gyms = new ArrayList<Gym>();
-		gyms.add(g);
-		return gyms;
+		return gymDAO.getAllGyms();
 	}
 
 	@Override
 	public void displayGymDetails(int gymId) {
-		System.out.println("This gym has 10 remaining slots."); 
+		Gym g = gymDAO.getGym(gymId);
+		System.out.println("Name: " + g.getGymName() + "\n Address: " + g.getLocation() +
+				"\n Description: "+g.getGymDescription() + "\n Total Slots: "+ g.getTotalSlots() +"\n");
 	}
 
 
 	@Override
 	public Gym getGym(int gymId) {
-		// TODO Auto-generated method stub
-		return null;
+		return gymDAO.getGym(gymId);
 	}
 
 
 	@Override
 	public List<Gym> pendingGymRequest() {
-		// TODO Auto-generated method stub
-		return null;
+		return gymDAO.pendingGymRequest();
 	}
 
 
 	@Override
 	public void addGym(Gym gym) {
-		// TODO Auto-generated method stub
-		
+		//  ownerId,  slots,  name,  loc,  des
+		Gym g = new Gym(12, 10,  "Fitness Club", "Bellandur", "Lastest in town.");
+		gymDAO.addGym(gym);
 	}
 
 
 	@Override
 	public void removeGym(int gymId) {
-		// TODO Auto-generated method stub
-		
+		gymDAO.removeGym(gymId);
 	}
 
 
 	@Override
 	public void updateGym(int gymId, Gym gym) {
-		// TODO Auto-generated method stub
-		
+		gymDAO.updateGym(gymId, gym);
 	}
 
 }

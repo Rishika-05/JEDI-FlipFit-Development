@@ -36,8 +36,10 @@ public class UserFlipFitServiceImpl implements UserFlipFitService {
 
 	@Override
 	public boolean registration(User user) {
-		if(UserDAOImpl.getInstance().createUser(user)) return true;
-		return false;
+		if(UserDAOImpl.getInstance().createUser(user)) {return true;}
+		else{
+			return false;
+		}
 	}
 
 	@Override

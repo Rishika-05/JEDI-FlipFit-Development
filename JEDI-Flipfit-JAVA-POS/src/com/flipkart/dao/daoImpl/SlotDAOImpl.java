@@ -15,8 +15,7 @@ import com.flipkart.dao.SlotDAO;
 /**
  * 
  */
-public class SlotDAOImpl implements SlotDAO {
-	
+public class SlotDAOImpl implements SlotDAO {	
 	
 	private static SlotDAO slotDAOObj = null;
 	
@@ -121,6 +120,11 @@ public class SlotDAOImpl implements SlotDAO {
 		
 		System.out.println("Slot with slot id "+ slotId + " not found.");
 		return null;
+	}
+
+	@Override
+	public ArrayList<Slot> getAllAvailableSlots() {
+		return slots;
 	}
 
 }

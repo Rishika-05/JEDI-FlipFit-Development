@@ -5,6 +5,7 @@ package com.flipkart.dao.daoImpl;
 
 import com.flipkart.bean.Booking;
 import com.flipkart.dao.BookingDAO;
+import com.flipkart.dao.UserDAO;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,6 +16,20 @@ import java.util.List;
  * 
  */
 public class BookingDAOImpl implements BookingDAO {
+	private static BookingDAO bookingDAOObj = null;
+	
+	public BookingDAOImpl() {
+		
+	}
+	
+	public static synchronized BookingDAO getInstance() {
+		if (bookingDAOObj == null)
+			bookingDAOObj = new BookingDAOImpl();
+
+		return bookingDAOObj;
+	}
+	
+	
     ArrayList<Booking> bookings = new ArrayList<Booking>();
 
     @Override

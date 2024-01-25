@@ -3,6 +3,8 @@
  */
 package com.flipkart.client;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,6 +12,7 @@ import java.util.function.BinaryOperator;
 
 import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.Booking;
+import com.flipkart.bean.Gym;
 import com.flipkart.bean.Slot;
 import com.flipkart.bean.User;
 import com.flipkart.service.GymCustomerFlipFitService;
@@ -61,7 +64,7 @@ public class GymCustomerFlipFitMenu {
                     viewGymDetails(sc);
                     break;
                 case 3:
-//                    bookSlot(sc, userId);
+                    bookSlot(sc, userId);
                     break;
                 case 4:
                     cancelBooking(sc, userId);
@@ -151,7 +154,22 @@ public class GymCustomerFlipFitMenu {
     }
 
     private void bookSlot(Scanner sc, int userId) {
-    	ArrayList<Slot> slots = slotService.getAllAvailableSlots();
+    	List<Gym> gyms = gymService.viewAllGyms();
+    	
+    	
+    	LocalDateTime startTime = LocalDateTime.now();
+    	LocalDateTime endTime = LocalDateTime.now().plusHours(3);
+    	Duration slotTime = Duration.ofMinutes(30);
+    	
+    	slotService.addSlot(1, 1, startTime, endTime, slotTime);
+
+    	System.out.println("Enter the gym ID you want to book: ");
+    	for(Gym gym: gyms) {
+    		System.out.println(gym.getGymName() + ": " + gym.getGymId());
+    	}
+    	
+		int gymId = sc.nextInt();
+    	ArrayList<Slot> slots = slotService.getAllAvailableSlots(1);
 		System.out.println("\n\033[1m---------------------- Available Slots -----------------------\033[2m\n");
 		System.out.println("Slot No.\tTimings(24hrs)\t\tGymID\n------------------------------------------------------");
 		index = 1;					
@@ -159,12 +177,11 @@ public class GymCustomerFlipFitMenu {
 			System.out.println(index+"\t\t"+slot.getSlotHour()+":00-"+(slot.getSlotHour()+1)+":00"+"\t\t"+slot.getGymId());
 			index++;
 		}
-		System.out.println("Enter the gym ID you want to book: ");
-		int gymId = sc.nextInt();
 		System.out.println("Enter the slot number you want to book: ");
 		int slotId = sc.nextInt();
-		bookingService.insertBooking(userId, gymId, slotId);
+//		bookingService.insertBooking(userId, gymId, slotId);
 //			System.out.println("Unknown Slot!");
+		customerService.bookWorkout(userId, gymId, slotId);
     }
 
     private void cancelBooking(Scanner sc, int userId) {

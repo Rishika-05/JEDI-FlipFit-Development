@@ -14,6 +14,10 @@ public interface SlotFlipFitService {
 
 	ArrayList<Slot> getAllAvailableSlots(int gymId);
 
+	void incrementFilledSeats(int slotId);
+
+	void decrementFilledSeats(int slotId);
+
 }
 
 

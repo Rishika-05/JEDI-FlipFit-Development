@@ -12,14 +12,18 @@ public class Gym {
     private boolean approved;
     private String location;
     private String gymName;
+    private String gymDescription;
+    private int gymOwnerId;
+    
     
 
-    public Gym(int i, int j, boolean b, String l, String n) {
-    	this.gymId = i;
-    	this.approved = b;
-    	this.totalSlots = j;
-    	this.location = l;
-    	this.gymName = n;
+    public Gym(int id, int ownerId, int slots, String name, String loc, String des) {
+    	this.gymId = id;
+    	this.approved = false;
+    	this.totalSlots = slots;
+    	this.location = loc;
+    	this.gymName = name;
+    	this.gymDescription = des;
 	}
 
 	public int getGymId() {

@@ -18,14 +18,9 @@ public class GymFlipFitServiceImpl implements GymFlipFitService {
 	public GymFlipFitServiceImpl() {
 	}
 
-	@Override
-	public List<Slot> getSlots(int userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public List<Gym> viewGymList() {
+	public List<Gym> viewAllGyms() {
 		// TODO Auto-generated method stub
 		Gym g = new Gym(77, 10, false, "Bellandur", "Cultfit");
 		List<Gym> gyms = new ArrayList<Gym>();
@@ -34,9 +29,43 @@ public class GymFlipFitServiceImpl implements GymFlipFitService {
 	}
 
 	@Override
-	public String displayGymDetails(int gymId) {
+	public void displayGymDetails(int gymId) {
+		System.out.println("This gym has 10 remaining slots."); 
+	}
+
+
+	@Override
+	public Gym getGym(int gymId) {
 		// TODO Auto-generated method stub
-		return "This gym has 10 remaining slots.";
+		return null;
+	}
+
+
+	@Override
+	public List<Gym> pendingGymRequest() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void addGym(Gym gym) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void removeGym(int gymId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void updateGym(int gymId, Gym gym) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

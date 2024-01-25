@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GymOwnerDAOImpl implements GymOwnerDAO {
 
-    private ArrayList<Gym> gyms;  // Assuming you need to store a list of gyms associated with a GymOwner
+    ArrayList<Gym> gyms = new ArrayList<Gym>();
 
     private static GymOwnerDAOImpl gymOwnerDaoObj = null;
 
@@ -29,10 +29,12 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
         return gymOwnerDaoObj;
     }
 
+
     @Override
     public void addGym(Gym gym) {
         gyms.add(gym);  // Add the gym to the list
         // Add logic to persist the gym details in the database
+
     }
 
     @Override

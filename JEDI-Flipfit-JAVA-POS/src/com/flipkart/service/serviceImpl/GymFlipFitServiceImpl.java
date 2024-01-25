@@ -62,7 +62,7 @@ private static GymFlipFitService gymServiceObj = null;
 	public void addGym(Gym gym) {
 		//  ownerId,  slots,  name,  loc,  des
 		Gym g = new Gym(12, 10,  "Fitness Club", "Bellandur", "Lastest in town.");
-		gymDAO.addGym(gym);
+		gymDAO.addGym(g);
 	}
 
 

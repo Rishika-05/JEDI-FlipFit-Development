@@ -4,7 +4,7 @@ import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 import com.flipkart.constant.RoleType;
-import com.flipkart.dao.UserDAOImpl;
+import com.flipkart.dao.daoImpl.UserDAOImpl;
 import com.flipkart.service.UserFlipFitService;
 
 public class UserFlipFitServiceImpl implements UserFlipFitService {

@@ -89,7 +89,7 @@ public class SlotDAOImpl implements SlotDAO {
             if (slotItem.getSlotId() == slot.getSlotId()) {
                 // Found a booking with the given slot ID
                 iterator.set(slot); // Remove the booking from the collection
-                System.out.println("Slot with Slot ID " + slotId + " deleted.");
+//                System.out.println("Slot with Slot ID " + slotId + " deleted.");
                  
                 return slot;
             }

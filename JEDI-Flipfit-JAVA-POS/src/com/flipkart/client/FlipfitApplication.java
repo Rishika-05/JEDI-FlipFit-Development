@@ -65,7 +65,7 @@ public class FlipfitApplication {
 
 	}
 
-
+	// Hi Rishika
 	public static void createMainMenu() {
 		System.out.println("\n\n\033[1m----------------------- Welcome to FlipFit Gym Slot Booking Application---------------------\033[0m");
 		System.out.println("Menu Options: \nPress 1. Login \nPress 2. Register \nPress 3. Update Password \nPress 4. Exit\n");

@@ -150,22 +150,22 @@ public class GymCustomerFlipFitMenu {
     	gymService.displayGymDetails(gymId);
     }
 
-    private void bookSlot(Scanner sc, int userId) {
-    	ArrayList<Slot> slots = slotService.getAllAvailableSlots();
-		System.out.println("\n\033[1m---------------------- Available Slots -----------------------\033[2m\n");
-		System.out.println("Slot No.\tTimings(24hrs)\t\tGymID\n------------------------------------------------------");
-		index = 1;					
-		for(Slot slot: slots) {
-			System.out.println(index+"\t\t"+slot.getSlotHour()+":00-"+(slot.getSlotHour()+1)+":00"+"\t\t"+slot.getGymId());
-			index++;
-		}
-		System.out.println("Enter the gym ID you want to book: ");
-		int gymId = sc.nextInt();
-		System.out.println("Enter the slot number you want to book: ");
-		int slotId = sc.nextInt();
-		bookingService.insertBooking(userId, gymId, slotId);
-//			System.out.println("Unknown Slot!");
-    }
+//    private void bookSlot(Scanner sc, int userId) {
+////    	ArrayList<Slot> slots = slotService.getAllAvailableSlots();
+//		System.out.println("\n\033[1m---------------------- Available Slots -----------------------\033[2m\n");
+//		System.out.println("Slot No.\tTimings(24hrs)\t\tGymID\n------------------------------------------------------");
+//		index = 1;
+//		for(Slot slot: slots) {
+//			System.out.println(index+"\t\t"+slot.getSlotHour()+":00-"+(slot.getSlotHour()+1)+":00"+"\t\t"+slot.getGymId());
+//			index++;
+//		}
+//		System.out.println("Enter the gym ID you want to book: ");
+//		int gymId = sc.nextInt();
+//		System.out.println("Enter the slot number you want to book: ");
+//		int slotId = sc.nextInt();
+//		bookingService.insertBooking(userId, gymId, slotId);
+////			System.out.println("Unknown Slot!");
+//    }
 
     private void cancelBooking(Scanner sc, int userId) {
         // Implement logic to cancel a booked slot

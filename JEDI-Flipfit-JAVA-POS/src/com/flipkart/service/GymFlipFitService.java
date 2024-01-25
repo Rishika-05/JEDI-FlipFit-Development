@@ -7,14 +7,19 @@ import com.flipkart.bean.Slot;
 
 public interface GymFlipFitService {
 	
-	List<Slot> getSlots(int userId);
 
+	List<Gym> viewAllGyms();
 
-	List<Gym> viewGymList();
+	Gym getGym(int gymId);
+	
+	List<Gym> pendingGymRequest();
+	
+	void addGym(Gym gym);
+	
+	void displayGymDetails(int gymId);
+	
+	void removeGym(int gymId);
 
-
-	String displayGymDetails(int gymId);
-
-
+	void updateGym(int gymId, Gym gym);
 
 }

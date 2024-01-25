@@ -3,73 +3,197 @@
  */
 package com.flipkart.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 
  */
 public class Gym {
-    private int gymId;
-    private int totalSlots;
-    private boolean approved;
-    private String location;
-    private String gymName;
-    
-
-    public Gym(int i, int j, boolean b, String l, String n) {
-    	this.gymId = i;
-    	this.approved = b;
-    	this.totalSlots = j;
-    	this.location = l;
-    	this.gymName = n;
+    /**
+	 * @return the gymId
+	 */
+	public int getGymId() {
+		return gymId;
 	}
 
-	public int getGymId() {
-        return gymId;
-    }
 
-    public void setGymId(int gymId) {
-        this.gymId = gymId;
-    }
 
-    public int getTotalSlots() {
-        return totalSlots;
-    }
+	/**
+	 * @param gymId the gymId to set
+	 */
+	public void setGymId(int gymId) {
+		this.gymId = gymId;
+	}
 
-    public void setTotalSlots(int totalSlots) {
-        this.totalSlots = totalSlots;
-    }
 
-    public boolean isApproved() {
-        return approved;
-    }
 
-    public void setApproved(boolean approved) {
-        this.approved = approved;
-    }
+	/**
+	 * @return the totalSlots
+	 */
+	public int getTotalSlots() {
+		return totalSlots;
+	}
 
-//    public int getPincode() {
-//        return pincode;
-//    }
-//
-//    public void setPincode(int pincode) {
-//        this.pincode = pincode;
-//    }
 
+
+	/**
+	 * @param totalSlots the totalSlots to set
+	 */
+	public void setTotalSlots(int totalSlots) {
+		this.totalSlots = totalSlots;
+	}
+
+
+
+	/**
+	 * @return the approved
+	 */
+	public boolean isApproved() {
+		return approved;
+	}
+
+
+
+	/**
+	 * @param approved the approved to set
+	 */
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+
+
+
+	/**
+	 * @return the location
+	 */
 	public String getLocation() {
-		// TODO Auto-generated method stub
 		return location;
 	}
 
-	public String getGymName() {
-		return gymName;
-	}
 
+
+	/**
+	 * @param location the location to set
+	 */
 	public void setLocation(String location) {
 		this.location = location;
 	}
 
+
+
+	/**
+	 * @return the gymName
+	 */
+	public String getGymName() {
+		return gymName;
+	}
+
+
+
+	/**
+	 * @param gymName the gymName to set
+	 */
 	public void setGymName(String gymName) {
 		this.gymName = gymName;
 	}
+
+
+
+	/**
+	 * @return the gymDescription
+	 */
+	public String getGymDescription() {
+		return gymDescription;
+	}
+
+
+
+	/**
+	 * @param gymDescription the gymDescription to set
+	 */
+	public void setGymDescription(String gymDescription) {
+		this.gymDescription = gymDescription;
+	}
+
+
+
+	/**
+	 * @return the gymOwnerId
+	 */
+	public int getGymOwnerId() {
+		return gymOwnerId;
+	}
+
+
+
+	/**
+	 * @param gymOwnerId the gymOwnerId to set
+	 */
+	public void setGymOwnerId(int gymOwnerId) {
+		this.gymOwnerId = gymOwnerId;
+	}
+
+
+
+	/**
+	 * @return the slots
+	 */
+	public List<Slot> getSlots() {
+		return slots;
+	}
+
+
+
+	/**
+	 * @param slots the slots to set
+	 */
+	public void setSlots(List<Slot> slots) {
+		this.slots = slots;
+	}
+	
+    /**
+	 * @return the active
+	 */
+	public boolean isActive() {
+		return active;
+	}
+
+
+	/**
+	 * @param active the active to set
+	 */
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+
+
+
+
+	private int gymId;
+    private int totalSlots;
+    private boolean approved;
+    private boolean active;
+	private String location;
+    private String gymName;
+	private String gymDescription;
+    private int gymOwnerId;
+    private List<Slot> slots;
+    
+    
+
+    public Gym(int ownerId, int slots, String name, String loc, String des) {
+    	this.approved = false;
+    	this.active = false;
+    	this.totalSlots = slots;
+    	this.location = loc;
+    	this.gymName = name;
+    	this.gymDescription = des;
+    	this.gymOwnerId = ownerId;
+    	this.slots = new ArrayList<Slot>();
+	}
+
 
 
 

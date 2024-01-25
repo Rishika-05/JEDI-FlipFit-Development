@@ -1,43 +1,24 @@
 /**
- *
+ * 
  */
 package com.flipkart.dao;
 
 import com.flipkart.bean.User;
+import com.flipkart.constant.RoleType;
 
 /**
- * @author rohit.r10
+ * 
  */
 public interface UserDAO {
-    /**
-     * Register a new user
-     * @param user
-     * @return Integer denoting the number of rows updated in the database
-     */
-    public int register(User user);
+	
+	public boolean createUser(User user);
+	
+	public int verifyUser(String username,String password );
+	
+	public boolean updatePassword(int userId, String newPassword);
+	
+	public RoleType getUserRole(int userId);
+	
+	public User getUser(int userId);
 
-    /**
-     * Delete the user
-     * @param id
-     */
-
-    public void delete(int id);
-
-    /**
-     * Update user password in the database
-     * @param user
-     * @param newPassword
-     * @return Integer denoting the number of rows updated in the database
-     */
-
-    public int updatePassword(User user, String newPassword);
-
-    /**
-     * Find and login a particular user
-     * @param username
-     * @param password
-     * @return The logged in user or null if not found
-     */
-
-    public User loginUser(String username, String password);
 }

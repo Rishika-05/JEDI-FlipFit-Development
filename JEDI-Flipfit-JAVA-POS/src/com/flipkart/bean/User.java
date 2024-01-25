@@ -3,6 +3,8 @@
  */
 package com.flipkart.bean;
 
+import com.flipkart.constant.RoleType;
+
 /**
  * 
  */
@@ -10,8 +12,20 @@ public class User {
     private int userId;
 	private String username;
     private String password;
-    
+    private RoleType  role;
     /**
+	 * @return the role
+	 */
+	public RoleType getRole() {
+		return role;
+	}
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(RoleType role) {
+		this.role = role;
+	}
+	/**
 	 * @return the userId
 	 */
 	public int getUserId() {

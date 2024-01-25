@@ -56,6 +56,21 @@ public class BookingDAOImpl implements BookingDAO {
     }
 
     @Override
+    public boolean removeBookingOfInactiveGym(int gymId) {
+        Iterator<Booking> iterator = bookings.iterator(); // Assuming bookings is a collection of Booking objects
+
+        while (iterator.hasNext()) {
+            Booking booking = iterator.next();
+
+            if (booking.getGymId() == gymId) {
+                // Found a booking with the given bookingId
+                booking.setCancelled(true);
+            }
+        }
+        return true;
+    }
+
+    @Override
     public Booking getBooking(int bookingId) {
         return bookings.get(bookingId);
     }

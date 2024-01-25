@@ -9,8 +9,6 @@ import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 import com.flipkart.constant.RoleType;
-import com.flipkart.service.UserFlipFitService;
-import com.flipkart.service.serviceImpl.GymCustomerFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;
 /**
  * 
@@ -103,7 +101,7 @@ public class FlipfitApplication {
 		case GYM_CUSTOMER:
 			
 			GymCustomerFlipFitMenu gymCustomerFlipFitMenu = new GymCustomerFlipFitMenu();
-			gymCustomerFlipFitMenu.displayCustomerMenu(userId);
+			gymCustomerFlipFitMenu.displayCustomerMenu(user);
 			
 			break;
 		case GYM_OWNER:
@@ -121,7 +119,6 @@ public class FlipfitApplication {
 		RoleType role = null;
 		String userName = "";
 		String password = "";
-		int userId = -1;
 		Scanner in=new Scanner(System.in);
 		while(!flag) {
 			System.out.println("\n\n\033[1m------------------Register---------------- \n\n\033[0m");
@@ -142,12 +139,14 @@ public class FlipfitApplication {
 			newUser.setPassword(password);
 			newUser.setUsername(userName);
 			newUser.setRole(role);
-			userId = UserFlipFitServiceImpl.getInstance().registration(newUser);
-			flag = userId != -1;
+			flag = UserFlipFitServiceImpl.getInstance().registration(newUser);
 		}
 		switch(role) {
 			case GYM_CUSTOMER:
 				GymCustomer customer = new GymCustomer();
+				customer.setUsername(userName);
+				customer.setPassword(password);
+//				
 				System.out.println("Enter your full name: ");
 				String name = in.next();
 				in.nextLine();
@@ -161,12 +160,6 @@ public class FlipfitApplication {
 				in.nextLine();
 				customer.setLocation(location);
 				System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
-				customer.setUserId(userId);
-				if(UserFlipFitServiceImpl.getInstance().customerRegistration(customer)) {
-					System.out.println("Gym Customer Registered");
-				} else {
-					System.out.println("Some Error occured");
-				}
 				break;
 				
 			case GYM_OWNER:

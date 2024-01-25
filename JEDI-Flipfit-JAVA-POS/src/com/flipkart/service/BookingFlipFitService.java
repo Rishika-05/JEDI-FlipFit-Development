@@ -11,6 +11,8 @@ public interface BookingFlipFitService {
 	boolean insertBooking(int userId,int gymID,int slotId);
 	
 	boolean cancelBooking(int bookingId);
+
+	boolean removeBookingOfInactiveGym(int gymId);
 	
 	Booking getBooking(int bookingId);
 	List<Booking> getBookingsByUserId(int userId);

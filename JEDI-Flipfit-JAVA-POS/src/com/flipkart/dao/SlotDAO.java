@@ -3,21 +3,27 @@
  */
 package com.flipkart.dao;
 
-import com.flipkart.bean.Slot;
-
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+
+import com.flipkart.bean.Slot;
 
 /**
  * 
  */
 public interface SlotDAO {
-    boolean isAvailable();
-
-
-    boolean addSlot(int slotHour, int gymID, int availableSeats);
-
-    boolean updateSlot(int slotHour, int gymID, int changeInSeats);
-
+	public boolean createSlot(int slotHour, int gymID, LocalDateTime startTime, LocalDateTime endTime, Duration slotTime, int availableSlots);
+	
+	public boolean deleteSlot(int slotId);
+	
+	public Slot getSlot(int slotId);
+	
+	public ArrayList<Slot> getAllSlots();
+	
+	public ArrayList<Slot> getAllSlots(int gymId);
+		
+	public Slot updateSlot(Slot slot);
 
     ArrayList<Slot> getAllAvailableSlots();
 }

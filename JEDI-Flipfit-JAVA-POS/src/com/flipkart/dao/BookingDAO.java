@@ -26,6 +26,8 @@ public interface BookingDAO {
      * @return List containing all the bookings of a user
      */
 
+    public boolean removeBookingOfInactiveGym(int gymId);
+
     Booking getBooking(int bookingId);
     List<Booking> getBookingsByUserId(int userId);
     List<Booking> getBookingsByGymId(int gymId);

@@ -63,9 +63,34 @@ public class FlipfitApplication {
 	}
 
 	public static void createMainMenu() {
-		System.out.println("\n\n\033[1;34m----------------------- Welcome to FlipFit Gym Slot Booking Application---------------------\033[0m");
-		System.out.println("\033[1;34mMenu Options: \n\033[0;34mPress 1. Login \n\033[1;32mPress 2. Register \n\033[0;32mPress 3. Update Password \n\033[1;31mPress 4. Exit\n");
-		System.out.print("\033[1mEnter option: \033[0m");
+      // Reset text attributes
+
+		System.out.println("\033[3m");    // Apply italic
+
+		System.out.println("\033[1;33m███████╗██╗     ██╗██████╗ \033[0m" + "\033[1;34m███████╗██╗████████╗\033[0m");
+		System.out.println("\033[1;33m██╔════╝██║     ██║██╔══██╗\033[0m" + "\033[1;34m██╔════╝██║╚══██╔══╝\033[0m");
+		System.out.println("\033[1;33m█████╗  ██║     ██║██████╔╝\033[0m" + "\033[1;34m█████╗  ██║   ██║\033[0m");
+		System.out.println("\033[1;33m██╔══╝  ██║     ██║██╔═══╝ \033[0m" + "\033[1;34m██╔══╝  ██║   ██║\033[0m");
+		System.out.println("\033[1;33m██║     ███████╗██║██║     \033[0m" + "\033[1;34m██║     ██║   ██║\033[0m");
+		System.out.println("\033[1;33m╚═╝     ╚══════╝╚═╝╚═╝     \033[0m" + "\033[1;34m╚═╝     ╚═╝   ╚═╝\033[0m");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+
+
+		System.out.println("\033[1;34m▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m \uD835\uDC06\uD835\uDC18\uD835\uDC0C \uD835\uDC12\uD835\uDC0B\uD835\uDC0E\uD835\uDC13 \uD835\uDC01\uD835\uDC0E\uD835\uDC0E\uD835\uDC0A\uD835\uDC08\uD835\uDC0D\uD835\uDC06 \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
+
+		System.out.println("");
+
+		System.out.println("\033[1;36m ① Login");
+		System.out.println("\033[1;36m ② Register");
+		System.out.println("\033[1;36m ③ Update Password");
+		System.out.println("\033[1;31m ④ Exit");
+		System.out.println("\033[0m"); // Reset text attributes
+
+//		System.out.println("\033[1;34m▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
+
+		System.out.print("\033[1mEnter Choice ► \033[0m");
 	}
 
 	static void login() {
@@ -73,11 +98,20 @@ public class FlipfitApplication {
 
 		String userName, password;
 
-		System.out.println("\n\n\033[1m---------------------------Login---------------------------\033[0m");
-		System.out.print("\033[0;34mEnter username: \033[0m");
+		System.out.println("\n\n\033[1m      ▁▁▂▂▄▄▅▅▆▆▇▇██ \uD835\uDC0B\uD835\uDC28\uD835\uDC20\uD835\uDC22\uD835\uDC27 \uD835\uDC0F\uD835\uDC1A\uD835\uDC20\uD835\uDC1E ██▇▇▆▆▅▅▄▄▂▂▁▁\033[0m");
+		System.out.print("\033[0;34mEnter username ► \033[0m");
 		userName = sc.next();
-		System.out.print("\033[0;34mEnter password: \033[0m");
+		System.out.print("\033[0;34mEnter password ► \033[0m");
 		password = sc.next();
+
+		System.out.print("\n");
+		System.out.print("\n");
+
+		System.out.print("     ミ★ Congratulations Login Successful ★彡 \033[0m");
+
+		System.out.print("\n");
+		System.out.print("\n");
+
 
 		int userId = UserFlipFitServiceImpl.getInstance().login(userName, password);
 		User user = UserFlipFitServiceImpl.getInstance().getUser(userId);

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.flipkart.client;
 
@@ -21,63 +21,62 @@ import com.flipkart.service.serviceImpl.GymFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.SlotFlipFitServiceImpl;
 
 /**
- * 
+ *
  */
 public class GymCustomerFlipFitMenu {
 	GymCustomerFlipFitService customerService = GymCustomerFlipFitServiceImpl.getInstance();
 	GymFlipFitService gymService = new GymFlipFitServiceImpl();
 	SlotFlipFitService slotService = new SlotFlipFitServiceImpl();
 	BookingFlipFitServiceImpl bookingService = new BookingFlipFitServiceImpl();
-	int index = 1; 
-	
-	
-    public void displayCustomerMenu(int userId) {
-    	
-        int option;
-        do {
-            System.out.println("\n\n\033[1m--------- Gym Customer Menu Options ------\033[0m" + 
-				"\nPress 1. Browse Gyms" +
-				"\nPress 2. View Gym Details " + 
-				"\nPress 3. Book a Slot " + 
-				"\nPress 4. Cancel Booking " +
-				"\nPress 5. View Booking History " + 
-//				"\nPress 6. Modify Booking" + 
-				"\nPress 7. View Profile" +
-				"\nPress 8. Update Profile" + 
-//				"\nPress 9. Browse Waitlist" + 
-//				"\nPress 10. Cancel Waitlist" + 
-//				"\nPress 11. Payment" +
-				"\nPress 12. Exit");
+	int index = 1;
 
-            int gymCustomerId = customerService.getGymCustomerId(userId);
-            Scanner sc = new Scanner(System.in);
-            option = sc.nextInt();
+	public void displayCustomerMenu(int userId) {
 
-            switch(option) {
-                case 1:
-                    browseGyms();
-                    break;
-                case 2:
-                    viewGymDetails(sc);
-                    break;
-                case 3:
+		int option;
+		do {
+			System.out.println("\n\n\033[1m--------- Gym Customer Menu Options ------\033[0m" +
+					"\n\033[1;34mPress 1. Browse Gyms" +
+					"\nPress 2. View Gym Details " +
+					"\nPress 3. Book a Slot " +
+					"\nPress 4. Cancel Booking " +
+					"\nPress 5. View Booking History " +
+//                    "\nPress 6. Modify Booking" +
+					"\nPress 7. View Profile" +
+					"\nPress 8. Update Profile" +
+//                    "\nPress 9. Browse Waitlist" +
+//                    "\nPress 10. Cancel Waitlist" +
+//                    "\nPress 11. Payment" +
+					"\nPress 12. Exit\033[0m");
+
+			int gymCustomerId = customerService.getGymCustomerId(userId);
+			Scanner sc = new Scanner(System.in);
+			option = sc.nextInt();
+
+			switch (option) {
+				case 1:
+					browseGyms();
+					break;
+				case 2:
+					viewGymDetails(sc);
+					break;
+				case 3:
 //                    bookSlot(sc, userId);
-                    break;
-                case 4:
-                    cancelBooking(sc, userId);
-                    break;
-                case 5:
-                    viewBookingHistory(userId);
-                    break;
+					break;
+				case 4:
+					cancelBooking(sc, userId);
+					break;
+				case 5:
+					viewBookingHistory(userId);
+					break;
 //                case 6:
-//                	modifyBooking();
+//                    modifyBooking();
 //                    break;
-                case 7:
-                    viewProfile(gymCustomerId);
-                    break;
-                case 8:
-                    updateProfile(gymCustomerId);
-                    break;
+				case 7:
+					viewProfile(gymCustomerId);
+					break;
+				case 8:
+					updateProfile(gymCustomerId);
+					break;
 //                case 9:
 //                    browseWaitlist();
 //                    break;
@@ -87,22 +86,21 @@ public class GymCustomerFlipFitMenu {
 //                case 11:
 //                    payment();
 //                    break;
-                case 12:
-                    System.out.println("\033[1mYou have exited the Gym Customer menu\033[0m");
-                    break;
-                default:
-                    System.out.println("\033[1mYou have selected an invalid option. Please try again!!\033[0m");
-                    break;
-            }
+				case 12:
+					System.out.println("\033[1mYou have exited the Gym Customer menu\033[0m");
+					break;
+				default:
+					System.out.println("\033[1mYou have selected an invalid option. Please try again!!\033[0m");
+					break;
+			}
 
-        }
-        while (option != 12);
-    }
+		} while (option != 12);
+	}
 
-    private void updateProfile(int gymCustomerId) {
-    	GymCustomer customer = new GymCustomer();
-    	Scanner in = new Scanner(System.in);
-    	System.out.println("Enter your full name: ");
+	private void updateProfile(int gymCustomerId) {
+		GymCustomer customer = new GymCustomer();
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter your full name: ");
 		String name = in.next();
 		in.nextLine();
 		customer.setName(name);
@@ -116,41 +114,41 @@ public class GymCustomerFlipFitMenu {
 		customer.setLocation(location);
 		System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
 		customer.setUserId(customerService.viewProfile(gymCustomerId).getUserId());
-    	if(customerService.updateProfile(gymCustomerId , customer)) {
-    		System.out.println("Profile updated!!");
-    	} else {
-    		System.out.println("Profile not updated!");
-    	}
-		
+		if (customerService.updateProfile(gymCustomerId, customer)) {
+			System.out.println("\033[1mProfile updated!!\033[0m");
+		} else {
+			System.out.println("\033[1mProfile not updated!\033[0m");
+		}
+
 	}
 
 	private void viewProfile(int gymCustomerId) {
 		GymCustomer gymCustomer = customerService.viewProfile(gymCustomerId);
 		System.out.println("\n\n\033[1m--------- Gym Customer Profile ------\033[0m");
-		System.out.println("Customer Name: " + gymCustomer.getName());
-		System.out.println("Customer Age: " + gymCustomer.getAge());
-		System.out.println("Customer Location: " + gymCustomer.getLocation());
-		
+		System.out.println("\033[1mCustomer Name:\033[0m " + gymCustomer.getName());
+		System.out.println("\033[1mCustomer Age:\033[0m " + gymCustomer.getAge());
+		System.out.println("\033[1mCustomer Location:\033[0m " + gymCustomer.getLocation());
+
 	}
 
 	private void browseGyms() {
-        // Implement logic to browse available gyms
-        System.out.println("\nGyms in Bangalore \n1. Bellandur \n2. Whitefield \n3. Indranagar\n");
+		// Implement logic to browse available gyms
+		System.out.println("\n\033[1mGyms in Bangalore \n1. Bellandur \n2. Whitefield \n3. Indranagar\n");
 		System.out.println("\033[1mGymID\tGymName\t\tLocation\033[0m");
 		System.out.println("-----------------------------------------------------------");
 		gymService.addGym(null);
 		gymService.viewAllGyms().forEach(gym -> System.out.println(gym.getGymId() + "\t" + gym.getGymName() + "\t\t"
-					+ gym.getLocation()));
-		
-    }
+				+ gym.getLocation()));
 
-    private void viewGymDetails(Scanner sc) {
-    	System.out.println("\nEnter GymID for which you want to view the details: ");
-    	int gymId = sc.nextInt();
-    	gymService.displayGymDetails(gymId);
-    }
+	}
 
-//    private void bookSlot(Scanner sc, int userId) {
+	private void viewGymDetails(Scanner sc) {
+		System.out.println("\nEnter GymID for which you want to view the details: ");
+		int gymId = sc.nextInt();
+		gymService.displayGymDetails(gymId);
+	}
+
+	//    private void bookSlot(Scanner sc, int userId) {
 ////    	ArrayList<Slot> slots = slotService.getAllAvailableSlots();
 //		System.out.println("\n\033[1m---------------------- Available Slots -----------------------\033[2m\n");
 //		System.out.println("Slot No.\tTimings(24hrs)\t\tGymID\n------------------------------------------------------");
@@ -167,33 +165,33 @@ public class GymCustomerFlipFitMenu {
 ////			System.out.println("Unknown Slot!");
 //    }
 
-    private void cancelBooking(Scanner sc, int userId) {
-        // Implement logic to cancel a booked slot
-    	List<Booking> bookedSlots = bookingService.getBookingsByUserId(userId);
+	private void cancelBooking(Scanner sc, int userId) {
+		// Implement logic to cancel a booked slot
+		List<Booking> bookedSlots = bookingService.getBookingsByUserId(userId);
 		System.out.println("\n\033[1m---------------------- Your Bookings -----------------------\033[2m\n");
-		System.out.println("\033[1mBooking No.\t\tDate\t\tGymID\n------------------------------------------------------\\033[0m");
-		for(Booking slot: bookedSlots) {
-			System.out.println(slot.getBookingId() +"\t\t" + slot.getBookingDate() + "\t\t" +slot.getGymId());
+		System.out.println("\033[1mBooking No.\t\tDate\t\tGymID\n------------------------------------------------------\033[0m");
+		for (Booking slot : bookedSlots) {
+			System.out.println(slot.getBookingId() + "\t\t" + slot.getBookingDate() + "\t\t" + slot.getGymId());
 		}
 		System.out.println("\nPlease enter the booking number to be cancelled");
 		int bookingId = sc.nextInt();
 		bookingService.cancelBooking(bookingId);
 //		System.out.println("\033[1mNo such booking number exists!\033[0m");
-    }
+	}
 
-    private void viewBookingHistory(int userId) {
-    	List<Booking>  bookedSlots = bookingService.getBookingsByUserId(userId);
-    	System.out.println("\n\033[1m---------------------- Your Bookings -----------------------\033[2m\n");
+	private void viewBookingHistory(int userId) {
+		List<Booking> bookedSlots = bookingService.getBookingsByUserId(userId);
+		System.out.println("\n\033[1m---------------------- Your Bookings -----------------------\033[2m\n");
 		System.out.println("\033[1mBooking No.\t\tDate\t\tGymID\n------------------------------------------------------\033[0m");
-		for(Booking slot: bookedSlots) {
-			System.out.println(slot.getBookingId() +"\t\t" + slot.getBookingDate() + "\t\t" +slot.getGymId());
+		for (Booking slot : bookedSlots) {
+			System.out.println(slot.getBookingId() + "\t\t" + slot.getBookingDate() + "\t\t" + slot.getGymId());
 		}
-    }
+	}
 //
 //    private void modifyBooking() {
 //        // Implement logic to modify a booked slot
 //    }
-//    
+//
 //    private void browseWaitlist() {
 //        // Implement logic to browse the waitlist
 //    }
@@ -208,6 +206,4 @@ public class GymCustomerFlipFitMenu {
 //    private void payment() {
 //    	 System.out.println("Payment Function");
 //    }
-
-
 }

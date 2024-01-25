@@ -1,5 +1,7 @@
 package com.flipkart.dao.daoImpl;
 
+import java.util.ArrayList;
+
 import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
@@ -15,33 +17,44 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
 
         return customerDaoObj;
     }
+    
+    private ArrayList<GymCustomer> gymCustomers = new ArrayList<GymCustomer>();
 
     @Override
-    public GymCustomer viewProfile(String username, String password) {
+    public GymCustomer viewProfile(int gymCustomerId) {
 
+        if(gymCustomerId >= gymCustomers.size())
         return null;
+        
+        return gymCustomers.get(gymCustomerId);
     }
 
     @Override
     public boolean register(GymCustomer customer) {
-
-        return false;
+    	customer.setCustomerId(gymCustomers.size());
+        return true;
     }
-    @Override
-    public int insert(GymCustomer customer) {
-    	return 0;
-    }
+    
 
     @Override
-    public void delete(String id) {
-        // TODO Auto-generated method stub
+    public boolean update(int gymCustomerId, GymCustomer newCustomer) {
+    	if(gymCustomerId >= gymCustomers.size())
+            return false;
+    	
+    	gymCustomers.set(gymCustomerId, newCustomer);
+    	return true;
 
     }
 
-    @Override
-    public void update(String id, GymCustomer newCustomer) {
-        // TODO Auto-generated method stub
+	@Override
+	public void delete(int gymCustomerId) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    }
+	@Override
+	public ArrayList<GymCustomer> getAllGymCustomers() {
+		return gymCustomers;
+	}
 
 }

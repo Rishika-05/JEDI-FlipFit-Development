@@ -22,7 +22,7 @@ public interface UserFlipFitService {
 	 * @param role
 	 * @return boolean
 	 */
-	public boolean registration(User user);
+	public int registration(User user);
 
 	/**
 	 * Logs in a user

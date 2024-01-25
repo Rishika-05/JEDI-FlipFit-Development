@@ -34,18 +34,18 @@ public class UserDAOImpl implements UserDAO {
 	private int userCount = 0;
 
 	@Override
-	public boolean createUser(User user) {
+	public int createUser(User user) {
 		for(User u: users) {
 			if(u.getUsername().equals(user.getUsername())) {
 				System.out.println("Username already exists!!!");
-				return false;
+				return -1;
 			}
 		}
 		
 		user.setUserId(userCount++);
 		users.add(user);
 		System.out.println("User added successfully");
-		return true;
+		return user.getUserId();
 	}
 
 	@Override

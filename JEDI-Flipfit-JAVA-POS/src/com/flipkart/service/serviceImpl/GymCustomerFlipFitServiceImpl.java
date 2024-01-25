@@ -3,11 +3,15 @@
  */
 package com.flipkart.service.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.flipkart.bean.Booking;
+import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.User;
+import com.flipkart.dao.daoImpl.GymCustomerDAOImpl;
 import com.flipkart.service.GymCustomerFlipFitService;
+import com.flipkart.service.UserFlipFitService;
 
 /**
  * 
@@ -15,8 +19,19 @@ import com.flipkart.service.GymCustomerFlipFitService;
 
 public class GymCustomerFlipFitServiceImpl implements GymCustomerFlipFitService {
 	
-	public GymCustomerFlipFitServiceImpl() {
+	private static GymCustomerFlipFitService gymCustomerServiceObj = null;
+	
+	private GymCustomerFlipFitServiceImpl() {
+		
 	}
+	
+	public static synchronized GymCustomerFlipFitService getInstance() {
+		if (gymCustomerServiceObj == null)
+			gymCustomerServiceObj = new GymCustomerFlipFitServiceImpl();
+
+		return gymCustomerServiceObj;
+	}
+
 
 	@Override
 	public void bookWorkout(Booking booking) {
@@ -37,16 +52,18 @@ public class GymCustomerFlipFitServiceImpl implements GymCustomerFlipFitService 
 	}
 
 	@Override
-	public Object updateProfile(User user) {
+	public boolean updateProfile(int gymCustomerId, GymCustomer newGymCustomer) {
 		// TODO Auto-generated method stub
-		return null;
+		return GymCustomerDAOImpl.getInstance().update(gymCustomerId, newGymCustomer);
 	}
 
 	@Override
-	public Object viewProfile(User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public GymCustomer viewProfile(int gymCustomerId) {
+		
+		return GymCustomerDAOImpl.getInstance().viewProfile(gymCustomerId);
 	}
+
+
 
 	@Override
 	public void cancelSlot(int gymID, int slotHour, int userID) {
@@ -59,6 +76,14 @@ public class GymCustomerFlipFitServiceImpl implements GymCustomerFlipFitService 
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public int getGymCustomerId(int userId) {
+		return GymCustomerDAOImpl.getInstance().getGymCustomerIdFromUserId(userId);
+	}
+	
+	
+		
 
 
 }

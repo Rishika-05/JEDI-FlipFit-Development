@@ -3,6 +3,8 @@
  */
 package com.flipkart.client;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -153,6 +155,13 @@ public class GymCustomerFlipFitMenu {
 
     private void bookSlot(Scanner sc, int userId) {
     	List<Gym> gyms = gymService.viewAllGyms();
+    	
+    	
+    	LocalDateTime startTime = LocalDateTime.now();
+    	LocalDateTime endTime = LocalDateTime.now().plusHours(3);
+    	Duration slotTime = Duration.ofMinutes(30);
+    	
+    	slotService.addSlot(1, 1, startTime, endTime, slotTime);
 
     	System.out.println("Enter the gym ID you want to book: ");
     	for(Gym gym: gyms) {
@@ -160,7 +169,7 @@ public class GymCustomerFlipFitMenu {
     	}
     	
 		int gymId = sc.nextInt();
-    	ArrayList<Slot> slots = slotService.getAllAvailableSlots(gymId);
+    	ArrayList<Slot> slots = slotService.getAllAvailableSlots(1);
 		System.out.println("\n\033[1m---------------------- Available Slots -----------------------\033[2m\n");
 		System.out.println("Slot No.\tTimings(24hrs)\t\tGymID\n------------------------------------------------------");
 		index = 1;					

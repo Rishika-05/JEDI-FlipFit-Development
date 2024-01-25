@@ -55,7 +55,8 @@ private static GymDAO gymDAOObj = null;
 
 	@Override
 	public void addGym(Gym gym) {
-		gym.setGymId(gymCount++);
+		gymCount++;
+		gym.setGymId(gymCount);
 		gyms.add(gym);
 	}
 

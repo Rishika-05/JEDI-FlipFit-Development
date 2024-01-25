@@ -3,6 +3,7 @@
  */
 package com.flipkart.service.serviceImpl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,6 +13,8 @@ import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 import com.flipkart.dao.daoImpl.GymOwnerDAOImpl;
 import com.flipkart.service.GymOwnerFlipFitService;
+
+import java.time.LocalDateTime;
 
 /**
  * 
@@ -32,7 +35,18 @@ public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 	@Override
 	public void addTimeSlot(Gym gym) {
 		//logic to add time slot
-		
+		for (Gym g : gyms) {
+			if (g.getGymId() == gym.getGymId()) {
+				Scanner sc = new Scanner(System.in);
+
+				System.out.println("Start Time: ");
+				LocalDateTime startTime = sc.nextLine();
+
+
+
+				g.setSlots(slot);
+			}
+		}
 	}
 	
 

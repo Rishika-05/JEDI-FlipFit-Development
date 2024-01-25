@@ -13,7 +13,7 @@ public interface GymOwnerFlipFitService {
 	
 	void addTimeSlot(Gym gym);
 	
-	GymOwner viewProfile(User user);
 	GymOwner updateProfile(GymOwner owner);
-	
+	GymOwner getGymOwnerById(int userId);
+	List<GymOwner> getOwners();
 }

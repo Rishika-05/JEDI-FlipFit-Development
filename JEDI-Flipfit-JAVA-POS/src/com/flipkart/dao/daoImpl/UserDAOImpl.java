@@ -43,7 +43,7 @@ public class UserDAOImpl implements UserDAO {
 		
 		user.setUserId(userCount++);
 		users.add(user);
-		System.out.println("User added successfully");
+//		System.out.println("User added successfully");
 		return user.getUserId();
 	}
 

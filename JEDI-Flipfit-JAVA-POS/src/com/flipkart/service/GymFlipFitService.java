@@ -9,6 +9,8 @@ public interface GymFlipFitService {
 	
 
 	List<Gym> viewAllGyms();
+	
+	List<Gym> getAllGymsById(int userId);
 
 	Gym getGym(int gymId);
 	
@@ -18,8 +20,10 @@ public interface GymFlipFitService {
 	
 	void displayGymDetails(int gymId);
 	
-	void removeGym(int gymId);
+	boolean removeGym(int gymId);
 
-	void updateGym(int gymId, Gym gym);
+	void updateGym(Gym gym);
+
+	List<Gym> getAllGymsByLoc(String selectedLocation);
 
 }

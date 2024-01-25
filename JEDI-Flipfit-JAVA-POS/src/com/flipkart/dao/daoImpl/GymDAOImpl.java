@@ -32,7 +32,11 @@ private static GymDAO gymDAOObj = null;
 
 	@Override
 	public List<Gym> getAllGyms() {
-		return gyms;
+		List<Gym> gymsNew =  new ArrayList<Gym>();
+		for(Gym g: gyms) {
+			if(g.isActive() && g.isApproved())  gymsNew.add(g);
+		}
+		return gymsNew;
 	}
 
 	@Override
@@ -66,27 +70,39 @@ private static GymDAO gymDAOObj = null;
 		for(Gym g: gyms) {
 			if(g.getGymId() == gymId) { 
 				g.setActive(false);
-				System.out.println("Gym removed!!");
+				//System.out.println("Gym removed!!");
 				return;
 			}
 		}
-		System.out.println("Gym not found");
+		//System.out.println("Gym not found");
 	}
 
 	@Override
-	public void updateGym(int gymId, Gym gym) {
+	public void updateGym(Gym gym) {
 		for(Gym g: gyms) {
-			if(g.getGymId() == gymId) { 
-				g.setGymDescription(gym.getGymDescription());
-				g.setGymName(gym.getGymName());
-				g.setLocation(gym.getLocation());
-				g.setTotalSlots(gym.getTotalSlots());
-				g.setSlots(gym.getSlots());
-				System.out.println("Gym Updated!!");
-				return;
-			}
+			g.setGymDescription(gym.getGymDescription());
+			g.setGymName(gym.getGymName());
+			g.setLocation(gym.getLocation());
+			g.setTotalSlots(gym.getTotalSlots());
 		}
-		System.out.println("Gym not found.");
+	}
+
+	@Override
+	public List<Gym> getAllGymsById(int userId) {
+		List<Gym> gymsNew =  new ArrayList<Gym>();
+		for(Gym g: gyms) {
+			if(g.getGymOwnerId() == userId)  gymsNew.add(g);
+		}
+		return gymsNew;
+	}
+
+	@Override
+	public List<Gym> getAllGymsByLoc(String selectedLocation) {
+		List<Gym> gymsNew =  new ArrayList<Gym>();
+		for(Gym g: gyms) {
+			if(g.getLocation() == selectedLocation)  gymsNew.add(g);
+		}
+		return gymsNew;
 	}
 
 

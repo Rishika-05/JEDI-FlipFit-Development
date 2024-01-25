@@ -22,7 +22,11 @@ public interface GymDAO {
 	
 	void removeGym(int gymId);
 
-	void updateGym(int gymId, Gym gym);
+	void updateGym(Gym gym);
+
+	List<Gym> getAllGymsById(int userId);
+
+	List<Gym> getAllGymsByLoc(String selectedLocation);
 
 
 }

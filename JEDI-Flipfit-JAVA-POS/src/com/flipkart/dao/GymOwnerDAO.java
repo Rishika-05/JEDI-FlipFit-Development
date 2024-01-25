@@ -18,6 +18,7 @@ public interface GymOwnerDAO {
 
     void addTimeSlot(Gym gym);
 
-    GymOwner viewProfile(User user);
+    GymOwner getGymOwnerById(int userId);
     GymOwner updateProfile(GymOwner owner);
+	List<GymOwner> getAllOwners();
 }

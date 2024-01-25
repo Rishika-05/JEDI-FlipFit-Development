@@ -10,26 +10,40 @@ package com.flipkart.bean;
 public class GymOwner extends User {
 	private String username;
 	private String password;
-
 	private String name;
-	private String pincode;
 	private int age;
 	private String panCard;
 	private String aadharCard;
 	private String gstin;
-	private String address;
+	private String location;
+	private boolean approved;
+	/**
+	 * @return the approved
+	 */
+	public boolean isApproved() {
+		return approved;
+	}
+	/**
+	 * @param approved the approved to set
+	 */
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+	/**
+	 * @return the location
+	 */
+	public String getLocation() {
+		return location;
+	}
+	/**
+	 * @param location the location to set
+	 */
+	public void setLocation(String location) {
+		this.location = location;
+	}
 	/**
 	 * @return the address
 	 */
-	public String getAddress() {
-		return address;
-	}
-	/**
-	 * @param address the address to set
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	/**
 	 * @return the username
 	 */
@@ -54,14 +68,7 @@ public class GymOwner extends User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	/**
-	 * @return the role
-	 */
-	
-	/**
-	 * @param role the role to set
-	 */
-	
+
 	/**
 	 * @return the name
 	 */
@@ -74,18 +81,7 @@ public class GymOwner extends User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	/**
-	 * @return the pincode
-	 */
-	public String getPincode() {
-		return pincode;
-	}
-	/**
-	 * @param pincode the pincode to set
-	 */
-	public void setPincode(String pincode) {
-		this.pincode = pincode;
-	}
+
 	/**
 	 * @return the age
 	 */

@@ -1,18 +1,29 @@
 package com.flipkart.service;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
+
 import com.flipkart.bean.Slot;
 
 public interface SlotFlipFitService {
 	
 	boolean isAvailable(int slotId);
 
-	boolean addSlot(int slotHour, int gymID, LocalDateTime startTime, LocalDateTime endTime, Duration slotTime);
+	void addSlot(int gymID, LocalTime startTime, int slotTime, int seats);
 
-	boolean updateSlot(int slotHour, int slotId, LocalDateTime startTime, LocalDateTime endTime, Duration slotTime);
+	Slot getSlot(int slotId);
+	
+	void removeSlot(int slotId);
 
 	ArrayList<Slot> getAllAvailableSlots(int gymId);
+
+	void updateSlot(Slot slot);
+
+	List<Slot> getAllSlotsByGymId(int gymId);
+
+	List<Slot> getAllSlot();
 
 }
 

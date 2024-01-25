@@ -5,6 +5,7 @@ package com.flipkart.dao;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import com.flipkart.bean.Slot;
@@ -13,9 +14,9 @@ import com.flipkart.bean.Slot;
  * 
  */
 public interface SlotDAO {
-	public boolean createSlot(int slotHour, int gymID, LocalDateTime startTime, LocalDateTime endTime, Duration slotTime, int availableSlots);
+	public void createSlot( Slot slot);
 	
-	public boolean deleteSlot(int slotId);
+	public void deleteSlot(int slotId);
 	
 	public Slot getSlot(int slotId);
 	

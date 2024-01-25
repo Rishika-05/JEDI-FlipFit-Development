@@ -16,13 +16,13 @@ import java.util.List;
  * 
  */
 public class GymOwnerDAOImpl implements GymOwnerDAO {
-    ArrayList<GymOwnerDAO> gymOwner = new ArrayList<GymOwnerDAO>();
-    private static GymOwnerDAOImpl gymOwnerDaoObj = null;
+    ArrayList<GymOwner> gymOwners = new ArrayList<GymOwner>();
+    private static GymOwnerDAO gymOwnerDaoObj = null;
 
     private GymOwnerDAOImpl() {
     }
 
-    public static synchronized GymOwnerDAOImpl getInstance() {
+    public static synchronized GymOwnerDAO getInstance() {
         if (gymOwnerDaoObj == null)
             gymOwnerDaoObj = new GymOwnerDAOImpl();
 
@@ -48,17 +48,20 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
 
 
     @Override
-    public GymOwner viewProfile(User user) {
-        //Get gym owner profile from username and password
-
-        GymOwner gymOwnerProfile = new GymOwner();
-        return gymOwnerProfile;
-    }
-
-    @Override
     public GymOwner updateProfile(GymOwner gymOwner) {
         //get details and update accordingly
 
         return gymOwner;
     }
+
+	@Override
+	public GymOwner getGymOwnerById(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<GymOwner> getAllOwners() {
+		return gymOwners;
+	}
 }

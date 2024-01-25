@@ -5,7 +5,9 @@ package com.flipkart.service.serviceImpl;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.flipkart.bean.Slot;
 import com.flipkart.dao.SlotDAO;
@@ -23,34 +25,13 @@ public class SlotFlipFitServiceImpl implements SlotFlipFitService {
     @Override
     public boolean isAvailable(int slotId) {
     	Slot slot = slotDAO.getSlot(slotId);
-    	if(slot.getAvilableSeats() - slot.getFilledSeats() > 0) {
+    	if(slot.getTotalSeats() - slot.getFilledSeats() > 0) {
 			return true;
 		}
         return false;
     }
 
-	@Override
-	public boolean addSlot(int slotHour, int gymID, LocalDateTime startTime, LocalDateTime endTime, Duration slotTime) {
-		Duration totalDuration = Duration.between(startTime, endTime);
-        int totalSlots = (int) (totalDuration.toMinutes() / slotTime.toMinutes());
-        slotDAO.createSlot(totalSlots, totalSlots, endTime, endTime, slotTime, totalSlots);
-		return true;
-	}
 
-	@Override
-	public boolean updateSlot(int slotHour, int slotId, LocalDateTime startTime, LocalDateTime endTime, Duration slotTime) {
-		Duration totalDuration = Duration.between(startTime, endTime);
-        int totalSlots = (int) (totalDuration.toMinutes() / slotTime.toMinutes());
-        Slot slot = slotDAO.getSlot(slotId);
-        
-        slot.setStartTime(startTime);
-        slot.setEndTime(endTime);
-        slot.setSlotTime(slotTime);
-        slot.setAvilableSeats(totalSlots);
-        
-        slotDAO.updateSlot(slot);
-		return true;
-	}
 	
 	@Override
 	public ArrayList<Slot> getAllAvailableSlots(int gymId) {
@@ -59,11 +40,53 @@ public class SlotFlipFitServiceImpl implements SlotFlipFitService {
 		ArrayList<Slot> availableSlots = new ArrayList<Slot>();
 		
 		for(Slot slot: slots) {
-			if(slot.getAvilableSeats() - slot.getFilledSeats() > 0) {
+			if(slot.getTotalSeats() - slot.getFilledSeats() > 0) {
 				availableSlots.add(slot);
 			}
 		}
 		
 		return availableSlots;
 	}
+
+	@Override
+	public void addSlot(int gymID, LocalTime startTime, int slotTime, int seats) {
+		Slot slot = new Slot();
+		slot.setGymId(gymID);
+		slot.setSlotTime(slotTime);
+		slot.setStartTime(startTime);
+		slot.setTotalSeats(seats);
+		slotDAO.createSlot(slot);
+	}
+
+	@Override
+	public void updateSlot(Slot slot) {
+		// TODO Auto-generated method stub
+		slotDAO.updateSlot(slot);	}
+
+	@Override
+	public void removeSlot(int slotId) {
+		slotDAO.deleteSlot(slotId);
+	}
+
+
+	@Override
+	public Slot getSlot(int slotId) {
+		return slotDAO.getSlot(slotId);
+	}
+
+
+
+	@Override
+	public List<Slot> getAllSlotsByGymId(int gymId) {
+		return slotDAO.getAllSlots(gymId);
+	}
+
+
+
+	@Override
+	public List<Slot> getAllSlot() {
+		return slotDAO.getAllSlots();
+	}
+
+
 }

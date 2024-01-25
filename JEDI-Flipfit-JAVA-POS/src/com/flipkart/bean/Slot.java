@@ -5,6 +5,7 @@ package com.flipkart.bean;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * 
@@ -12,10 +13,39 @@ import java.time.LocalDateTime;
 public class Slot {
     private int slotId;
     private int gymId;
-    private LocalDateTime startTime = LocalDateTime.now();
-    private LocalDateTime endTime = LocalDateTime.now();
-    private Duration slotTime;
-    private int avilableSeats;
+    private LocalTime startTime;
+    private int slotTime;
+    private int totalSeats;
+	private boolean active;
+	/**
+	 * @return the active
+	 */
+	public boolean isActive() {
+		return active;
+	}
+
+	/**
+	 * @param active the active to set
+	 */
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	/**
+	 * @return the approved
+	 */
+	public boolean isApproved() {
+		return approved;
+	}
+
+	/**
+	 * @param approved the approved to set
+	 */
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+
+	private boolean approved;
 
     public int getSlotId() {
         return slotId;
@@ -33,36 +63,29 @@ public class Slot {
         this.gymId = gymId;
     }
 
-    public LocalDateTime getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
+    public void setStartTime(LocalTime startTime2) {
+        this.startTime = startTime2;
     }
 
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
 
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
-
-    public Duration getSlotTime() {
+    public int getSlotTime() {
         return slotTime;
     }
 
-    public void setSlotTime(Duration slotTime) {
-        this.slotTime = slotTime;
+    public void setSlotTime(int slotTime) {
+        this.slotTime = 1;
     }
 
-    public int getAvilableSeats() {
-        return avilableSeats;
+    public int getTotalSeats() {
+        return totalSeats;
     }
 
-    public void setAvilableSeats(int avilableSeats) {
-        this.avilableSeats = avilableSeats;
+    public void setTotalSeats(int avilableSeats) {
+        this.totalSeats = avilableSeats;
     }
 
     public int getFilledSeats() {
@@ -74,9 +97,4 @@ public class Slot {
     }
 
     private int filledSeats;
-
-	public int getSlotHour() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

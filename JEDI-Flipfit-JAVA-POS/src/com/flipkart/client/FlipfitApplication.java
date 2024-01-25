@@ -115,8 +115,10 @@ public class FlipfitApplication {
 
 		int userId = UserFlipFitServiceImpl.getInstance().login(userName, password);
 		User user = UserFlipFitServiceImpl.getInstance().getUser(userId);
-		if (userId == -1)
+		if (userId == -1) {
+			System.out.println("\033[1mUser Not Found \033[0m");
 			return;
+		}
 
 		RoleType userRole = UserFlipFitServiceImpl.getInstance().getUserRole(userId);
 		switch (userRole) {
@@ -130,7 +132,7 @@ public class FlipfitApplication {
 				break;
 			case GYM_OWNER:
 				GymOwnerFlipFitMenu gymOwnerFlipFitMenu = new GymOwnerFlipFitMenu();
-				gymOwnerFlipFitMenu.displayGymOwnerMenu();
+				gymOwnerFlipFitMenu.displayGymOwnerMenu(userId);
 				break;
 		}
 		System.out.println("\033[1mExiting Login \033[0m");
@@ -168,7 +170,7 @@ public class FlipfitApplication {
 		switch (role) {
 			case GYM_CUSTOMER:
 				GymCustomer customer = new GymCustomer();
-				System.out.print("\033[0;34mEnter your full name: \033[0m");
+				System.out.print("\033[0;34mEnter your name: \033[0m");
 				String name = in.next();
 				in.nextLine();
 				customer.setName(name);
@@ -197,14 +199,14 @@ public class FlipfitApplication {
 				name = in.next();
 				in.nextLine();
 				newGymOwner.setName(name);
-				System.out.print("\033[0;34mEnter your address: \033[0m");
+				System.out.print("\033[0;34mEnter your age: \033[0m");
+				int age1 = in.nextInt();
+				in.nextLine();
+				newGymOwner.setAge(age1);
+				System.out.print("\033[0;34mEnter your location: \033[0m");
 				String address = in.next();
 				in.nextLine();
-				newGymOwner.setAddress(address);
-				System.out.print("\033[0;34mEnter your PIN code: \033[0m");
-				String pinCode = in.next();
-				in.nextLine();
-				newGymOwner.setPincode(pinCode);
+				newGymOwner.setLocation(address);
 				String panCard, aadharCard, GstIn;
 				do {
 					System.out.print("\033[0;34mEnter your panCard number. For ex - ABCTY1234D: \033[0m");

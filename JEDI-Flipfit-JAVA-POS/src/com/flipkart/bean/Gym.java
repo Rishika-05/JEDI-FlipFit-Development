@@ -135,22 +135,22 @@ public class Gym {
 	}
 
 
-
-	/**
-	 * @return the slots
-	 */
-	public List<Slot> getSlots() {
-		return slots;
-	}
-
-
-
-	/**
-	 * @param slots the slots to set
-	 */
-	public void setSlots(List<Slot> slots) {
-		this.slots = slots;
-	}
+//
+//	/**
+//	 * @return the slots
+//	 */
+//	public List<Slot> getSlots() {
+//		return slots;
+//	}
+//
+//
+//
+//	/**
+//	 * @param slots the slots to set
+//	 */
+//	public void setSlots(List<Slot> slots) {
+//		this.slots = slots;
+//	}
 	
     /**
 	 * @return the active
@@ -179,11 +179,32 @@ public class Gym {
     private String gymName;
 	private String gymDescription;
     private int gymOwnerId;
-    private List<Slot> slots;
+    /**
+	 * @return the pricePerSlot
+	 */
+	public int getPricePerSlot() {
+		return pricePerSlot;
+	}
+
+
+
+	/**
+	 * @param pricePerSlot the pricePerSlot to set
+	 */
+	public void setPricePerSlot(int pricePerSlot) {
+		this.pricePerSlot = pricePerSlot;
+	}
+
+
+
+
+
+	private int pricePerSlot;
+//    private List<Slot> slots;
     
     
 
-    public Gym(int ownerId, int slots, String name, String loc, String des) {
+    public Gym(int ownerId,  String name, String loc, String des, int slots) {
     	this.approved = false;
     	this.active = false;
     	this.totalSlots = slots;
@@ -191,7 +212,13 @@ public class Gym {
     	this.gymName = name;
     	this.gymDescription = des;
     	this.gymOwnerId = ownerId;
-    	this.slots = new ArrayList<Slot>();
+//    	this.slots = new ArrayList<Slot>();
+	}
+
+
+
+	public Gym() {
+		// TODO Auto-generated constructor stub
 	}
 
 

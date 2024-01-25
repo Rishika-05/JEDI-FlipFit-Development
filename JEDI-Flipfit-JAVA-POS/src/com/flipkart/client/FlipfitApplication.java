@@ -9,7 +9,6 @@ import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 import com.flipkart.constant.RoleType;
-import com.flipkart.service.UserFlipFitService;
 import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;
 /**
  * 

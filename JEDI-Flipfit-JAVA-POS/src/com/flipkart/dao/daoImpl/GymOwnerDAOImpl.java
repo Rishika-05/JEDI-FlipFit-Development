@@ -8,6 +8,7 @@ import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 import com.flipkart.dao.GymOwnerDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,7 +16,7 @@ import java.util.List;
  * 
  */
 public class GymOwnerDAOImpl implements GymOwnerDAO {
-
+    ArrayList<GymOwnerDAO> gymOwner = new ArrayList<GymOwnerDAO>();
     private static GymOwnerDAOImpl gymOwnerDaoObj = null;
 
     private GymOwnerDAOImpl() {

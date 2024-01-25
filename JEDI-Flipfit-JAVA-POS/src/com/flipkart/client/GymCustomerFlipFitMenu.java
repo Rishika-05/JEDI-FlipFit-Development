@@ -4,9 +4,11 @@
 package com.flipkart.client;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.BinaryOperator;
 
+import com.flipkart.bean.Booking;
 import com.flipkart.bean.Slot;
 import com.flipkart.bean.User;
 import com.flipkart.service.GymCustomerFlipFitService;
@@ -36,7 +38,7 @@ public class GymCustomerFlipFitMenu {
 				"\nPress 3. Book a Slot " + 
 				"\nPress 4. Cancel Booking " +
 				"\nPress 5. View Booking History " + 
-				"\nPress 6. Modify Booking" + 
+//				"\nPress 6. Modify Booking" + 
 				"\nPress 7. View Profile" +
 				"\nPress 8. Update Profile" + 
 //				"\nPress 9. Browse Waitlist" + 
@@ -63,9 +65,9 @@ public class GymCustomerFlipFitMenu {
                 case 5:
                     viewBookingHistory(user);
                     break;
-                case 6:
-                	modifyBooking();
-                    break;
+//                case 6:
+//                	modifyBooking();
+//                    break;
                 case 7:
                     viewProfile(user);
                     break;
@@ -107,7 +109,7 @@ public class GymCustomerFlipFitMenu {
         System.out.println("\nGyms in Bangalore \n1. Bellandur \n2. Whitefield \n3. Indranagar\n");
 		System.out.println("\033[1mGymID\tGymName\t\tLocation\033[0m");
 		System.out.println("-----------------------------------------------------------");
-		
+		gymService.addGym(null);
 		gymService.viewAllGyms().forEach(gym -> System.out.println(gym.getGymId() + "\t" + gym.getGymName() + "\t\t"
 					+ gym.getLocation()));
 		
@@ -140,37 +142,34 @@ public class GymCustomerFlipFitMenu {
 
     private void cancelBooking(Scanner sc, User user) {
         // Implement logic to cancel a booked slot
-    	ArrayList<Slot> bookedSlots = bookingService.viewBookings(user.getUserId());
+    	List<Booking> bookedSlots = bookingService.getBookingsByUserId(user.getUserId());
 		System.out.println("\n\033[1m---------------------- Your Bookings -----------------------\033[2m\n");
-		System.out.println("\033[1mBooking No.\tTimings(24hrs)\t\tGymID\n------------------------------------------------------\\033[0m");
-		index = 1;
-		for(Slot slot: bookedSlots) {
-			System.out.println(index+"\t\t"+slot.getSlotHour()+":00-"+(slot.getSlotHour()+1)+":00"+"\t\t"+slot.getGymId());
+		System.out.println("\033[1mBooking No.\t\tDate\t\tGymID\n------------------------------------------------------\\033[0m");
+		for(Booking slot: bookedSlots) {
+			System.out.println(slot.getBookingId() +"\t\t" + slot.getBookingDate() + "\t\t" +slot.getGymId());
 			index++;
 		}
 		System.out.println("\nPlease enter the booking number to be cancelled");
 		int bookingIndex = sc.nextInt();
-		if(bookingIndex < index)
-			customerService.cancelSlot(bookedSlots.get(bookingIndex-1).getGymId(), bookedSlots.get(bookingIndex-1).getSlotHour(), user.getUserId());
+		if(bookingIndex < index);
+//			customerService.cancelSlot(bookedSlots.get(bookingIndex-1).getGymId(), bookedSlots.get(bookingIndex-1).getSlotHour(), user.getUserId());
 		else
 			System.out.println("\033[1mNo such booking number exists!\033[0m");
     }
 
     private void viewBookingHistory(User user) {
-    	ArrayList<Slot>  bookedSlots = bookingService.viewBookings(user.getUserId());
+    	List<Booking>  bookedSlots = bookingService.getBookingsByUserId(user.getUserId());
     	System.out.println("\n\033[1m---------------------- Your Bookings -----------------------\033[2m\n");
-		System.out.println("\033[1mBooking No.\tTimings(24hrs)\t\tGymID\n------------------------------------------------------\033[0m");
-		index = 1;
-		for(Slot slot: bookedSlots) {
-			System.out.println(index+"\t\t"+slot.getSlotHour()+":00-"+(slot.getSlotHour()+1)+":00"+"\t\t"+slot.getGymId());
-			index++;
+		System.out.println("\033[1mBooking No.\t\tDate\t\tGymID\n------------------------------------------------------\033[0m");
+		for(Booking slot: bookedSlots) {
+			System.out.println(slot.getBookingId() +"\t\t" + slot.getBookingDate() + "\t\t" +slot.getGymId());
 		}
     }
-
-    private void modifyBooking() {
-        // Implement logic to modify a booked slot
-    }
-    
+//
+//    private void modifyBooking() {
+//        // Implement logic to modify a booked slot
+//    }
+//    
 //    private void browseWaitlist() {
 //        // Implement logic to browse the waitlist
 //    }

@@ -3,6 +3,8 @@
  */
 package com.flipkart.dao;
 
+import java.util.ArrayList;
+
 import com.flipkart.bean.GymCustomer;
 
 /**
@@ -10,16 +12,8 @@ import com.flipkart.bean.GymCustomer;
  */
 public interface GymCustomerDAO {
 
-    public int insert(GymCustomer customer);
-
-    /**
-     * Fetch the customer profile information from the database
-     * @param username
-     * @param password
-     * @return customer fetched from the database
-     */
-
-    public GymCustomer viewProfile(String username, String password);
+   
+    public GymCustomer viewProfile(int gymCustomerId);
 
     /**
      * Register the customer
@@ -34,7 +28,7 @@ public interface GymCustomerDAO {
      * @param id
      */
 
-    public void delete(String id);
+    public void delete(int gymCustomerId);
 
 
     /**
@@ -43,6 +37,10 @@ public interface GymCustomerDAO {
      * @param newCustomer
      */
 
-    public void update(String id, GymCustomer newCustomer);
+    public boolean update(int gymCustomerId, GymCustomer newCustomer);
+    
+    public ArrayList<GymCustomer> getAllGymCustomers();
+    
+    public int getGymCustomerIdFromUserId(int userId);
 
 }

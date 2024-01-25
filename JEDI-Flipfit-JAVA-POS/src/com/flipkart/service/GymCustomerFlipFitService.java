@@ -1,8 +1,10 @@
 package com.flipkart.service;
 
+
 import java.util.List;
 
 import com.flipkart.bean.Booking;
+import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.User;
 
 public interface GymCustomerFlipFitService {
@@ -12,9 +14,12 @@ public interface GymCustomerFlipFitService {
 	
 	List<Booking> getBookings(int userId);
 
-	Object updateProfile(User user);
+	boolean updateProfile(int gymCustomerId , GymCustomer newGymCustomer );
 
-	Object viewProfile(User user);
+	GymCustomer viewProfile(int gymCustomerId);
+	
+	int getGymCustomerId(int userId);
+	
 
 	void cancelSlot(int gymID, int slotHour, int userID);
 

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.function.BinaryOperator;
 
+import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.Booking;
 import com.flipkart.bean.Slot;
 import com.flipkart.bean.User;
@@ -23,13 +24,15 @@ import com.flipkart.service.serviceImpl.SlotFlipFitServiceImpl;
  * 
  */
 public class GymCustomerFlipFitMenu {
-	GymCustomerFlipFitService customerService = new GymCustomerFlipFitServiceImpl();
+	GymCustomerFlipFitService customerService = GymCustomerFlipFitServiceImpl.getInstance();
 	GymFlipFitService gymService = new GymFlipFitServiceImpl();
 	SlotFlipFitService slotService = new SlotFlipFitServiceImpl();
 	BookingFlipFitServiceImpl bookingService = new BookingFlipFitServiceImpl();
 	int index = 1; 
 	
-    public void displayCustomerMenu(User user) {
+	
+    public void displayCustomerMenu(int userId) {
+    	
         int option;
         do {
             System.out.println("\n\n\033[1m--------- Gym Customer Menu Options ------\033[0m" + 
@@ -46,6 +49,7 @@ public class GymCustomerFlipFitMenu {
 //				"\nPress 11. Payment" +
 				"\nPress 12. Exit");
 
+            int gymCustomerId = customerService.getGymCustomerId(userId);
             Scanner sc = new Scanner(System.in);
             option = sc.nextInt();
 
@@ -57,22 +61,22 @@ public class GymCustomerFlipFitMenu {
                     viewGymDetails(sc);
                     break;
                 case 3:
-                    bookSlot(sc, user);
+//                    bookSlot(sc, user);
                     break;
                 case 4:
-                    cancelBooking(sc, user);
+//                    cancelBooking(sc, user);
                     break;
                 case 5:
-                    viewBookingHistory(user);
+//                    viewBookingHistory(user);
                     break;
 //                case 6:
 //                	modifyBooking();
 //                    break;
                 case 7:
-                    viewProfile(user);
+                    viewProfile(gymCustomerId);
                     break;
                 case 8:
-                    updateProfile(user);
+                    updateProfile(gymCustomerId);
                     break;
 //                case 9:
 //                    browseWaitlist();
@@ -95,13 +99,38 @@ public class GymCustomerFlipFitMenu {
         while (option != 12);
     }
 
-    private void updateProfile(User user) {
-    	customerService.updateProfile(user);
+    private void updateProfile(int gymCustomerId) {
+    	GymCustomer customer = new GymCustomer();
+    	Scanner in = new Scanner(System.in);
+    	System.out.println("Enter your full name: ");
+		String name = in.next();
+		in.nextLine();
+		customer.setName(name);
+		System.out.println("Enter your age: ");
+		int age = in.nextInt();
+		in.nextLine();
+		customer.setAge(age);
+		System.out.println("Enter your location: ");
+		String location = in.next();
+		in.nextLine();
+		customer.setLocation(location);
+		System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
+		customer.setUserId(customerService.viewProfile(gymCustomerId).getUserId());
+    	if(customerService.updateProfile(gymCustomerId , customer)) {
+    		System.out.println("Profile updated!!");
+    	} else {
+    		System.out.println("Profile not updated!");
+    	}
 		
 	}
 
-	private void viewProfile(User user) {
-		customerService.viewProfile(user);
+	private void viewProfile(int gymCustomerId) {
+		GymCustomer gymCustomer = customerService.viewProfile(gymCustomerId);
+		System.out.println("\n\n\033[1m--------- Gym Customer Profile ------\033[0m");
+		System.out.println("Customer Name: " + gymCustomer.getName());
+		System.out.println("Customer Age: " + gymCustomer.getAge());
+		System.out.println("Customer Location: " + gymCustomer.getLocation());
+		
 	}
 
 	private void browseGyms() {

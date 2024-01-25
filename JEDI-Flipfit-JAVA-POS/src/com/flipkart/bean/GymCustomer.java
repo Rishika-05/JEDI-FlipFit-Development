@@ -7,46 +7,34 @@ package com.flipkart.bean;
  * 
  */
 public class GymCustomer extends UserModule {
-	private String username;
-	private String password;
-	private String role;
 	private String name;
 	private String location;
+	private int userId;
+	private int customerId;
+	
 	/**
-	 * @return the username
+	 * @return the customerId
 	 */
-	public String getUsername() {
-		return username;
+	public int getCustomerId() {
+		return customerId;
 	}
 	/**
-	 * @param username the username to set
+	 * @param customerId the customerId to set
 	 */
-	public void setUsername(String username) {
-		this.username = username;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 	/**
-	 * @return the password
+	 * @return the userId
 	 */
-	public String getPassword() {
-		return password;
+	public int getUserId() {
+		return userId;
 	}
 	/**
-	 * @param password the password to set
+	 * @param userId the userId to set
 	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	/**
-	 * @return the role
-	 */
-	public String getRole() {
-		return role;
-	}
-	/**
-	 * @param role the role to set
-	 */
-	public void setRole(String role) {
-		this.role = role;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	/**
 	 * @return the name

@@ -5,19 +5,26 @@ package com.flipkart.client;
 
 import java.util.Scanner;
 
+import com.flipkart.service.GymCustomerFlipFitService;
+import com.flipkart.service.GymFlipFitService;
+import com.flipkart.service.serviceImpl.GymCustomerFlipFitServiceImpl;
+import com.flipkart.service.serviceImpl.GymFlipFitServiceImpl;
+
 /**
  *
  */
 public class GymAdminFlipFitMenu {
-
+	GymCustomerFlipFitService customerService = GymCustomerFlipFitServiceImpl.getInstance();
+	GymFlipFitService gymService = new GymFlipFitServiceImpl();
+	
     public void displayAdminMenu() {
         int menuOption;
         do {
             System.out.println("\n\n ------ Gym Admin Menu Options ------ " +
 				 "\nPress 1. Browse Gym Registrations" +
-				 "\nPress 2. Create Owner Login Details " +
+//				 "\nPress 2. Create Owner Login Details " +
 				 "\nPress 3. Browse Slot Registrations " +
-				 "\nPress 4. Verify Payments " + 
+//				 "\nPress 4. Verify Payments " + 
 				 "\nPress 5. Browse Owner Registrations " + 
 				 "\nPress 6. Browse Gyms" + 
 				 "\nPress 7. Exit");
@@ -27,20 +34,20 @@ public class GymAdminFlipFitMenu {
                 case 1:
                     browseGymRegistrations();
                     break;
-                case 2:
-                    createLoginDetails();
-                    break;
+//                case 2:
+//                    createLoginDetails();
+//                    break;
                 case 3:
                     browseSlotRegistrations();
                     break;
-                case 4:
-                    verifyPayments();
-                    break;
+//                case 4:
+//                    verifyPayments();
+//                    break;
                 case 5:
                     browseOwnerRegistrations();
                     break;
                 case 6:
-                    browseOwnerRegistrations();
+                    browseGyms();
                     break;
                 case 7:
                     System.out.println("\033[1mYou have exited the Gym Admin menu\033[0m");
@@ -52,21 +59,24 @@ public class GymAdminFlipFitMenu {
         } while (menuOption != 7);
     }
 
-    private void browseGymRegistrations() {
+    private void browseGyms() {
+    	System.out.println("\033[1m\nGymID\tGymName\t\tLocation\033[0m");
+		System.out.println("-----------------------------------------------------------");
+		gymService.addGym(null);
+		gymService.viewAllGyms().forEach(gym -> System.out.println(gym.getGymId() + "\t" + gym.getGymName() + "\t\t"
+					+ gym.getLocation()));
+		
+	}
+
+	private void browseGymRegistrations() {
         // Implement logic to browse gym registrations
     }
 
-    private void validateCredentials() {
-        // Implement logic to validate credentials
-    }
 
     private void createLoginDetails() {
         // Implement logic to create login details
     }
 
-    private void acceptRequests() {
-        // Implement logic to accept requests
-    }
 
     private void browseSlotRegistrations() {
         // Implement logic to browse slot registrations

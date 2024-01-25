@@ -28,7 +28,7 @@ private static GymDAO gymDAOObj = null;
 	}
 	
 	private ArrayList<Gym> gyms = new ArrayList<Gym>();
-	private int gymCount = 0;
+	private int gymCount = 1;
 
 	@Override
 	public List<Gym> getAllGyms() {

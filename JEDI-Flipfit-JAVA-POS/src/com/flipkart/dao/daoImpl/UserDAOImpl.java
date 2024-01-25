@@ -3,7 +3,6 @@
  */
 package com.flipkart.dao.daoImpl;
 
-
 import java.util.ArrayList;
 
 import com.flipkart.bean.User;
@@ -88,4 +87,3 @@ public class UserDAOImpl implements UserDAO {
 	
 
 }
-

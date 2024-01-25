@@ -5,10 +5,8 @@ import java.util.List;
 
 import com.flipkart.bean.Booking;
 import com.flipkart.bean.GymCustomer;
-import com.flipkart.bean.User;
 
 public interface GymCustomerFlipFitService {
-	void bookWorkout(Booking booking);
 	
 	void cancelBooking(int bookingId);
 	
@@ -24,4 +22,6 @@ public interface GymCustomerFlipFitService {
 	void cancelSlot(int gymID, int slotHour, int userID);
 
 	void bookSlot(int gymId, int slotHour, int userId);
+
+	void bookWorkout(int userId, int gymId, int slotId);
 }

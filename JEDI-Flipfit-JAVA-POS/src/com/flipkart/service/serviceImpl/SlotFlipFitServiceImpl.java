@@ -66,4 +66,23 @@ public class SlotFlipFitServiceImpl implements SlotFlipFitService {
 		
 		return availableSlots;
 	}
+	
+	@Override
+	public void incrementFilledSeats(int slotId) {
+		Slot slot = slotDAO.getSlot(slotId);
+		if(slot.getAvilableSeats() > 0) {
+			slot.setAvilableSeats(slot.getAvilableSeats()+1);
+		}
+		slotDAO.updateSlot(slot);
+	}
+	
+	@Override
+	public void decrementFilledSeats(int slotId) {
+		Slot slot = slotDAO.getSlot(slotId);
+		if(slot.getAvilableSeats() > 0) {
+			slot.setAvilableSeats(slot.getAvilableSeats()-1);
+		}
+		slotDAO.updateSlot(slot);
+	}
+	
 }

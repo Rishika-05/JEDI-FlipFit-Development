@@ -8,8 +8,10 @@ import java.util.List;
 
 import com.flipkart.bean.Booking;
 import com.flipkart.bean.GymCustomer;
+import com.flipkart.bean.Slot;
 import com.flipkart.bean.User;
 import com.flipkart.dao.daoImpl.GymCustomerDAOImpl;
+import com.flipkart.dao.daoImpl.SlotDAOImpl;
 import com.flipkart.service.GymCustomerFlipFitService;
 import com.flipkart.service.UserFlipFitService;
 
@@ -20,6 +22,9 @@ import com.flipkart.service.UserFlipFitService;
 public class GymCustomerFlipFitServiceImpl implements GymCustomerFlipFitService {
 	
 	private static GymCustomerFlipFitService gymCustomerServiceObj = null;
+	BookingFlipFitServiceImpl bookingService = new BookingFlipFitServiceImpl();
+	SlotFlipFitServiceImpl slotService = new SlotFlipFitServiceImpl();
+	SlotDAOImpl slotDAO = new SlotDAOImpl();
 	
 	private GymCustomerFlipFitServiceImpl() {
 		
@@ -34,8 +39,16 @@ public class GymCustomerFlipFitServiceImpl implements GymCustomerFlipFitService 
 
 
 	@Override
-	public void bookWorkout(Booking booking) {
-		// TODO Auto-generated method stub
+	public void bookWorkout(int userId, int gymId, int slotId) {
+		Slot slot = slotDAO.getSlot(slotId);
+		
+		if(slot.getAvilableSeats()-slot.getFilledSeats() <= 0) {
+			System.out.println("Slots not available. Adding to Waitlist");
+		} else {
+			slotService.decrementFilledSeats(slotId);
+			bookingService.insertBooking(slotId, gymId, slotId);
+			System.out.println("Booking is successful");
+		}
 		
 	}
 

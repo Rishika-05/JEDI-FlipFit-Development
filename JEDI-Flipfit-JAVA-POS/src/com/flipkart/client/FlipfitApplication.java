@@ -116,27 +116,32 @@ public class FlipfitApplication {
 	}
 	
 	static void  register() {
-		
+		boolean flag = false;
+		RoleType role = null;
+		String userName = "";
+		String password = "";
 		Scanner in=new Scanner(System.in);
-		System.out.println("\n\n\033[1m------------------Register---------------- \n\n\033[0m");
-		System.out.println("Press 1. Customer Registration \nPress 2. Gym Owner Registration");
+		while(!flag) {
+			System.out.println("\n\n\033[1m------------------Register---------------- \n\n\033[0m");
+			System.out.println("Press 1. Customer Registration \nPress 2. Gym Owner Registration");
 
-		int userRole = in.nextInt();
-		while (userRole < 1 || userRole > 2) {
-			System.out.println("\033[1mInvalid type please try again!!\033[0m");
-			userRole = in.nextInt();
+			int userRole = in.nextInt();
+			while (userRole < 1 || userRole > 2) {
+				System.out.println("\033[1mInvalid type please try again!!\033[0m");
+				userRole = in.nextInt();
+			}
+			System.out.println("Enter username: ");
+			userName = in.next();
+			in.nextLine();
+			System.out.println("Enter password: ");
+			password = in.next();
+			role = userRole == 1 ? RoleType.GYM_CUSTOMER : RoleType.GYM_OWNER;
+			User newUser = new User();
+			newUser.setPassword(password);
+			newUser.setUsername(userName);
+			newUser.setRole(role);
+			flag = UserFlipFitServiceImpl.getInstance().registration(newUser);
 		}
-		System.out.println("Enter username: ");
-		String userName = in.next();
-		in.nextLine();
-		System.out.println("Enter password: ");
-		String password = in.next();
-		RoleType role = userRole == 1 ? RoleType.GYM_CUSTOMER : RoleType.GYM_OWNER;
-		User newUser = new User();
-		newUser.setPassword(password);
-		newUser.setUsername(userName);
-		newUser.setRole(role);
-		UserFlipFitServiceImpl.getInstance().registration(newUser);		
 		switch(role) {
 			case GYM_CUSTOMER:
 				GymCustomer customer = new GymCustomer();

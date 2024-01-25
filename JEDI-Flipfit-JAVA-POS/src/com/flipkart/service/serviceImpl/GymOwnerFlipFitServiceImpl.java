@@ -4,12 +4,16 @@
 package com.flipkart.service.serviceImpl;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.Duration;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.Slot;
 import com.flipkart.bean.User;
 import com.flipkart.dao.daoImpl.GymOwnerDAOImpl;
 import com.flipkart.service.GymOwnerFlipFitService;
@@ -21,6 +25,7 @@ import java.time.LocalDateTime;
  */
 public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 	List<Gym> gyms = new ArrayList<Gym>();
+	List<Slot> slots = new ArrayList<Slot>();
 	@Override
 	public void addGym(Gym gym) {
 		// TODO Auto-generated method stub
@@ -37,19 +42,51 @@ public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 		//logic to add time slot
 		for (Gym g : gyms) {
 			if (g.getGymId() == gym.getGymId()) {
+				Slot slot = new Slot();
+
 				Scanner sc = new Scanner(System.in);
 
+				System.out.println("Slot Id: ");
+				int slotId = sc.nextInt();
+				slot.setSlotId(slotId);
+
+				System.out.println("Gym Id: ");
+				int gymId = sc.nextInt();
+				slot.setSlotId(gymId);
+
 				System.out.println("Start Time: ");
-				LocalDateTime startTime = sc.nextLine();
+				String sTime = sc.nextLine();
+				LocalDateTime startTime = parseToLocalDateTime(sTime);
+				slot.setStartTime(startTime);
 
+				System.out.println("End Time: ");
+				String eTime = sc.nextLine();
+				LocalDateTime endTime = parseToLocalDateTime(eTime);
+				slot.setStartTime(endTime);
 
+				System.out.println("Available Seats: ");
+				int availSeats = sc.nextInt();
+				slot.setSlotId(availSeats);
 
-				g.setSlots(slot);
+				System.out.println("Duration: ");
+				String durationString = sc.next();
+				Duration duration = Duration.parse(durationString);
+				slot.setSlotTime(duration);
+
+				slots.add(slot);
+
+				g.setSlots(slots);
 			}
 		}
 	}
-	
 
+	private static LocalDateTime parseToLocalDateTime(String input) {
+		// Define a DateTimeFormatter for the expected format
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+		// Parse the input string into a LocalDateTime using the formatter
+		return LocalDateTime.parse(input, formatter);
+	}
 	
 	@Override
 	public GymOwner viewProfile(User user) {

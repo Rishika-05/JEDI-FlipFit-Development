@@ -63,4 +63,10 @@ public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 	public List<GymOwner> getOwners() {
 		return ownerDAO.getAllOwners();
 	}
+
+	@Override
+	public int getGymOwnerId(int userId) {
+		
+		return ownerDAO.getGymOwnerIdByUserId(userId);
+	}
 }

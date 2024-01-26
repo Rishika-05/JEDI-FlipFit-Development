@@ -38,12 +38,13 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
 
 
     @Override
-    public GymOwner getGymOwnerById(int userId) {
+    public GymOwner getGymOwnerById(int gymOwnerId) {
+    	System.out.println(gymOwnerId);
         Connection connection = DBConnection.getConnection();
         GymOwner gymOwner = null;
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_OWNER_BY_ID)) {
-                preparedStatement.setInt(1, userId);
+                preparedStatement.setInt(1, gymOwnerId);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
                     gymOwner = extractGymOwnerFromResultSet(resultSet);
@@ -111,11 +112,6 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
         return gymOwners;
     }
 
-    @Override
-    public GymOwner viewProfile(int id) {
-        // TODO: Implement logic to view the profile of a Gym Owner by ID
-        return null;
-    }
 
     @Override
     public boolean register(GymOwner owner) {
@@ -140,12 +136,12 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
     }
 
     @Override
-    public void approveGymOwnerById(int id) {
+    public void approveGymOwnerById(int gymOwnerId) {
         Connection connection = DBConnection.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.APPROVE_GYM_OWNER)) {
                 preparedStatement.setBoolean(1, true);
-                preparedStatement.setInt(2, id);
+                preparedStatement.setInt(2, gymOwnerId);
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -185,5 +181,31 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
         preparedStatement.setBoolean(7, owner.isApproved());
         preparedStatement.setInt(8, owner.getUserId());
     }
+
+	@Override
+	public int getGymOwnerIdByUserId(int userId) {
+		int gymOwnerId = -1;
+        Connection connection = DBConnection.getConnection();
+        if (connection != null) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_GYM_OWNER_ID_FROM_USER_ID)) {
+                preparedStatement.setInt(1, userId);
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    if (rs.next()) {
+                        gymOwnerId = rs.getInt("ID");
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return gymOwnerId;
+		
+	}
     
 }

@@ -35,6 +35,7 @@ public class GymCustomerFlipFitMenu {
 	public void displayCustomerMenu(int userId) {
 System.out.println(userId);
 		int option;
+		int gymCustomerId = customerService.getGymCustomerId(userId);
 		do {
 			System.out.println("\n\n\033[1m--------- Gym Customer Menu Options ------\033[0m" +
 					"\n\033[1;34mPress 1. Browse Gyms" +
@@ -49,7 +50,7 @@ System.out.println(userId);
 //                    "\nPress 10. Payment" +
 					"\nPress 7. Exit\033[0m\n");
 			System.out.print("\033[1mEnter Choice ► \033[0m");
-			int gymCustomerId = customerService.getGymCustomerId(userId);
+			
 			Scanner sc = new Scanner(System.in);
 			option = sc.nextInt();
 

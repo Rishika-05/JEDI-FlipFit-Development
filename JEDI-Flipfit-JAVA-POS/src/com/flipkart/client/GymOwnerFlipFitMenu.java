@@ -27,6 +27,7 @@ public class GymOwnerFlipFitMenu {
 	SlotFlipFitService slotService = new SlotFlipFitServiceImpl();
     public void displayGymOwnerMenu(int userId) {
         int menuOption;
+        int gymOwnerId = ownerService.getGymOwnerId(userId);
         do {
             System.out.println("\n\n ----------- Gym Owner Menu Options ---------- " + 
         "\nPress 1. Add a new gym Centre" +
@@ -45,34 +46,34 @@ public class GymOwnerFlipFitMenu {
             menuOption = in.nextInt();
             switch (menuOption) {
                 case 1:
-                    addNewGym(in, userId);
+                    addNewGym(in, gymOwnerId);
                     break;
                 case 2:
-                    viewRegisteredGyms(userId);
+                    viewRegisteredGyms(gymOwnerId);
                     break;
                 case 3:
-                    removeGym(userId);
+                    removeGym(gymOwnerId);
                     break;
                 case 4:
-                    modifyGym(userId);
+                    modifyGym(gymOwnerId);
                     break;
                 case 5:
-                	registerTimeSlots(userId);
+                	registerTimeSlots(gymOwnerId);
                     break;
                 case 6:
-                    modifySlot(userId);
+                    modifySlot(gymOwnerId);
                     break;
                 case 7:
-                    viewSlots(userId);
+                    viewSlots(gymOwnerId);
                     break;
                 case 8:
-                    removeSlot(userId);
+                    removeSlot(gymOwnerId);
                     break;
                 case 9:
-                    viewProfile(userId);
+                    viewProfile(gymOwnerId);
                     break;
                 case 10:
-                    updateProfile(userId);
+                    updateProfile(gymOwnerId);
                     break;
                 case 11:
                 	System.out.println("\033[1mYou have exited the Gym Owner menu\033[0m");

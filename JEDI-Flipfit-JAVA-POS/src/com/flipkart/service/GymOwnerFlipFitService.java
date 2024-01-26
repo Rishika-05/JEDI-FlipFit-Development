@@ -13,4 +13,5 @@ public interface GymOwnerFlipFitService {
 	GymOwner updateProfile(GymOwner owner);
 	GymOwner getGymOwnerById(int userId);
 	List<GymOwner> getOwners();
+	int getGymOwnerId(int userId);
 }

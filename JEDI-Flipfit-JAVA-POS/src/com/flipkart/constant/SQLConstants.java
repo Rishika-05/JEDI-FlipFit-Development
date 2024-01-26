@@ -28,6 +28,7 @@ public class SQLConstants {
     public static final String SELECT_OWNER_BY_USER_ID = "SELECT * FROM GymOwner WHERE ID=?";
     public static final String INSERT_OWNER = "INSERT INTO GymOwner (name, age, panCard, aadharCard, gstin, location, approved, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     public static final String APPROVE_GYM_OWNER = "UPDATE GymOwner SET approved = ? WHERE ID = ?";
+    public static final String SELECT_GYM_OWNER_ID_FROM_USER_ID = "SELECT ID FROM GymOwner WHERE userId = ?";
 	// Gym
     public static final String INSERT_GYM = "INSERT INTO gym (totalSlots, approved, active, location, gymName, gymDescription, gymOwnerId, pricePerSlot) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     public static final String SELECT_ALL_GYMS = "SELECT * FROM gym;";

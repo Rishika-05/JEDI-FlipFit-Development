@@ -14,11 +14,11 @@ import java.util.List;
  * 
  */
 public interface GymOwnerDAO {
-    GymOwner getGymOwnerById(int userId);
+    GymOwner getGymOwnerById(int gymOwnerId);
     GymOwner updateProfile(GymOwner owner);
 	List<GymOwner> getAllOwners();
-    public GymOwner viewProfile(int id);
     public boolean register(GymOwner owner);
-    void approveGymOwnerById(int id);
+    void approveGymOwnerById(int gymOwnerId);
+    int getGymOwnerIdByUserId(int userId);
 
 }

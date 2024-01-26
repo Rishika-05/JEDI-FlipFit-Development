@@ -33,7 +33,7 @@ public class GymCustomerFlipFitMenu {
 	int index = 1;
 
 	public void displayCustomerMenu(int userId) {
-
+System.out.println(userId);
 		int option;
 		do {
 			System.out.println("\n\n\033[1m--------- Gym Customer Menu Options ------\033[0m" +
@@ -58,13 +58,13 @@ public class GymCustomerFlipFitMenu {
 					browseGyms();
 					break;
 				case 2:
-                    bookSlot(sc, userId);
+                    bookSlot(sc, gymCustomerId);
 					break;
 				case 3:
-					cancelBooking(sc, userId);
+					cancelBooking(sc, gymCustomerId);
 					break;
 				case 4:
-					viewBookingHistory(userId);
+					viewBookingHistory(gymCustomerId);
 					break;
 //                case 6:
 //                    modifyBooking();
@@ -149,7 +149,7 @@ public class GymCustomerFlipFitMenu {
 	    // Print table header
 	    System.out.println("-------------------------------------------------------------");
 	    System.out.printf("| %-15s | %-20s | %-10s | %-5s |\n",
-	            "User ID", "Name", "Location", "Age");
+	            "Customer ID", "Name", "Location", "Age");
 	    System.out.println("-------------------------------------------------------------");
 
 	    // Print gym customer details

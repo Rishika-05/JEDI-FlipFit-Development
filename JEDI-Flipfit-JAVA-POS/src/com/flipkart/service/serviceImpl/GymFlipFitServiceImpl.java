@@ -51,13 +51,6 @@ private static GymFlipFitService gymServiceObj = null;
 		return gymDAO.getGym(gymId);
 	}
 
-
-	@Override
-	public List<Gym> pendingGymRequest() {
-		return gymDAO.pendingGymRequest();
-	}
-
-
 	@Override
 	public void addGym(Gym gym) {
 		//  ownerId,  slots,  name,  loc,  des

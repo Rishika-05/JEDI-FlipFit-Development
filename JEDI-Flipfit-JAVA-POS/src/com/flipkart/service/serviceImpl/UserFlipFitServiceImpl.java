@@ -5,6 +5,7 @@ import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 import com.flipkart.constant.RoleType;
 import com.flipkart.dao.daoImpl.GymCustomerDAOImpl;
+import com.flipkart.dao.daoImpl.GymOwnerDAOImpl;
 import com.flipkart.dao.daoImpl.UserDAOImpl;
 import com.flipkart.service.UserFlipFitService;
 
@@ -31,8 +32,7 @@ public class UserFlipFitServiceImpl implements UserFlipFitService {
 
 	@Override
 	public boolean gymOwnerRegistration(GymOwner gymOwner) {
-		// TODO Auto-generated method stub
-		return false;
+		return GymOwnerDAOImpl.getInstance().register(gymOwner);
 	}
 
 	@Override
@@ -48,9 +48,9 @@ public class UserFlipFitServiceImpl implements UserFlipFitService {
 	}
 
 	@Override
-	public int updatePassword(int userId, String newPassword) {
+	public boolean updatePassword(int userId, String newPassword) {
 		
-		return 0;
+		return UserDAOImpl.getInstance().updatePassword(userId , newPassword);
 	}
 
 	@Override

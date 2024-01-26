@@ -8,15 +8,40 @@ package com.flipkart.bean;
  */
 
 public class GymOwner extends User {
-	private String username;
-	private String password;
+	private int userId;
+	private int ownerId;
 	private String name;
 	private int age;
 	private String panCard;
 	private String aadharCard;
 	private String gstin;
 	private String location;
-	private boolean approved;
+	private boolean approved = false;
+	
+	/**
+	 * @return the ownerId
+	 */
+	public int getOwnerId() {
+		return ownerId;
+	}
+	/**
+	 * @param ownerId the ownerId to set
+	 */
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
+	}
+	/**
+	 * @return the userId
+	 */
+	public int getUserId() {
+		return userId;
+	}
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 	/**
 	 * @return the approved
 	 */
@@ -47,27 +72,6 @@ public class GymOwner extends User {
 	/**
 	 * @return the username
 	 */
-	public String getUsername() {
-		return username;
-	}
-	/**
-	 * @param username the username to set
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	/**
 	 * @return the name

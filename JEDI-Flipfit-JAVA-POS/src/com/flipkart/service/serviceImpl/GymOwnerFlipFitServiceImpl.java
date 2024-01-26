@@ -38,7 +38,6 @@ public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 	@Override
 	public void addGym(Gym gym) {
 		gymService.addGym(gym);
-		
 	}
 
 	@Override
@@ -60,7 +59,7 @@ public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 	
 	@Override
 	public GymOwner updateProfile(GymOwner gymOwner) {
-		return gymOwner;
+		return ownerDAO.updateProfile(gymOwner);
 	}
 
 	@Override

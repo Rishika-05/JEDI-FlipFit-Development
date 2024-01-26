@@ -14,8 +14,6 @@ public interface GymFlipFitService {
 
 	Gym getGym(int gymId);
 	
-	List<Gym> pendingGymRequest();
-	
 	void addGym(Gym gym);
 	
 	void displayGymDetails(int gymId);

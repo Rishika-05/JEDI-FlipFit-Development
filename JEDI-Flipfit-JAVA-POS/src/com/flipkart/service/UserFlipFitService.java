@@ -38,7 +38,7 @@ public interface UserFlipFitService {
 	 * @param newPassword
 	 * @return int
 	 */
-	public int updatePassword(int userId, String newPassword);
+	public boolean updatePassword(int userId, String newPassword);
 	
 	public User getUser(int userId);
 	

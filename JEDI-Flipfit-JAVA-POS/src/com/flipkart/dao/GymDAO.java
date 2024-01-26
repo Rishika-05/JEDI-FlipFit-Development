@@ -16,8 +16,6 @@ public interface GymDAO {
 
 	Gym getGym(int gymId);
 	
-	List<Gym> pendingGymRequest();
-	
 	void addGym(Gym gym);
 	
 	void removeGym(int gymId);
@@ -27,6 +25,8 @@ public interface GymDAO {
 	List<Gym> getAllGymsById(int userId);
 
 	List<Gym> getAllGymsByLoc(String selectedLocation);
+	
+	void approveGymsById(int gymId);
 
-
+	List<Gym> getAllActiveGyms();
 }

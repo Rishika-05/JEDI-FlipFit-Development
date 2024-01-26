@@ -175,7 +175,7 @@ public class SlotDAOImpl implements SlotDAO {
 	        if (connection != null) {
 	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.UPDATE_SLOT)) {
 	                prepareStatementForSlot(preparedStatement, slot);
-	                preparedStatement.setInt(6, slot.getSlotId());
+	                preparedStatement.setInt(7, slot.getSlotId());
 	                preparedStatement.executeUpdate();
 	            } catch (SQLException e) {
 	                e.printStackTrace();
@@ -203,7 +203,7 @@ public class SlotDAOImpl implements SlotDAO {
 	    // Helper method to extract Slot from ResultSet
 	    private Slot extractSlotFromResultSet(ResultSet resultSet) throws SQLException {
 	        Slot slot = new Slot();
-	        slot.setSlotId(resultSet.getInt("slotId"));
+	        slot.setSlotId(resultSet.getInt("ID"));
 	        slot.setGymId(resultSet.getInt("gymId"));
 	        slot.setStartTime(resultSet.getTime("startTime").toLocalTime());
 	        slot.setSlotTime(resultSet.getInt("slotTime"));

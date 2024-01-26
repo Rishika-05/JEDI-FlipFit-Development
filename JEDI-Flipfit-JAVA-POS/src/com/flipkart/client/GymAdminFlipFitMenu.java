@@ -75,7 +75,7 @@ public class GymAdminFlipFitMenu {
 
 	    // Print gym details
 	    for (Gym gym : gyms) {
-	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-14.2f | %-8s |\n",
+	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d | %-8s |\n",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Yes" : "No");
 	    }
@@ -102,7 +102,7 @@ public class GymAdminFlipFitMenu {
             // Print gym owner details in tabular format
             for (GymOwner owner : owners) {
                 System.out.printf("| %-5d | %-20s | %-5d | %-15s | %-15s | %-15s | %-10s | %-8s |\n",
-                        owner.getUserId(), owner.getName(), owner.getAge(), owner.getPanCard(),
+                        owner.getOwnerId(), owner.getName(), owner.getAge(), owner.getPanCard(),
                         owner.getAadharCard(), owner.getGstin(), owner.getLocation(), owner.isApproved());
             }
 
@@ -153,7 +153,7 @@ public class GymAdminFlipFitMenu {
 
 	    // Print gym details
 	    for (Gym gym : pendingGyms) {
-	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-14.2f | %-8s |\n",
+	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d | %-8s |\n",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Yes" : "No");
 	    }

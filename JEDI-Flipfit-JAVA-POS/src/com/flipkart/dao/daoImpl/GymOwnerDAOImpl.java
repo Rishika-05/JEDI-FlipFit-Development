@@ -73,7 +73,8 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
                 preparedStatement.setString(4, owner.getAadharCard());
                 preparedStatement.setString(5, owner.getGstin());
                 preparedStatement.setString(6, owner.getLocation());
-                preparedStatement.setInt(7, owner.getUserId());
+                preparedStatement.setBoolean(7, owner.isApproved());
+                preparedStatement.setInt(8, owner.getOwnerId());
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -142,6 +143,7 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.APPROVE_GYM_OWNER)) {
                 preparedStatement.setBoolean(1, true);
                 preparedStatement.setInt(2, gymOwnerId);
+                System.out.println(preparedStatement);
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -205,7 +205,7 @@ System.out.println(userId);
 
 	    // Print gym details
 	    for (Gym gym : gyms) {
-	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-14.2f |\n",
+	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d |\n",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot());
 	    }

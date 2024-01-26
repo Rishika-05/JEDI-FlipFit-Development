@@ -56,6 +56,7 @@ public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 	
 	@Override
 	public GymOwner updateProfile(GymOwner gymOwner) {
+		
 		return ownerDAO.updateProfile(gymOwner);
 	}
 

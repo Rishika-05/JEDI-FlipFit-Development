@@ -199,7 +199,7 @@ System.out.println(userId);
 	
 	void displayGyms(List<Gym> gyms) {
 		System.out.println("---------------------------------------------------------------------");
-	    System.out.printf("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |\n",
+	    System.out.printf("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s |\n",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot");
 	    System.out.println("---------------------------------------------------------------------");
 

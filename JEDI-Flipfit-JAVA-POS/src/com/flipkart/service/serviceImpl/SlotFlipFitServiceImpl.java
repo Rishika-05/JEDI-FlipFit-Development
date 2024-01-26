@@ -12,6 +12,7 @@ import java.util.List;
 import com.flipkart.bean.Slot;
 import com.flipkart.dao.SlotDAO;
 import com.flipkart.dao.daoImpl.SlotDAOImpl;
+import com.flipkart.service.GymFlipFitService;
 import com.flipkart.service.SlotFlipFitService;
 
 /**
@@ -19,8 +20,20 @@ import com.flipkart.service.SlotFlipFitService;
  */
 public class SlotFlipFitServiceImpl implements SlotFlipFitService {
 	
-	SlotDAO slotDAO = new SlotDAOImpl();
+private static SlotFlipFitService slotServiceObj = null;
 	
+	public SlotFlipFitServiceImpl() {
+		
+	}
+	
+	public static synchronized SlotFlipFitService getInstance() {
+		if (slotServiceObj == null)
+			slotServiceObj = new SlotFlipFitServiceImpl();
+
+		return slotServiceObj;
+	}
+	
+	SlotDAO slotDAO = SlotDAOImpl.getInstance();
 
     @Override
     public boolean isAvailable(int slotId) {
@@ -86,6 +99,13 @@ public class SlotFlipFitServiceImpl implements SlotFlipFitService {
 	@Override
 	public List<Slot> getAllSlot() {
 		return slotDAO.getAllSlots();
+	}
+	
+
+
+	@Override
+	public void approveSlot(int slotId) {
+		slotDAO.approveSlot(slotId);
 	}
 
 

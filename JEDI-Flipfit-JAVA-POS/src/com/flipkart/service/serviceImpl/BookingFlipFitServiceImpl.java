@@ -20,12 +20,10 @@ import com.flipkart.service.BookingFlipFitService;
 public class BookingFlipFitServiceImpl implements BookingFlipFitService {
 
 
-	BookingDAO bookingDao = new BookingDAOImpl();
+	BookingDAO bookingDao = BookingDAOImpl.getInstance();
 	@Override
 	public boolean insertBooking(int userId,int gymID,int slotId) {
-		// TODO Auto-generated method stub
 		bookingDao.insertBooking(userId, gymID, slotId);
-
 		return true;
 	}
 

@@ -10,9 +10,6 @@ public interface GymOwnerFlipFitService {
 	
 	void addGym(Gym gym);
 	List<Gym> getAllGyms(int userId);
-	
-	void addTimeSlot(Gym gym);
-	
 	GymOwner updateProfile(GymOwner owner);
 	GymOwner getGymOwnerById(int userId);
 	List<GymOwner> getOwners();

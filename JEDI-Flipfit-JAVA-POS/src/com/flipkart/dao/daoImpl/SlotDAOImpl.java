@@ -3,6 +3,12 @@
  */
 package com.flipkart.dao.daoImpl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Time;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -11,6 +17,8 @@ import java.util.Iterator;
 import java.util.ListIterator;
 
 import com.flipkart.bean.Slot;
+import com.flipkart.constant.SQLConstants;
+import com.flipkart.dao.DBConnection;
 import com.flipkart.dao.SlotDAO;
 
 /**
@@ -29,51 +37,180 @@ public class SlotDAOImpl implements SlotDAO {
 		return slotDAOObj;
 	}
 	
-	private ArrayList<Slot> slots = new ArrayList<Slot>();
+	  @Override
+	    public void createSlot(Slot slot) {
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.INSERT_SLOT)) {
+	                prepareStatementForSlot(preparedStatement, slot);
+	                preparedStatement.executeUpdate();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	    }
 
+	    @Override
+	    public void deleteSlot(int slotId) {
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.DELETE_SLOT)) {
+	                preparedStatement.setBoolean(1, false);
+	                preparedStatement.setInt(2, slotId);
+	                preparedStatement.executeUpdate();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	    }
 
+	    @Override
+	    public void approveSlot(int slotId) {
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.APPROVE_SLOT)) {
+	                preparedStatement.setBoolean(1, true);
+	                preparedStatement.setInt(2, slotId);
+	                preparedStatement.executeUpdate();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	    }
 
-	@Override
-	public void createSlot(Slot slot) {
-		slots.add(slot);
-	}
+	    @Override
+	    public Slot getSlot(int slotId) {
+	        Slot slot = null;
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_SLOT)) {
+	                preparedStatement.setInt(1, slotId);
+	                ResultSet resultSet = preparedStatement.executeQuery();
+	                while (resultSet.next()) {
+	                    slot = extractSlotFromResultSet(resultSet);
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return slot;
+	    }
 
-	@Override
-	public void deleteSlot(int slotId) {
-		// TODO Auto-generated method stub
-		return ;
-	}
+	    @Override
+	    public ArrayList<Slot> getAllSlots() {
+	        ArrayList<Slot> slots = new ArrayList<>();
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try (Statement statement = connection.createStatement()) {
+	                ResultSet resultSet = statement.executeQuery(SQLConstants.SELECT_ALL_SLOTS);
+	                while (resultSet.next()) {
+	                    Slot slot = extractSlotFromResultSet(resultSet);
+	                    slots.add(slot);
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return slots;
+	    }
 
-	@Override
-	public Slot getSlot(int slotId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	    @Override
+	    public ArrayList<Slot> getAllSlots(int gymId) {
+	        ArrayList<Slot> slots = new ArrayList<>();
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_SLOTS_BY_GYM)) {
+	                preparedStatement.setInt(1, gymId);
+	                ResultSet resultSet = preparedStatement.executeQuery();
+	                while (resultSet.next()) {
+	                    Slot slot = extractSlotFromResultSet(resultSet);
+	                    slots.add(slot);
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return slots;
+	    }
 
-	@Override
-	public ArrayList<Slot> getAllSlots() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	    @Override
+	    public Slot updateSlot(Slot slot) {
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.UPDATE_SLOT)) {
+	                prepareStatementForSlot(preparedStatement, slot);
+	                preparedStatement.setInt(6, slot.getSlotId());
+	                preparedStatement.executeUpdate();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return slot;
+	    }
 
-	@Override
-	public ArrayList<Slot> getAllSlots(int gymId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	    // Helper method to prepare statement for Slot
+	    private void prepareStatementForSlot(PreparedStatement preparedStatement, Slot slot) throws SQLException {
+	        preparedStatement.setInt(1, slot.getGymId());
+	        preparedStatement.setTime(2, Time.valueOf(slot.getStartTime()));
+	        preparedStatement.setInt(3, slot.getSlotTime());
+	        preparedStatement.setInt(4, slot.getTotalSeats());
+	        preparedStatement.setBoolean(5, slot.isActive());
+	        preparedStatement.setBoolean(6, slot.isApproved());
+	    }
 
-	@Override
-	public Slot updateSlot(Slot slot) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Slot> getAllAvailableSlots() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-
+	    // Helper method to extract Slot from ResultSet
+	    private Slot extractSlotFromResultSet(ResultSet resultSet) throws SQLException {
+	        Slot slot = new Slot();
+	        slot.setSlotId(resultSet.getInt("slotId"));
+	        slot.setGymId(resultSet.getInt("gymId"));
+	        slot.setStartTime(resultSet.getTime("startTime").toLocalTime());
+	        slot.setSlotTime(resultSet.getInt("slotTime"));
+	        slot.setTotalSeats(resultSet.getInt("totalSeats"));
+	        slot.setActive(resultSet.getBoolean("active"));
+	        slot.setApproved(resultSet.getBoolean("approved"));
+	        return slot;
+	    }
 
 }

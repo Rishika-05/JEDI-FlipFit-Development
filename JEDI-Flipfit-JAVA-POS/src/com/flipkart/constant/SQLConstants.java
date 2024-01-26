@@ -43,40 +43,37 @@ public class SQLConstants {
     public static final String SELECT_ALL_ACTIVE_GYMS = "SELECT * FROM Gym WHERE approved = true AND active = true;";
 
 	// Slot
-	public static final String TABLE_TIMESLOT = "TIMESLOT";
+    public static final String INSERT_SLOT = "INSERT INTO Slot (gymId, startTime, slotTime, totalSeats, active, approved) VALUES (?, ?, ?, ?, ?, ?)";
+    public static final String DELETE_SLOT = "UPDATE Slot SET active = ? WHERE ID = ?";
+    public static final String APPROVE_SLOT = "UPDATE Slot SET approved = ? WHERE ID = ?";
+    public static final String SELECT_SLOT = "SELECT * FROM Slot WHERE ID = ?";
+    public static final String SELECT_ALL_SLOTS = "SELECT * FROM Slot";
+    public static final String SELECT_SLOTS_BY_GYM = "SELECT * FROM Slot WHERE gymId = ?";
+    public static final String UPDATE_SLOT = "UPDATE Slot SET gymId = ?, startTime = ?, slotTime = ?, totalSeats = ?, active = ?, approved = ? WHERE ID = ?";
 
-	public static final String INSERT_TIMESLOT = "INSERT INTO " + TABLE_TIMESLOT + " (SLOTHOUR, GYMID, AVAILABLESEATS, DAY) "
-			+ " VALUES (?, ?, ?, ?)";
 
-	public static final String FIND_TIMESLOT = "SELECT * FROM " + TABLE_TIMESLOT
-			+ " WHERE SLOTHOUR = (?) AND GYMID = (?)";
-
-	public static final String UPDATE_TIMESLOT_AVAILABILITY = "UPDATE " + TABLE_TIMESLOT
-			+ " SET AVAILABLESEATS = AVAILABLESEATS + (?) WHERE SLOTHOUR = (?) AND GYMID = (?)";
-
-	public static final String GET_AVAILABLE_TIMESLOT = "SELECT * FROM " + TABLE_TIMESLOT + " WHERE availableSeats > 0";
-	
-	public static final String GET_SLOT_BY_ID = "SELECT * FROM " + TABLE_TIMESLOT + " WHERE SLOTID = ?";
-	
-	// Notification
-	public static final String TABLE_NOTIFICATION = "NOTIFICATION";
-	public static final String INSERT_NOTIFICATION = "INSERT INTO " + TABLE_NOTIFICATION + " (userid, usertype, content, isViewed) "
-			+ " VALUES (?, ?, ?, ?)";	
-	public static final String SELECT_NOTIFICATION = "SELECT * FROM " + TABLE_NOTIFICATION;	
-
-	public static final String UPDATE_NOTIFICATION = "UPDATE " + TABLE_NOTIFICATION + " SET ISVIEWED = 1";
-	public static final String DELETE_NOTIFICATION = "DELETE FROM " + TABLE_NOTIFICATION;
-	public static final String WHERE_NOT_VIEWED_NOTIFICATION = " WHERE USERID=(?) AND USERTYPE=(?) AND ISVIEWED=0";
-	
-	public static final String WHERE__NOT_VIEWED_NOTIFICATION = " WHERE USERID=(?) AND USERTYPE=(?) AND ISVIEWED=0";
-	
 	//Booking
-	public static final String TABLE_BOOKING = "Booking";
-	public static final String INSERT_BOOKING = "INSERT INTO " + TABLE_BOOKING
-	+ " (slotID, customerID) " + " VALUES (?, ?)";
-	public static final String DELETE_BOOKING = "DELETE FROM " + TABLE_BOOKING + " WHERE slotID = ? AND customerID = ?";
-	public static final String SELECT_BOOKING = "SELECT * FROM " + TABLE_BOOKING + " WHERE customerID = ?";
+	  public static final String INSERT_BOOKING = "INSERT INTO Booking (userId, gymId, slotId, isCancelled) VALUES (?, ?, ?, false)";
+	    public static final String CANCEL_BOOKING = "UPDATE Booking SET isCancelled = true WHERE ID = ?";
+	    public static final String SELECT_BOOKING_BY_ID = "SELECT * FROM Booking WHERE ID = ?";
+	    public static final String SELECT_BOOKINGS_BY_USER_ID = "SELECT * FROM Booking WHERE userId = ?";
+	    public static final String SELECT_BOOKINGS_BY_GYM_ID = "SELECT * FROM Booking WHERE gymId = ?";
+	    public static final String SELECT_BOOKINGS_BY_SLOT_ID = "SELECT * FROM Booking WHERE slotId = ?";
+	    public static final String SELECT_ALL_BOOKINGS = "SELECT * FROM Booking";
+	    public static final String REMOVE_BOOKING_OF_INACTIVE_GYM = "DELETE FROM Booking WHERE gymId NOT IN (SELECT ID FROM Gym WHERE active = true)";
+		
+	    // Notification
+		public static final String TABLE_NOTIFICATION = "NOTIFICATION";
+		public static final String INSERT_NOTIFICATION = "INSERT INTO " + TABLE_NOTIFICATION + " (userid, usertype, content, isViewed) "
+				+ " VALUES (?, ?, ?, ?)";	
+		public static final String SELECT_NOTIFICATION = "SELECT * FROM " + TABLE_NOTIFICATION;	
 
+		public static final String UPDATE_NOTIFICATION = "UPDATE " + TABLE_NOTIFICATION + " SET ISVIEWED = 1";
+		public static final String DELETE_NOTIFICATION = "DELETE FROM " + TABLE_NOTIFICATION;
+		public static final String WHERE_NOT_VIEWED_NOTIFICATION = " WHERE USERID=(?) AND USERTYPE=(?) AND ISVIEWED=0";
+		
+		public static final String WHERE__NOT_VIEWED_NOTIFICATION = " WHERE USERID=(?) AND USERTYPE=(?) AND ISVIEWED=0";
+		
 	// common WHERE clauses
 	public static final String WHERE_ID = " WHERE ID=(?)";
 	public static final String WHERE_PENDING_APPROVAL_FALSE = " WHERE ISAPPROVED = FALSE";

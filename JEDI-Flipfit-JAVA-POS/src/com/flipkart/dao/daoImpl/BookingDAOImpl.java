@@ -4,8 +4,16 @@
 package com.flipkart.dao.daoImpl;
 
 import com.flipkart.bean.Booking;
+import com.flipkart.constant.SQLConstants;
 import com.flipkart.dao.BookingDAO;
+import com.flipkart.dao.DBConnection;
+import com.flipkart.dao.GymDAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,116 +23,217 @@ import java.util.List;
  * 
  */
 public class BookingDAOImpl implements BookingDAO {
-    ArrayList<Booking> bookings = new ArrayList<Booking>();
+	private static BookingDAO bookingDAOObj = null;
+	
+	private BookingDAOImpl() {
+		
+	}
+	
+	public static synchronized BookingDAO getInstance() {
+		if (bookingDAOObj == null)
+			bookingDAOObj = new BookingDAOImpl();
 
-    @Override
-    public boolean insertBooking(int userId, int gymID, int slotId) {
+		return bookingDAOObj;
+	}
+	 @Override
+	    public void insertBooking(int userId, int gymID, int slotId) {
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try {
+	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.INSERT_BOOKING);
+	                preparedStatement.setInt(1, userId);
+	                preparedStatement.setInt(2, gymID);
+	                preparedStatement.setInt(3, slotId);
+	                preparedStatement.setBoolean(4, false); // isCancelled default to false
+	                preparedStatement.executeUpdate();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	    }
 
-        Booking newBooking = new Booking();
-        newBooking.setBookingId(bookings.size() + 1);
-        newBooking.setBookingDate(LocalDateTime.now());
-        newBooking.setUserId(userId);
-        newBooking.setGymId(gymID);
-        newBooking.setSlotId(slotId);
-        bookings.add(newBooking);
-        return true;
-    }
+	    @Override
+	    public boolean cancelBooking(int bookingId) {
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try {
+	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.CANCEL_BOOKING);
+	                preparedStatement.setInt(1, bookingId);
+	                int rowsUpdated = preparedStatement.executeUpdate();
+	                return rowsUpdated > 0;
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return false;
+	    }
 
-    /**
-     * Remove the booking from the database
-     *
-     * @param slotID
-     * @param customerID
-     * @return boolean value whether the removal was successful or not
-     */
-    @Override
-    public boolean cancelBooking(int bookingId) {
-        Iterator<Booking> iterator = bookings.iterator(); // Assuming bookings is a collection of Booking objects
+	    @Override
+	    public Booking getBooking(int bookingId) {
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try {
+	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_BOOKING_BY_ID);
+	                preparedStatement.setInt(1, bookingId);
+	                ResultSet resultSet = preparedStatement.executeQuery();
+	                if (resultSet.next()) {
+	                    return extractBookingFromResultSet(resultSet);
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return null;
+	    }
 
-        while (iterator.hasNext()) {
-            Booking booking = iterator.next();
+	    @Override
+	    public List<Booking> getBookingsByUserId(int userId) {
+	        Connection connection = DBConnection.getConnection();
+	        List<Booking> bookings = new ArrayList<>();
+	        if (connection != null) {
+	            try {
+	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_BOOKINGS_BY_USER_ID);
+	                preparedStatement.setInt(1, userId);
+	                ResultSet resultSet = preparedStatement.executeQuery();
+	                while (resultSet.next()) {
+	                    bookings.add(extractBookingFromResultSet(resultSet));
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return bookings;
+	    }
+	    @Override
+	    public List<Booking> getBookingsByGymId(int gymId) {
+	        Connection connection = DBConnection.getConnection();
+	        List<Booking> bookings = new ArrayList<>();
+	        if (connection != null) {
+	            try {
+	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_BOOKINGS_BY_GYM_ID);
+	                preparedStatement.setInt(1, gymId);
+	                ResultSet resultSet = preparedStatement.executeQuery();
+	                while (resultSet.next()) {
+	                    bookings.add(extractBookingFromResultSet(resultSet));
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return bookings;
+	    }
+	    
+	    @Override
+	    public List<Booking> getBookingsBySlotId(int slotId) {
+	        Connection connection = DBConnection.getConnection();
+	        List<Booking> bookings = new ArrayList<>();
+	        if (connection != null) {
+	            try {
+	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_BOOKINGS_BY_SLOT_ID);
+	                preparedStatement.setInt(1, slotId);
+	                ResultSet resultSet = preparedStatement.executeQuery();
+	                while (resultSet.next()) {
+	                    bookings.add(extractBookingFromResultSet(resultSet));
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return bookings;
+	    }
 
-            if (booking.getBookingId() == bookingId) {
-                // Found a booking with the given bookingId
-                booking.setCancelled(true); // Remove the booking from the collection
-                System.out.println("Booking with Gym ID " + booking.getGymId() + ",Booking ID " + booking.getBookingId() + " and Slot ID " + booking.getSlotId() + " cancelled.");
-                break;
-            }
-        }
+	    @Override
+	    public List<Booking> getAllBookings() {
+	        Connection connection = DBConnection.getConnection();
+	        List<Booking> bookings = new ArrayList<>();
+	        if (connection != null) {
+	            try {
+	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_ALL_BOOKINGS);
+	                ResultSet resultSet = preparedStatement.executeQuery();
+	                while (resultSet.next()) {
+	                    bookings.add(extractBookingFromResultSet(resultSet));
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return bookings;
+	    }
 
-        return true;
-    }
+	    @Override
+	    public boolean removeBookingOfInactiveGym(int gymId) {
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try {
+	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.REMOVE_BOOKING_OF_INACTIVE_GYM);
+	                preparedStatement.setInt(1, gymId);
+	                int rowsUpdated = preparedStatement.executeUpdate();
+	                return rowsUpdated > 0;
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return false;
+	    }
 
-    @Override
-    public boolean removeBookingOfInactiveGym(int gymId) {
-        Iterator<Booking> iterator = bookings.iterator(); // Assuming bookings is a collection of Booking objects
-
-        while (iterator.hasNext()) {
-            Booking booking = iterator.next();
-
-            if (booking.getGymId() == gymId) {
-                // Found a booking with the given bookingId
-                booking.setCancelled(true);
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public Booking getBooking(int bookingId) {
-        return bookings.get(bookingId);
-    }
-
-    @Override
-    public List<Booking> getBookingsByUserId(int userId) {
-        Iterator<Booking> iterator = bookings.iterator(); // Assuming bookings is a collection of Booking objects
-        List<Booking> userBookings = new ArrayList<Booking>();
-        while (iterator.hasNext()) {
-            Booking booking = iterator.next();
-
-            if (booking.getUserId() == userId) {
-                // Found a booking with the given bookingId
-                userBookings.add(booking);
-            }
-        }
-        return userBookings;
-    }
-
-    @Override
-    public List<Booking> getBookingsByGymId(int gymId) {
-
-        Iterator<Booking> iterator = bookings.iterator(); // Assuming bookings is a collection of Booking objects
-        List<Booking> gymBookings = new ArrayList<Booking>();
-        while (iterator.hasNext()) {
-            Booking booking = iterator.next();
-
-            if (booking.getGymId() == gymId) {
-                // Found a booking with the given bookingId
-                gymBookings.add(booking);
-            }
-        }
-        return gymBookings;
-    }
-
-    @Override
-    public List<Booking> getAllBookings() {
-        return bookings;
-    }
-
-    @Override
-    public List<Booking> getBookingsBySlotId(int slotId) {
-
-        Iterator<Booking> iterator = bookings.iterator(); // Assuming bookings is a collection of Booking objects
-        List<Booking> slotBookings = new ArrayList<Booking>();
-        while (iterator.hasNext()) {
-            Booking booking = iterator.next();
-
-            if (booking.getSlotId() == slotId) {
-                // Found a booking with the given bookingId
-                slotBookings.add(booking);
-            }
-        }
-        return slotBookings;
-    }
+	    private Booking extractBookingFromResultSet(ResultSet resultSet) throws SQLException {
+	        Booking booking = new Booking();
+	        booking.setBookingId(resultSet.getInt("ID"));
+	        booking.setUserId(resultSet.getInt("userId"));
+	        booking.setGymId(resultSet.getInt("gymId"));
+	        booking.setSlotId(resultSet.getInt("slotId"));
+	        Timestamp timestamp = resultSet.getTimestamp("bookingDate");
+	        booking.setBookingDate(timestamp.toLocalDateTime());
+	        booking.setCancelled(resultSet.getBoolean("isCancelled"));
+	        return booking;
+	    }
 }
 

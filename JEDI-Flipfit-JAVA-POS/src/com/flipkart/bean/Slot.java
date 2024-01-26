@@ -14,9 +14,10 @@ public class Slot {
     private int slotId;
     private int gymId;
     private LocalTime startTime;
-    private int slotTime;
+    private int slotTime = 1;
     private int totalSeats;
 	private boolean active;
+	private boolean approved;
 	/**
 	 * @return the active
 	 */
@@ -45,7 +46,6 @@ public class Slot {
 		this.approved = approved;
 	}
 
-	private boolean approved;
 
     public int getSlotId() {
         return slotId;

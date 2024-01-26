@@ -12,6 +12,7 @@ import com.flipkart.dao.GymOwnerDAO;
 import com.flipkart.dao.daoImpl.GymOwnerDAOImpl;
 import com.flipkart.service.GymFlipFitService;
 import com.flipkart.service.GymOwnerFlipFitService;
+import com.flipkart.service.SlotFlipFitService;
 
 /**
  * 
@@ -21,6 +22,7 @@ public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 	
 	private static GymOwnerFlipFitService ownerServiceObj = null;
 	GymFlipFitService gymService = new GymFlipFitServiceImpl();
+	SlotFlipFitService slotService = SlotFlipFitServiceImpl.getInstance();
 	GymOwnerDAO ownerDAO = GymOwnerDAOImpl.getInstance();
 	
 	private GymOwnerFlipFitServiceImpl() {
@@ -43,11 +45,6 @@ public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 	@Override
 	public List<Gym> getAllGyms(int userId) {
 		return gymService.getAllGymsById(userId);
-	}
-	@Override
-	public void addTimeSlot(Gym gym) {
-		//logic to add time slot
-		return;
 	}
 	
 

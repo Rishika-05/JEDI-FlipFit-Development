@@ -8,6 +8,11 @@ import java.util.List;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.Slot;
+import com.flipkart.dao.daoImpl.GymCustomerDAOImpl;
+import com.flipkart.dao.daoImpl.GymDAOImpl;
+import com.flipkart.dao.daoImpl.GymOwnerDAOImpl;
+import com.flipkart.dao.daoImpl.SlotDAOImpl;
 import com.flipkart.service.AdminFlipfitService;
 
 /**
@@ -17,45 +22,44 @@ import com.flipkart.service.AdminFlipfitService;
 public class AdminFlipFitServiceImpl implements AdminFlipfitService {
 
 	@Override
-	public GymOwner verifyGymOwnerRequest(int gym_owner_id, boolean approved) {
-		// TODO Auto-generated method stub
-		return null;
+	public void verifyGymOwnerRequest(int gym_owner_id) {
+		GymOwnerDAOImpl.getInstance().approveGymOwnerById(gym_owner_id); 
 	}
 
 	@Override
 	public void approveGymRequest(int gym_id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void rejectGymRequest(int gym_id) {
-		// TODO Auto-generated method stub
-		
+		GymDAOImpl.getInstance().approveGymsById(gym_id);
 	}
 
 	@Override
 	public List<Gym> getGymRequests() {
-		// TODO Auto-generated method stub
-		return null;
+		return GymDAOImpl.getInstance().getAllGyms();
 	}
 
 	@Override
 	public List<GymOwner> getGymOwnerRequests() {
-		// TODO Auto-generated method stub
-		return null;
+		return GymOwnerDAOImpl.getInstance().getAllOwners();
 	}
 
 	@Override
 	public List<GymCustomer> getAllGymCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		return GymCustomerDAOImpl.getInstance().getAllGymCustomers();
 	}
 
 	@Override
 	public List<GymOwner> getAllGymOwners() {
-		// TODO Auto-generated method stub
-		return null;
+		return GymOwnerDAOImpl.getInstance().getAllOwners();
+	}
+
+	@Override
+	public void approveSlotRequest(int slot_id) {
+		SlotDAOImpl.getInstance().approveSlot(slot_id);
+		
+	}
+
+	@Override
+	public List<Slot> getSlotRequests() {
+		return SlotDAOImpl.getInstance().getAllSlots();
 	}
 
 }

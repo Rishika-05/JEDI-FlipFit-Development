@@ -18,6 +18,8 @@ public interface SlotDAO {
 	
 	public void deleteSlot(int slotId);
 	
+	public void approveSlot(int slotId);
+	
 	public Slot getSlot(int slotId);
 	
 	public ArrayList<Slot> getAllSlots();
@@ -26,5 +28,5 @@ public interface SlotDAO {
 		
 	public Slot updateSlot(Slot slot);
 
-    ArrayList<Slot> getAllAvailableSlots();
+    //ArrayList<Slot> getAllAvailableSlots();
 }

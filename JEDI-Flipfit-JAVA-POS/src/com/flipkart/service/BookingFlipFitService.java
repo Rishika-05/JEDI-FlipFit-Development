@@ -16,8 +16,11 @@ public interface BookingFlipFitService {
 	
 	Booking getBooking(int bookingId);
 	List<Booking> getBookingsByUserId(int userId);
+	
 	List<Booking> getBookingsByGymId(int gymId);
+	
 	List<Booking> getBookingsBySlotId(int slotId);
+	
 	List<Booking> getAllBookings();
 
 

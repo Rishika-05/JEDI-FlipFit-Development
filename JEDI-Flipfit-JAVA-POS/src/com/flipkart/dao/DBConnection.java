@@ -63,6 +63,7 @@ public class DBConnection {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		} catch (Exception e) {
+			System.out.println(e);
 			System.out.println("Database could not be connected");
 		}
 		return conn;

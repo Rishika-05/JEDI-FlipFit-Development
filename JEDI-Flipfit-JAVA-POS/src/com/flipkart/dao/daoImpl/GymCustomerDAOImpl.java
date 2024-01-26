@@ -176,8 +176,8 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
     }
     private void prepareStatementForGymCustomerUpdate(PreparedStatement preparedStatement, GymCustomer newCustomer) throws SQLException {
         preparedStatement.setString(1, newCustomer.getName());
-        preparedStatement.setInt(2, newCustomer.getAge());
-        preparedStatement.setString(3, newCustomer.getLocation());
+        preparedStatement.setInt(3, newCustomer.getAge());
+        preparedStatement.setString(2, newCustomer.getLocation());
     }
     private void prepareStatement(PreparedStatement preparedStatement, GymCustomer gymCustomer) throws SQLException {
         preparedStatement.setString(1, gymCustomer.getName());

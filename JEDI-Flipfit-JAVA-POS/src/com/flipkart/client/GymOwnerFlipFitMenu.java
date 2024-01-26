@@ -401,13 +401,13 @@ public class GymOwnerFlipFitMenu {
 		    if (gymOwner != null) {
 		        // Print table header
 		        System.out.println("-------------------------------------------------------");
-		        System.out.printf("| %-15s | %-15s | %-5s | %-15s | %-15s | %-15s | %-15s |\n",
-		                "Username", "Name", "Age", "Pan Card", "Aadhar Card", "GSTIN", "Location");
+		        System.out.printf("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s |\n",
+		                "Name", "Age", "Pan Card", "Aadhar Card", "GSTIN", "Location");
 		        System.out.println("-------------------------------------------------------");
 
 		        // Print gym owner details
-		        System.out.printf("| %-15s | %-15s | %-5d | %-15s | %-15s | %-15s | %-15s |\n",
-		                gymOwner.getUsername(), gymOwner.getName(), gymOwner.getAge(),
+		        System.out.printf("| %-15s | %-5d | %-15s | %-15s | %-15s | %-15s |\n",
+		                 gymOwner.getName(), gymOwner.getAge(),
 		                gymOwner.getPanCard(), gymOwner.getAadharCard(), gymOwner.getGstin(), gymOwner.getLocation());
 
 		        System.out.println("-------------------------------------------------------");

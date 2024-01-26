@@ -128,6 +128,7 @@ private static GymDAO gymDAOObj = null;
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.UPDATE_GYM)) {
                 prepareStatementForGymUpdate(preparedStatement, gym);
+                
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -213,7 +214,7 @@ private static GymDAO gymDAOObj = null;
         preparedStatement.setString(5, gym.getGymName());
         preparedStatement.setString(6, gym.getGymDescription());
         preparedStatement.setInt(7, gym.getGymOwnerId());
-        preparedStatement.setInt(9, gym.getPricePerSlot());
+        preparedStatement.setInt(8, gym.getPricePerSlot());
         preparedStatement.setInt(9, gym.getGymId());
     }
 

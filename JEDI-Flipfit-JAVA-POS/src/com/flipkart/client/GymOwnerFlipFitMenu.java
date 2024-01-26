@@ -27,6 +27,14 @@ public class GymOwnerFlipFitMenu {
 	SlotFlipFitService slotService = new SlotFlipFitServiceImpl();
     public void displayGymOwnerMenu(int userId) {
         int menuOption;
+        int gymOwnerId = ownerService.getGymOwnerId(userId);
+        if(!ownerService.getGymOwnerById(gymOwnerId).isApproved()) {
+        	System.out.println("Please wait for your approval. Try again some time later.");
+        	Scanner in = new Scanner(System.in);
+        	System.out.println("\n\nPress any key to exit: ");
+        	in.next();
+        	return;
+        }
         do {
             System.out.println("\n\n ----------- Gym Owner Menu Options ---------- " + 
         "\nPress 1. Add a new gym Centre" +
@@ -45,34 +53,34 @@ public class GymOwnerFlipFitMenu {
             menuOption = in.nextInt();
             switch (menuOption) {
                 case 1:
-                    addNewGym(in, userId);
+                    addNewGym(in, gymOwnerId);
                     break;
                 case 2:
-                    viewRegisteredGyms(userId);
+                    viewRegisteredGyms(gymOwnerId);
                     break;
                 case 3:
-                    removeGym(userId);
+                    removeGym(gymOwnerId);
                     break;
                 case 4:
-                    modifyGym(userId);
+                    modifyGym(gymOwnerId);
                     break;
                 case 5:
-                	registerTimeSlots(userId);
+                	registerTimeSlots(gymOwnerId);
                     break;
                 case 6:
-                    modifySlot(userId);
+                    modifySlot(gymOwnerId);
                     break;
                 case 7:
-                    viewSlots(userId);
+                    viewSlots(gymOwnerId);
                     break;
                 case 8:
-                    removeSlot(userId);
+                    removeSlot(gymOwnerId);
                     break;
                 case 9:
-                    viewProfile(userId);
+                    viewProfile(gymOwnerId);
                     break;
                 case 10:
-                    updateProfile(userId);
+                    updateProfile(gymOwnerId);
                     break;
                 case 11:
                 	System.out.println("\033[1mYou have exited the Gym Owner menu\033[0m");
@@ -111,8 +119,8 @@ public class GymOwnerFlipFitMenu {
 	        }
 	}
 
-	private void modifyGym(int userId) {
-		viewRegisteredGyms(userId);
+	private void modifyGym(int gymOwnerId) {
+		viewRegisteredGyms(gymOwnerId);
 		Scanner scanner = new Scanner(System.in);
 
         // Ask the user for gym ID
@@ -162,7 +170,8 @@ public class GymOwnerFlipFitMenu {
                     System.out.println("Invalid choice. No modifications performed.");
                     return;
             }
-
+            
+            gymService.updateGym(selectedGym);
             System.out.println("Gym modified successfully!");
         } else {
             System.out.println("Gym not found with the provided ID.");
@@ -282,9 +291,10 @@ public class GymOwnerFlipFitMenu {
     }
 
 
-	private void addNewGym(Scanner in, int userId) {
+	private void addNewGym(Scanner in, int gymOwnerId) {
     	Gym newGym = new Gym();
     	
+    	newGym.setGymOwnerId(gymOwnerId);
     	System.out.print("\033[0;34mEnter gym name: \033[0m");
     	String gymName = in.next();
     	in.nextLine();
@@ -323,7 +333,7 @@ public class GymOwnerFlipFitMenu {
 
 	    // Print gym details
 	    for (Gym gym : gyms) {
-	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-14.2f | %-8s |\n",
+	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d | %-8s |\n",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Yes" : "No");
 	    }
@@ -400,13 +410,13 @@ public class GymOwnerFlipFitMenu {
 		    if (gymOwner != null) {
 		        // Print table header
 		        System.out.println("-------------------------------------------------------");
-		        System.out.printf("| %-15s | %-15s | %-5s | %-15s | %-15s | %-15s | %-15s |\n",
-		                "Username", "Name", "Age", "Pan Card", "Aadhar Card", "GSTIN", "Location");
+		        System.out.printf("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s |\n",
+		                "Name", "Age", "Pan Card", "Aadhar Card", "GSTIN", "Location");
 		        System.out.println("-------------------------------------------------------");
 
 		        // Print gym owner details
-		        System.out.printf("| %-15s | %-15s | %-5d | %-15s | %-15s | %-15s | %-15s |\n",
-		                gymOwner.getUsername(), gymOwner.getName(), gymOwner.getAge(),
+		        System.out.printf("| %-15s | %-5d | %-15s | %-15s | %-15s | %-15s |\n",
+		                 gymOwner.getName(), gymOwner.getAge(),
 		                gymOwner.getPanCard(), gymOwner.getAadharCard(), gymOwner.getGstin(), gymOwner.getLocation());
 
 		        System.out.println("-------------------------------------------------------");

@@ -16,8 +16,8 @@ public class Slot {
     private LocalTime startTime;
     private int slotTime = 1;
     private int totalSeats;
-	private boolean active;
-	private boolean approved;
+	private boolean active = true;
+	private boolean approved = false;
 	/**
 	 * @return the active
 	 */

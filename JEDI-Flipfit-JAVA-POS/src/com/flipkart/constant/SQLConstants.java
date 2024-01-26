@@ -22,22 +22,23 @@ public class SQLConstants {
     public static final String SELECT_GYM_CUSTOMER_ID_FROM_USER_ID = "SELECT ID FROM gym_customers WHERE userId = ?";
 	
 	// GymOwner
-    public static final String UPDATE_PROFILE = "UPDATE GymOwner SET name=?, age=?, panCard=?, aadharCard=?, gstin=?, location=? WHERE ID=?";
+    public static final String UPDATE_PROFILE = "UPDATE GymOwner SET name=?, age=?, panCard=?, aadharCard=?, gstin=?, location=?, approved=? WHERE ID=?";
     public static final String SELECT_OWNER_BY_ID = "SELECT * FROM GymOwner WHERE ID=?";
     public static final String SELECT_ALL_OWNERS = "SELECT * FROM GymOwner";
     public static final String SELECT_OWNER_BY_USER_ID = "SELECT * FROM GymOwner WHERE ID=?";
     public static final String INSERT_OWNER = "INSERT INTO GymOwner (name, age, panCard, aadharCard, gstin, location, approved, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     public static final String APPROVE_GYM_OWNER = "UPDATE GymOwner SET approved = ? WHERE ID = ?";
+    public static final String SELECT_GYM_OWNER_ID_FROM_USER_ID = "SELECT ID FROM GymOwner WHERE userId = ?";
 	// Gym
     public static final String INSERT_GYM = "INSERT INTO gym (totalSlots, approved, active, location, gymName, gymDescription, gymOwnerId, pricePerSlot) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     public static final String SELECT_ALL_GYMS = "SELECT * FROM gym;";
     public static final String SELECT_GYM_BY_ID = "SELECT * FROM gym WHERE ID = ?;";
     public static final String SELECT_ALL_GYMS_BY_OWNER_ID = "SELECT * FROM gym WHERE gymOwnerId = ?;";
-    public static final String SELECT_ALL_GYMS_BY_LOCATION = "SELECT * FROM gym WHERE location = ?;";
+    public static final String SELECT_ALL_GYMS_BY_LOCATION = "SELECT * FROM gym WHERE location = ? AND approved = true AND active = true ;";
     public static final String SELECT_PENDING_GYMS = "SELECT * FROM gym WHERE approved = false;";
 
     public static final String UPDATE_GYM = "UPDATE gym SET totalSlots = ?, approved = ?, active = ?, location = ?, gymName = ?, gymDescription = ?, gymOwnerId = ?, pricePerSlot = ? WHERE ID = ?;";
-    public static final String DELETE_GYM = "UPDATE Gym SET active = false,  WHERE ID = ?;";
+    public static final String DELETE_GYM = "UPDATE Gym SET active = false  WHERE ID = ?;";
 
     public static final String APPROVE_GYM_BY_ID = "UPDATE Gym SET approved = true, active = true WHERE ID = ?;";
     public static final String SELECT_ALL_ACTIVE_GYMS = "SELECT * FROM Gym WHERE approved = true AND active = true;";

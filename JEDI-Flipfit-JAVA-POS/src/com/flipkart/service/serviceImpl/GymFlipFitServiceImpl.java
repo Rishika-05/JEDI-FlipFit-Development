@@ -38,6 +38,8 @@ private static GymFlipFitService gymServiceObj = null;
 		return gymDAO.getAllGyms();
 	}
 
+	
+	//Remove
 	@Override
 	public void displayGymDetails(int gymId) {
 		Gym g = gymDAO.getGym(gymId);
@@ -54,8 +56,8 @@ private static GymFlipFitService gymServiceObj = null;
 	@Override
 	public void addGym(Gym gym) {
 		//  ownerId,  slots,  name,  loc,  des
-		Gym g = new Gym(12,  "Fitness Club", "Bellandur", "Lastest in town.", 10);
-		gymDAO.addGym(g);
+		
+		gymDAO.addGym(gym);
 	}
 
 
@@ -72,8 +74,8 @@ private static GymFlipFitService gymServiceObj = null;
 	}
 
 	@Override
-	public List<Gym> getAllGymsById(int userId) {
-		return gymDAO.getAllGymsById(userId);
+	public List<Gym> getAllGymsById(int gymOwnerId) {
+		return gymDAO.getAllGymsById(gymOwnerId);
 	}
 
 	@Override

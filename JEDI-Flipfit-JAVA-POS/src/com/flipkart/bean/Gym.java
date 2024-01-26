@@ -174,7 +174,7 @@ public class Gym {
 	private int gymId;
     private int totalSlots;
     private boolean approved = false;
-    private boolean active = false;
+    private boolean active = true;
 	private String location;
     private String gymName;
 	private String gymDescription;

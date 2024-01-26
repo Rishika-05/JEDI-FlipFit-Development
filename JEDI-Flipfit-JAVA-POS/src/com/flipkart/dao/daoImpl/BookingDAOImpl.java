@@ -44,7 +44,7 @@ public class BookingDAOImpl implements BookingDAO {
 	                preparedStatement.setInt(1, userId);
 	                preparedStatement.setInt(2, gymID);
 	                preparedStatement.setInt(3, slotId);
-	                preparedStatement.setBoolean(4, false); // isCancelled default to false
+//	                preparedStatement.setBoolean(4, false); // isCancelled default to false
 	                preparedStatement.executeUpdate();
 	            } catch (SQLException e) {
 	                e.printStackTrace();

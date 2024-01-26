@@ -182,8 +182,6 @@ public class FlipfitApplication {
 
 			case GYM_OWNER:
 				GymOwner newGymOwner = new GymOwner();
-				newGymOwner.setUsername(userName);
-				newGymOwner.setPassword(password);
 				newGymOwner.setUserId(userId);
 				System.out.print("\033[0;34mEnter your name: \033[0m");
 				name = in.next();

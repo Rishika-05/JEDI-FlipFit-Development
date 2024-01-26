@@ -22,51 +22,40 @@ public class FlipfitApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
 
-		int userInput;
-		try {
-			// until the user does not exit the application
-			do {
+        try (Scanner sc = new Scanner(System.in)) {
+            int userInput;
+            do {
+                createMainMenu();
+                userInput = sc.nextInt();
+                switch (userInput) {
+                    case 1:
+                        login();
+                        break;
+                    case 2:
+                        register();
+                        break;
+                    case 3:
+                        updatePassword();
+                        break;
+                    case 4:
+                        System.out.println("\033[1mYou have exited the FlipFit Application\033[0m");
+                        break;
+                    default:
+                        System.out.println("\033[1;31mInvalid Option! Please try again.\033[0m");
+                        break;
+                }
 
-				createMainMenu();
-				userInput = sc.nextInt();
+            } while (userInput != 4);
 
-				switch (userInput) {
-					case 1:
-						// login
-						login();
-						break;
-					case 2:
-						// registration
-						register();
-						break;
-					case 3:
-						updatePassword();
-						break;
-					case 4:
-						System.out.println("\033[1mYou have exited the FlipFit Application\033[0m");
-						break;
-					default:
-						System.out.println("\033[1;31mInvalid Option! Please try again.\033[0m");
-						break;
-				}
-
-			} while (userInput != 4);
-
-		} catch (Exception ex) {
-			System.out.println("\033[1;31mError occurred: " + ex + "\033[0m");
-		} finally {
-			sc.close();
-		}
+        } catch (Exception ex) {
+            System.out.println("\033[1;31mError occurred: " + ex + "\033[0m");
+        }
 
 	}
 
 	public static void createMainMenu() {
-      // Reset text attributes
-
-		System.out.println("\033[3m");    // Apply italic
-
+		System.out.println("\033[3m");
 		System.out.println("\033[1;33m███████╗██╗     ██╗██████╗ \033[0m" + "\033[1;34m███████╗██╗████████╗\033[0m");
 		System.out.println("\033[1;33m██╔════╝██║     ██║██╔══██╗\033[0m" + "\033[1;34m██╔════╝██║╚══██╔══╝\033[0m");
 		System.out.println("\033[1;33m█████╗  ██║     ██║██████╔╝\033[0m" + "\033[1;34m█████╗  ██║   ██║\033[0m");

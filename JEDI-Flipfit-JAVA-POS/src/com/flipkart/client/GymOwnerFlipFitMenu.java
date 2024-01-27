@@ -335,7 +335,7 @@ public class GymOwnerFlipFitMenu {
 	    for (Gym gym : gyms) {
 	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d | %-8s |\n",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
-	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Yes" : "No");
+	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
 	    }
 
 	    System.out.println("---------------------------------------------------------------------");
@@ -396,7 +396,7 @@ public class GymOwnerFlipFitMenu {
 	        	for (Slot slot : slots) {
 	        	    System.out.printf("| %-10d | %-10s | %-10d | %-15d | %-10s | %-10s |\n",
 	        	            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
-	        	            slot.isActive(), slot.isApproved());
+	        	            slot.isActive(), slot.isApproved() ? "Approved" : "Processing" );
 	        	}
 
 	        	System.out.println("--------------------------------------------------------------------");

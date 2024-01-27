@@ -77,7 +77,7 @@ public class GymAdminFlipFitMenu {
 	    for (Gym gym : gyms) {
 	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d | %-8s |\n",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
-	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Yes" : "No");
+	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
 	    }
 
 	    System.out.println("---------------------------------------------------------------------");
@@ -103,7 +103,7 @@ public class GymAdminFlipFitMenu {
             for (GymOwner owner : owners) {
                 System.out.printf("| %-5d | %-20s | %-5d | %-15s | %-15s | %-15s | %-10s | %-8s |\n",
                         owner.getOwnerId(), owner.getName(), owner.getAge(), owner.getPanCard(),
-                        owner.getAadharCard(), owner.getGstin(), owner.getLocation(), owner.isApproved());
+                        owner.getAadharCard(), owner.getGstin(), owner.getLocation(), owner.isApproved() ? "Approved" : "Processsing");
             }
 
             System.out.println("-------------------------------------------------------------");
@@ -155,7 +155,7 @@ public class GymAdminFlipFitMenu {
 	    for (Gym gym : pendingGyms) {
 	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d | %-8s |\n",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
-	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Yes" : "No");
+	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
 	    }
 
 	    System.out.println("---------------------------------------------------------------------");
@@ -204,7 +204,7 @@ public class GymAdminFlipFitMenu {
         // Print slot details in tabular format
         for (Slot slot : pendingSlots) {
             System.out.printf("| %-5d | %-5d | %-20s | %-15d | %-5s |\n",
-                    slot.getSlotId(), slot.getGymId(), slot.getStartTime(), slot.getTotalSeats(), slot.isApproved());
+                    slot.getSlotId(), slot.getGymId(), slot.getStartTime(), slot.getTotalSeats(), slot.isApproved() ? "Approved" : "Processing");
         }
 
         System.out.println("------------------------------------------------------------");

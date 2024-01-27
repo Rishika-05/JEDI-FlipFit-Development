@@ -299,26 +299,25 @@ public class GymOwnerFlipFitMenu {
     	Gym newGym = new Gym();
     	
     	newGym.setGymOwnerId(gymOwnerId);
-    	System.out.print("\033[0;34mEnter gym name: \033[0m");
-    	String gymName = in.next();
+    	System.out.println("\033[0;34mEnter gym name: \033[0m");
     	in.nextLine();
+    	String gymName = in.nextLine();
     	newGym.setGymName(gymName);
 
-    	System.out.print("\033[0;34mEnter gym location: \033[0m");
+    	System.out.println("\033[0;34mEnter gym location: \033[0m");
     	String location = in.next();
-    	in.nextLine();
     	newGym.setLocation(location);
 
-    	System.out.print("\033[0;34mEnter gym description: \033[0m");
-    	String gymDescription = in.next();
+    	System.out.println("\033[0;34mEnter gym description: \033[0m");
     	in.nextLine();
+    	String gymDescription = in.nextLine();
     	newGym.setGymDescription(gymDescription);
 
-    	System.out.print("\033[0;34mEnter total slots: \033[0m");
+    	System.out.println("\033[0;34mEnter total slots: \033[0m");
     	int totalSlots = in.nextInt();
     	newGym.setTotalSlots(totalSlots);
     	
-    	System.out.print("\033[0;34mEnter price per slot: \033[0m");
+    	System.out.println("\033[0;34mEnter price per slot: \033[0m");
     	int price = in.nextInt();
     	newGym.setPricePerSlot(price);
     	
@@ -339,7 +338,7 @@ public class GymOwnerFlipFitMenu {
 	    for (Gym gym : gyms) {
 	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d | %-8s |\n",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
-	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Yes" : "No");
+	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
 	    }
 
 	    System.out.println("---------------------------------------------------------------------");
@@ -402,7 +401,8 @@ public class GymOwnerFlipFitMenu {
 	        	    int bookedSeats = slot.getTotalSeats() - availableSeats;
 	        	    System.out.printf("| %-10d | %-10s | %-10d | %-15d | %-10s | %-10s | %-12d |\n",
 	        	            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
-	        	            slot.isActive(), slot.isApproved(), bookedSeats);
+	        	            slot.isActive(), slot.isApproved() ? "Approved" : "Processing" , bookedSeats);
+
 	        	}
 
 	        	System.out.println("--------------------------------------------------------------------");

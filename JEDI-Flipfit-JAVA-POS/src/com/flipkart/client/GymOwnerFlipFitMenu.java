@@ -386,19 +386,20 @@ public class GymOwnerFlipFitMenu {
 	            // Get the list of slots for the selected gym
 	        	List<Slot> slots = slotService.getAllSlotsByGymId(gymId);
 
-	            // Print table header
-	            System.out.println("-------------------------------------------------------------");
-	            System.out.printf("| %-10s | %-10s | %-10s | %-15s |\n",
-	                    "Slot ID", "Start Time", "Slot Time", "Total Seats");
-	            System.out.println("-------------------------------------------------------------");
+	        	// Print table header
+	        	System.out.println("--------------------------------------------------------------------");
+	        	System.out.printf("| %-10s | %-10s | %-10s | %-15s | %-10s | %-10s |\n",
+	        	        "Slot ID", "Start Time", "Slot Time", "Total Seats", "Active", "Approved");
+	        	System.out.println("--------------------------------------------------------------------");
 
-	            // Print slot details
-	            for (Slot slot : slots) {
-	                System.out.printf("| %-10d | %-10s | %-10d | %-15d |\n",
-	                        slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats());
-	            }
+	        	// Print slot details
+	        	for (Slot slot : slots) {
+	        	    System.out.printf("| %-10d | %-10s | %-10d | %-15d | %-10s | %-10s |\n",
+	        	            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
+	        	            slot.isActive(), slot.isApproved());
+	        	}
 
-	            System.out.println("-------------------------------------------------------------");
+	        	System.out.println("--------------------------------------------------------------------");
 	        } else {
 	            System.out.println("Gym not found with the provided ID.");
 	        }

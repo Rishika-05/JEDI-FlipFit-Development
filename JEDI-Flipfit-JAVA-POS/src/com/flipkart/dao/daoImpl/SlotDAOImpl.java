@@ -168,6 +168,31 @@ public class SlotDAOImpl implements SlotDAO {
 	        }
 	        return slots;
 	    }
+	    
+	    @Override
+	    public ArrayList<Slot> getAllApprovedSlots(int gymId) {
+	        ArrayList<Slot> slots = new ArrayList<>();
+	        Connection connection = DBConnection.getConnection();
+	        if (connection != null) {
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_APPROVED_SLOTS_BY_GYM)) {
+	                preparedStatement.setInt(1, gymId);
+	                ResultSet resultSet = preparedStatement.executeQuery();
+	                while (resultSet.next()) {
+	                    Slot slot = extractSlotFromResultSet(resultSet);
+	                    slots.add(slot);
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	        return slots;
+	    }
 
 	    @Override
 	    public Slot updateSlot(Slot slot) {

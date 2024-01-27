@@ -27,6 +27,8 @@ public interface SlotFlipFitService {
 	
 	void approveSlot(int slotId);
 
+	List<Slot> getAllApprovedSlotsByGymId(int gymId);
+
 }
 
 

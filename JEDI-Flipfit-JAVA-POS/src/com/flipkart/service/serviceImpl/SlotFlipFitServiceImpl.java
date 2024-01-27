@@ -93,6 +93,11 @@ private static SlotFlipFitService slotServiceObj = null;
 	public List<Slot> getAllSlotsByGymId(int gymId) {
 		return slotDAO.getAllSlots(gymId);
 	}
+	
+	@Override
+	public List<Slot> getAllApprovedSlotsByGymId(int gymId) {
+		return slotDAO.getAllApprovedSlots(gymId);
+	}
 
 
 

@@ -3,6 +3,7 @@
  */
 package com.flipkart.client;
 
+import java.io.Console;
 import java.util.Scanner;
 
 import com.flipkart.bean.GymCustomer;
@@ -53,8 +54,14 @@ public class FlipfitApplication {
         }
 
 	}
-
-	public static void createMainMenu() {
+	
+	
+	
+	public static void displayLogo(String windowTitle) {
+		for(int i = 0 ; i < 100 ; i++) {
+			System.out.println("\b");
+		}
+	
 		System.out.println("\033[3m");
 		System.out.println("\033[1;33m███████╗██╗     ██╗██████╗ \033[0m" + "\033[1;34m███████╗██╗████████╗\033[0m");
 		System.out.println("\033[1;33m██╔════╝██║     ██║██╔══██╗\033[0m" + "\033[1;34m██╔════╝██║╚══██╔══╝\033[0m");
@@ -67,10 +74,27 @@ public class FlipfitApplication {
 		System.out.println("");
 
 
-		System.out.println("\033[1;34m▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m \uD835\uDC06\uD835\uDC18\uD835\uDC0C \uD835\uDC12\uD835\uDC0B\uD835\uDC0E\uD835\uDC13 \uD835\uDC01\uD835\uDC0E\uD835\uDC0E\uD835\uDC0A\uD835\uDC08\uD835\uDC0D\uD835\uDC06 \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
-
+		System.out.println("\033[1;34m▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m " + windowTitle + " \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
 		System.out.println("");
+	}
 
+	public static void createMainMenu() {
+//		System.out.println("\033[3m");
+//		System.out.println("\033[1;33m███████╗██╗     ██╗██████╗ \033[0m" + "\033[1;34m███████╗██╗████████╗\033[0m");
+//		System.out.println("\033[1;33m██╔════╝██║     ██║██╔══██╗\033[0m" + "\033[1;34m██╔════╝██║╚══██╔══╝\033[0m");
+//		System.out.println("\033[1;33m█████╗  ██║     ██║██████╔╝\033[0m" + "\033[1;34m█████╗  ██║   ██║\033[0m");
+//		System.out.println("\033[1;33m██╔══╝  ██║     ██║██╔═══╝ \033[0m" + "\033[1;34m██╔══╝  ██║   ██║\033[0m");
+//		System.out.println("\033[1;33m██║     ███████╗██║██║     \033[0m" + "\033[1;34m██║     ██║   ██║\033[0m");
+//		System.out.println("\033[1;33m╚═╝     ╚══════╝╚═╝╚═╝     \033[0m" + "\033[1;34m╚═╝     ╚═╝   ╚═╝\033[0m");
+//		System.out.println("");
+//		System.out.println("");
+//		System.out.println("");
+//
+//
+//		System.out.println("\033[1;34m▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m \uD835\uDC06\uD835\uDC18\uD835\uDC0C \uD835\uDC12\uD835\uDC0B\uD835\uDC0E\uD835\uDC13 \uD835\uDC01\uD835\uDC0E\uD835\uDC0E\uD835\uDC0A\uD835\uDC08\uD835\uDC0D\uD835\uDC06 \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
+
+//		System.out.println("");
+		displayLogo("Welcome");
 		System.out.println("\033[1;36m ① Login");
 		System.out.println("\033[1;36m ② Register");
 		System.out.println("\033[1;36m ③ Update Password");
@@ -83,6 +107,7 @@ public class FlipfitApplication {
 	}
 
 	static void login() {
+		displayLogo("Login");
 		Scanner sc = new Scanner(System.in);
 
 		String userName, password;

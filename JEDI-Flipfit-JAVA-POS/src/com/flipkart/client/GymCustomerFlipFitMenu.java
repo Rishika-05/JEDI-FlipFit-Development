@@ -3,6 +3,7 @@
  */
 package com.flipkart.client;
 
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -216,9 +217,37 @@ System.out.println(userId);
 
 	    private void bookSlot(Scanner sc, int userId) {
 	    	GymCustomer gymCustomer = customerService.viewProfile(userId);
-	        List<Gym> gyms = gymService.getAllGymsByLoc(gymCustomer.getLocation());
-	        displayGyms(gyms);
+	    	 // Ask the user to select a location
+		    System.out.println("\n\033[1mSelect a location:\033[0m");
+		    System.out.println("1. Bellandur");
+		    System.out.println("2. Whitefield");
+		    System.out.println("3. Indiranagar");
+		    Scanner scanner = new Scanner(System.in);
+		    int locationChoice = scanner.nextInt();
+		    String selectedLocation;
 
+		    switch (locationChoice) {
+		        case 1:
+		            selectedLocation = "Bellandur";
+		            break;
+
+		        case 2:
+		            selectedLocation = "Whitefield";
+		            break;
+
+		        case 3:
+		            selectedLocation = "Indiranagar";
+		            break;
+
+		        default:
+		            System.out.println("Invalid choice. Exiting.");
+		            return;
+		    }
+
+		    // Print the header for the gyms
+		    System.out.println("\n\033[1mGyms in " + selectedLocation + "\033[0m");
+		    List<Gym> gyms = gymService.getAllGymsByLoc(selectedLocation);
+		    displayGyms(gyms);
 	        System.out.println("Enter the gym ID you want to book: ");
 	        int gymId = sc.nextInt();
 	        Gym selectedGym = gymService.getGym(gymId);
@@ -263,26 +292,35 @@ System.out.println(userId);
 		displayBooking(bookedSlots);
 		System.out.println("\nEnter the booking ID to be cancelled: ");
 		int bookingId = sc.nextInt();
-		bookingService.cancelBooking(bookingId);
+		if(bookingService.cancelBooking(bookingId))
+			 System.out.println("\n\033[1mBooking with ID " + bookingId + " is cancelled successfully\033[0m");
+		else
+			System.out.println("\n\033[1Error occured!!\033[0m");
 	}
 	
 	void displayBooking(List<Booking> bookedSlots) {
-		 // Print table header for booking history
-	    System.out.println("-------------------------------------------------------------");
-	    System.out.printf("| %-12s | %-10s | %-10s | %-20s |\n",
-	            "Booking ID", "Gym ID", "Slot ID", "Booking Date");
-	    System.out.println("-------------------------------------------------------------");
+		// Print table header
+		System.out.println("-----------------------------------------------------------------------");
+		System.out.printf("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
+		        "Booking ID", "Gym Name", "Slot Start Time", "Slot Time", "Booking Date", "Cancelled");
+		System.out.println("-----------------------------------------------------------------------");
 
-	    // Print booking history details
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		// Print booking history details
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-	    for (Booking booking : bookedSlots) {
-	        System.out.printf("| %-12d | %-10d | %-10d | %-20s |\n",
-	                booking.getBookingId(), booking.getGymId(), booking.getSlotId(),
-	                booking.getBookingDate().format(formatter));
-	    }
+		for (Booking booking : bookedSlots) {
+		    String cancelledStatus = booking.isCancelled() ? "Yes" : "No";
+		    // Fetch gym name using gym ID
+		    String gymName = gymService.getGym(booking.getGymId()).getGymName();
+		    // Fetch slot start time using slot ID
+		    LocalTime slotStartTime = slotService.getSlot(booking.getSlotId()).getStartTime();
+		    System.out.printf("| %-12d | %-20s | %-20s | %-20d | %-20s | %-15s |\n",
+		            booking.getBookingId(), gymName, slotStartTime, booking.getSlotId(),
+		            booking.getBookingDate().format(formatter), cancelledStatus);
+		}
 
-	    System.out.println("-------------------------------------------------------------");
+		System.out.println("-----------------------------------------------------------------------");
+
 	}
 
 	private void viewBookingHistory(int userId) {

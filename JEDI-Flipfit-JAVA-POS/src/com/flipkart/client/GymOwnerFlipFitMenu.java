@@ -137,7 +137,7 @@ public class GymOwnerFlipFitMenu {
             System.out.println("2. Location");
             System.out.println("3. Gym Description");
             System.out.println("4. Total Slots");
-
+            System.out.println("5. Price per Slots");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character
 
@@ -165,6 +165,10 @@ public class GymOwnerFlipFitMenu {
                     int newTotalSlots = scanner.nextInt();
                     selectedGym.setTotalSlots(newTotalSlots);
                     break;
+                case 5:
+                	System.out.print("\033[0;34mEnter new Price per slot: \033[0m");
+                	int price = scanner.nextInt();
+                	selectedGym.setPricePerSlot(price);
 
                 default:
                     System.out.println("Invalid choice. No modifications performed.");

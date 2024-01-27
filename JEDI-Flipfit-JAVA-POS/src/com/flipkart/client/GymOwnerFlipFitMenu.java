@@ -137,7 +137,7 @@ public class GymOwnerFlipFitMenu {
             System.out.println("2. Location");
             System.out.println("3. Gym Description");
             System.out.println("4. Total Slots");
-
+            System.out.println("5. Price per Slots");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character
 
@@ -165,6 +165,10 @@ public class GymOwnerFlipFitMenu {
                     int newTotalSlots = scanner.nextInt();
                     selectedGym.setTotalSlots(newTotalSlots);
                     break;
+                case 5:
+                	System.out.print("\033[0;34mEnter new Price per slot: \033[0m");
+                	int price = scanner.nextInt();
+                	selectedGym.setPricePerSlot(price);
 
                 default:
                     System.out.println("Invalid choice. No modifications performed.");
@@ -387,18 +391,22 @@ public class GymOwnerFlipFitMenu {
 
 	        	// Print table header
 	        	System.out.println("--------------------------------------------------------------------");
-	        	System.out.printf("| %-10s | %-10s | %-10s | %-15s | %-10s | %-10s |\n",
-	        	        "Slot ID", "Start Time", "Slot Time", "Total Seats", "Active", "Approved");
+	        	System.out.printf("| %-10s | %-10s | %-10s | %-15s | %-10s | %-10s | %-12s |\n",
+	        	        "Slot ID", "Start Time", "Slot Time", "Total Seats", "Active", "Approved", "Booked Seats");
 	        	System.out.println("--------------------------------------------------------------------");
 
 	        	// Print slot details
 	        	for (Slot slot : slots) {
-	        	    System.out.printf("| %-10d | %-10s | %-10d | %-15d | %-10s | %-10s |\n",
+	                int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
+	        	    int bookedSeats = slot.getTotalSeats() - availableSeats;
+	        	    System.out.printf("| %-10d | %-10s | %-10d | %-15d | %-10s | %-10s | %-12d |\n",
 	        	            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
-	        	            slot.isActive(), slot.isApproved() ? "Approved" : "Processing" );
+	        	            slot.isActive(), slot.isApproved() ? "Approved" : "Processing" , bookedSeats);
+
 	        	}
 
 	        	System.out.println("--------------------------------------------------------------------");
+
 	        } else {
 	            System.out.println("Gym not found with the provided ID.");
 	        }

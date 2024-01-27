@@ -240,6 +240,9 @@ public class FlipfitApplication {
 		String password = in.next();
 		System.out.print("\033[0;34mEnter your new password: \033[0m");
 		String newPassword = in.next();
-		System.out.println("\n\033[0mPassword Updated Successfully!\n\033[1m\n");
+		if(UserFlipFitServiceImpl.getInstance().updatePassword(userName, newPassword))
+			System.out.println("\n\033[0mPassword Updated Successfully!\n\033[1m\n");
+		else
+			System.out.println("\n\033[0mUnable to update!\n\033[1m\n");
 	}
 }

@@ -48,9 +48,9 @@ public class UserFlipFitServiceImpl implements UserFlipFitService {
 	}
 
 	@Override
-	public boolean updatePassword(int userId, String newPassword) {
+	public boolean updatePassword(String userName, String newPassword) {
 		
-		return UserDAOImpl.getInstance().updatePassword(userId , newPassword);
+		return UserDAOImpl.getInstance().updatePassword(userName , newPassword);
 	}
 
 	@Override
@@ -64,7 +64,6 @@ public class UserFlipFitServiceImpl implements UserFlipFitService {
 		// TODO Auto-generated method stub
 		return UserDAOImpl.getInstance().getUser(userId);
 	}
-	
 	
 
 }

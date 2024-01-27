@@ -9,7 +9,7 @@ public class SQLConstants {
 			+ " VALUES (?, ?, ?)";	
 	public static final String SELECT_USER = "SELECT * FROM " + TABLE_USER;	
 	public static final String WHERE_USERNAME = " WHERE username = ";
-	public static final String UPDATE_USER_PASSWORD = "UPDATE " + TABLE_USER + " SET password = ? WHERE ID = ?";
+	public static final String UPDATE_USER_PASSWORD = "UPDATE " + TABLE_USER + " SET password = ? WHERE username = ?";
 
 
 	// Customer

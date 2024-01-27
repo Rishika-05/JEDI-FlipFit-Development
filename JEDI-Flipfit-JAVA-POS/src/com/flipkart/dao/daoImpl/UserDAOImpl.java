@@ -108,14 +108,14 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean updatePassword(int userId, String newPassword) {
+	public boolean updatePassword(String userName, String newPassword) {
 		int rowsUpdated = 0;
 		Connection connection = DBConnection.getConnection();
 		if (connection != null) {
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.UPDATE_USER_PASSWORD);
 				preparedStatement.setString(1,newPassword);
-				preparedStatement.setInt(2,userId);
+				preparedStatement.setString(2,userName);
 				rowsUpdated = preparedStatement.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -127,7 +127,7 @@ public class UserDAOImpl implements UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return true;
+		return rowsUpdated > 0;
 	}
 
 	@Override

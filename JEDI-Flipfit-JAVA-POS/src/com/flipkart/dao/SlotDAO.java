@@ -27,6 +27,8 @@ public interface SlotDAO {
 	public ArrayList<Slot> getAllSlots(int gymId);
 		
 	public Slot updateSlot(Slot slot);
+	
+	public int getAvailableSeats(int slotId);
 
 	ArrayList<Slot> getAllApprovedSlots(int gymId);
 

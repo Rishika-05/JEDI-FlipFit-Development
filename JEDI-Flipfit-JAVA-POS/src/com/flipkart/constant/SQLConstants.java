@@ -53,6 +53,7 @@ public class SQLConstants {
     public static final String SELECT_SLOTS_BY_GYM = "SELECT * FROM Slot WHERE gymId = ? and active = true";
     public static final String SELECT_APPROVED_SLOTS_BY_GYM = "SELECT * FROM Slot WHERE gymId = ? and active = true and approved = true";
     public static final String UPDATE_SLOT = "UPDATE Slot SET gymId = ?, startTime = ?, slotTime = ?, totalSeats = ?, active = ?, approved = ? WHERE ID = ?";
+    public static final String AVAILABLE_SEATS = "SELECT (SELECT s.totalSeats FROM Slot AS s WHERE s.Id = ?) - (SELECT count(b.slotId) FROM Booking AS b WHERE b.slotId = ? AND b.isCancelled = FALSE) AS Available;";
 
 
 	//Booking

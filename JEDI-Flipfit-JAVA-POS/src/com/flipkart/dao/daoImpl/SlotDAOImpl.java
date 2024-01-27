@@ -238,4 +238,30 @@ public class SlotDAOImpl implements SlotDAO {
 	        return slot;
 	    }
 
+		@Override
+		public int getAvailableSeats(int slotId) {
+			int availableSeats = 0;
+			 Connection connection = DBConnection.getConnection();
+		        if (connection != null) {
+		            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.AVAILABLE_SEATS)) {
+		                
+		                preparedStatement.setInt(1, slotId);
+		                preparedStatement.setInt(2, slotId);
+		                ResultSet resultSet = preparedStatement.executeQuery();
+		                while (resultSet.next()) {
+		                    availableSeats = resultSet.getInt("Available");
+		                }
+		            } catch (SQLException e) {
+		                e.printStackTrace();
+		            } finally {
+		                try {
+		                    connection.close();
+		                } catch (SQLException e) {
+		                    e.printStackTrace();
+		                }
+		            }
+		        }
+		        return availableSeats;
+		}
+
 }

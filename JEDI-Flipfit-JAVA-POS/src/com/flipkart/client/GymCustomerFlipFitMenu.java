@@ -245,7 +245,7 @@ System.out.println(userId);
 	            int slotId = sc.nextInt();
 	            
 	            // Check if the selected slot is available
-	            if (slotService.isAvailable(slotId)) {
+	            if (slotService.getAvailableSeats(slotId) > 0) {
 	                // Insert the booking
 	                bookingService.insertBooking(userId, gymId, slotId);
 	                System.out.println("\n\033[1mBooking successful! Enjoy your workout.\033[0m");

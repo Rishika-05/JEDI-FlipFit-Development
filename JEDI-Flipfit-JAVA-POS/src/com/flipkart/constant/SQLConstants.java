@@ -48,8 +48,10 @@ public class SQLConstants {
     public static final String DELETE_SLOT = "UPDATE Slot SET active = ? WHERE ID = ?";
     public static final String APPROVE_SLOT = "UPDATE Slot SET approved = ? WHERE ID = ?";
     public static final String SELECT_SLOT = "SELECT * FROM Slot WHERE ID = ?";
-    public static final String SELECT_ALL_SLOTS = "SELECT * FROM Slot";
-    public static final String SELECT_SLOTS_BY_GYM = "SELECT * FROM Slot WHERE gymId = ?";
+    public static final String SELECT_ALL_SLOTS = "SELECT * FROM Slot where active = true";
+    public static final String SELECT_APPROVED_SLOTS = "SELECT * FROM Slot where active = true and approved true";
+    public static final String SELECT_SLOTS_BY_GYM = "SELECT * FROM Slot WHERE gymId = ? and active = true";
+    public static final String SELECT_APPROVED_SLOTS_BY_GYM = "SELECT * FROM Slot WHERE gymId = ? and active = true and approved = true";
     public static final String UPDATE_SLOT = "UPDATE Slot SET gymId = ?, startTime = ?, slotTime = ?, totalSeats = ?, active = ?, approved = ? WHERE ID = ?";
 
 

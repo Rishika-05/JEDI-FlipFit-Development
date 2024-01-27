@@ -226,20 +226,20 @@ System.out.println(userId);
 	        if (selectedGym != null) {
 	            // Get the list of slots for the selected gym
 	            List<Slot> slots = slotService.getAllSlotsByGymId(gymId);
-
-	            // Print table header for slots
-	            System.out.println("-------------------------------------------------------------");
-	            System.out.printf("| %-10s | %-10s | %-10s | %-15s |\n",
-	                    "Slot ID", "Start Time", "Slot Time", "Total Seats");
-	            System.out.println("-------------------------------------------------------------");
+	         // Print table header for slots
+	            System.out.println("-------------------------------------------------------------------");
+	            System.out.printf("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
+	                    "Slot ID", "Start Time", "Slot Time", "Total Seats", "Available Seats");
+	            System.out.println("-------------------------------------------------------------------");
 
 	            // Print slot details
 	            for (Slot slot : slots) {
-	                System.out.printf("| %-10d | %-10s | %-10d | %-15d |\n",
-	                        slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats());
+	                int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
+	                System.out.printf("| %-10d | %-10s | %-10d | %-15d | %-15d |\n",
+	                        slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(), availableSeats);
 	            }
 
-	            System.out.println("-------------------------------------------------------------");
+	            System.out.println("-------------------------------------------------------------------");
 
 	            System.out.println("Enter the slot ID you want to book: ");
 	            int slotId = sc.nextInt();

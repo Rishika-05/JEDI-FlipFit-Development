@@ -108,5 +108,11 @@ private static SlotFlipFitService slotServiceObj = null;
 		slotDAO.approveSlot(slotId);
 	}
 
+	@Override
+	public int getAvailableSeats(int slotId) {
+		
+		return slotDAO.getAvailableSeats(slotId);
+	}
+
 
 }

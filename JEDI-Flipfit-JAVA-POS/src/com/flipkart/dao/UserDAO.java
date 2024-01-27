@@ -15,7 +15,7 @@ public interface UserDAO {
 	
 	public int verifyUser(String username,String password );
 	
-	public boolean updatePassword(int userId, String newPassword);
+	public boolean updatePassword(String userName, String newPassword);
 	
 	public RoleType getUserRole(int userId);
 	

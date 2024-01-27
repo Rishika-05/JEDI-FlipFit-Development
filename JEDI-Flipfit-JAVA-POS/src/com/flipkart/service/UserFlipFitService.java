@@ -38,11 +38,11 @@ public interface UserFlipFitService {
 	 * @param newPassword
 	 * @return int
 	 */
-	public boolean updatePassword(int userId, String newPassword);
-	
 	public User getUser(int userId);
 	
 	public RoleType getUserRole(int userId);
+
+	public boolean updatePassword(String userName, String newPassword);
 	
 
 }

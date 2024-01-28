@@ -119,7 +119,6 @@ public class FlipfitApplication {
 		password = sc.next();
 
 		int userId = UserFlipFitServiceImpl.getInstance().login(userName, password);
-		System.out.println(userId);
 		User user = UserFlipFitServiceImpl.getInstance().getUser(userId);
 		if (userId == -1) {
 			System.out.println("\033[1mUser Not Found \033[0m");

@@ -32,7 +32,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_GYM_CUSTOMER +
                     SQLConstants.WHERE_GYM_CUSTOMER_ID)) {
                 preparedStatement.setInt(1, gymCustomerId);
-                System.out.println(preparedStatement);
+
                 try (ResultSet rs = preparedStatement.executeQuery()) {
                     if (rs.next()) {
                         gymCustomer = new GymCustomer();
@@ -42,7 +42,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
                         gymCustomer.setUserId(rs.getInt("userId"));
                         gymCustomer.setAge(rs.getInt("age"));
                     }
-                    System.out.println("fjjfjfj");
+
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

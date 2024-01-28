@@ -159,14 +159,33 @@ public class FlipfitApplication {
 		int userId = -1;
 		Scanner in = new Scanner(System.in);
 		while (!flag) {
-			System.out.println("\n\n\033[1m------------------Register---------------- \n\n\033[0m");
-			System.out.println("\033[0;34mPress 1. Customer Registration \n\033[0;32mPress 2. Gym Owner Registration");
+			displayLogo("Register");
+			System.out.println("\033[0;32mPress 1. Customer Registration \n\033[0;32mPress 2. Gym Owner Registration");
 			System.out.print("\033[1mEnter Choice ► \033[0m");
-			int userRole = in.nextInt();
-			while (userRole < 1 || userRole > 2) {
-				System.out.println("\033[1;31mInvalid type! Please try again.\033[0m");
-				userRole = in.nextInt();
+//			int userRole = in.nextInt();
+//			while (userRole < 1 || userRole > 2) {
+//				System.out.println("\033[1;31mInvalid type! Please try again.\033[0m");
+//				userRole = in.nextInt();
+//			}
+			int userRole;
+
+			while (true) {
+				if (in.hasNextInt()) {
+					userRole = in.nextInt();
+
+					if (userRole >= 1 && userRole <= 2) {
+						break; // valid input, exit the loop
+					} else {
+						System.out.println("\033[1;31mInvalid type! Please try again.\033[0m");
+					}
+				} else {
+					System.out.println("\033[1;31mInvalid input! Please enter a valid number.\033[0m");
+					in.next(); // consume the invalid input
+				}
 			}
+
+			// Now 'userRole' contains a valid input
+			System.out.println("User role selected: " + userRole);
 			System.out.print("\033[0;34mEnter username: \033[0m");
 			userName = in.next();
 			in.nextLine();

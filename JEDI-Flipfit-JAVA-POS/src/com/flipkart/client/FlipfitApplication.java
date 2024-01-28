@@ -13,11 +13,14 @@ import com.flipkart.constant.RoleType;
 import com.flipkart.service.UserFlipFitService;
 import com.flipkart.service.serviceImpl.GymCustomerFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;
+import com.flipkart.utils.Utils;
 
 /**
  *
  */
 public class FlipfitApplication {
+
+	static Utils utils = new Utils();
 
 	/**
 	 * @param args
@@ -213,7 +216,8 @@ public class FlipfitApplication {
 				System.out.print("\033[0;34mEnter your location: \033[0m");
 				String location = in.next();
 				in.nextLine();
-				customer.setLocation(location);
+				String formattedLocation = utils.convertFirstLetterCapital(location);
+				customer.setLocation(formattedLocation);
 				System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
 				customer.setUserId(userId);
 				if (UserFlipFitServiceImpl.getInstance().customerRegistration(customer)) {
@@ -237,7 +241,8 @@ public class FlipfitApplication {
 				System.out.print("\033[0;34mEnter your location: \033[0m");
 				String address = in.next();
 				in.nextLine();
-				newGymOwner.setLocation(address);
+				String formattedAddress = utils.convertFirstLetterCapital(address);
+				newGymOwner.setLocation(formattedAddress);
 				String panCard, aadharCard, GstIn;
 				do {
 					System.out.print("\033[0;34mEnter your panCard number. For ex - ABCTY1234D: \033[0m");

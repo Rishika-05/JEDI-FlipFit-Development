@@ -22,6 +22,7 @@ import com.flipkart.service.serviceImpl.BookingFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.GymCustomerFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.GymFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.SlotFlipFitServiceImpl;
+import com.flipkart.utils.Utils;
 
 /**
  *
@@ -31,6 +32,8 @@ public class GymCustomerFlipFitMenu {
 	GymFlipFitService gymService = new GymFlipFitServiceImpl();
 	SlotFlipFitService slotService = new SlotFlipFitServiceImpl();
 	BookingFlipFitServiceImpl bookingService = new BookingFlipFitServiceImpl();
+
+	Utils utils = new Utils();
 	int index = 1;
 
 	public void displayCustomerMenu(int userId) {
@@ -127,7 +130,8 @@ public class GymCustomerFlipFitMenu {
 	        case 3:
 	            System.out.println("Enter your location: ");
 	            String location = in.nextLine();
-	            customer.setLocation(location);
+				String formattedLocation = utils.convertFirstLetterCapital(location);
+	            customer.setLocation(formattedLocation);
 	            break;
 
 	        default:

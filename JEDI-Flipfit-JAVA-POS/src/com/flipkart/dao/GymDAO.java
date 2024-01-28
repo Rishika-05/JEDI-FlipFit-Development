@@ -18,15 +18,15 @@ public interface GymDAO {
 	
 	void addGym(Gym gym);
 	
-	void removeGym(int gymId);
+	boolean removeGym(int gymId);
 
-	void updateGym(Gym gym);
+	boolean updateGym(Gym gym);
 
 	List<Gym> getAllGymsById(int userId);
 
 	List<Gym> getAllGymsByLoc(String selectedLocation);
 	
-	void approveGymsById(int gymId);
+	boolean approveGymsById(int gymId);
 
 	List<Gym> getAllActiveGyms();
 }

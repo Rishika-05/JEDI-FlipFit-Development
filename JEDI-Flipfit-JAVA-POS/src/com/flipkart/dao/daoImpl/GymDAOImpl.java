@@ -104,12 +104,13 @@ private static GymDAO gymDAOObj = null;
     }
 
     @Override
-    public void removeGym(int gymId) {
+    public boolean removeGym(int gymId) {
+    	int rowsUpdated = 0;
         Connection connection = DBConnection.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.DELETE_GYM)) {
                 preparedStatement.setInt(1, gymId);
-                preparedStatement.executeUpdate();
+                rowsUpdated = preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
@@ -120,16 +121,17 @@ private static GymDAO gymDAOObj = null;
                 }
             }
         }
+        return rowsUpdated > 0;
     }
 
     @Override
-    public void updateGym(Gym gym) {
+    public boolean updateGym(Gym gym) {
+    	int rowsUpdated = 0;
         Connection connection = DBConnection.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.UPDATE_GYM)) {
                 prepareStatementForGymUpdate(preparedStatement, gym);
-                
-                preparedStatement.executeUpdate();
+                rowsUpdated = preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
@@ -140,6 +142,7 @@ private static GymDAO gymDAOObj = null;
                 }
             }
         }
+        return rowsUpdated > 0;
     }
 
     @Override
@@ -230,12 +233,13 @@ private static GymDAO gymDAOObj = null;
     }
 
     @Override
-    public void approveGymsById(int gymId) {
+    public boolean approveGymsById(int gymId) {
+    	int rowsUpdated = 0;
         Connection connection = DBConnection.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.APPROVE_GYM_BY_ID)) {
                 preparedStatement.setInt(1, gymId);
-                preparedStatement.executeUpdate();
+                rowsUpdated = preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
@@ -246,6 +250,7 @@ private static GymDAO gymDAOObj = null;
                 }
             }
         }
+        return rowsUpdated > 0;
     }
 
     @Override

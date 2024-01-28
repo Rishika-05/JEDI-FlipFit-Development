@@ -34,7 +34,6 @@ public class GymCustomerFlipFitMenu {
 	int index = 1;
 
 	public void displayCustomerMenu(int userId) {
-System.out.println(userId);
 		int option;
 		int gymCustomerId = customerService.getGymCustomerId(userId);
 		do {

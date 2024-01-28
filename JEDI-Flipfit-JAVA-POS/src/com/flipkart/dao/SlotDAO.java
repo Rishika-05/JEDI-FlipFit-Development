@@ -16,9 +16,9 @@ import com.flipkart.bean.Slot;
 public interface SlotDAO {
 	public void createSlot( Slot slot);
 	
-	public void deleteSlot(int slotId);
+	public boolean deleteSlot(int slotId);
 	
-	public void approveSlot(int slotId);
+	public boolean approveSlot(int slotId);
 	
 	public Slot getSlot(int slotId);
 	

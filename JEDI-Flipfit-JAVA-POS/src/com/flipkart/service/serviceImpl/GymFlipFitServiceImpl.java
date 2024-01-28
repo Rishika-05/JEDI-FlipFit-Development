@@ -55,8 +55,6 @@ private static GymFlipFitService gymServiceObj = null;
 
 	@Override
 	public void addGym(Gym gym) {
-		//  ownerId,  slots,  name,  loc,  des
-		
 		gymDAO.addGym(gym);
 	}
 

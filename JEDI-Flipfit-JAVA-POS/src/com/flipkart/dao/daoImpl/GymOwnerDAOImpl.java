@@ -39,7 +39,6 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
 
     @Override
     public GymOwner getGymOwnerById(int gymOwnerId) {
-    	System.out.println(gymOwnerId);
         Connection connection = DBConnection.getConnection();
         GymOwner gymOwner = null;
         if (connection != null) {

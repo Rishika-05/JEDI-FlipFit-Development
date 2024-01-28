@@ -31,25 +31,7 @@ public class GymCustomerFlipFitServiceImpl implements GymCustomerFlipFitService 
 
 		return gymCustomerServiceObj;
 	}
-
-
-	@Override
-	public void bookWorkout(Booking booking) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cancelBooking(int bookingId) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Booking> getBookings(int userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public boolean updateProfile(int gymCustomerId, GymCustomer newGymCustomer) {
@@ -64,18 +46,6 @@ public class GymCustomerFlipFitServiceImpl implements GymCustomerFlipFitService 
 	}
 
 
-
-	@Override
-	public void cancelSlot(int gymID, int slotHour, int userID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void bookSlot(int gymId, int slotHour, int userId) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public int getGymCustomerId(int userId) {

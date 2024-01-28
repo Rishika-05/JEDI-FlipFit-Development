@@ -36,8 +36,6 @@ public class UserDAOImpl implements UserDAO {
 		return userDAOObj;
 	}
 	
-	private ArrayList<User> users = new ArrayList<User>();
-	private int userCount = 0;
 
 	@Override
 	public int createUser(User user) {
@@ -74,7 +72,6 @@ public class UserDAOImpl implements UserDAO {
 			try {
 				String selectQuery = SQLConstants.SELECT_USER + SQLConstants.WHERE_USERNAME + "'"+username+"'";
 				PreparedStatement preparedStatement = connection.prepareStatement(selectQuery, generatedColumns);
-				System.out.println(preparedStatement);
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next()){
 					 //Retrieve by column name
@@ -103,7 +100,6 @@ public class UserDAOImpl implements UserDAO {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(user);
 		return user != null ? user.getUserId(): -1 ;
 	}
 

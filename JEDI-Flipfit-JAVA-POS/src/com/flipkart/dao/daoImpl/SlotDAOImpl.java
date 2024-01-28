@@ -57,13 +57,14 @@ public class SlotDAOImpl implements SlotDAO {
 	    }
 
 	    @Override
-	    public void deleteSlot(int slotId) {
+	    public boolean deleteSlot(int slotId) {
+	    	int rowsUpdated = 0;
 	        Connection connection = DBConnection.getConnection();
 	        if (connection != null) {
 	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.DELETE_SLOT)) {
 	                preparedStatement.setBoolean(1, false);
 	                preparedStatement.setInt(2, slotId);
-	                preparedStatement.executeUpdate();
+	                rowsUpdated = preparedStatement.executeUpdate();
 	            } catch (SQLException e) {
 	                e.printStackTrace();
 	            } finally {
@@ -74,16 +75,18 @@ public class SlotDAOImpl implements SlotDAO {
 	                }
 	            }
 	        }
+	        return rowsUpdated > 0;
 	    }
 
 	    @Override
-	    public void approveSlot(int slotId) {
+	    public boolean approveSlot(int slotId) {
+	    	int rowsUpdated = 0;
 	        Connection connection = DBConnection.getConnection();
 	        if (connection != null) {
 	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.APPROVE_SLOT)) {
 	                preparedStatement.setBoolean(1, true);
 	                preparedStatement.setInt(2, slotId);
-	                preparedStatement.executeUpdate();
+	                rowsUpdated = preparedStatement.executeUpdate();
 	            } catch (SQLException e) {
 	                e.printStackTrace();
 	            } finally {
@@ -94,6 +97,7 @@ public class SlotDAOImpl implements SlotDAO {
 	                }
 	            }
 	        }
+	        return rowsUpdated > 0;
 	    }
 
 	    @Override

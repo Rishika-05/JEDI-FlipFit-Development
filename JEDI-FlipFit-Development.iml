@@ -10,11 +10,9 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-<<<<<<< HEAD
-          <root url="jar://$USER_HOME$/Downloads/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar!/" />
-=======
+
           <root url="jar://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar!/" />
->>>>>>> 0e9a80c (check)
+
         </CLASSES>
         <JAVADOC />
         <SOURCES />

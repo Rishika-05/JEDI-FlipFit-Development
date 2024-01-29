@@ -8,17 +8,13 @@ import java.sql.SQLException;
 
 
 public class DBConnection {
-<<<<<<< HEAD
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost/flipfit_schema";
-=======
-	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://localhost/FlipfitSchema";
->>>>>>> 0e9a80c (check)
+
 
 	static final String USER = "root";
 
-	static final String PASS = "12345678";
+	static final String PASS = "password";
 	
 	/**
 	 * Execute the given Update/Delete/Insert Query

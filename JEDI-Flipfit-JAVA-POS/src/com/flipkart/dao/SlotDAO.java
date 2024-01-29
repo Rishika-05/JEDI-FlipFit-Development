@@ -12,6 +12,9 @@ import com.flipkart.bean.Slot;
 
 /**
  * 
+ * @return SlotDAO
+ * @description Interface for Slot Operations
+ * 
  */
 public interface SlotDAO {
 	public void createSlot( Slot slot);

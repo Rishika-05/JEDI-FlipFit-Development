@@ -10,6 +10,9 @@ import com.flipkart.exception.UserNotFoundException;
 
 /**
  * 
+ * @return UserDAO
+ * @description Interface for User Operations
+ * 
  */
 public interface UserDAO {
 	

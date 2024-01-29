@@ -6,58 +6,54 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+/**
+ * This class represents a database connection utility.
+ */
 public class DBConnection {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost/flipfit_schema";
 
-
 	static final String USER = "root";
-
 	static final String PASS = "password";
-	
+
 	/**
-	 * Execute the given Update/Delete/Insert Query
-	 * @param statement
-	 * @return
+	 * Execute the given Update/Delete/Insert Query.
+	 *
+	 * @param statement the prepared statement containing the query
+	 * @return the number of rows affected by the query
 	 */
-	
 	public static int executeDMLQuery(PreparedStatement statement) {
-		if(statement != null) {
+		if (statement != null) {
 			try {
-				//System.out.println("Executing Query " + statement);
 				return statement.executeUpdate();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return 0;
 	}
-	
+
 	/**
-	 * Execute the given fetch query
-	 * @param statement
-	 * @return result from the execution
+	 * Execute the given fetch query.
+	 *
+	 * @param statement the prepared statement containing the query
+	 * @return the result set obtained from the query execution
 	 */
-	
 	public static ResultSet executeQuery(PreparedStatement statement) {
-		ResultSet rs=null;
+		ResultSet rs = null;
 		try {
 			rs = statement.executeQuery();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return rs;
 	}
-	
+
 	/**
-	 * Create connection 
-	 * @return Connection object
+	 * Create a database connection.
+	 *
+	 * @return a Connection object representing the database connection
 	 */
-	
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
@@ -68,6 +64,5 @@ public class DBConnection {
 			System.out.println("Database could not be connected");
 		}
 		return conn;
-
 	}
 }

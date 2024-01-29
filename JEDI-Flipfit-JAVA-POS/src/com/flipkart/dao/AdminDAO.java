@@ -1,5 +1,5 @@
 /**
- * 
+ * The AdminDAO interface provides methods to interact with the database for administrative tasks related to gym owners and gym registrations.
  */
 package com.flipkart.dao;
 
@@ -8,34 +8,35 @@ import com.flipkart.bean.GymOwner;
 import java.util.ArrayList;
 
 /**
- * 
+ * The AdminDAO interface defines methods for administrative tasks related to gym owners and gym registrations.
  */
 public interface AdminDAO {
 
+    /**
+     * Approves a gym owner's registration.
+     * @return true if the registration is approved, false otherwise
+     */
     public boolean approveGymOwner();
 
     /**
-     * Fetch all pending gym owners registrations
-     * @return List of pending gymowners
+     * Fetches all pending gym owner approvals.
+     * @return a list of pending gym owners
      */
-
     public ArrayList<GymOwner> getPendingGymOwnerApprovals();
 
     /**
-     * Approve a gym registration request
-     * @return boolean whether approved or not
+     * Approves a gym registration request.
+     * @return true if the request is approved, false otherwise
      */
     public boolean approveGymRegistrationRequest();
 
     /**
-     * Fetch all pending gym location registrations
-     *
+     * Fetches all pending gym location registration requests.
      */
-
     public void getPendingGymLocationRegistrationRequests();
 
     /**
-     * Fetch all approved gym owners
+     * Fetches all approved gym owners.
      */
     public void viewAllGymOwners();
 

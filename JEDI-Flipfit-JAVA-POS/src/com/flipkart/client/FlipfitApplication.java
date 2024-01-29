@@ -16,7 +16,9 @@ import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;
 import com.flipkart.utils.Utils;
 
 /**
- *
+ * Main class
+ * @return void
+ * 
  */
 public class FlipfitApplication {
 
@@ -82,7 +84,12 @@ public class FlipfitApplication {
 
 	}
 	
-	
+	/**
+	 * Display logo
+	 * @return void
+	 * @throws Exception
+	 * @param windowTitle
+	 */
 	
 	public static void displayLogo(String windowTitle) {
 
@@ -90,9 +97,14 @@ public class FlipfitApplication {
 		System.out.println("\033[1;34m      ▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m " + windowTitle + " \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
 		System.out.println("");
 
-
-
 	}
+
+	/**
+	 * Create main menu
+	 * @return void
+	 * @throws Exception
+	 * @param
+	 */
 
 	public static void createMainMenu() {
 
@@ -107,6 +119,13 @@ public class FlipfitApplication {
 		System.out.print("\033[1mEnter Choice ► \033[0m");
 
 	}
+
+	/**
+	 * Login
+	 * @return void
+	 * @throws Exception
+	 * @param
+	 */
 
 	static void login() {
 		System.out.println();
@@ -153,6 +172,13 @@ public class FlipfitApplication {
 		}
 		System.out.println("\033[1mExiting Login \033[0m");
 	}
+
+	/**
+	 * Register
+	 * @return void
+	 * @throws Exception
+	 * @param
+	 */
 
 	static void register() {
 		boolean flag = false;
@@ -293,6 +319,13 @@ public class FlipfitApplication {
 		System.out.println("\033[1mExiting Register menu\033[0m");
 
 	}
+
+	/**
+	 * Update password
+	 * @return void
+	 * @throws Exception
+	 * @param
+	 */
 
 	static void updatePassword() {
 		System.out.println("\n\n\033[1m-------------------Update Password------------------ \n\n\033[0m");

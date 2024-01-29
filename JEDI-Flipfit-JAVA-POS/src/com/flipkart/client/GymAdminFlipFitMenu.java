@@ -18,9 +18,7 @@ import com.flipkart.service.serviceImpl.GymFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.GymOwnerFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.SlotFlipFitServiceImpl;
 
-/**
- *
- */
+
 public class GymAdminFlipFitMenu {
 	GymCustomerFlipFitService customerService = GymCustomerFlipFitServiceImpl.getInstance();
 	GymFlipFitService gymService = new GymFlipFitServiceImpl();

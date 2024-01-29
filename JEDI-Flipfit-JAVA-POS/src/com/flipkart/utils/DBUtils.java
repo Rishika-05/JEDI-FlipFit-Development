@@ -56,7 +56,7 @@ public class DBUtils {
                 {
 
                     Properties prop = new Properties();
-                    String configPath = "/Users/harsh.sharma9/Desktop/JEDI-FlipFit-Development/JEDI-Flipfit-JAVA-POS/src/config.properties";
+                    String configPath = "./src/config.properties";
                     InputStream inputStream = new FileInputStream(configPath);
                     prop.load(inputStream);
                     String driver = prop.getProperty("driver");

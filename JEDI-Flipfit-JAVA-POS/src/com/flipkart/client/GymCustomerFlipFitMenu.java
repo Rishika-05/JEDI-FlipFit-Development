@@ -297,22 +297,24 @@ public class GymCustomerFlipFitMenu {
 	}
 	
 	void displayBooking(List<Booking> bookedSlots) {
-		// Print table header
-		Utils.printFormattedTableHeader("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
-		        "Booking ID", "Gym Name", "Slot Start Time", "Slot Time", "Booking Date", "Cancelled");
+	    // Print table header
+	    Utils.printFormattedTableHeader("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
+	            "Booking ID", "Gym Name", "Slot Start Time", "Slot Time", "Booking Date", "Cancelled");
 
-		// Print booking history details
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		bookedSlots.forEach((booking -> {
-			String cancelledStatus = booking.isCancelled() ? "Yes" : "No";
-			// Fetch gym name using gym ID
-			String gymName = gymService.getGym(booking.getGymId()).getGymName();
-			// Fetch slot start time using slot ID
-			LocalTime slotStartTime = slotService.getSlot(booking.getSlotId()).getStartTime();
-			Utils.printFormattedTableRow("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
-					booking.getBookingId(), gymName, slotStartTime, booking.getSlotId(),
-					booking.getBookingDate().format(formatter), cancelledStatus);
-		}));
+	    // Print booking history details using Stream API
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	    bookedSlots.stream()
+	            .map(booking -> {
+	                String cancelledStatus = booking.isCancelled() ? "Yes" : "No";
+	                // Fetch gym name using gym ID
+	                String gymName = gymService.getGym(booking.getGymId()).getGymName();
+	                // Fetch slot start time using slot ID
+	                LocalTime slotStartTime = slotService.getSlot(booking.getSlotId()).getStartTime();
+	                return String.format("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
+	                        booking.getBookingId(), gymName, slotStartTime, booking.getSlotId(),
+	                        booking.getBookingDate().format(formatter), cancelledStatus);
+	            })
+	            .forEach(Utils::printFormattedTableRow);
 	}
 
 	private void viewBookingHistory(int userId) {

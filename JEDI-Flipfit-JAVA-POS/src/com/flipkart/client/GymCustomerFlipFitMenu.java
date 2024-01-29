@@ -1,6 +1,10 @@
 /**
- *
+ * This class represents the menu options for a Gym Customer in the FlipFit application.
+ * It allows the Gym Customer to browse gyms, book slots, cancel bookings, view booking history,
+ * view and update their profile.
+ * The class uses various services and utility methods to perform these operations.
  */
+
 package com.flipkart.client;
 
 import java.time.LocalTime;

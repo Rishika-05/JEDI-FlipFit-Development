@@ -13,7 +13,9 @@ public class GymCustomer extends UserModule {
 	private int customerId;
 	
 	/**
-	 * @return the customerId
+	 * Returns the customer ID.
+	 *
+	 * @return the customer ID
 	 */
 	public int getCustomerId() {
 		return customerId;

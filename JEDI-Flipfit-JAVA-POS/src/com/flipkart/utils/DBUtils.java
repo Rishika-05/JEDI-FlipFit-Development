@@ -1,3 +1,6 @@
+/**
+ * This class provides utility methods for interacting with the database.
+ */
 package com.flipkart.utils;
 
 import java.sql.*;
@@ -10,6 +13,12 @@ import java.util.Properties;
 
 public class DBUtils {
 
+    /**
+     * Executes a Data Manipulation Language (DML) query.
+     * 
+     * @param statement the prepared statement containing the query
+     * @return the number of rows affected by the query
+     */
     public static int executeDMLQuery(PreparedStatement statement) {
         if(statement != null) {
             try {
@@ -24,11 +33,11 @@ public class DBUtils {
     }
 
     /**
-     * Execute the given fetch query
-     * @param statement
-     * @return result from the execution
+     * Executes the given fetch query.
+     * 
+     * @param statement the prepared statement containing the query
+     * @return the result set from the execution
      */
-
     public static ResultSet executeQuery(PreparedStatement statement) {
         ResultSet rs=null;
         try {
@@ -42,48 +51,40 @@ public class DBUtils {
     }
 
     /**
-     * Create connection
-     * @return Connection object
+     * Creates a database connection.
+     * 
+     * @return the Connection object
      */
-
     public static Connection getConnection() {
-            Connection connection = null;
-            if (connection != null)
-                return connection;
-            else
-            {
-                try
-                {
+        Connection connection = null;
+        if (connection != null)
+            return connection;
+        else {
+            try {
+                Properties prop = new Properties();
 
-                    Properties prop = new Properties();
+                InputStream inputStream = new FileInputStream("./src/config.properties");
 
-                    InputStream inputStream = new FileInputStream("./src/config.properties");
+                prop.load(inputStream);
+                String driver = prop.getProperty("driver");
+                String url = prop.getProperty("url");
+                String user = prop.getProperty("user");
+                String password = prop.getProperty("password");
+                Class.forName(driver);
+                connection = DriverManager.getConnection(url, user, password);
 
-                    prop.load(inputStream);
-                    String driver = prop.getProperty("driver");
-                    String url = prop.getProperty("url");
-                    String user = prop.getProperty("user");
-                    String password = prop.getProperty("password");
-                    Class.forName(driver);
-                    connection = DriverManager.getConnection(url, user, password);
-
-                }
-                catch (ClassNotFoundException e){
-                    e.printStackTrace();
-                }
-                catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return connection;
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
+            return connection;
         }
     }
+}
 
 

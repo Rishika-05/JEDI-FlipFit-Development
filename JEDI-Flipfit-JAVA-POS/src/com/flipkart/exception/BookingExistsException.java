@@ -1,11 +1,13 @@
 /**
- * 
+ * The BookingExistsException class is an exception that is thrown when a booking already exists.
  */
 package com.flipkart.exception;
 
 /**
- * 
+ * This class represents an exception that is thrown when a booking already exists.
  */
 public class BookingExistsException extends Exception {
-//    super("Booking already exists");
+    public BookingExistsException() {
+        super("Booking already exists.");
+    }
 }

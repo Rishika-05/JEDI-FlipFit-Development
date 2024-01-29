@@ -13,6 +13,11 @@ public class Gym {
     /**
 	 * @return the gymId
 	 */
+	/**
+	 * Returns the gym ID.
+	 *
+	 * @return the gym ID
+	 */
 	public int getGymId() {
 		return gymId;
 	}

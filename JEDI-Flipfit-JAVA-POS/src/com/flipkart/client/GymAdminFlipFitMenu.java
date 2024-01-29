@@ -1,6 +1,9 @@
 /**
- *
+ * This class represents the Gym Admin FlipFit Menu.
+ * It provides functionality for the gym admin to browse owner registrations, gym registrations, slot registrations, and view all gyms.
+ * The admin can approve gym owners and exit the menu.
  */
+
 package com.flipkart.client;
 
 import java.util.List;
@@ -178,7 +181,7 @@ public class GymAdminFlipFitMenu {
         List<Slot> pendingSlots = slotService.getAllSlot();
 
         if (pendingSlots.isEmpty()) {
-            System.out.println("\033[1;33mNo pending slot registrations.\033[0m")
+            System.out.println("\033[1;33mNo pending slot registrations.\033[0m");
             return;
         }
 

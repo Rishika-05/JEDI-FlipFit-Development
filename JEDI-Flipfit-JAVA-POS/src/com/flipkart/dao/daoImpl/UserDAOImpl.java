@@ -15,6 +15,8 @@ import com.flipkart.constant.RoleType;
 import com.flipkart.constant.SQLConstants;
 import com.flipkart.utils.DBUtils;
 import com.flipkart.dao.UserDAO;
+import com.flipkart.exception.InvalidCredentialsException;
+import com.flipkart.exception.UserNotFoundException;
 import com.flipkart.service.UserFlipFitService;
 import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;
 import com.flipkart.utils.DBUtils;
@@ -65,7 +67,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int verifyUser(String username, String password) {
+	public int verifyUser(String username, String password) throws InvalidCredentialsException, UserNotFoundException {
 		User user = null;
 		Connection connection = DBUtils.getConnection();
 		String generatedColumns[] = { "ID" };
@@ -82,7 +84,7 @@ public class UserDAOImpl implements UserDAO {
 					 String roleRecieved = rs.getString("role");
 					 
 					 if(!password.equals(passwordRecieved)) {
-						 System.out.println("Wrong username or password please try again!!");
+						 throw new InvalidCredentialsException();
 					 }else {
 						 user = new User();
 						 user.setUserId(userID);
@@ -93,15 +95,19 @@ public class UserDAOImpl implements UserDAO {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
-
+			} 
 			try {
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		return user != null ? user.getUserId(): -1 ;
+//		 user != null ? return user.getUserId(): throw new UserNotFoundException();
+		if(user != null) {
+			return user.getUserId();
+		} else {
+			throw new UserNotFoundException();
+		}
 	}
 
 	@Override

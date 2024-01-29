@@ -3,7 +3,6 @@
 public class UserNotFoundException extends Exception{
 	
   public UserNotFoundException(){
-    super("User Not Found!!!");
+		super("\033[1;31mUser Not Found Please Try Again\033[0m");
   }
-
 }

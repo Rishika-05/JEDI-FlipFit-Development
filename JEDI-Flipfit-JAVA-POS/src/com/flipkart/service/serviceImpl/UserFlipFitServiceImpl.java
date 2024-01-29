@@ -7,6 +7,8 @@ import com.flipkart.constant.RoleType;
 import com.flipkart.dao.daoImpl.GymCustomerDAOImpl;
 import com.flipkart.dao.daoImpl.GymOwnerDAOImpl;
 import com.flipkart.dao.daoImpl.UserDAOImpl;
+import com.flipkart.exception.InvalidCredentialsException;
+import com.flipkart.exception.UserNotFoundException;
 import com.flipkart.service.UserFlipFitService;
 
 public class UserFlipFitServiceImpl implements UserFlipFitService {
@@ -44,7 +46,16 @@ public class UserFlipFitServiceImpl implements UserFlipFitService {
 	@Override
 	public int login(String username, String password) {
 		
-		return UserDAOImpl.getInstance().verifyUser(username , password);
+		try {
+			return UserDAOImpl.getInstance().verifyUser(username , password);
+		} catch (InvalidCredentialsException | UserNotFoundException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+			 System.out.println(e.getMessage());
+		}
+		
+		
+		return -1;
 	}
 
 	@Override

@@ -2,7 +2,8 @@
  *
  */
 package com.flipkart.client;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.io.Console;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -29,27 +30,7 @@ public class FlipfitApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("\033[1;34m          ░▒▓▓▓▓▓▓▓▓▓▒░  \033[0m");
-		System.out.println("\033[1;34m       ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒   \033[0m");
-		System.out.println("\033[1;34m     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒   \033[0m");
-		System.out.println("\033[1;34m   ░▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓         \033[0m");
-		System.out.println("\033[1;34m  ░▓▓▓▓\033[0m" + "\033[1;33m░░░░░░░░░░░░░░░░░░░\033[0m" + "\033[1;34m▓▓▓▓░          \033[0m");
-		System.out.println("\033[1;34m  ▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓          \033[0m");
-		System.out.println("\033[1;34m ░▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓░         \033[0m" + "\033[1;33m███████╗██╗     ██╗██████╗ \033[0m" + "\033[1;34m███████╗██╗████████╗\033[0m");
-		System.out.println("\033[1;34m ▒▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓▒\033[0m" + "\033[1;33m░\033[0m" + "\033[1;34m▒▓▓▓▓▒         \033[0m" + "\033[1;33m██╔════╝██║     ██║██╔══██╗\033[0m" + "\033[1;34m██╔════╝██║╚══██╔══╝\033[0m");
-		System.out.println("\033[1;34m ▒▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░░\033[0m" + "\033[1;34m▓▓▓▒\033[0m" + "\033[1;33m░░░░\033[0m" + "\033[1;34m▒▓▓▓▓▒         \033[0m" + "\033[1;33m█████╗  ██║     ██║██████╔╝\033[0m" + "\033[1;34m█████╗  ██║   ██║\033[0m");
-		System.out.println("\033[1;34m ░▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▒\033[0m" + "\033[1;33m░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓░         \033[0m" + "\033[1;33m██╔══╝  ██║     ██║██╔═══╝ \033[0m" + "\033[1;34m██╔══╝  ██║   ██║\033[0m");
-		System.out.println("\033[1;34m  ▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓▓▓▓▓▒\033[0m" + "\033[1;33m░░░\033[0m" + "\033[1;34m▒▓▓▓▓          \033[0m" + "\033[1;33m██║     ███████╗██║██║     \033[0m" + "\033[1;34m██║     ██║   ██║\033[0m");
-		System.out.println("\033[1;34m  ░▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▒\033[0m" + "\033[1;33m░░░░░\033[0m" + "\033[1;34m▒▓▓▓░          \033[0m" + "\033[1;33m╚═╝     ╚══════╝╚═╝╚═╝     \033[0m" + "\033[1;34m╚═╝     ╚═╝   ╚═╝\033[0m");
-		System.out.println("\033[1;34m   ░▓▓▓\033[0m" + "\033[1;33m░░░░░░░░░\033[0m" + "\033[1;34m▓▓▓▒\033[0m" + "\033[1;33m░░░░░░\033[0m" + "\033[1;34m▓▓▓            \033[0m");
-		System.out.println("\033[1;34m     ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒             \033[0m");
-		System.out.println("\033[1;34m       ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒               \033[0m");
-		System.out.println("\033[1;34m          ░▒▓▓▓▓▓▓▓▓▓▒░\033[0m");
-
-
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
+		Utils.logo();
 		displayLogo("Welcome");
 
 
@@ -88,11 +69,8 @@ public class FlipfitApplication {
 	
 	
 	public static void displayLogo(String windowTitle) {
-
-
 		System.out.println("\033[1;34m      ▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m " + windowTitle + " \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
 		System.out.println("");
-
 	}
 
 	public static void createMainMenu() {
@@ -139,8 +117,19 @@ public class FlipfitApplication {
 		RoleType userRole = UserFlipFitServiceImpl.getInstance().getUserRole(userId);
 		LocalDate localDate = LocalDate.now();
 		LocalTime localTime = LocalTime.now();
-		System.out.println("      \033[1;36m" + userName + "\033[0m ▶ LoggedIn time ▶ \033[1;35m" + localTime.format(DateTimeFormatter.ofPattern("HH : mm a")) +
-				"\033[0m on \033[1;32m" + localDate.getMonth() + " " + localDate.getDayOfMonth() + "\033[0m as \033[1;33m" + userRole.name() + "\033[0m");
+		LocalDateTime loginTime = LocalDateTime.now();
+
+
+		String formattedTime = loginTime.format(DateTimeFormatter.ofPattern("hh:mm a"));
+
+		System.out.println("\033[1;34m───────────────────────────────\033[0m");
+		System.out.println("   \033[1;36mUser:\033[0m " + userName);
+		System.out.println("   \033[1;36mLogged In at:\033[0m " +  formattedTime + "\033[0m");
+		System.out.println("   \033[1;36mRole:\033[0m " +  userRole.name() + "\033[0m");
+		System.out.println("\033[1;34m───────────────────────────────\033[0m");
+
+
+
 		switch (userRole) {
 			case ADMIN:
 				GymAdminFlipFitMenu gymAdminFlipFitMenu = new GymAdminFlipFitMenu();

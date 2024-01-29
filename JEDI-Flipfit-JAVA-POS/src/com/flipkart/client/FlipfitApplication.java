@@ -93,8 +93,6 @@ public class FlipfitApplication {
 		System.out.println("\033[1;34m      ▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m " + windowTitle + " \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
 		System.out.println("");
 
-
-
 	}
 
 	public static void createMainMenu() {
@@ -130,10 +128,8 @@ public class FlipfitApplication {
 			return;
 		}
 		System.out.print("\n");
-		System.out.print("\n");
 
-		System.out.print("\033[32mミ★ Congratulations Login Successful ★彡 \033[0m");
-		
+		System.out.print("\033[0;35mミ★\033[0m \033[32m CONGRATULATIONS LOGIN SUCCUESSFUL!!!\033[0m \033[0;35m★彡 \033[0m");
 
 
 		System.out.print("\n");

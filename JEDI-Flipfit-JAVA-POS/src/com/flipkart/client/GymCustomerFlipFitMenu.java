@@ -218,11 +218,12 @@ public class GymCustomerFlipFitMenu {
 	    private void bookSlot(Scanner sc, int userId) {
 //	    	GymCustomer gymCustomer = customerService.viewProfile(userId);
 	    	 // Ask the user to select a location
-		    System.out.println("\n\033[1mSelect a location:\033[0m");
-		    System.out.println("1. Bellandur");
-		    System.out.println("2. Whitefield");
-		    System.out.println("3. Indiranagar");
-		    Scanner scanner = new Scanner(System.in);
+			System.out.println("\033[1mSelect a location:\033[0m");
+			System.out.println("\033[1;34m1. Bellandur\033[0m");
+			System.out.println("\033[1;34m2. Whitefield\033[0m");
+			System.out.println("\033[1;34m3. Indiranagar\033[0m");
+
+			Scanner scanner = new Scanner(System.in);
 		    int locationChoice = scanner.nextInt();
 		    String selectedLocation;
 
@@ -240,8 +241,8 @@ public class GymCustomerFlipFitMenu {
 		            break;
 
 		        default:
-		            System.out.println("Invalid choice. Exiting.");
-		            return;
+					System.out.println("\033[1;31mInvalid choice. Exiting.\033[0m");
+					return;
 		    }
 
 		    // Print the header for the gyms

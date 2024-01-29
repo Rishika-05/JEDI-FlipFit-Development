@@ -56,7 +56,7 @@ public class FlipfitApplication {
                     case 3:
                         updatePassword();
                         break;
-                    case 4:
+                    case 0:
                         System.out.println("\033[1mYou have exited the FlipFit Application\033[0m");
                         break;
                     default:
@@ -64,7 +64,7 @@ public class FlipfitApplication {
                         break;
                 }
 
-            } while (userInput != 4);
+            } while (userInput != 0);
 
         } catch (Exception ex) {
             System.out.println("\033[1;31mError occurred: " + ex + "\033[0m");
@@ -90,7 +90,7 @@ public class FlipfitApplication {
 		System.out.println("\033[1;36m ① Login");
 		System.out.println("\033[1;36m ② Register");
 		System.out.println("\033[1;36m ③ Update Password");
-		System.out.println("\033[1;31m ④ Exit");
+		System.out.println("\033[1;31m ⓪ Exit");
 		System.out.println("\033[0m"); // Reset text attributes
 
 
@@ -211,9 +211,9 @@ public class FlipfitApplication {
 				System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
 				customer.setUserId(userId);
 				if (UserFlipFitServiceImpl.getInstance().customerRegistration(customer)) {
-					System.out.println("Gym Customer Registered");
+					System.out.println("\033[1;32mGym Customer Registered\033[0m");
 				} else {
-					System.out.println("Some Error occurred");
+					System.out.println("\033[1;31mSome Error occurred\033[0m");
 				}
 
 				System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
@@ -263,9 +263,9 @@ public class FlipfitApplication {
 					newGymOwner.setGstin(GstIn);
 				} while (false);
 				if (UserFlipFitServiceImpl.getInstance().gymOwnerRegistration(newGymOwner)) {
-					System.out.println("Gym Customer Registered");
+					System.out.println("\033[1;32mGym Customer Registered\033[0m");
 				} else {
-					System.out.println("Some Error occurred");
+					System.out.println("\033[1;31mSome Error occurred\033[0m");
 				}
 				System.out.println("\n\033[0mGym Owner Registered!\033[1m\n");
 				break;

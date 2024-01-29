@@ -101,7 +101,7 @@ public class GymCustomerFlipFitMenu {
 					break;
 			}
 
-		} while (option != 7);
+		} while (option != 0);
 	}
 
 	private void updateProfile(int gymCustomerId) {
@@ -156,16 +156,18 @@ public class GymCustomerFlipFitMenu {
 	private void viewProfile(int gymCustomerId) {
 	    GymCustomer gymCustomer = customerService.viewProfile(gymCustomerId);
 
-		Utils.printFormattedTableHeader("| %-15s | %-20s | %-10s | %-5s |", "Customer ID", "Name", "Location", "Age");
+	    Utils.printFormattedTableHeader("| %-15s | %-20s | %-15s | %-10s | %-5s | %-15s |",
+	            "Customer ID", "Name", "Location", "Age", "Phone Number", "Email");
 
-
-		Utils.printFormattedTableRow("| %-15s | %-20s | %-10s | %-5s |",
-				gymCustomerId,
-				gymCustomer.getName(),
-				gymCustomer.getLocation(),
-				gymCustomer.getAge());
-
+	    Utils.printFormattedTableRow("| %-15s | %-20s | %-15s | %-10s | %-5s | %-15s |",
+	            gymCustomerId,
+	            gymCustomer.getName(),
+	            gymCustomer.getLocation(),
+	            gymCustomer.getAge(),
+	            gymCustomer.getPhoneNo(),
+	            gymCustomer.getEmail());
 	}
+
 
 	private void browseGyms() {
 		// Implement logic to browse available gyms

@@ -48,12 +48,12 @@ private static GymDAO gymDAOObj = null;
                     gyms.add(gym);
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("An error occured - " + e.getMessage());
             } finally {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("An error occured - " + e.getMessage());
                 }
             }
         }
@@ -72,12 +72,12 @@ private static GymDAO gymDAOObj = null;
                     gym = extractGymFromResultSet(resultSet);
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("An error occured - " + e.getMessage());
             } finally {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("An error occured - " + e.getMessage());
                 }
             }
         }
@@ -92,12 +92,12 @@ private static GymDAO gymDAOObj = null;
                 prepareStatementForGym(preparedStatement, gym);
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("An error occured - " + e.getMessage());
             } finally {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("An error occured - " + e.getMessage());
                 }
             }
         }
@@ -112,12 +112,12 @@ private static GymDAO gymDAOObj = null;
                 preparedStatement.setInt(1, gymId);
                 rowsUpdated = preparedStatement.executeUpdate();
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("An error occured - " + e.getMessage());
             } finally {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("An error occured - " + e.getMessage());
                 }
             }
         }
@@ -133,12 +133,12 @@ private static GymDAO gymDAOObj = null;
                 prepareStatementForGymUpdate(preparedStatement, gym);
                 rowsUpdated = preparedStatement.executeUpdate();
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("An error occured - " + e.getMessage());
             } finally {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("An error occured - " + e.getMessage());
                 }
             }
         }
@@ -158,12 +158,12 @@ private static GymDAO gymDAOObj = null;
                     gyms.add(gym);
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("An error occured - " + e.getMessage());
             } finally {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("An error occured - " + e.getMessage());
                 }
             }
         }
@@ -183,12 +183,12 @@ private static GymDAO gymDAOObj = null;
                     gyms.add(gym);
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("An error occured - " + e.getMessage());
             } finally {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("An error occured - " + e.getMessage());
                 }
             }
         }
@@ -241,12 +241,12 @@ private static GymDAO gymDAOObj = null;
                 preparedStatement.setInt(1, gymId);
                 rowsUpdated = preparedStatement.executeUpdate();
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("An error occured - " + e.getMessage());
             } finally {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("An error occured - " + e.getMessage());
                 }
             }
         }
@@ -265,12 +265,12 @@ private static GymDAO gymDAOObj = null;
                     activeGyms.add(gym);
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("An error occured - " + e.getMessage());
             } finally {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("An error occured - " + e.getMessage());
                 }
             }
         }

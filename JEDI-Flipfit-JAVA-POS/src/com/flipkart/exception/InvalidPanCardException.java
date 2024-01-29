@@ -11,7 +11,7 @@ public class InvalidPanCardException extends Exception {
     /**
      * Constructs a new InvalidPanCardException with a default error message.
      */
-    public InvalidPanCardException() {
-        super("Invalid PAN Card");
+	public InvalidPanCardException(String message) {
+        super(message);
     }
 }

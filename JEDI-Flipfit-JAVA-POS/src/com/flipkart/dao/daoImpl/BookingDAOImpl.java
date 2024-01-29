@@ -60,12 +60,12 @@ public class BookingDAOImpl implements BookingDAO {
 				// preparedStatement.setBoolean(4, false); // isCancelled default to false
 				preparedStatement.executeUpdate();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());
 			} finally {
 				try {
 					connection.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					System.out.println("An error occured - " + e.getMessage());
 				}
 			}
 		}
@@ -87,12 +87,12 @@ public class BookingDAOImpl implements BookingDAO {
 				int rowsUpdated = preparedStatement.executeUpdate();
 				return rowsUpdated > 0;
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());
 			} finally {
 				try {
 					connection.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					System.out.println("An error occured - " + e.getMessage());
 				}
 			}
 		}
@@ -117,12 +117,12 @@ public class BookingDAOImpl implements BookingDAO {
 					return extractBookingFromResultSet(resultSet);
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());
 			} finally {
 				try {
 					connection.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					System.out.println("An error occured - " + e.getMessage());
 				}
 			}
 		}
@@ -149,12 +149,12 @@ public class BookingDAOImpl implements BookingDAO {
 					bookings.add(extractBookingFromResultSet(resultSet));
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());
 			} finally {
 				try {
 					connection.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					System.out.println("An error occured - " + e.getMessage());
 				}
 			}
 		}
@@ -181,12 +181,12 @@ public class BookingDAOImpl implements BookingDAO {
 					bookings.add(extractBookingFromResultSet(resultSet));
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());
 			} finally {
 				try {
 					connection.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					System.out.println("An error occured - " + e.getMessage());
 				}
 			}
 		}
@@ -213,12 +213,12 @@ public class BookingDAOImpl implements BookingDAO {
 					bookings.add(extractBookingFromResultSet(resultSet));
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());
 			} finally {
 				try {
 					connection.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					System.out.println("An error occured - " + e.getMessage());
 				}
 			}
 		}
@@ -242,12 +242,12 @@ public class BookingDAOImpl implements BookingDAO {
 					bookings.add(extractBookingFromResultSet(resultSet));
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());
 			} finally {
 				try {
 					connection.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					System.out.println("An error occured - " + e.getMessage());
 				}
 			}
 		}
@@ -271,12 +271,12 @@ public class BookingDAOImpl implements BookingDAO {
 				int rowsUpdated = preparedStatement.executeUpdate();
 				return rowsUpdated > 0;
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());
 			} finally {
 				try {
 					connection.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					System.out.println("An error occured - " + e.getMessage());
 				}
 			}
 		}

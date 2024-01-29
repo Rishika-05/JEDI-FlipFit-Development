@@ -45,12 +45,12 @@ public class SlotDAOImpl implements SlotDAO {
 	                prepareStatementForSlot(preparedStatement, slot);
 	                preparedStatement.executeUpdate();
 	            } catch (SQLException e) {
-	                e.printStackTrace();
+	                System.out.println("An error occured - " + e.getMessage());
 	            } finally {
 	                try {
 	                    connection.close();
 	                } catch (SQLException e) {
-	                    e.printStackTrace();
+	                    System.out.println("An error occured - " + e.getMessage());
 	                }
 	            }
 	        }
@@ -66,12 +66,12 @@ public class SlotDAOImpl implements SlotDAO {
 	                preparedStatement.setInt(2, slotId);
 	                rowsUpdated = preparedStatement.executeUpdate();
 	            } catch (SQLException e) {
-	                e.printStackTrace();
+	                System.out.println("An error occured - " + e.getMessage());
 	            } finally {
 	                try {
 	                    connection.close();
 	                } catch (SQLException e) {
-	                    e.printStackTrace();
+	                    System.out.println("An error occured - " + e.getMessage());
 	                }
 	            }
 	        }
@@ -88,12 +88,12 @@ public class SlotDAOImpl implements SlotDAO {
 	                preparedStatement.setInt(2, slotId);
 	                rowsUpdated = preparedStatement.executeUpdate();
 	            } catch (SQLException e) {
-	                e.printStackTrace();
+	                System.out.println("An error occured - " + e.getMessage());
 	            } finally {
 	                try {
 	                    connection.close();
 	                } catch (SQLException e) {
-	                    e.printStackTrace();
+	                    System.out.println("An error occured - " + e.getMessage());
 	                }
 	            }
 	        }
@@ -112,12 +112,12 @@ public class SlotDAOImpl implements SlotDAO {
 	                    slot = extractSlotFromResultSet(resultSet);
 	                }
 	            } catch (SQLException e) {
-	                e.printStackTrace();
+	                System.out.println("An error occured - " + e.getMessage());
 	            } finally {
 	                try {
 	                    connection.close();
 	                } catch (SQLException e) {
-	                    e.printStackTrace();
+	                    System.out.println("An error occured - " + e.getMessage());
 	                }
 	            }
 	        }
@@ -136,12 +136,12 @@ public class SlotDAOImpl implements SlotDAO {
 	                    slots.add(slot);
 	                }
 	            } catch (SQLException e) {
-	                e.printStackTrace();
+	                System.out.println("An error occured - " + e.getMessage());
 	            } finally {
 	                try {
 	                    connection.close();
 	                } catch (SQLException e) {
-	                    e.printStackTrace();
+	                    System.out.println("An error occured - " + e.getMessage());
 	                }
 	            }
 	        }
@@ -161,12 +161,12 @@ public class SlotDAOImpl implements SlotDAO {
 	                    slots.add(slot);
 	                }
 	            } catch (SQLException e) {
-	                e.printStackTrace();
+	                System.out.println("An error occured - " + e.getMessage());
 	            } finally {
 	                try {
 	                    connection.close();
 	                } catch (SQLException e) {
-	                    e.printStackTrace();
+	                    System.out.println("An error occured - " + e.getMessage());
 	                }
 	            }
 	        }
@@ -186,12 +186,12 @@ public class SlotDAOImpl implements SlotDAO {
 	                    slots.add(slot);
 	                }
 	            } catch (SQLException e) {
-	                e.printStackTrace();
+	                System.out.println("An error occured - " + e.getMessage());
 	            } finally {
 	                try {
 	                    connection.close();
 	                } catch (SQLException e) {
-	                    e.printStackTrace();
+	                    System.out.println("An error occured - " + e.getMessage());
 	                }
 	            }
 	        }
@@ -207,12 +207,12 @@ public class SlotDAOImpl implements SlotDAO {
 	                preparedStatement.setInt(7, slot.getSlotId());
 	                preparedStatement.executeUpdate();
 	            } catch (SQLException e) {
-	                e.printStackTrace();
+	                System.out.println("An error occured - " + e.getMessage());
 	            } finally {
 	                try {
 	                    connection.close();
 	                } catch (SQLException e) {
-	                    e.printStackTrace();
+	                    System.out.println("An error occured - " + e.getMessage());
 	                }
 	            }
 	        }
@@ -256,12 +256,12 @@ public class SlotDAOImpl implements SlotDAO {
 		                    availableSeats = resultSet.getInt("Available");
 		                }
 		            } catch (SQLException e) {
-		                e.printStackTrace();
+		                System.out.println("An error occured - " + e.getMessage());
 		            } finally {
 		                try {
 		                    connection.close();
 		                } catch (SQLException e) {
-		                    e.printStackTrace();
+		                    System.out.println("An error occured - " + e.getMessage());
 		                }
 		            }
 		        }

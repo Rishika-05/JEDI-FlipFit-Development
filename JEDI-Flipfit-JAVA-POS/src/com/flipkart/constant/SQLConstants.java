@@ -21,7 +21,7 @@ public class SQLConstants {
 
 
 	// Customer
-	public static final String INSERT_GYM_CUSTOMER = "INSERT INTO gym_customers (name, location, userId, age) VALUES (?, ?, ?, ?)";
+	public static final String INSERT_GYM_CUSTOMER = "INSERT INTO gym_customers (name, location, userId, age, phoneNo, email) VALUES (?, ?, ?, ?, ?, ?)";
     public static final String SELECT_GYM_CUSTOMER = "SELECT * FROM gym_customers ";
     public static final String WHERE_GYM_CUSTOMER_ID = "WHERE ID = ?";
     public static final String UPDATE_GYM_CUSTOMER = "UPDATE gym_customers SET name = ?, location = ?, age = ? WHERE ID = ?";
@@ -34,7 +34,7 @@ public class SQLConstants {
     public static final String SELECT_OWNER_BY_ID = "SELECT * FROM GymOwner WHERE ID=?";
     public static final String SELECT_ALL_OWNERS = "SELECT * FROM GymOwner";
     public static final String SELECT_OWNER_BY_USER_ID = "SELECT * FROM GymOwner WHERE ID=?";
-    public static final String INSERT_OWNER = "INSERT INTO GymOwner (name, age, panCard, aadharCard, gstin, location, approved, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    public static final String INSERT_OWNER = "INSERT INTO GymOwner (name, age, panCard, aadharCard, gstin, location, approved, userId, phoneNo, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public static final String APPROVE_GYM_OWNER = "UPDATE GymOwner SET approved = ? WHERE ID = ?";
     public static final String SELECT_GYM_OWNER_ID_FROM_USER_ID = "SELECT ID FROM GymOwner WHERE userId = ?";
 	// Gym

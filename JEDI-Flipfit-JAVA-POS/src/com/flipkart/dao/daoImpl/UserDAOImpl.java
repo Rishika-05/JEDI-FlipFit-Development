@@ -55,7 +55,7 @@ public class UserDAOImpl implements UserDAO {
 			} catch(SQLIntegrityConstraintViolationException e) {
 				System.out.println("This username already exists!!");
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());;
 			} catch (UserNotFoundException e) {
                 throw new RuntimeException(e);
             } catch (InvalidCredentialsException e) {
@@ -64,7 +64,7 @@ public class UserDAOImpl implements UserDAO {
             try {
 				connection.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());
 			}
 		}
 		return rowsUpdated;
@@ -98,12 +98,12 @@ public class UserDAOImpl implements UserDAO {
 					 }
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());;
 			} 
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());;
 			}
 		}
 //		 user != null ? return user.getUserId(): throw new UserNotFoundException();
@@ -125,13 +125,13 @@ public class UserDAOImpl implements UserDAO {
 				preparedStatement.setString(2,userName);
 				rowsUpdated = preparedStatement.executeUpdate();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());;
 			}
 
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("An error occured - " + e.getMessage());;
 			}
 		}
 		return rowsUpdated > 0;
@@ -153,12 +153,12 @@ public class UserDAOImpl implements UserDAO {
 	                }
 	            }
 	        } catch (SQLException e) {
-	            e.printStackTrace();
+	            System.out.println("An error occured - " + e.getMessage());;
 	        } finally {
 	            try {
 	                connection.close();
 	            } catch (SQLException e) {
-	                e.printStackTrace();
+	                System.out.println("An error occured - " + e.getMessage());;
 	            }
 	        }
 	    }
@@ -183,12 +183,12 @@ public class UserDAOImpl implements UserDAO {
 	                }
 	            }
 	        } catch (SQLException e) {
-	            e.printStackTrace();
+	            System.out.println("An error occured - " + e.getMessage());;
 	        } finally {
 	            try {
 	                connection.close();
 	            } catch (SQLException e) {
-	                e.printStackTrace();
+	                System.out.println("An error occured - " + e.getMessage());;
 	            }
 	        }
 	    }
@@ -202,7 +202,7 @@ public class UserDAOImpl implements UserDAO {
 			preparedStatement.setString(3, user.getRole().toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("An error occured - " + e.getMessage());;
 		}
 
 	}

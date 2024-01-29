@@ -10,7 +10,7 @@ public class InvalidAadhaarException extends Exception {
     /**
      * Constructs a new InvalidAadhaarException with a default error message.
      */
-    public InvalidAadhaarException() {
-        super("Invalid Aadhaar");
+	public InvalidAadhaarException(String message) {
+        super(message);
     }
 }

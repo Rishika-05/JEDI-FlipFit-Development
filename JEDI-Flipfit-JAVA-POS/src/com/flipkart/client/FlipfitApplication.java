@@ -14,10 +14,13 @@ import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 import com.flipkart.constant.RoleType;
+import com.flipkart.exception.InvalidAadhaarException;
+import com.flipkart.exception.InvalidPanCardException;
 import com.flipkart.service.UserFlipFitService;
 import com.flipkart.service.serviceImpl.GymCustomerFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;
 import com.flipkart.utils.Utils;
+import com.flipkart.validators.Validator;
 
 /**
  * Main class
@@ -52,7 +55,7 @@ public class FlipfitApplication {
                     case 3:
                         updatePassword();
                         break;
-                    case 4:
+                    case 0:
                         System.out.println("\033[1mYou have exited the FlipFit Application\033[0m");
                         break;
                     default:
@@ -60,7 +63,7 @@ public class FlipfitApplication {
                         break;
                 }
 
-            } while (userInput != 4);
+            } while (userInput != 0);
 
         } catch (Exception ex) {
             System.out.println("\033[1;31mError occurred: " + ex + "\033[0m");
@@ -93,7 +96,7 @@ public class FlipfitApplication {
 		System.out.println("\033[1;33m Press 1: \033[0m" + "\033[1;34mLogin\033[0m");
 		System.out.println("\033[1;33m Press 2: \033[0m" + "\033[1;34mRegister\033[0m");
 		System.out.println("\033[1;33m Press 3: \033[0m" + "\033[1;34mUpdate Password\033[0m");
-		System.out.println("\033[1;33m Press 4: \033[0m" + "\033[1;34mExit\033[0m");
+		System.out.println("\033[1;33m Press 0: \033[0m" + "\033[1;34mExit\033[0m");
 		System.out.println("\033[0m"); // Reset text attributes
 
 
@@ -123,7 +126,7 @@ public class FlipfitApplication {
 		int userId = UserFlipFitServiceImpl.getInstance().login(userName, password);
 		User user = UserFlipFitServiceImpl.getInstance().getUser(userId);
 		if (userId == -1) {
-			System.out.println("\033[1;31mUser Not Found Please Try Again\033[0m");
+//			System.out.println("\033[1;31mUser Not Found Please Try Again\033[0m");
 			return;
 		}
 		System.out.print("\n");
@@ -178,8 +181,6 @@ public class FlipfitApplication {
 	static void register() {
 		boolean flag = false;
 		RoleType role = null;
-		String userName = "";
-		String password = "";
 		int userId = -1;
 		Scanner in = new Scanner(System.in);
 		while (!flag) {
@@ -206,15 +207,31 @@ public class FlipfitApplication {
 
 			// Now 'userRole' contains a valid input
 			System.out.println("User role selected: " + userRole);
-			System.out.print("\033[0;34mEnter username: \033[0m");
-			userName = in.next();
-			in.nextLine();
-			System.out.print("\033[0;34mEnter password: \033[0m");
-			password = in.next();
+			String username;
+			String password;
+			String password2;
+
+			do {
+			    System.out.print("\033[0;34mEnter username: \033[0m");
+			    username = in.next();
+			    in.nextLine();
+
+			    System.out.print("\033[0;34mEnter password: \033[0m");
+			    password = in.next();
+			    in.nextLine();
+
+			    System.out.print("\033[0;34mEnter password again: \033[0m");
+			    password2 = in.next();
+			    in.nextLine();
+
+			    if (!password.equals(password2)) {
+			        System.out.println("\033[0;31mPasswords do not match. Please try again.\033[0m");
+			    }
+			} while (!password.equals(password2));
 			role = userRole == 1 ? RoleType.GYM_CUSTOMER : RoleType.GYM_OWNER;
 			User newUser = new User();
 			newUser.setPassword(password);
-			newUser.setUsername(userName);
+			newUser.setUsername(username);
 			newUser.setRole(role);
 			userId = UserFlipFitServiceImpl.getInstance().registration(newUser);
 			flag = userId != -1;
@@ -222,90 +239,137 @@ public class FlipfitApplication {
 		switch (role) {
 			case GYM_CUSTOMER:
 				GymCustomer customer = new GymCustomer();
+
 				System.out.print("\033[0;34mEnter your name: \033[0m");
-				String name = in.next();
-				in.nextLine();
+				String name = in.nextLine();
 				customer.setName(name);
+
 				System.out.print("\033[0;34mEnter your age: \033[0m");
 				int age = in.nextInt();
-				in.nextLine();
+				in.nextLine(); // Consume newline character
 				customer.setAge(age);
+
 				System.out.print("\033[0;34mEnter your location: \033[0m");
-				String location = in.next();
-				in.nextLine();
+				String location = in.nextLine();
 				String formattedLocation = Utils.convertFirstLetterCapital(location);
 				customer.setLocation(formattedLocation);
+				String email = "", phoneNo = "";
+				do {
+				    System.out.print("\033[0;34mEnter your phone number: \033[0m");
+				    phoneNo = in.nextLine();
+				} while (!Validator.validatePhoneNo(phoneNo));
 
+				customer.setPhoneNo(phoneNo);
 
+				do {
+				    System.out.print("\033[0;34mEnter your email: \033[0m");
+				    email = in.nextLine();
+				} while (!Validator.validateEmail(email));
+
+				customer.setEmail(email);
 
 				customer.setUserId(userId);
 				if (UserFlipFitServiceImpl.getInstance().customerRegistration(customer)) {
+				    System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
 
-					System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
+				    // Display customer details
+				    System.out.println("Customer Details:");
+				    String format = "︳ %-20s ︳ %-12s | %-5s | %-16s | %-12s | %-20s |";
+				    Utils.printFormattedTableHeader(format, "User ID", "Name", "Age", "Location", "Phone Number", "Email");
+				    Utils.printFormattedTableRow(format, String.valueOf(userId), name, String.valueOf(age), formattedLocation,
+				            phoneNo, email);
 				} else {
-					System.out.println("Some Error occurred");
+				    System.out.println("Some Error occurred");
 				}
-				System.out.println("Customer Details:");
-				String format = "︳ %-20s ︳ %-12s | %-5s | %-16s |";
-				Utils.printFormattedTableHeader(format, "User ID", "Name", "Age", "Location");
-				Utils.printFormattedTableRow(format, String.valueOf(userId), name, String.valueOf(age), formattedLocation);
-
 				break;
-
 			case GYM_OWNER:
-				GymOwner newGymOwner = new GymOwner();
-				newGymOwner.setUserId(userId);
-				System.out.print("\033[0;34mEnter your name: \033[0m");
-				name = in.next();
-				in.nextLine();
-				newGymOwner.setName(name);
-				System.out.print("\033[0;34mEnter your age: \033[0m");
-				int age1 = in.nextInt();
-				in.nextLine();
-				newGymOwner.setAge(age1);
-				System.out.print("\033[0;34mEnter your location: \033[0m");
-				String address = in.next();
-				in.nextLine();
-				String formattedAddress = Utils.convertFirstLetterCapital(address);
-				newGymOwner.setLocation(formattedAddress);
-				String panCard, aadharCard, GstIn;
-				do {
-					System.out.print("\033[0;34mEnter your panCard number. For ex - ABCTY1234D: \033[0m");
-					panCard = in.next();
-					in.nextLine();
-					newGymOwner.setPanCard(panCard);
-				} while (false);
+			    GymOwner newGymOwner = new GymOwner();
 
-				do {
-					System.out.print("\033[0;34mEnter your aadharCard number. For ex - 1234-1234-1234: \033[0m");
-					aadharCard = in.next();
-					in.nextLine();
-					newGymOwner.setAadharCard(aadharCard);
-				} while (false);
+			    newGymOwner.setUserId(userId);
+			    System.out.print("\033[0;34mEnter your name: \033[0m");
+			    String fname = in.nextLine();
+			    newGymOwner.setName(fname);
 
-				do {
-					System.out.print("\033[0;34mEnter your GSTIN number. For ex - 22AAAAA0000A1Z5: \033[0m");
-					GstIn = in.next();
-					in.nextLine();
-					newGymOwner.setGstin(GstIn);
-				} while (false);
-				if (UserFlipFitServiceImpl.getInstance().gymOwnerRegistration(newGymOwner)) {
+			    System.out.print("\033[0;34mEnter your age: \033[0m");
+			    int age2 = in.nextInt();
+			    in.nextLine();
+			    newGymOwner.setAge(age2);
 
-				String format_2 = "| %-20s | %-12s | %-5s | %-16s | %-10s | %-10s | %-15s |";
-				Utils.printFormattedTableHeader(format_2, "User ID", "Name", "Age", "Location", "PAN Card", "Aadhar Card", "GSTIN");
-				Utils.printFormattedTableRow(format_2,
-						String.valueOf(newGymOwner.getUserId()),
-						newGymOwner.getName(),
-						String.valueOf(newGymOwner.getAge()),
-						newGymOwner.getLocation(),
-						newGymOwner.getPanCard(),
-						newGymOwner.getAadharCard(),
-						newGymOwner.getGstin());
-					System.out.println("\n\033[0mGym Owner Registered!\033[1m\n");
-				} else {
-					System.out.println("Some Error occurred");
-				}
-				break;
+			    System.out.print("\033[0;34mEnter your location: \033[0m");
+			    String address = in.nextLine();
+			    String formattedAddress = Utils.convertFirstLetterCapital(address);
+			    newGymOwner.setLocation(formattedAddress);
+
+			    String panCard;
+			    String aadharCard;
+			    String gstin;
+
+			    try {
+			        do {
+			            System.out.print("\033[0;34mEnter your PAN Card number: \033[0m");
+			            panCard = in.next();
+			            in.nextLine();
+			        } while (!Validator.validatePanCard(panCard));
+
+			        newGymOwner.setPanCard(panCard);
+
+			        do {
+			            System.out.print("\033[0;34mEnter your Aadhar Card number: \033[0m");
+			            aadharCard = in.next();
+			            in.nextLine();
+			        } while (!Validator.validateAadharCard(aadharCard));
+
+			        newGymOwner.setAadharCard(aadharCard);
+
+			        do {
+			            System.out.print("\033[0;34mEnter your GSTIN number: \033[0m");
+			            gstin = in.next();
+			            in.nextLine();
+			        } while (!Validator.validateGstin(gstin));
+
+			        newGymOwner.setGstin(gstin);
+
+			        do {
+			            System.out.print("\033[0;34mEnter your phone number: \033[0m");
+			            phoneNo = in.nextLine();
+			        } while (!Validator.validatePhoneNo(phoneNo));
+
+			        newGymOwner.setPhoneNo(phoneNo);
+
+			        do {
+			            System.out.print("\033[0;34mEnter your email: \033[0m");
+			            email = in.nextLine();
+			        } while (!Validator.validateEmail(email));
+
+			        newGymOwner.setEmail(email);
+
+			        if (UserFlipFitServiceImpl.getInstance().gymOwnerRegistration(newGymOwner)) {
+			            System.out.println("\n\033[0mGym Owner Registered!\033[1m\n");
+
+			            // Display gym owner details
+			            String format_2 = "| %-20s | %-12s | %-5s | %-16s | %-10s | %-10s | %-15s | %-15s |\n";
+			            Utils.printFormattedTableHeader(format_2, "User ID", "Name", "Age", "Location", "PAN Card", "Aadhar Card", "GSTIN", "Phone Number", "Email");
+			            Utils.printFormattedTableRow(format_2,
+			                    String.valueOf(newGymOwner.getUserId()),
+			                    newGymOwner.getName(),
+			                    String.valueOf(newGymOwner.getAge()),
+			                    newGymOwner.getLocation(),
+			                    newGymOwner.getPanCard(),
+			                    newGymOwner.getAadharCard(),
+			                    newGymOwner.getGstin(),
+			                    String.valueOf(newGymOwner.getPhoneNo()),
+			                    newGymOwner.getEmail());
+			        } else {
+			            System.out.println("Some Error occurred");
+			        }
+			    } catch (InvalidPanCardException e) {
+			        System.out.println("\033[1;31m" + e.getMessage() + "\033[0m");
+			    } catch (InvalidAadhaarException e) {
+			        System.out.println("\033[1;31m" + e.getMessage() + "\033[0m");
+			    } catch (Exception e) {
+			        System.out.println("An error occurred: " + e.getMessage());
+			    }
+			    break;
 			default:
 				break;
 		}
@@ -313,6 +377,7 @@ public class FlipfitApplication {
 		System.out.println("\033[1mExiting Register menu\033[0m");
 
 	}
+	
 
 	/**
 	 * Update password
@@ -325,14 +390,30 @@ public class FlipfitApplication {
 		System.out.println("\n\n\033[1m-------------------Update Password------------------ \n\n\033[0m");
 		Scanner in = new Scanner(System.in);
 		System.out.print("\033[0;34mEnter the username: \033[0m");
-		String userName = in.next();
+		String username = in.next();
 		System.out.print("\033[0;34mEnter old password: \033[0m");
-		String password = in.next();
-		System.out.print("\033[0;34mEnter your new password: \033[0m");
-		String newPassword = in.next();
-		if(UserFlipFitServiceImpl.getInstance().updatePassword(userName, newPassword))
-			System.out.println("\n\033[0mPassword Updated Successfully!\n\033[1m\n");
-		else
-			System.out.println("\n\033[0mUnable to update!\n\033[1m\n");
+		String oldPassword = in.next();
+
+		String newPassword;
+		String confirmPassword;
+
+		do {
+		    System.out.print("\033[0;34mEnter your new password: \033[0m");
+		    newPassword = in.next();
+		    System.out.print("\033[0;34mConfirm your new password: \033[0m");
+		    confirmPassword = in.next();
+
+		    if (!newPassword.equals(confirmPassword)) {
+		        System.out.println("\033[0;31mPasswords do not match. Please try again.\033[0m");
+		    }
+		} while (!newPassword.equals(confirmPassword));
+
+		// At this point, the new password is entered correctly
+
+		if (UserFlipFitServiceImpl.getInstance().updatePassword(username, newPassword)) {
+		    System.out.println("\n\033[0mPassword Updated Successfully!\n\033[1m\n");
+		} else {
+		    System.out.println("\n\033[0mUnable to update!\n\033[1m\n");
+		}
 	}
 }

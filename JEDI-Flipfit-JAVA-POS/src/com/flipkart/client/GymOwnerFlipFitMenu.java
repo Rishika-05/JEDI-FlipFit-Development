@@ -345,15 +345,16 @@ public class GymOwnerFlipFitMenu {
 	    List<Gym> gyms = ownerService.getAllGyms(userId);
 
 	    // Print table header
-        Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |",
-	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved");
+	    Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s | %-6s |",
+	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved", "Deleted");
 
 	    // Print gym details
-        gyms.forEach((gym)->{
-            Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
-                    gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
-                    gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
-        });
+	    gyms.forEach((gym) -> {
+	        Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s | %-6s |",
+	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
+	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing",
+	                gym.isActive() ? "Yes" : "No");
+	    });
 
 	}
 
@@ -403,40 +404,41 @@ public class GymOwnerFlipFitMenu {
 	        	List<Slot> slots = slotService.getAllSlotsByGymId(gymId);
 
 	        	// Print table header
-                Utils.printFormattedTableHeader("| %-10s | %-10s | %-10s | %-15s | %-10s | %-10s | %-12s |",
-	        	        "Slot ID", "Start Time", "Slot Time", "Total Seats", "Active", "Approved", "Booked Seats");
+	            Utils.printFormattedTableHeader("| %-10s | %-10s | %-10s | %-15s | %-10s | %-12s | %-10s | %-10s |",
+	                    "Slot ID", "Start Time", "Slot Time", "Total Seats", "Booked Seats", "Deleted", "Approved");
 
-	        	// Print slot details
-                slots.forEach((slot) ->{
-                    int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
-                    int bookedSeats = slot.getTotalSeats() - availableSeats;
-                    Utils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-10s | %-10s | %-12s |",
-                            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
-                            slot.isActive(), slot.isApproved() ? "Approved" : "Processing" , bookedSeats);
-                });
-
-	        } else {
+	            // Print slot details
+	            slots.forEach((slot) -> {
+	                int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
+	                int bookedSeats = slot.getTotalSeats() - availableSeats;
+	                Utils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-12s | %-10s | %-10s |",
+	                        slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
+	                        bookedSeats, slot.isActive() ? "No" : "Yes", slot.isApproved() ? "Approved" : "Processing");
+	            });
+	            } else {
                 System.out.println("\033[1;31mGym not found with the provided ID.\033[0m");
             }
 	  }
 	
 	  private void viewProfile(int userId) {
-		  GymOwner gymOwner = ownerService.getGymOwnerById(userId);
+		    GymOwner gymOwner = ownerService.getGymOwnerById(userId);
 
 		    if (gymOwner != null) {
 		        // Print table header
-                Utils.printFormattedTableHeader("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s |",
-		                "Name", "Age", "Pan Card", "Aadhar Card", "GSTIN", "Location");
+		        Utils.printFormattedTableHeader("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s | %-15s |",
+		                "Name", "Age", "Pan Card", "Aadhar Card", "GSTIN", "Location", "Phone Number", "Email");
 
 		        // Print gym owner details
-                Utils.printFormattedTableRow("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s |",
-		                 gymOwner.getName(), gymOwner.getAge(),
-		                gymOwner.getPanCard(), gymOwner.getAadharCard(), gymOwner.getGstin(), gymOwner.getLocation());
+		        Utils.printFormattedTableRow("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s | %-15s |",
+		                gymOwner.getName(), gymOwner.getAge(),
+		                gymOwner.getPanCard(), gymOwner.getAadharCard(), gymOwner.getGstin(), gymOwner.getLocation(),
+		                gymOwner.getPhoneNo(), gymOwner.getEmail());
 
 		    } else {
-                System.out.println("\033[1;31mGym owner not found.\033[0m");
-            }
-	  }
+		        System.out.println("\033[1;31mGym owner not found.\033[0m");
+		    }
+		}
+
 	  private void updateProfile(int userId) {
 		  GymOwner gymOwner = ownerService.getGymOwnerById(userId);
 		  Scanner sc = new Scanner(System.in);

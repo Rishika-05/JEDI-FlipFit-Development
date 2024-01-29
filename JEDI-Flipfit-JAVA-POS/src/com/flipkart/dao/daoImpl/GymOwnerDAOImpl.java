@@ -168,6 +168,8 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
         owner.setGstin(resultSet.getString("gstin"));
         owner.setLocation(resultSet.getString("location"));
         owner.setApproved(resultSet.getBoolean("approved"));
+        owner.setPhoneNo(resultSet.getString("phoneNo"));
+        owner.setEmail(resultSet.getString("email"));
         return owner;
     }
 
@@ -181,6 +183,8 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
         preparedStatement.setString(6, owner.getLocation());
         preparedStatement.setBoolean(7, owner.isApproved());
         preparedStatement.setInt(8, owner.getUserId());
+        preparedStatement.setString(9, owner.getPhoneNo());
+        preparedStatement.setString(10, owner.getEmail());
     }
 
 	@Override

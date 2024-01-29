@@ -17,6 +17,11 @@ local.properties
 .factorypath
 .idea
 
+./JEDI-Flipfit-JAVA-POS/src/config.properties
+./JEDI-Flipfit-JAVA-POS/src/com/flipkart/utils/DBUtils.java
+
+*.idea*
+
 # Mac
 .DS_Store
 *.DS_Store
@@ -48,3 +53,5 @@ hs_err_pid*
 replay_pid*
 
 src/com/flipkart/utils/DBUtils.java
+
+config.properties

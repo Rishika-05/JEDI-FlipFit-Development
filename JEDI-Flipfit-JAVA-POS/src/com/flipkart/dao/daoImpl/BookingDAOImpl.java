@@ -6,11 +6,9 @@ package com.flipkart.dao.daoImpl;
 import com.flipkart.bean.Booking;
 import com.flipkart.constant.SQLConstants;
 import com.flipkart.dao.BookingDAO;
-import com.flipkart.dao.DBConnection;
 import com.flipkart.dao.GymDAO;
 
 import com.flipkart.utils.DBUtils;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -41,17 +41,18 @@ public class GymOwnerFlipFitMenu {
         }
         do {
             Utils.displayLogoUtil("Gym Owner Menu");
-            System.out.println("\nPress 1. Add a new gym Centre" +
-        "\nPress 2. View Gyms" +
-        "\nPress 3. Remove Gym" +
-        "\nPress 4. Modify Gym" +
-        "\nPress 5. Register Slots " + 
-        "\nPress 6. Modify Slots " + 
-        "\nPress 7. View Slots " +  
-        "\nPress 8. Remove Slots " +  
-        "\nPress 9. View Profile" +
-        "\nPress 10. Update Profile" +
-        "\nPress 11. Quit \n");
+            System.out.println("\n\033[1;33mPress 1.\033[0m Add a new gym Centre" +
+                    "\n\033[1;33mPress 2.\033[0m View Gyms" +
+                    "\n\033[1;33mPress 3.\033[0m Remove Gym" +
+                    "\n\033[1;33mPress 4.\033[0m Modify Gym" +
+                    "\n\033[1;33mPress 5.\033[0m Register Slots " +
+                    "\n\033[1;33mPress 6.\033[0m Modify Slots " +
+                    "\n\033[1;33mPress 7.\033[0m View Slots " +
+                    "\n\033[1;33mPress 8.\033[0m Remove Slots " +
+                    "\n\033[1;33mPress 9.\033[0m View Profile" +
+                    "\n\033[1;33mPress 10.\033[0m Update Profile" +
+                    "\n\033[1;33mPress 0.\033[0m Quit \n"
+            );
             System.out.print("\033[1mEnter Choice ► \033[0m");
             Scanner in = new Scanner(System.in);
             menuOption = in.nextInt();
@@ -90,7 +91,7 @@ public class GymOwnerFlipFitMenu {
                 	System.out.println("\033[1mYou have exited the Gym Owner menu\033[0m");
                     break;
                 default:
-                    System.out.println("\033[1mYou have selected an invalid option. Please try again!!\033[0m");
+                    System.out.println("\033[1;31mYou have selected an invalid option. Please try again!!\033[0m");
                     break;
             }
         } while (menuOption != 0);
@@ -114,13 +115,13 @@ public class GymOwnerFlipFitMenu {
 	            boolean removed = gymService.removeGym(gymId);
 
 	            if (removed) {
-	                System.out.println("Gym removed successfully!");
-	            } else {
-	                System.out.println("Failed to remove the gym. Please try again.");
-	            }
+                    System.out.println("\033[1;32mGym removed successfully!\033[0m");
+                } else {
+                    System.out.println("\033[1;31mFailed to remove the gym. Please try again.\033[0m");
+                }
 	        } else {
-	            System.out.println("Gym not found with the provided ID.");
-	        }
+                System.out.println("\033[1;31mGym not found with the provided ID.\033[0m");
+            }
 	}
 
 	private void modifyGym(int gymOwnerId) {
@@ -176,14 +177,14 @@ public class GymOwnerFlipFitMenu {
                 	selectedGym.setPricePerSlot(price);
 
                 default:
-                    System.out.println("Invalid choice. No modifications performed.");
+                    System.out.println("\033[1;33mInvalid choice. No modifications performed.\033[0m");
                     return;
             }
             
             gymService.updateGym(selectedGym);
-            System.out.println("Gym modified successfully!");
+            System.out.println("\033[1;32mGym modified successfully!\033[0m");
         } else {
-            System.out.println("Gym not found with the provided ID.");
+            System.out.println("\033[1;31mGym not found with the provided ID.\033[0m");
         }
 	}
 
@@ -205,10 +206,10 @@ public class GymOwnerFlipFitMenu {
 
     	        // Print the slots for the selected gym
     	        System.out.println("Slots for Gym ID " + selectedGym.getGymId() + ":");
-    	        for (Slot slot : slots) {
-    	            System.out.printf("Slot ID: %-5d | Start Time: %-15s | Slot Time: %-10d | Total Seats: %-5d",
-    	                    slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats());
-    	        }
+                slots.forEach((slot)->{
+                    System.out.printf("Slot ID: %-5d | Start Time: %-15s | Slot Time: %-10d | Total Seats: %-5d",
+                            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats());
+                });
 
     	        // Ask the user for the slot ID to modify
     	        System.out.print("Enter the Slot ID to modify: ");
@@ -240,24 +241,24 @@ public class GymOwnerFlipFitMenu {
     	                    break;
 
     	                default:
-    	                    System.out.println("Invalid choice. No modifications performed.");
-    	                    return;
+                            System.out.println("\033[1;33mInvalid choice. No modifications performed.\033[0m");
+                            return;
     	            }
 
     	            // Update the slot in the service
     	            slotService.updateSlot(selectedSlot);
     	            boolean updated =  true;
     	            if (updated) {
-    	                System.out.println("Slot modified successfully!");
-    	            } else {
-    	                System.out.println("Failed to update the slot. Please try again.");
-    	            }
+                        System.out.println("\033[1;32mSlot modified successfully!\033[0m");
+                    } else {
+                        System.out.println("\033[1;31mFailed to update the slot. Please try again.\033[0m");
+                    }
     	        } else {
-    	            System.out.println("Slot not found with the provided ID.");
-    	        }
+                    System.out.println("\033[1;31mSlot not found with the provided ID.\033[0m");
+                }
     	    } else {
-    	        System.out.println("Gym not found with the provided ID.");
-    	    }
+                System.out.println("\033[1;31mGym not found with the provided ID.\033[0m");
+            }
     }
 
     private void removeSlot(int userId) {
@@ -282,14 +283,14 @@ public class GymOwnerFlipFitMenu {
             String format = "| %-8s | %-20s | %-10s | %-15s | %-12s |";
 
             Utils.printFormattedTableHeader(format, "Slot ID", "Start Time", "Slot Time", "Total Seats");
-
-            for (Slot slot : slots) {
+            slots.forEach((slot) -> {
                 Utils.printFormattedTableRow(format,
                         String.valueOf(slot.getSlotId()),
                         slot.getStartTime(),
                         String.valueOf(slot.getSlotTime()),
                         String.valueOf(slot.getTotalSeats()));
-            }
+            });
+
 
 
             // Ask the user for the slot ID to remove
@@ -299,12 +300,12 @@ public class GymOwnerFlipFitMenu {
             if (slotId != 0) {
                 // Remove the slot from the list
                 slotService.removeSlot(slotId);
-                System.out.println("Slot removed successfully!");
+                System.out.println("\033[1;32mSlot removed successfully!\033[0m");
             } else {
-                System.out.println("Slot not found with the provided ID.");
+                System.out.println("\033[1;31mSlot not found with the provided ID.\033[0m");
             }
         } else {
-            System.out.println("Gym not found with the provided ID.");
+            System.out.println("\033[1;31mGym not found with the provided ID.\033[0m");
         }
     }
 
@@ -348,11 +349,11 @@ public class GymOwnerFlipFitMenu {
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved");
 
 	    // Print gym details
-	    for (Gym gym : gyms) {
+        gyms.forEach((gym)->{
             Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
-	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
-	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
-	    }
+                    gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
+                    gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
+        });
 
 	}
 
@@ -377,9 +378,9 @@ public class GymOwnerFlipFitMenu {
                 int totalSeats = scanner.nextInt();
                 slotService.addSlot(gymId, startTime, 1, totalSeats);
             }
-            System.out.println("Time slots registered successfully!");
+            System.out.println("\033[1;32mTime slots registered successfully!\033[0m");
         } else {
-            System.out.println("Gym not found with the provided ID.");
+            System.out.println("\033[1;31mGym not found with the provided ID.\033[0m");
         }
     }
 
@@ -406,19 +407,17 @@ public class GymOwnerFlipFitMenu {
 	        	        "Slot ID", "Start Time", "Slot Time", "Total Seats", "Active", "Approved", "Booked Seats");
 
 	        	// Print slot details
-	        	for (Slot slot : slots) {
-	                int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
-	        	    int bookedSeats = slot.getTotalSeats() - availableSeats;
+                slots.forEach((slot) ->{
+                    int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
+                    int bookedSeats = slot.getTotalSeats() - availableSeats;
                     Utils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-10s | %-10s | %-12s |",
-	        	            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
-	        	            slot.isActive(), slot.isApproved() ? "Approved" : "Processing" , bookedSeats);
-
-	        	}
-
+                            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
+                            slot.isActive(), slot.isApproved() ? "Approved" : "Processing" , bookedSeats);
+                });
 
 	        } else {
-	            System.out.println("Gym not found with the provided ID.");
-	        }
+                System.out.println("\033[1;31mGym not found with the provided ID.\033[0m");
+            }
 	  }
 	
 	  private void viewProfile(int userId) {
@@ -435,8 +434,8 @@ public class GymOwnerFlipFitMenu {
 		                gymOwner.getPanCard(), gymOwner.getAadharCard(), gymOwner.getGstin(), gymOwner.getLocation());
 
 		    } else {
-		        System.out.println("Gym owner not found.");
-		    }
+                System.out.println("\033[1;31mGym owner not found.\033[0m");
+            }
 	  }
 	  private void updateProfile(int userId) {
 		  GymOwner gymOwner = ownerService.getGymOwnerById(userId);
@@ -491,11 +490,11 @@ public class GymOwnerFlipFitMenu {
                   break;
 
               default:
-                  System.out.println("Invalid choice. No updates performed.");
+                  System.out.println("\033[1;31mInvalid choice. No updates performed.\033[0m");
                   return;
           }
 
-          System.out.println("Profile updated successfully!");
-	  }
+          System.out.println("\033[1;32mProfile updated successfully!\033[0m");
+      }
 
 }

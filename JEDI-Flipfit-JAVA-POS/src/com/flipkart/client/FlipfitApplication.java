@@ -139,7 +139,8 @@ public class FlipfitApplication {
 		RoleType userRole = UserFlipFitServiceImpl.getInstance().getUserRole(userId);
 		LocalDate localDate = LocalDate.now();
 		LocalTime localTime = LocalTime.now();
-		System.out.println("Welcome " + userName +" As " + userRole.name() + " LoggedIn time: " + localTime.format(DateTimeFormatter.ofPattern("HH : mm a")) + " on " + localDate.getMonth() + " " + localDate.getDayOfMonth() );
+		System.out.println("      \033[1;36m" + userName + "\033[0m ▶ LoggedIn time ▶ \033[1;35m" + localTime.format(DateTimeFormatter.ofPattern("HH : mm a")) +
+				"\033[0m on \033[1;32m" + localDate.getMonth() + " " + localDate.getDayOfMonth() + "\033[0m as \033[1;33m" + userRole.name() + "\033[0m");
 		switch (userRole) {
 			case ADMIN:
 				GymAdminFlipFitMenu gymAdminFlipFitMenu = new GymAdminFlipFitMenu();

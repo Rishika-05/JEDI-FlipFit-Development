@@ -26,14 +26,24 @@ public class FlipfitApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		System.out.println("\033[1;34m          ░▒▓▓▓▓▓▓▓▓▓▒░  \033[0m");
+		System.out.println("\033[1;34m       ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒   \033[0m");
+		System.out.println("\033[1;34m     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒   \033[0m");
+		System.out.println("\033[1;34m   ░▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓         \033[0m");
+		System.out.println("\033[1;34m  ░▓▓▓▓\033[0m" + "\033[1;33m░░░░░░░░░░░░░░░░░░░\033[0m" + "\033[1;34m▓▓▓▓░          \033[0m");
+		System.out.println("\033[1;34m  ▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓          \033[0m");
+		System.out.println("\033[1;34m ░▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓░         \033[0m" + "\033[1;33m███████╗██╗     ██╗██████╗ \033[0m" + "\033[1;34m███████╗██╗████████╗\033[0m");
+		System.out.println("\033[1;34m ▒▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓▒\033[0m" + "\033[1;33m░\033[0m" + "\033[1;34m▒▓▓▓▓▒         \033[0m" + "\033[1;33m██╔════╝██║     ██║██╔══██╗\033[0m" + "\033[1;34m██╔════╝██║╚══██╔══╝\033[0m");
+		System.out.println("\033[1;34m ▒▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░░\033[0m" + "\033[1;34m▓▓▓▒\033[0m" + "\033[1;33m░░░░\033[0m" + "\033[1;34m▒▓▓▓▓▒         \033[0m" + "\033[1;33m█████╗  ██║     ██║██████╔╝\033[0m" + "\033[1;34m█████╗  ██║   ██║\033[0m");
+		System.out.println("\033[1;34m ░▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▒\033[0m" + "\033[1;33m░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓░         \033[0m" + "\033[1;33m██╔══╝  ██║     ██║██╔═══╝ \033[0m" + "\033[1;34m██╔══╝  ██║   ██║\033[0m");
+		System.out.println("\033[1;34m  ▓▓▓▓▒\033[0m" + "\033[1;33m░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▓▓▓▓▓▒\033[0m" + "\033[1;33m░░░\033[0m" + "\033[1;34m▒▓▓▓▓          \033[0m" + "\033[1;33m██║     ███████╗██║██║     \033[0m" + "\033[1;34m██║     ██║   ██║\033[0m");
+		System.out.println("\033[1;34m  ░▓▓▓▒\033[0m" + "\033[1;33m░░░░░░░░░\033[0m" + "\033[1;34m▒▓▓▓▒\033[0m" + "\033[1;33m░░░░░\033[0m" + "\033[1;34m▒▓▓▓░          \033[0m" + "\033[1;33m╚═╝     ╚══════╝╚═╝╚═╝     \033[0m" + "\033[1;34m╚═╝     ╚═╝   ╚═╝\033[0m");
+		System.out.println("\033[1;34m   ░▓▓▓\033[0m" + "\033[1;33m░░░░░░░░░\033[0m" + "\033[1;34m▓▓▓▒\033[0m" + "\033[1;33m░░░░░░\033[0m" + "\033[1;34m▓▓▓            \033[0m");
+		System.out.println("\033[1;34m     ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒             \033[0m");
+		System.out.println("\033[1;34m       ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒               \033[0m");
+		System.out.println("\033[1;34m          ░▒▓▓▓▓▓▓▓▓▓▒░\033[0m");
 
-		System.out.println("\033[3m");
-		System.out.println("\033[1;33m███████╗██╗     ██╗██████╗ \033[0m" + "\033[1;34m███████╗██╗████████╗\033[0m");
-		System.out.println("\033[1;33m██╔════╝██║     ██║██╔══██╗\033[0m" + "\033[1;34m██╔════╝██║╚══██╔══╝\033[0m");
-		System.out.println("\033[1;33m█████╗  ██║     ██║██████╔╝\033[0m" + "\033[1;34m█████╗  ██║   ██║\033[0m");
-		System.out.println("\033[1;33m██╔══╝  ██║     ██║██╔═══╝ \033[0m" + "\033[1;34m██╔══╝  ██║   ██║\033[0m");
-		System.out.println("\033[1;33m██║     ███████╗██║██║     \033[0m" + "\033[1;34m██║     ██║   ██║\033[0m");
-		System.out.println("\033[1;33m╚═╝     ╚══════╝╚═╝╚═╝     \033[0m" + "\033[1;34m╚═╝     ╚═╝   ╚═╝\033[0m");
+
 		System.out.println("");
 		System.out.println("");
 		System.out.println("");
@@ -56,7 +66,7 @@ public class FlipfitApplication {
                     case 3:
                         updatePassword();
                         break;
-                    case 0:
+                    case 4:
                         System.out.println("\033[1mYou have exited the FlipFit Application\033[0m");
                         break;
                     default:
@@ -64,7 +74,7 @@ public class FlipfitApplication {
                         break;
                 }
 
-            } while (userInput != 0);
+            } while (userInput != 4);
 
         } catch (Exception ex) {
             System.out.println("\033[1;31mError occurred: " + ex + "\033[0m");
@@ -90,7 +100,7 @@ public class FlipfitApplication {
 		System.out.println("\033[1;36m ① Login");
 		System.out.println("\033[1;36m ② Register");
 		System.out.println("\033[1;36m ③ Update Password");
-		System.out.println("\033[1;31m ⓪ Exit");
+		System.out.println("\033[1;31m ④ Exit");
 		System.out.println("\033[0m"); // Reset text attributes
 
 
@@ -111,7 +121,7 @@ public class FlipfitApplication {
 		int userId = UserFlipFitServiceImpl.getInstance().login(userName, password);
 		User user = UserFlipFitServiceImpl.getInstance().getUser(userId);
 		if (userId == -1) {
-//			System.out.println("\033[1;31mUser Not Found Please Try Again\033[0m");
+			System.out.println("\033[1;31mUser Not Found Please Try Again\033[0m");
 			return;
 		}
 		System.out.print("\n");
@@ -153,11 +163,7 @@ public class FlipfitApplication {
 			displayLogo("Register");
 			System.out.println("\033[0;32mPress 1. Customer Registration \n\033[0;32mPress 2. Gym Owner Registration");
 			System.out.print("\033[1mEnter Choice ► \033[0m");
-//			int userRole = in.nextInt();
-//			while (userRole < 1 || userRole > 2) {
-//				System.out.println("\033[1;31mInvalid type! Please try again.\033[0m");
-//				userRole = in.nextInt();
-//			}
+
 			int userRole;
 
 			while (true) {
@@ -165,13 +171,13 @@ public class FlipfitApplication {
 					userRole = in.nextInt();
 
 					if (userRole >= 1 && userRole <= 2) {
-						break; // valid input, exit the loop
+						break;
 					} else {
 						System.out.println("\033[1;31mInvalid type! Please try again.\033[0m");
 					}
 				} else {
 					System.out.println("\033[1;31mInvalid input! Please enter a valid number.\033[0m");
-					in.next(); // consume the invalid input
+					in.next();
 				}
 			}
 
@@ -204,25 +210,23 @@ public class FlipfitApplication {
 				System.out.print("\033[0;34mEnter your location: \033[0m");
 				String location = in.next();
 				in.nextLine();
-				String formattedLocation = utils.convertFirstLetterCapital(location);
+				String formattedLocation = Utils.convertFirstLetterCapital(location);
 				customer.setLocation(formattedLocation);
 
 
-				System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
+
 				customer.setUserId(userId);
 				if (UserFlipFitServiceImpl.getInstance().customerRegistration(customer)) {
-					System.out.println("\033[1;32mGym Customer Registered\033[0m");
+					System.out.println("Gym Customer Registered Successfully");
 				} else {
-					System.out.println("\033[1;31mSome Error occurred\033[0m");
+					System.out.println("Some Error occurred");
 				}
 
-				System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
 				System.out.println("Customer Details:");
-				System.out.println("+---------------------+--------------+-------+------------------+");
-				System.out.println("| User ID             | Name         | Age   | Location         |");
-				System.out.println("+---------------------+--------------+-------+------------------+");
-				System.out.printf("| %-20s | %-12s | %-5d | %-16s |\n", userId, name, age, formattedLocation);
-				System.out.println("+---------------------+--------------+-------+------------------+\n");
+				String format = "| %-20s | %-12s | %-5s | %-16s |";
+				Utils.printFormattedTableHeader(format, "User ID", "Name", "Age", "Location");
+				Utils.printFormattedTableRow(format, String.valueOf(userId), name, String.valueOf(age), formattedLocation);
+
 				break;
 
 			case GYM_OWNER:
@@ -239,7 +243,7 @@ public class FlipfitApplication {
 				System.out.print("\033[0;34mEnter your location: \033[0m");
 				String address = in.next();
 				in.nextLine();
-				String formattedAddress = utils.convertFirstLetterCapital(address);
+				String formattedAddress = Utils.convertFirstLetterCapital(address);
 				newGymOwner.setLocation(formattedAddress);
 				String panCard, aadharCard, GstIn;
 				do {
@@ -263,11 +267,22 @@ public class FlipfitApplication {
 					newGymOwner.setGstin(GstIn);
 				} while (false);
 				if (UserFlipFitServiceImpl.getInstance().gymOwnerRegistration(newGymOwner)) {
-					System.out.println("\033[1;32mGym Customer Registered\033[0m");
+					System.out.println("\n\033[0mGym Customer Registered Successfully!\033[1m\n");
 				} else {
-					System.out.println("\033[1;31mSome Error occurred\033[0m");
+					System.out.println("Some Error occurred");
 				}
-				System.out.println("\n\033[0mGym Owner Registered!\033[1m\n");
+
+
+				String format_2 = "| %-20s | %-12s | %-5s | %-16s | %-10s | %-10s | %-15s |";
+				Utils.printFormattedTableHeader(format_2, "User ID", "Name", "Age", "Location", "PAN Card", "Aadhar Card", "GSTIN");
+				Utils.printFormattedTableRow(format_2,
+						String.valueOf(newGymOwner.getUserId()),
+						newGymOwner.getName(),
+						String.valueOf(newGymOwner.getAge()),
+						newGymOwner.getLocation(),
+						newGymOwner.getPanCard(),
+						newGymOwner.getAadharCard(),
+						newGymOwner.getGstin());
 				break;
 			default:
 				break;

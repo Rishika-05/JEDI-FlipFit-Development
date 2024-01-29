@@ -182,7 +182,7 @@ public class GymAdminFlipFitMenu {
         List<Slot> pendingSlots = slotService.getAllSlot();
 
         if (pendingSlots.isEmpty()) {
-            System.out.println("\033[1;33mNo pending slot registrations.\033[0m")
+            System.out.println("\033[1;33mNo pending slot registrations.\033[0m");
             return;
         }
 

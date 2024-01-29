@@ -40,18 +40,19 @@ public class GymCustomerFlipFitMenu {
 		int option;
 		int gymCustomerId = customerService.getGymCustomerId(userId);
 		do {
-			System.out.println("\n\n\033[1m--------- Gym Customer Menu Options ------\033[0m" +
-					"\n\033[1;34mPress 1. Browse Gyms" +
-					"\nPress 2. Book a Slot " +
-					"\nPress 3. Cancel Booking " +
-//					"\nPress 4. Modify Booking " +
-                    "\nPress 4. View Booking History" +
-					"\nPress 5. View Profile" +
-					"\nPress 6. Update Profile" +
+			System.out.println("\033[1;34m▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m " + "Gym Customer Menu Options" + " \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m\n" +
+//			System.out.println("\n\n\033[1m--------- Gym Customer Menu Options ------\033[0m" +
+					"\033[1;33mPress 1.\033[0m \033[1;34mBrowse Gyms\033[0m" +
+					"\n\033[1;33mPress 2.\033[0m \033[1;34mBook a Slot\033[0m" +
+					"\n\033[1;33mPress 3.\033[0m \033[1;34mCancel Booking\033[0m" +
+//                    "\nPress 4. Modify Booking " +
+					"\n\033[1;33mPress 4.\033[0m \033[1;34mView Booking History\033[0m" +
+					"\n\033[1;33mPress 5.\033[0m \033[1;34mView Profile\033[0m" +
+					"\n\033[1;33mPress 6.\033[0m \033[1;34mUpdate Profile\033[0m" +
 //                    "\nPress 8. Browse Waitlist" +
 //                    "\nPress 9. Cancel Waitlist" +
 //                    "\nPress 10. Payment" +
-					"\nPress 7. Exit\033[0m\n");
+					"\n\033[1;33mPress 7.\033[0m \033[1;34mExit\033[0m\n");
 			System.out.print("\033[1mEnter Choice ► \033[0m");
 			
 			Scanner sc = new Scanner(System.in);
@@ -130,7 +131,7 @@ public class GymCustomerFlipFitMenu {
 	        case 3:
 	            System.out.println("Enter your location: ");
 	            String location = in.nextLine();
-				String formattedLocation = utils.convertFirstLetterCapital(location);
+				String formattedLocation = Utils.convertFirstLetterCapital(location);
 	            customer.setLocation(formattedLocation);
 	            break;
 
@@ -151,17 +152,15 @@ public class GymCustomerFlipFitMenu {
 	private void viewProfile(int gymCustomerId) {
 	    GymCustomer gymCustomer = customerService.viewProfile(gymCustomerId);
 
-	    // Print table header
-	    System.out.println("-------------------------------------------------------------");
-	    System.out.printf("| %-15s | %-20s | %-10s | %-5s |\n",
-	            "Customer ID", "Name", "Location", "Age");
-	    System.out.println("-------------------------------------------------------------");
+		Utils.printFormattedTableHeader("| %-15s | %-20s | %-10s | %-5s |", "Customer ID", "Name", "Location", "Age");
 
-	    // Print gym customer details
-	    System.out.printf("| %-15d | %-20s | %-10s | %-5d |\n",
-	            gymCustomerId, gymCustomer.getName(), gymCustomer.getLocation(), gymCustomer.getAge());
 
-	    System.out.println("-------------------------------------------------------------");
+		Utils.printFormattedTableRow("| %-15s | %-20s | %-10s | %-5s |",
+				gymCustomerId,
+				gymCustomer.getName(),
+				gymCustomer.getLocation(),
+				gymCustomer.getAge());
+
 	}
 
 	private void browseGyms() {
@@ -169,12 +168,13 @@ public class GymCustomerFlipFitMenu {
 		 Scanner scanner = new Scanner(System.in);
 
 		    // Ask the user to select a location
-		    System.out.println("\n\033[1mSelect a location:\033[0m");
-		    System.out.println("1. Bellandur");
-		    System.out.println("2. Whitefield");
-		    System.out.println("3. Indiranagar");
+		System.out.println("\n\033[1;97mSelect a location:\033[0m"); // Bold and White color
+		System.out.println("\033[34m1. Bellandur\033[0m"); // Blue color
+		System.out.println("\033[34m2. Whitefield\033[0m"); // Blue color
+		System.out.println("\033[34m3. Indiranagar\033[0m"); // Blue color
 
-		    int locationChoice = scanner.nextInt();
+		System.out.print("\033[1mEnter Choice ► \033[0m");
+		int locationChoice = scanner.nextInt();
 		    String selectedLocation;
 
 		    switch (locationChoice) {
@@ -202,19 +202,16 @@ public class GymCustomerFlipFitMenu {
 	}
 	
 	void displayGyms(List<Gym> gyms) {
-		System.out.println("---------------------------------------------------------------------");
-	    System.out.printf("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s |\n",
+		Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s |",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot");
-	    System.out.println("---------------------------------------------------------------------");
 
 	    // Print gym details
 	    for (Gym gym : gyms) {
-	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d |\n",
+			Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s |\n",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot());
 	    }
 
-	    System.out.println("---------------------------------------------------------------------");
 	}
 
 
@@ -259,19 +256,16 @@ public class GymCustomerFlipFitMenu {
 	            // Get the list of slots for the selected gym
 	            List<Slot> slots = slotService.getAllSlotsByGymId(gymId);
 	         // Print table header for slots
-	            System.out.println("-------------------------------------------------------------------");
-	            System.out.printf("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
+				Utils.printFormattedTableHeader("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
 	                    "Slot ID", "Start Time", "Slot Time", "Total Seats", "Available Seats");
-	            System.out.println("-------------------------------------------------------------------");
 
 	            // Print slot details
 	            for (Slot slot : slots) {
 	                int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
-	                System.out.printf("| %-10d | %-10s | %-10d | %-15d | %-15d |\n",
+					Utils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
 	                        slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(), availableSeats);
 	            }
 
-	            System.out.println("-------------------------------------------------------------------");
 
 	            System.out.println("Enter the slot ID you want to book: ");
 	            int slotId = sc.nextInt();
@@ -303,10 +297,8 @@ public class GymCustomerFlipFitMenu {
 	
 	void displayBooking(List<Booking> bookedSlots) {
 		// Print table header
-		System.out.println("-----------------------------------------------------------------------");
-		System.out.printf("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
+		Utils.printFormattedTableHeader("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
 		        "Booking ID", "Gym Name", "Slot Start Time", "Slot Time", "Booking Date", "Cancelled");
-		System.out.println("-----------------------------------------------------------------------");
 
 		// Print booking history details
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -317,12 +309,11 @@ public class GymCustomerFlipFitMenu {
 		    String gymName = gymService.getGym(booking.getGymId()).getGymName();
 		    // Fetch slot start time using slot ID
 		    LocalTime slotStartTime = slotService.getSlot(booking.getSlotId()).getStartTime();
-		    System.out.printf("| %-12d | %-20s | %-20s | %-20d | %-20s | %-15s |\n",
+			Utils.printFormattedTableRow("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
 		            booking.getBookingId(), gymName, slotStartTime, booking.getSlotId(),
 		            booking.getBookingDate().format(formatter), cancelledStatus);
 		}
 
-		System.out.println("-----------------------------------------------------------------------");
 
 	}
 
@@ -334,19 +325,5 @@ public class GymCustomerFlipFitMenu {
 		
 	}
 
-//    private void modifyBooking() {
-//        // Implement logic to modify a booked slot
-//    }
 
-//    private void browseWaitlist() {
-//        // Implement logic to browse the waitlist
-//    }
-//
-//    private void cancelWaitlist() {
-//    	System.out.println("Cancel Waitlist");
-//    }
-//
-//    private void payment() {
-//    	 System.out.println("Payment Function");
-//    }
 }

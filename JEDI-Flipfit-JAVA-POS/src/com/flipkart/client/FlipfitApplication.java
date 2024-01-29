@@ -111,13 +111,14 @@ public class FlipfitApplication {
 		int userId = UserFlipFitServiceImpl.getInstance().login(userName, password);
 		User user = UserFlipFitServiceImpl.getInstance().getUser(userId);
 		if (userId == -1) {
-			System.out.println("\033[1mUser Not Found Please Try Again\033[0m");
+			System.out.println("\033[1;31mUser Not Found Please Try Again\033[0m");
 			return;
 		}
 		System.out.print("\n");
 		System.out.print("\n");
 
-		System.out.print("     ミ★ Congratulations Login Successful ★彡 \033[0m");
+		System.out.print("     \033[32mミ★ Congratulations Login Successful ★彡 \033[0m");
+
 
 		System.out.print("\n");
 		System.out.print("\n");

@@ -206,7 +206,7 @@ public class GymOwnerFlipFitMenu {
     	        // Print the slots for the selected gym
     	        System.out.println("Slots for Gym ID " + selectedGym.getGymId() + ":");
     	        for (Slot slot : slots) {
-    	            System.out.printf("Slot ID: %-5d | Start Time: %-15s | Slot Time: %-10d | Total Seats: %-5d\n",
+    	            System.out.printf("Slot ID: %-5d | Start Time: %-15s | Slot Time: %-10d | Total Seats: %-5d",
     	                    slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats());
     	        }
 
@@ -278,10 +278,19 @@ public class GymOwnerFlipFitMenu {
 
             // Print the slots for the selected gym
             System.out.println("Slots for Gym ID " + selectedGym.getGymId() + ":");
+
+            String format = "| %-8s | %-20s | %-10s | %-15s | %-12s |";
+
+            Utils.printFormattedTableHeader(format, "Slot ID", "Start Time", "Slot Time", "Total Seats");
+
             for (Slot slot : slots) {
-                System.out.printf("Slot ID: %-5d | Start Time: %-15s | Slot Time: %-10d | Total Seats: %-5d\n",
-                        slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats());
+                Utils.printFormattedTableRow(format,
+                        String.valueOf(slot.getSlotId()),
+                        slot.getStartTime(),
+                        String.valueOf(slot.getSlotTime()),
+                        String.valueOf(slot.getTotalSeats()));
             }
+
 
             // Ask the user for the slot ID to remove
             System.out.print("Enter the Slot ID to remove: ");
@@ -311,7 +320,7 @@ public class GymOwnerFlipFitMenu {
 
     	System.out.println("\033[0;34mEnter gym location: \033[0m");
     	String location = in.next();
-        String formattedLocation = utils.convertFirstLetterCapital(location);
+        String formattedLocation = Utils.convertFirstLetterCapital(location);
     	newGym.setLocation(formattedLocation);
 
     	System.out.println("\033[0;34mEnter gym description: \033[0m");
@@ -335,19 +344,16 @@ public class GymOwnerFlipFitMenu {
 	    List<Gym> gyms = ownerService.getAllGyms(userId);
 
 	    // Print table header
-	    System.out.println("---------------------------------------------------------------------");
-	    System.out.printf("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |\n",
+        Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved");
-	    System.out.println("---------------------------------------------------------------------");
 
 	    // Print gym details
 	    for (Gym gym : gyms) {
-	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d | %-8s |\n",
+            Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
 	    }
 
-	    System.out.println("---------------------------------------------------------------------");
 	}
 
     private void registerTimeSlots(int userId) {
@@ -396,22 +402,19 @@ public class GymOwnerFlipFitMenu {
 	        	List<Slot> slots = slotService.getAllSlotsByGymId(gymId);
 
 	        	// Print table header
-	        	System.out.println("--------------------------------------------------------------------");
-	        	System.out.printf("| %-10s | %-10s | %-10s | %-15s | %-10s | %-10s | %-12s |\n",
+                Utils.printFormattedTableHeader("| %-10s | %-10s | %-10s | %-15s | %-10s | %-10s | %-12s |",
 	        	        "Slot ID", "Start Time", "Slot Time", "Total Seats", "Active", "Approved", "Booked Seats");
-	        	System.out.println("--------------------------------------------------------------------");
 
 	        	// Print slot details
 	        	for (Slot slot : slots) {
 	                int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
 	        	    int bookedSeats = slot.getTotalSeats() - availableSeats;
-	        	    System.out.printf("| %-10d | %-10s | %-10d | %-15d | %-10s | %-10s | %-12d |\n",
+                    Utils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-10s | %-10s | %-12s |",
 	        	            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
 	        	            slot.isActive(), slot.isApproved() ? "Approved" : "Processing" , bookedSeats);
 
 	        	}
 
-	        	System.out.println("--------------------------------------------------------------------");
 
 	        } else {
 	            System.out.println("Gym not found with the provided ID.");
@@ -423,17 +426,13 @@ public class GymOwnerFlipFitMenu {
 
 		    if (gymOwner != null) {
 		        // Print table header
-		        System.out.println("-------------------------------------------------------");
-		        System.out.printf("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s |\n",
+                Utils.printFormattedTableHeader("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s |",
 		                "Name", "Age", "Pan Card", "Aadhar Card", "GSTIN", "Location");
-		        System.out.println("-------------------------------------------------------");
 
 		        // Print gym owner details
-		        System.out.printf("| %-15s | %-5d | %-15s | %-15s | %-15s | %-15s |\n",
+                Utils.printFormattedTableRow("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s |",
 		                 gymOwner.getName(), gymOwner.getAge(),
 		                gymOwner.getPanCard(), gymOwner.getAadharCard(), gymOwner.getGstin(), gymOwner.getLocation());
-
-		        System.out.println("-------------------------------------------------------");
 
 		    } else {
 		        System.out.println("Gym owner not found.");

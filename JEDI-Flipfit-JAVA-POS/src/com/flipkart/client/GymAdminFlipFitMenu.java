@@ -5,6 +5,7 @@ package com.flipkart.client;
 
 import java.util.List;
 import java.util.Scanner;
+import com.flipkart.utils.Utils;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
@@ -66,21 +67,17 @@ public class GymAdminFlipFitMenu {
     private void browseGyms() {
         List<Gym> gyms = gymService.viewAllGyms();
 
-	    System.out.println("---------------------------------------------------------------------");
-	    System.out.printf("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |\n",
+	    Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved");
-	    System.out.println("---------------------------------------------------------------------");
 
-	    // Print gym details
 	    for (Gym gym : gyms) {
-	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d | %-8s |\n",
+            Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
 	    }
 
-	    System.out.println("---------------------------------------------------------------------");
-		
-	}
+
+    }
     
     private void browseOwnerRegistrations() {
             // Get the list of gym owners awaiting approval
@@ -92,19 +89,16 @@ public class GymAdminFlipFitMenu {
             }
 
             // Print the table header
-            System.out.println("-------------------------------------------------------------");
-            System.out.printf("| %-5s | %-20s | %-5s | %-15s | %-15s | %-15s | %-10s | %-8s |\n",
+            Utils.printFormattedTableHeader("| %-5s | %-20s | %-5s | %-15s | %-15s | %-15s | %-10s | %-8s |",
                     "ID", "Name", "Age", "PAN Card", "Aadhar Card", "GSTIN", "Location", "Approved");
-            System.out.println("-------------------------------------------------------------");
 
             // Print gym owner details in tabular format
             for (GymOwner owner : owners) {
-                System.out.printf("| %-5d | %-20s | %-5d | %-15s | %-15s | %-15s | %-10s | %-8s |\n",
+                Utils.printFormattedTableRow("| %-5s | %-20s | %-5s | %-15s | %-15s | %-15s | %-10s | %-8s |",
                         owner.getOwnerId(), owner.getName(), owner.getAge(), owner.getPanCard(),
                         owner.getAadharCard(), owner.getGstin(), owner.getLocation(), owner.isApproved() ? "Approved" : "Processsing");
             }
 
-            System.out.println("-------------------------------------------------------------");
 
             // Ask the admin to approve owners based on ID or press 0 to exit
             Scanner scanner = new Scanner(System.in);
@@ -144,19 +138,16 @@ public class GymAdminFlipFitMenu {
             return;
         }
 
-	    System.out.println("---------------------------------------------------------------------");
-	    System.out.printf("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |\n",
+        Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved");
-	    System.out.println("---------------------------------------------------------------------");
 
 	    // Print gym details
 	    for (Gym gym : pendingGyms) {
-	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d | %-8s |\n",
+            Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
 	    }
 
-	    System.out.println("---------------------------------------------------------------------");
         // Ask the admin to approve gyms based on ID or press 0 to exit
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -194,18 +185,15 @@ public class GymAdminFlipFitMenu {
         }
 
         // Print the table header
-        System.out.println("------------------------------------------------------------");
-        System.out.printf("| %-5s | %-5s | %-20s | %-15s | %-5s |\n",
+        Utils.printFormattedTableHeader("| %-5s | %-5s | %-20s | %-15s | %-5s |",
                 "ID", "Gym ID", "Start Time", "Total Seats", "Approved");
-        System.out.println("------------------------------------------------------------");
 
         // Print slot details in tabular format
         for (Slot slot : pendingSlots) {
-            System.out.printf("| %-5d | %-5d | %-20s | %-15d | %-5s |\n",
+            Utils.printFormattedTableRow("| %-5s | %-5s | %-20s | %-15s | %-5s |",
                     slot.getSlotId(), slot.getGymId(), slot.getStartTime(), slot.getTotalSeats(), slot.isApproved() ? "Approved" : "Processing");
         }
 
-        System.out.println("------------------------------------------------------------");
 
         // Ask the admin to approve slots based on ID or press 0 to exit
         Scanner scanner = new Scanner(System.in);

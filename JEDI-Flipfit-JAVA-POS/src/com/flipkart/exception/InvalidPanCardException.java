@@ -6,6 +6,8 @@ package com.flipkart.exception;
 /**
  * 
  */
-public class InvalidPanCardException {
-
+public class InvalidPanCardException extends Exception{
+    public InvalidPanCardException() {
+        super("Invalid PAN Card");
+    }
 }

@@ -52,7 +52,7 @@ public class GymCustomerFlipFitMenu {
 //                    "\nPress 8. Browse Waitlist" +
 //                    "\nPress 9. Cancel Waitlist" +
 //                    "\nPress 10. Payment" +
-					"\n\033[1;33mPress 7.\033[0m \033[1;34mExit\033[0m\n");
+					"\n\033[1;33mPress 0.\033[0m \033[1;34mExit\033[0m\n");
 			System.out.print("\033[1mEnter Choice ► \033[0m");
 			
 			Scanner sc = new Scanner(System.in);
@@ -89,11 +89,11 @@ public class GymCustomerFlipFitMenu {
 //                case 11:
 //                    payment();
 //                    break;
-				case 7:
+				case 0:
 					System.out.println("\033[1mYou have exited the Gym Customer menu\033[0m");
 					break;
 				default:
-					System.out.println("\033[1mYou have selected an invalid option. Please try again!!\033[0m");
+					System.out.println("\033[1;31mYou have selected an invalid option. Please try again!!\033[0m");
 					break;
 			}
 
@@ -136,8 +136,8 @@ public class GymCustomerFlipFitMenu {
 	            break;
 
 	        default:
-	            System.out.println("Invalid choice. No updates performed.");
-	            return;
+				System.out.println("\033[1;31mInvalid choice. No updates performed.\033[0m");
+				return;
 	    }
 
 	    // Attempt to update the profile
@@ -191,8 +191,8 @@ public class GymCustomerFlipFitMenu {
 		            break;
 
 		        default:
-		            System.out.println("Invalid choice. Exiting.");
-		            return;
+					System.out.println("\033[1;31mInvalid choice. Exiting.\033[0m");
+					return;
 		    }
 
 		    // Print the header for the gyms
@@ -275,13 +275,13 @@ public class GymCustomerFlipFitMenu {
 	            if (slotService.getAvailableSeats(slotId) > 0) {
 	                // Insert the booking
 	                bookingService.insertBooking(userId, gymId, slotId);
-	                System.out.println("\n\033[1mBooking successful! Enjoy your workout.\033[0m");
-	            } else {
-	                System.out.println("\n\033[1mSelected slot is not available. Please choose another slot.\033[0m");
-	            }
+					System.out.println("\033[1;32mBooking successful! Enjoy your workout.\033[0m");
+				} else {
+					System.out.println("\033[1;31mSelected slot is not available. Please choose another slot.\033[0m");
+				}
 	        } else {
-	            System.out.println("Gym not found with the provided ID.");
-	        }
+				System.out.println("\033[1;31mGym not found with the provided ID.\033[0m");
+			}
     }
 
 	private void cancelBooking(Scanner sc, int userId) {
@@ -291,9 +291,9 @@ public class GymCustomerFlipFitMenu {
 		System.out.println("\nEnter the booking ID to be cancelled: ");
 		int bookingId = sc.nextInt();
 		if(bookingService.cancelBooking(bookingId))
-			 System.out.println("\n\033[1mBooking with ID " + bookingId + " is cancelled successfully\033[0m");
+			System.out.println("\033[1;32mBooking with ID " + bookingId + " is cancelled successfully\033[0m");
 		else
-			System.out.println("\n\033[1Error occured!!\033[0m");
+			System.out.println("\n\033[1;31mError occurred!!\033[0m");
 	}
 	
 	void displayBooking(List<Booking> bookedSlots) {

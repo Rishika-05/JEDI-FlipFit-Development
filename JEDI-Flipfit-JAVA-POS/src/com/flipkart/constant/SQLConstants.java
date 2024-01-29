@@ -1,5 +1,13 @@
-package com.flipkart.constant;
+/**
+ * This class contains SQL constants used in the application.
+ * It provides static final variables for various SQL queries related to different tables in the database.
+ * These constants are used to execute SQL queries and perform database operations.
+ */
+/** 
+ * 
+*/
 
+package com.flipkart.constant;
 
 public class SQLConstants {
 	

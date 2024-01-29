@@ -1,5 +1,6 @@
 /**
- * 
+ * This class implements the GymOwnerFlipFitService interface and provides the implementation for the methods defined in the interface.
+ * It interacts with the GymFlipFitService, SlotFlipFitService, and GymOwnerDAO to perform various operations related to gym owners.
  */
 package com.flipkart.service.serviceImpl;
 
@@ -15,7 +16,7 @@ import com.flipkart.service.GymOwnerFlipFitService;
 import com.flipkart.service.SlotFlipFitService;
 
 /**
- * 
+ * This class provides the implementation for the GymOwnerFlipFitService interface.
  */
 public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 	
@@ -29,6 +30,10 @@ public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 		
 	}
 	
+	/**
+	 * Returns the instance of GymOwnerFlipFitService.
+	 * @return The instance of GymOwnerFlipFitService.
+	 */
 	public static synchronized GymOwnerFlipFitService getInstance() {
 		if (ownerServiceObj == null)
 			ownerServiceObj = new GymOwnerFlipFitServiceImpl();
@@ -37,6 +42,10 @@ public class GymOwnerFlipFitServiceImpl implements GymOwnerFlipFitService {
 	}
 
 
+	/**
+	 * Adds a new gym.
+	 * 
+	 */
 	@Override
 	public void addGym(Gym gym) {
 		gymService.addGym(gym);

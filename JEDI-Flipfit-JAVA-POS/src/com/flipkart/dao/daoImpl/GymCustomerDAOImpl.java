@@ -1,3 +1,7 @@
+/**
+ * 
+ */
+
 package com.flipkart.dao.daoImpl;
 
 import java.sql.Connection;
@@ -12,6 +16,10 @@ import com.flipkart.bean.User;
 import com.flipkart.constant.SQLConstants;
 import com.flipkart.utils.DBUtils;
 import com.flipkart.dao.GymCustomerDAO;
+
+/**
+ * 
+ */
 
 public class GymCustomerDAOImpl implements GymCustomerDAO {
 
@@ -57,6 +65,10 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
         return gymCustomer;
     }
 
+
+    /**
+     * 
+     */
     @Override
     public boolean register(GymCustomer customer) {
         int rowsUpdated = 0;

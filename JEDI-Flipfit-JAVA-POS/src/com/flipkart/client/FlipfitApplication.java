@@ -4,6 +4,9 @@
 package com.flipkart.client;
 
 import java.io.Console;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import com.flipkart.bean.GymCustomer;
@@ -90,8 +93,6 @@ public class FlipfitApplication {
 		System.out.println("\033[1;34m      ▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m " + windowTitle + " \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
 		System.out.println("");
 
-
-
 	}
 
 	public static void createMainMenu() {
@@ -127,9 +128,8 @@ public class FlipfitApplication {
 			return;
 		}
 		System.out.print("\n");
-		System.out.print("\n");
 
-		System.out.print("\033[32mミ★ Congratulations Login Successful ★彡 \033[0m");
+		System.out.print("\033[0;35mミ★\033[0m \033[32m CONGRATULATIONS LOGIN SUCCUESSFUL!!!\033[0m \033[0;35m★彡 \033[0m");
 
 
 		System.out.print("\n");
@@ -137,6 +137,10 @@ public class FlipfitApplication {
 
 
 		RoleType userRole = UserFlipFitServiceImpl.getInstance().getUserRole(userId);
+		LocalDate localDate = LocalDate.now();
+		LocalTime localTime = LocalTime.now();
+		System.out.println("      \033[1;36m" + userName + "\033[0m ▶ LoggedIn time ▶ \033[1;35m" + localTime.format(DateTimeFormatter.ofPattern("HH : mm a")) +
+				"\033[0m on \033[1;32m" + localDate.getMonth() + " " + localDate.getDayOfMonth() + "\033[0m as \033[1;33m" + userRole.name() + "\033[0m");
 		switch (userRole) {
 			case ADMIN:
 				GymAdminFlipFitMenu gymAdminFlipFitMenu = new GymAdminFlipFitMenu();
@@ -219,11 +223,11 @@ public class FlipfitApplication {
 
 				customer.setUserId(userId);
 				if (UserFlipFitServiceImpl.getInstance().customerRegistration(customer)) {
-					System.out.println("Gym Customer Registered Successfully");
+
+					System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
 				} else {
 					System.out.println("Some Error occurred");
 				}
-
 				System.out.println("Customer Details:");
 				String format = "︳ %-20s ︳ %-12s | %-5s | %-16s |";
 				Utils.printFormattedTableHeader(format, "User ID", "Name", "Age", "Location");
@@ -269,11 +273,6 @@ public class FlipfitApplication {
 					newGymOwner.setGstin(GstIn);
 				} while (false);
 				if (UserFlipFitServiceImpl.getInstance().gymOwnerRegistration(newGymOwner)) {
-					System.out.println("\n\033[0mGym Customer Registered Successfully!\033[1m\n");
-				} else {
-					System.out.println("Some Error occurred");
-				}
-
 
 				String format_2 = "| %-20s | %-12s | %-5s | %-16s | %-10s | %-10s | %-15s |";
 				Utils.printFormattedTableHeader(format_2, "User ID", "Name", "Age", "Location", "PAN Card", "Aadhar Card", "GSTIN");
@@ -285,6 +284,10 @@ public class FlipfitApplication {
 						newGymOwner.getPanCard(),
 						newGymOwner.getAadharCard(),
 						newGymOwner.getGstin());
+					System.out.println("\n\033[0mGym Owner Registered!\033[1m\n");
+				} else {
+					System.out.println("Some Error occurred");
+				}
 				break;
 			default:
 				break;

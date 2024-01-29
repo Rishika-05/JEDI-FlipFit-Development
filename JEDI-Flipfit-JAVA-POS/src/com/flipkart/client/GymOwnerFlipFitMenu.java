@@ -33,8 +33,8 @@ public class GymOwnerFlipFitMenu {
         int menuOption;
         int gymOwnerId = ownerService.getGymOwnerId(userId);
         if(!ownerService.getGymOwnerById(gymOwnerId).isApproved()) {
-        	System.out.println("Please wait for your approval. Try again some time later.");
-        	Scanner in = new Scanner(System.in);
+            System.out.println("\033[1;31mPlease wait for your approval. Try again some time later.\033[0m");
+            Scanner in = new Scanner(System.in);
         	System.out.println("\n\nPress any key to exit: ");
         	in.next();
         	return;
@@ -86,14 +86,14 @@ public class GymOwnerFlipFitMenu {
                 case 10:
                     updateProfile(gymOwnerId);
                     break;
-                case 11:
+                case 0:
                 	System.out.println("\033[1mYou have exited the Gym Owner menu\033[0m");
                     break;
                 default:
                     System.out.println("\033[1mYou have selected an invalid option. Please try again!!\033[0m");
                     break;
             }
-        } while (menuOption != 11);
+        } while (menuOption != 0);
 
     }
 
@@ -127,9 +127,11 @@ public class GymOwnerFlipFitMenu {
 		viewRegisteredGyms(gymOwnerId);
 		Scanner scanner = new Scanner(System.in);
 
+        // Ask the user for gym ID
         System.out.print("Enter the Gym ID to modify: ");
         int gymId = scanner.nextInt();
 
+        // Find the gym with the given ID
         Gym selectedGym = gymService.getGym(gymId);
 
         if (selectedGym != null) {

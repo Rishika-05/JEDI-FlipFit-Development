@@ -33,7 +33,7 @@ public class GymAdminFlipFitMenu {
 				 "\nPress 2. Browse Gym Registrations " +
 				 "\nPress 3. Browse Slot Registrations " + 
 				 "\nPress 4. Browse Gyms" + 
-				 "\nPress 6. Exit");
+				 "\nPress 0. Exit");
             System.out.print("\033[1mEnter Choice ► \033[0m");
             Scanner in = new Scanner(System.in);
             menuOption = in.nextInt();
@@ -50,14 +50,14 @@ public class GymAdminFlipFitMenu {
                 case 4:
                     browseGyms();
                     break;
-                case 6:
+                case 0:
                     System.out.println("\033[1mYou have exited the Gym Admin menu\033[0m");
                     break;
                 default:
-                    System.out.println("\033[1mYou have selected an invalid option. Please try again!!\033[0m");
+                    System.out.println("\033[1;31mYou have selected an invalid option. Please try again!!\033[0m");
                     break;
             }
-        } while (menuOption != 6);
+        } while (menuOption != 0);
     }
 
     private void browseGyms() {
@@ -78,7 +78,7 @@ public class GymAdminFlipFitMenu {
             List<GymOwner> owners = ownerService.getOwners();
 
             if (owners.isEmpty()) {
-                System.out.println("No pending owner registrations.");
+                System.out.println("\033[1;33mNo pending owner registrations.\033[0m");
                 return;
             }
 
@@ -114,9 +114,9 @@ public class GymAdminFlipFitMenu {
                         // Approve the Gym Owner
                         selectedOwner.setApproved(true);
                         ownerService.updateProfile(selectedOwner);
-                        System.out.println("Gym Owner with ID " + choice + " approved successfully!");
+                        System.out.println("\033[1;32mGym Owner with ID " + choice + " approved successfully!\033[0m");
                     } else {
-                        System.out.println("Gym Owner not found with the provided ID.");
+                        System.out.println("\033[1;31mGym Owner not found with the provided ID.\033[0m");
                     }
                 }
 
@@ -132,7 +132,7 @@ public class GymAdminFlipFitMenu {
         List<Gym> pendingGyms = gymService.viewAllGyms();
 
         if (pendingGyms.isEmpty()) {
-            System.out.println("No pending gym registrations.");
+            System.out.println("\033[1;33mNo pending gym registrations.\033[0m");
             return;
         }
 
@@ -166,9 +166,9 @@ public class GymAdminFlipFitMenu {
                     // Approve the Gym
                     selectedGym.setApproved(true);
                     gymService.updateGym(selectedGym);
-                    System.out.println("Gym with ID " + choice + " approved successfully!");
+                    System.out.println("\033[1;32mGym with ID " + choice + " approved successfully!\033[0m");
                 } else {
-                    System.out.println("Gym not found with the provided ID.");
+                    System.out.println("\033[1;31mGym not found with the provided ID.\033[0m");
                 }
             }
 
@@ -182,7 +182,7 @@ public class GymAdminFlipFitMenu {
         List<Slot> pendingSlots = slotService.getAllSlot();
 
         if (pendingSlots.isEmpty()) {
-            System.out.println("No pending slot registrations.");
+            System.out.println("\033[1;33mNo pending slot registrations.\033[0m")
             return;
         }
 
@@ -214,9 +214,9 @@ public class GymAdminFlipFitMenu {
                     // Approve the Slot
                     selectedSlot.setApproved(true);
                     slotService.updateSlot(selectedSlot);
-                    System.out.println("Slot with ID " + choice + " approved successfully!");
+                    System.out.println("\033[1;32mSlot with ID " + choice + " approved successfully!\033[0m");
                 } else {
-                    System.out.println("Slot not found with the provided ID.");
+                    System.out.println("\033[1;31mSlot not found with the provided ID.\033[0m");
                 }
             }
 

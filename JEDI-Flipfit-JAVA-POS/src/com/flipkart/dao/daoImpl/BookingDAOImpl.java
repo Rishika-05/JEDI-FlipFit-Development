@@ -8,6 +8,7 @@ import com.flipkart.constant.SQLConstants;
 import com.flipkart.dao.BookingDAO;
 import com.flipkart.dao.DBConnection;
 import com.flipkart.dao.GymDAO;
+import com.flipkart.utils.DBUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,7 +38,7 @@ public class BookingDAOImpl implements BookingDAO {
 	}
 	 @Override
 	    public void insertBooking(int userId, int gymID, int slotId) {
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try {
 	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.INSERT_BOOKING);
@@ -60,7 +61,7 @@ public class BookingDAOImpl implements BookingDAO {
 
 	    @Override
 	    public boolean cancelBooking(int bookingId) {
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try {
 	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.CANCEL_BOOKING);
@@ -82,7 +83,7 @@ public class BookingDAOImpl implements BookingDAO {
 
 	    @Override
 	    public Booking getBooking(int bookingId) {
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try {
 	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_BOOKING_BY_ID);
@@ -106,7 +107,7 @@ public class BookingDAOImpl implements BookingDAO {
 
 	    @Override
 	    public List<Booking> getBookingsByUserId(int userId) {
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        List<Booking> bookings = new ArrayList<>();
 	        if (connection != null) {
 	            try {
@@ -130,7 +131,7 @@ public class BookingDAOImpl implements BookingDAO {
 	    }
 	    @Override
 	    public List<Booking> getBookingsByGymId(int gymId) {
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        List<Booking> bookings = new ArrayList<>();
 	        if (connection != null) {
 	            try {
@@ -155,7 +156,7 @@ public class BookingDAOImpl implements BookingDAO {
 	    
 	    @Override
 	    public List<Booking> getBookingsBySlotId(int slotId) {
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        List<Booking> bookings = new ArrayList<>();
 	        if (connection != null) {
 	            try {
@@ -180,7 +181,7 @@ public class BookingDAOImpl implements BookingDAO {
 
 	    @Override
 	    public List<Booking> getAllBookings() {
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        List<Booking> bookings = new ArrayList<>();
 	        if (connection != null) {
 	            try {
@@ -204,7 +205,7 @@ public class BookingDAOImpl implements BookingDAO {
 
 	    @Override
 	    public boolean removeBookingOfInactiveGym(int gymId) {
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try {
 	                PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.REMOVE_BOOKING_OF_INACTIVE_GYM);

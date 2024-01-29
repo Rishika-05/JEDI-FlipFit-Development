@@ -10,7 +10,7 @@ import com.flipkart.bean.GymCustomer;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 import com.flipkart.constant.SQLConstants;
-import com.flipkart.dao.DBConnection;
+import com.flipkart.utils.DBUtils;
 import com.flipkart.dao.GymCustomerDAO;
 
 public class GymCustomerDAOImpl implements GymCustomerDAO {
@@ -27,7 +27,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
     @Override
     public GymCustomer viewProfile(int gymCustomerId) {
         GymCustomer gymCustomer = null;
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_GYM_CUSTOMER +
                     SQLConstants.WHERE_GYM_CUSTOMER_ID)) {
@@ -60,7 +60,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
     @Override
     public boolean register(GymCustomer customer) {
         int rowsUpdated = 0;
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.INSERT_GYM_CUSTOMER)) {
                 prepareStatement(preparedStatement, customer);
@@ -80,7 +80,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
 
     @Override
     public void delete(int gymCustomerId) {
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.DELETE_GYM_CUSTOMER)) {
                 preparedStatement.setInt(1, gymCustomerId);
@@ -100,7 +100,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
     @Override
     public boolean update(int gymCustomerId, GymCustomer newCustomer) {
         int rowsUpdated = 0;
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.UPDATE_GYM_CUSTOMER)) {
                 prepareStatementForGymCustomerUpdate(preparedStatement, newCustomer);
@@ -123,7 +123,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
     @Override
     public ArrayList<GymCustomer> getAllGymCustomers() {
         ArrayList<GymCustomer> gymCustomers = new ArrayList<>();
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_ALL_GYM_CUSTOMERS)) {
                 try (ResultSet rs = preparedStatement.executeQuery()) {
@@ -153,7 +153,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
     @Override
     public int getGymCustomerIdFromUserId(int userId) {
         int gymCustomerId = -1;
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_GYM_CUSTOMER_ID_FROM_USER_ID)) {
                 preparedStatement.setInt(1, userId);

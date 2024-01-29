@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import com.flipkart.bean.User;
 import com.flipkart.constant.RoleType;
 import com.flipkart.constant.SQLConstants;
-import com.flipkart.dao.DBConnection;
+import com.flipkart.utils.DBUtils;
 import com.flipkart.dao.UserDAO;
 import com.flipkart.service.UserFlipFitService;
 import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;

@@ -7,7 +7,7 @@ import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 import com.flipkart.constant.SQLConstants;
-import com.flipkart.dao.DBConnection;
+import com.flipkart.utils.DBUtils;
 import com.flipkart.dao.GymOwnerDAO;
 
 import java.sql.Connection;
@@ -39,7 +39,7 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
 
     @Override
     public GymOwner getGymOwnerById(int gymOwnerId) {
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         GymOwner gymOwner = null;
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_OWNER_BY_ID)) {
@@ -63,7 +63,7 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
 
     @Override
     public GymOwner updateProfile(GymOwner owner) {
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.UPDATE_PROFILE)) {
                 preparedStatement.setString(1, owner.getName());
@@ -91,7 +91,7 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
     @Override
     public List<GymOwner> getAllOwners() {
         List<GymOwner> gymOwners = new ArrayList<>();
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(SQLConstants.SELECT_ALL_OWNERS)) {
@@ -115,7 +115,7 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
 
     @Override
     public boolean register(GymOwner owner) {
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         boolean registered = false;
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.INSERT_OWNER)) {
@@ -137,7 +137,7 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
 
     @Override
     public void approveGymOwnerById(int gymOwnerId) {
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.APPROVE_GYM_OWNER)) {
                 preparedStatement.setBoolean(1, true);
@@ -186,7 +186,7 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
 	@Override
 	public int getGymOwnerIdByUserId(int userId) {
 		int gymOwnerId = -1;
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_GYM_OWNER_ID_FROM_USER_ID)) {
                 preparedStatement.setInt(1, userId);

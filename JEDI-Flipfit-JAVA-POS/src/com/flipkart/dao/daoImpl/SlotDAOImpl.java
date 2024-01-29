@@ -18,7 +18,7 @@ import java.util.ListIterator;
 
 import com.flipkart.bean.Slot;
 import com.flipkart.constant.SQLConstants;
-import com.flipkart.dao.DBConnection;
+import com.flipkart.utils.DBUtils;
 import com.flipkart.dao.SlotDAO;
 
 /**
@@ -39,7 +39,7 @@ public class SlotDAOImpl implements SlotDAO {
 	
 	  @Override
 	    public void createSlot(Slot slot) {
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.INSERT_SLOT)) {
 	                prepareStatementForSlot(preparedStatement, slot);
@@ -59,7 +59,7 @@ public class SlotDAOImpl implements SlotDAO {
 	    @Override
 	    public boolean deleteSlot(int slotId) {
 	    	int rowsUpdated = 0;
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.DELETE_SLOT)) {
 	                preparedStatement.setBoolean(1, false);
@@ -81,7 +81,7 @@ public class SlotDAOImpl implements SlotDAO {
 	    @Override
 	    public boolean approveSlot(int slotId) {
 	    	int rowsUpdated = 0;
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.APPROVE_SLOT)) {
 	                preparedStatement.setBoolean(1, true);
@@ -103,7 +103,7 @@ public class SlotDAOImpl implements SlotDAO {
 	    @Override
 	    public Slot getSlot(int slotId) {
 	        Slot slot = null;
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_SLOT)) {
 	                preparedStatement.setInt(1, slotId);
@@ -127,7 +127,7 @@ public class SlotDAOImpl implements SlotDAO {
 	    @Override
 	    public ArrayList<Slot> getAllSlots() {
 	        ArrayList<Slot> slots = new ArrayList<>();
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try (Statement statement = connection.createStatement()) {
 	                ResultSet resultSet = statement.executeQuery(SQLConstants.SELECT_ALL_SLOTS);
@@ -151,7 +151,7 @@ public class SlotDAOImpl implements SlotDAO {
 	    @Override
 	    public ArrayList<Slot> getAllSlots(int gymId) {
 	        ArrayList<Slot> slots = new ArrayList<>();
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_SLOTS_BY_GYM)) {
 	                preparedStatement.setInt(1, gymId);
@@ -176,7 +176,7 @@ public class SlotDAOImpl implements SlotDAO {
 	    @Override
 	    public ArrayList<Slot> getAllApprovedSlots(int gymId) {
 	        ArrayList<Slot> slots = new ArrayList<>();
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_APPROVED_SLOTS_BY_GYM)) {
 	                preparedStatement.setInt(1, gymId);
@@ -200,7 +200,7 @@ public class SlotDAOImpl implements SlotDAO {
 
 	    @Override
 	    public Slot updateSlot(Slot slot) {
-	        Connection connection = DBConnection.getConnection();
+	        Connection connection = DBUtils.getConnection();
 	        if (connection != null) {
 	            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.UPDATE_SLOT)) {
 	                prepareStatementForSlot(preparedStatement, slot);
@@ -245,7 +245,7 @@ public class SlotDAOImpl implements SlotDAO {
 		@Override
 		public int getAvailableSeats(int slotId) {
 			int availableSeats = 0;
-			 Connection connection = DBConnection.getConnection();
+			 Connection connection = DBUtils.getConnection();
 		        if (connection != null) {
 		            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.AVAILABLE_SEATS)) {
 		                

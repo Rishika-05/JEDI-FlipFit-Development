@@ -13,7 +13,7 @@ import java.util.List;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.constant.SQLConstants;
-import com.flipkart.dao.DBConnection;
+import com.flipkart.utils.DBUtils;
 import com.flipkart.dao.GymDAO;
 
 /**
@@ -39,7 +39,7 @@ private static GymDAO gymDAOObj = null;
     @Override
     public List<Gym> getAllGyms() {
         List<Gym> gyms = new ArrayList<>();
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(SQLConstants.SELECT_ALL_GYMS)) {
@@ -63,7 +63,7 @@ private static GymDAO gymDAOObj = null;
     @Override
     public Gym getGym(int gymId) {
         Gym gym = null;
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_GYM_BY_ID)) {
                 preparedStatement.setInt(1, gymId);
@@ -86,7 +86,7 @@ private static GymDAO gymDAOObj = null;
 
     @Override
     public void addGym(Gym gym) {
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.INSERT_GYM)) {
                 prepareStatementForGym(preparedStatement, gym);
@@ -106,7 +106,7 @@ private static GymDAO gymDAOObj = null;
     @Override
     public boolean removeGym(int gymId) {
     	int rowsUpdated = 0;
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.DELETE_GYM)) {
                 preparedStatement.setInt(1, gymId);
@@ -127,7 +127,7 @@ private static GymDAO gymDAOObj = null;
     @Override
     public boolean updateGym(Gym gym) {
     	int rowsUpdated = 0;
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.UPDATE_GYM)) {
                 prepareStatementForGymUpdate(preparedStatement, gym);
@@ -148,7 +148,7 @@ private static GymDAO gymDAOObj = null;
     @Override
     public List<Gym> getAllGymsById(int userId) {
         List<Gym> gyms = new ArrayList<>();
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_ALL_GYMS_BY_OWNER_ID)) {
                 preparedStatement.setInt(1, userId);
@@ -173,7 +173,7 @@ private static GymDAO gymDAOObj = null;
     @Override
     public List<Gym> getAllGymsByLoc(String selectedLocation) {
         List<Gym> gyms = new ArrayList<>();
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_ALL_GYMS_BY_LOCATION)) {
                 preparedStatement.setString(1, selectedLocation);
@@ -235,7 +235,7 @@ private static GymDAO gymDAOObj = null;
     @Override
     public boolean approveGymsById(int gymId) {
     	int rowsUpdated = 0;
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.APPROVE_GYM_BY_ID)) {
                 preparedStatement.setInt(1, gymId);
@@ -256,7 +256,7 @@ private static GymDAO gymDAOObj = null;
     @Override
     public List<Gym> getAllActiveGyms() {
         List<Gym> activeGyms = new ArrayList<>();
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBUtils.getConnection();
         if (connection != null) {
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(SQLConstants.SELECT_ALL_ACTIVE_GYMS)) {

@@ -56,7 +56,7 @@ public class DBUtils {
                 {
 
                     Properties prop = new Properties();
-                    InputStream inputStream = new FileInputStream("/Users/prathamesh.parit/IdeaProjects/JEDI-FlipFit-Development/JEDI-Flipfit-JAVA-POS/src/config.properties");
+                    InputStream inputStream = new FileInputStream("/Users/tejeshwar.reddy/Documents/workspace-spring-tool-suite-4-4.21.0.RELEASE/JEDI-FlipFit-Development/JEDI-Flipfit-JAVA-POS/src/config.properties");
                     prop.load(inputStream);
                     String driver = prop.getProperty("driver");
                     String url = prop.getProperty("url");

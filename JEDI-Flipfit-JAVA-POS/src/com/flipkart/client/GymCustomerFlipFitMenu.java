@@ -40,18 +40,19 @@ public class GymCustomerFlipFitMenu {
 		int option;
 		int gymCustomerId = customerService.getGymCustomerId(userId);
 		do {
-			System.out.println("\n\n\033[1m--------- Gym Customer Menu Options ------\033[0m" +
-					"\n\033[1;34mPress 1. Browse Gyms" +
-					"\nPress 2. Book a Slot " +
-					"\nPress 3. Cancel Booking " +
-//					"\nPress 4. Modify Booking " +
-                    "\nPress 4. View Booking History" +
-					"\nPress 5. View Profile" +
-					"\nPress 6. Update Profile" +
+			System.out.println("\033[1;34m▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m " + "Gym Customer Menu Options" + " \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m\n" +
+//			System.out.println("\n\n\033[1m--------- Gym Customer Menu Options ------\033[0m" +
+					"\033[1;33mPress 1.\033[0m \033[1;34mBrowse Gyms\033[0m" +
+					"\n\033[1;33mPress 2.\033[0m \033[1;34mBook a Slot\033[0m" +
+					"\n\033[1;33mPress 3.\033[0m \033[1;34mCancel Booking\033[0m" +
+//                    "\nPress 4. Modify Booking " +
+					"\n\033[1;33mPress 4.\033[0m \033[1;34mView Booking History\033[0m" +
+					"\n\033[1;33mPress 5.\033[0m \033[1;34mView Profile\033[0m" +
+					"\n\033[1;33mPress 6.\033[0m \033[1;34mUpdate Profile\033[0m" +
 //                    "\nPress 8. Browse Waitlist" +
 //                    "\nPress 9. Cancel Waitlist" +
 //                    "\nPress 10. Payment" +
-					"\nPress 7. Exit\033[0m\n");
+					"\n\033[1;33mPress 7.\033[0m \033[1;34mExit\033[0m\n");
 			System.out.print("\033[1mEnter Choice ► \033[0m");
 			
 			Scanner sc = new Scanner(System.in);
@@ -167,12 +168,13 @@ public class GymCustomerFlipFitMenu {
 		 Scanner scanner = new Scanner(System.in);
 
 		    // Ask the user to select a location
-		    System.out.println("\n\033[1mSelect a location:\033[0m");
-		    System.out.println("1. Bellandur");
-		    System.out.println("2. Whitefield");
-		    System.out.println("3. Indiranagar");
+		System.out.println("\n\033[1;97mSelect a location:\033[0m"); // Bold and White color
+		System.out.println("\033[34m1. Bellandur\033[0m"); // Blue color
+		System.out.println("\033[34m2. Whitefield\033[0m"); // Blue color
+		System.out.println("\033[34m3. Indiranagar\033[0m"); // Blue color
 
-		    int locationChoice = scanner.nextInt();
+		System.out.print("\033[1mEnter Choice ► \033[0m");
+		int locationChoice = scanner.nextInt();
 		    String selectedLocation;
 
 		    switch (locationChoice) {

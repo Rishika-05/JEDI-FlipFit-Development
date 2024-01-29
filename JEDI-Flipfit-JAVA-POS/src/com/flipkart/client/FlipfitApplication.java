@@ -223,11 +223,11 @@ public class FlipfitApplication {
 
 				customer.setUserId(userId);
 				if (UserFlipFitServiceImpl.getInstance().customerRegistration(customer)) {
-					System.out.println("Gym Customer Registered Successfully");
+
+					System.out.println("\n\033[1mCustomer Registered Successfully\033[0m\n");
 				} else {
 					System.out.println("Some Error occurred");
 				}
-
 				System.out.println("Customer Details:");
 				String format = "︳ %-20s ︳ %-12s | %-5s | %-16s |";
 				Utils.printFormattedTableHeader(format, "User ID", "Name", "Age", "Location");
@@ -273,11 +273,6 @@ public class FlipfitApplication {
 					newGymOwner.setGstin(GstIn);
 				} while (false);
 				if (UserFlipFitServiceImpl.getInstance().gymOwnerRegistration(newGymOwner)) {
-					System.out.println("\n\033[0mGym Customer Registered Successfully!\033[1m\n");
-				} else {
-					System.out.println("Some Error occurred");
-				}
-
 
 				String format_2 = "| %-20s | %-12s | %-5s | %-16s | %-10s | %-10s | %-15s |";
 				Utils.printFormattedTableHeader(format_2, "User ID", "Name", "Age", "Location", "PAN Card", "Aadhar Card", "GSTIN");
@@ -289,6 +284,10 @@ public class FlipfitApplication {
 						newGymOwner.getPanCard(),
 						newGymOwner.getAadharCard(),
 						newGymOwner.getGstin());
+					System.out.println("\n\033[0mGym Owner Registered!\033[1m\n");
+				} else {
+					System.out.println("Some Error occurred");
+				}
 				break;
 			default:
 				break;

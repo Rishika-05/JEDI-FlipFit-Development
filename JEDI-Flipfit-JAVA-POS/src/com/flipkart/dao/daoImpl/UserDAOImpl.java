@@ -56,8 +56,12 @@ public class UserDAOImpl implements UserDAO {
 				System.out.println("This username already exists!!");
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
-			try {
+			} catch (UserNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (InvalidCredentialsException e) {
+                throw new RuntimeException(e);
+            }
+            try {
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();

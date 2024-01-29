@@ -40,8 +40,8 @@ public class GymOwnerFlipFitMenu {
         	return;
         }
         do {
-            System.out.println("\n\n ----------- Gym Owner Menu Options ---------- " + 
-        "\nPress 1. Add a new gym Centre" +
+            Utils.displayLogoUtil("Gym Owner Menu");
+            System.out.println("\nPress 1. Add a new gym Centre" +
         "\nPress 2. View Gyms" +
         "\nPress 3. Remove Gym" +
         "\nPress 4. Modify Gym" +

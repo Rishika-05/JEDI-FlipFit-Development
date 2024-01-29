@@ -28,10 +28,9 @@ public class GymAdminFlipFitMenu {
     public void displayAdminMenu() {
         int menuOption;
         do {
-            System.out.println("\n\n ------ Gym Admin Menu Options ------ " +
-				 "\nPress 1. Browse Owner Registrations" +
+            Utils.displayLogoUtil("Gym Admin Menu");
+            System.out.println("\nPress 1. Browse Owner Registrations" +
 				 "\nPress 2. Browse Gym Registrations " +
-//				 "\nPress 5. Verify Payments " + 
 				 "\nPress 3. Browse Slot Registrations " + 
 				 "\nPress 4. Browse Gyms" + 
 				 "\nPress 6. Exit");
@@ -45,9 +44,6 @@ public class GymAdminFlipFitMenu {
                 case 2:
                     browseGymRegistrations();
                     break;
-//                case 4:
-//                    verifyPayments();
-//                    break;
                 case 3:
                     browseSlotRegistrations();
                     break;
@@ -143,6 +139,8 @@ public class GymAdminFlipFitMenu {
 
 	    // Print gym details
 	    for (Gym gym : pendingGyms) {
+
+            String textColor = gym.isApproved() ? "\033[0;32m" : "\033[0;31m";
             Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");

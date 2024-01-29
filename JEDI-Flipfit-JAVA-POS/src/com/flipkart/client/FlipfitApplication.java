@@ -87,7 +87,7 @@ public class FlipfitApplication {
 	public static void displayLogo(String windowTitle) {
 
 
-		System.out.println("\033[1;34m▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m " + windowTitle + " \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
+		System.out.println("\033[1;34m      ▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m " + windowTitle + " \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
 		System.out.println("");
 
 
@@ -97,17 +97,19 @@ public class FlipfitApplication {
 	public static void createMainMenu() {
 
 
-		System.out.println("\033[1;36m ① Login");
-		System.out.println("\033[1;36m ② Register");
-		System.out.println("\033[1;36m ③ Update Password");
-		System.out.println("\033[1;31m ④ Exit");
+		System.out.println("\033[1;33m Press 1: \033[0m" + "\033[1;34mLogin\033[0m");
+		System.out.println("\033[1;33m Press 2: \033[0m" + "\033[1;34mRegister\033[0m");
+		System.out.println("\033[1;33m Press 3: \033[0m" + "\033[1;34mUpdate Password\033[0m");
+		System.out.println("\033[1;33m Press 4: \033[0m" + "\033[1;34mExit\033[0m");
 		System.out.println("\033[0m"); // Reset text attributes
 
 
 		System.out.print("\033[1mEnter Choice ► \033[0m");
+
 	}
 
 	static void login() {
+		System.out.println();
 		displayLogo("Login");
 		Scanner sc = new Scanner(System.in);
 
@@ -127,7 +129,7 @@ public class FlipfitApplication {
 		System.out.print("\n");
 		System.out.print("\n");
 
-		System.out.print("     \033[32mミ★ Congratulations Login Successful ★彡 \033[0m");
+		System.out.print("\033[32mミ★ Congratulations Login Successful ★彡 \033[0m");
 
 
 		System.out.print("\n");
@@ -223,7 +225,7 @@ public class FlipfitApplication {
 				}
 
 				System.out.println("Customer Details:");
-				String format = "| %-20s | %-12s | %-5s | %-16s |";
+				String format = "︳ %-20s ︳ %-12s | %-5s | %-16s |";
 				Utils.printFormattedTableHeader(format, "User ID", "Name", "Age", "Location");
 				Utils.printFormattedTableRow(format, String.valueOf(userId), name, String.valueOf(age), formattedLocation);
 

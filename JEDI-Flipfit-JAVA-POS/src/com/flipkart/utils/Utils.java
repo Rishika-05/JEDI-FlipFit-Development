@@ -51,6 +51,13 @@ public class Utils {
         return String.format("%s", value);
     }
 
+    public static void displayLogoUtil(String windowTitle) {
+
+
+        System.out.println("\033[1;34m      ▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▖\033[0m " + windowTitle + " \033[1;34m▝▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞▞\033[0m");
+        System.out.println("");
+
+    }
 
 
 

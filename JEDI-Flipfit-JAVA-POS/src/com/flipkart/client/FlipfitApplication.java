@@ -4,6 +4,9 @@
 package com.flipkart.client;
 
 import java.io.Console;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import com.flipkart.bean.GymCustomer;
@@ -130,6 +133,7 @@ public class FlipfitApplication {
 		System.out.print("\n");
 
 		System.out.print("\033[32mミ★ Congratulations Login Successful ★彡 \033[0m");
+		
 
 
 		System.out.print("\n");
@@ -137,6 +141,9 @@ public class FlipfitApplication {
 
 
 		RoleType userRole = UserFlipFitServiceImpl.getInstance().getUserRole(userId);
+		LocalDate localDate = LocalDate.now();
+		LocalTime localTime = LocalTime.now();
+		System.out.println("Welcome " + userName +" As " + userRole.name() + " LoggedIn time: " + localTime.format(DateTimeFormatter.ofPattern("HH : mm a")) + " on " + localDate.getMonth() + " " + localDate.getDayOfMonth() );
 		switch (userRole) {
 			case ADMIN:
 				GymAdminFlipFitMenu gymAdminFlipFitMenu = new GymAdminFlipFitMenu();

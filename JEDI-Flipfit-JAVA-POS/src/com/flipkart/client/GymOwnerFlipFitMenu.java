@@ -127,11 +127,9 @@ public class GymOwnerFlipFitMenu {
 		viewRegisteredGyms(gymOwnerId);
 		Scanner scanner = new Scanner(System.in);
 
-        // Ask the user for gym ID
         System.out.print("Enter the Gym ID to modify: ");
         int gymId = scanner.nextInt();
 
-        // Find the gym with the given ID
         Gym selectedGym = gymService.getGym(gymId);
 
         if (selectedGym != null) {

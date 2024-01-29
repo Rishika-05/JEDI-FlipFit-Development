@@ -87,7 +87,7 @@ public class DBUtils {
                 }
                 return connection;
             }
-            return connection;
+
         }
     
 }

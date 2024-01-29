@@ -38,6 +38,7 @@ public class Utils {
             formattedValues[i] = formatValue(values[i]);
         }
 
+
         // Print the formatted row
         System.out.printf(format, (Object[]) formattedValues);
 

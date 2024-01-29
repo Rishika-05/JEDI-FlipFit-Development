@@ -66,11 +66,9 @@ public class GymAdminFlipFitMenu {
 	    Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved");
 
-	    for (Gym gym : gyms) {
-            Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
-	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
-	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
-	    }
+        gyms.forEach(gym -> Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
+                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
+                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing"));
 
 
     }
@@ -89,11 +87,15 @@ public class GymAdminFlipFitMenu {
                     "ID", "Name", "Age", "PAN Card", "Aadhar Card", "GSTIN", "Location", "Approved");
 
             // Print gym owner details in tabular format
-            for (GymOwner owner : owners) {
+            /*
+            *   arr.forEach((val)->{body})
+            *
+            * */
+            owners.forEach((owner) -> {
                 Utils.printFormattedTableRow("| %-5s | %-20s | %-5s | %-15s | %-15s | %-15s | %-10s | %-8s |",
                         owner.getOwnerId(), owner.getName(), owner.getAge(), owner.getPanCard(),
                         owner.getAadharCard(), owner.getGstin(), owner.getLocation(), owner.isApproved() ? "Approved" : "Processsing");
-            }
+            });
 
 
             // Ask the admin to approve owners based on ID or press 0 to exit
@@ -138,13 +140,15 @@ public class GymAdminFlipFitMenu {
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved");
 
 	    // Print gym details
-	    for (Gym gym : pendingGyms) {
 
+        pendingGyms.forEach((gym)->
+        {
             String textColor = gym.isApproved() ? "\033[0;32m" : "\033[0;31m";
             Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
-	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
-	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
-	    }
+                    gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
+                    gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
+        });
+
 
         // Ask the admin to approve gyms based on ID or press 0 to exit
         Scanner scanner = new Scanner(System.in);
@@ -187,10 +191,11 @@ public class GymAdminFlipFitMenu {
                 "ID", "Gym ID", "Start Time", "Total Seats", "Approved");
 
         // Print slot details in tabular format
-        for (Slot slot : pendingSlots) {
+
+        pendingSlots.forEach ((slot)->{
             Utils.printFormattedTableRow("| %-5s | %-5s | %-20s | %-15s | %-5s |",
                     slot.getSlotId(), slot.getGymId(), slot.getStartTime(), slot.getTotalSeats(), slot.isApproved() ? "Approved" : "Processing");
-        }
+        }) ;
 
 
         // Ask the admin to approve slots based on ID or press 0 to exit

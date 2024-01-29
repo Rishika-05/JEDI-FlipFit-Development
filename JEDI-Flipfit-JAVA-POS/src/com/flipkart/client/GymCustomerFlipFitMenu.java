@@ -206,11 +206,11 @@ public class GymCustomerFlipFitMenu {
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot");
 
 	    // Print gym details
-	    for (Gym gym : gyms) {
+		gyms.forEach((gym) -> {
 			Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s |\n",
-	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
-	                gym.getTotalSlots(), gym.getPricePerSlot());
-	    }
+					gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
+					gym.getTotalSlots(), gym.getPricePerSlot());
+		});
 
 	}
 
@@ -261,12 +261,12 @@ public class GymCustomerFlipFitMenu {
 	                    "Slot ID", "Start Time", "Slot Time", "Total Seats", "Available Seats");
 
 	            // Print slot details
-	            for (Slot slot : slots) {
-	                int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
+				slots.forEach((slot)->{
+					int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
 					Utils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
-	                        slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(), availableSeats);
-	            }
+							slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(), availableSeats);
 
+				});
 
 	            System.out.println("Enter the slot ID you want to book: ");
 	            int slotId = sc.nextInt();
@@ -303,19 +303,16 @@ public class GymCustomerFlipFitMenu {
 
 		// Print booking history details
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-		for (Booking booking : bookedSlots) {
-		    String cancelledStatus = booking.isCancelled() ? "Yes" : "No";
-		    // Fetch gym name using gym ID
-		    String gymName = gymService.getGym(booking.getGymId()).getGymName();
-		    // Fetch slot start time using slot ID
-		    LocalTime slotStartTime = slotService.getSlot(booking.getSlotId()).getStartTime();
+		bookedSlots.forEach((booking -> {
+			String cancelledStatus = booking.isCancelled() ? "Yes" : "No";
+			// Fetch gym name using gym ID
+			String gymName = gymService.getGym(booking.getGymId()).getGymName();
+			// Fetch slot start time using slot ID
+			LocalTime slotStartTime = slotService.getSlot(booking.getSlotId()).getStartTime();
 			Utils.printFormattedTableRow("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
-		            booking.getBookingId(), gymName, slotStartTime, booking.getSlotId(),
-		            booking.getBookingDate().format(formatter), cancelledStatus);
-		}
-
-
+					booking.getBookingId(), gymName, slotStartTime, booking.getSlotId(),
+					booking.getBookingDate().format(formatter), cancelledStatus);
+		}));
 	}
 
 	private void viewBookingHistory(int userId) {

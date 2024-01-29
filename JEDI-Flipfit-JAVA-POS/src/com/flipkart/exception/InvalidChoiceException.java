@@ -3,6 +3,8 @@
  */
 package com.flipkart.exception;
 
+import java.io.InvalidObjectException;
+
 /**
  * 
  */

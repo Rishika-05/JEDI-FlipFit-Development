@@ -205,10 +205,10 @@ public class GymOwnerFlipFitMenu {
 
     	        // Print the slots for the selected gym
     	        System.out.println("Slots for Gym ID " + selectedGym.getGymId() + ":");
-    	        for (Slot slot : slots) {
-    	            System.out.printf("Slot ID: %-5d | Start Time: %-15s | Slot Time: %-10d | Total Seats: %-5d",
-    	                    slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats());
-    	        }
+                slots.forEach((slot)->{
+                    System.out.printf("Slot ID: %-5d | Start Time: %-15s | Slot Time: %-10d | Total Seats: %-5d",
+                            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats());
+                });
 
     	        // Ask the user for the slot ID to modify
     	        System.out.print("Enter the Slot ID to modify: ");
@@ -282,14 +282,14 @@ public class GymOwnerFlipFitMenu {
             String format = "| %-8s | %-20s | %-10s | %-15s | %-12s |";
 
             Utils.printFormattedTableHeader(format, "Slot ID", "Start Time", "Slot Time", "Total Seats");
-
-            for (Slot slot : slots) {
+            slots.forEach((slot) -> {
                 Utils.printFormattedTableRow(format,
                         String.valueOf(slot.getSlotId()),
                         slot.getStartTime(),
                         String.valueOf(slot.getSlotTime()),
                         String.valueOf(slot.getTotalSeats()));
-            }
+            });
+
 
 
             // Ask the user for the slot ID to remove
@@ -348,11 +348,11 @@ public class GymOwnerFlipFitMenu {
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved");
 
 	    // Print gym details
-	    for (Gym gym : gyms) {
+        gyms.forEach((gym)->{
             Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
-	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
-	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
-	    }
+                    gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
+                    gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
+        });
 
 	}
 
@@ -406,15 +406,13 @@ public class GymOwnerFlipFitMenu {
 	        	        "Slot ID", "Start Time", "Slot Time", "Total Seats", "Active", "Approved", "Booked Seats");
 
 	        	// Print slot details
-	        	for (Slot slot : slots) {
-	                int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
-	        	    int bookedSeats = slot.getTotalSeats() - availableSeats;
+                slots.forEach((slot) ->{
+                    int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
+                    int bookedSeats = slot.getTotalSeats() - availableSeats;
                     Utils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-10s | %-10s | %-12s |",
-	        	            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
-	        	            slot.isActive(), slot.isApproved() ? "Approved" : "Processing" , bookedSeats);
-
-	        	}
-
+                            slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
+                            slot.isActive(), slot.isApproved() ? "Approved" : "Processing" , bookedSeats);
+                });
 
 	        } else {
 	            System.out.println("Gym not found with the provided ID.");

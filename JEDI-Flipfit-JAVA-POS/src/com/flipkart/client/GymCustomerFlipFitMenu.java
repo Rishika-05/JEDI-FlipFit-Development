@@ -130,7 +130,7 @@ public class GymCustomerFlipFitMenu {
 	        case 3:
 	            System.out.println("Enter your location: ");
 	            String location = in.nextLine();
-				String formattedLocation = utils.convertFirstLetterCapital(location);
+				String formattedLocation = Utils.convertFirstLetterCapital(location);
 	            customer.setLocation(formattedLocation);
 	            break;
 
@@ -151,17 +151,15 @@ public class GymCustomerFlipFitMenu {
 	private void viewProfile(int gymCustomerId) {
 	    GymCustomer gymCustomer = customerService.viewProfile(gymCustomerId);
 
-	    // Print table header
-	    System.out.println("-------------------------------------------------------------");
-	    System.out.printf("| %-15s | %-20s | %-10s | %-5s |\n",
-	            "Customer ID", "Name", "Location", "Age");
-	    System.out.println("-------------------------------------------------------------");
+		Utils.printFormattedTableHeader("| %-15s | %-20s | %-10s | %-5s |", "Customer ID", "Name", "Location", "Age");
 
-	    // Print gym customer details
-	    System.out.printf("| %-15d | %-20s | %-10s | %-5d |\n",
-	            gymCustomerId, gymCustomer.getName(), gymCustomer.getLocation(), gymCustomer.getAge());
 
-	    System.out.println("-------------------------------------------------------------");
+		Utils.printFormattedTableRow("| %-15s | %-20s | %-10s | %-5s |",
+				gymCustomerId,
+				gymCustomer.getName(),
+				gymCustomer.getLocation(),
+				gymCustomer.getAge());
+
 	}
 
 	private void browseGyms() {
@@ -202,19 +200,16 @@ public class GymCustomerFlipFitMenu {
 	}
 	
 	void displayGyms(List<Gym> gyms) {
-		System.out.println("---------------------------------------------------------------------");
-	    System.out.printf("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s |\n",
+		Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s |",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot");
-	    System.out.println("---------------------------------------------------------------------");
 
 	    // Print gym details
 	    for (Gym gym : gyms) {
-	        System.out.printf("| %-10d | %-20s | %-15s | %-30s | %-10d | $%-15d |\n",
+			Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s |\n",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot());
 	    }
 
-	    System.out.println("---------------------------------------------------------------------");
 	}
 
 
@@ -259,19 +254,16 @@ public class GymCustomerFlipFitMenu {
 	            // Get the list of slots for the selected gym
 	            List<Slot> slots = slotService.getAllSlotsByGymId(gymId);
 	         // Print table header for slots
-	            System.out.println("-------------------------------------------------------------------");
-	            System.out.printf("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
+				Utils.printFormattedTableHeader("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
 	                    "Slot ID", "Start Time", "Slot Time", "Total Seats", "Available Seats");
-	            System.out.println("-------------------------------------------------------------------");
 
 	            // Print slot details
 	            for (Slot slot : slots) {
 	                int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
-	                System.out.printf("| %-10d | %-10s | %-10d | %-15d | %-15d |\n",
+					Utils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
 	                        slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(), availableSeats);
 	            }
 
-	            System.out.println("-------------------------------------------------------------------");
 
 	            System.out.println("Enter the slot ID you want to book: ");
 	            int slotId = sc.nextInt();
@@ -303,10 +295,8 @@ public class GymCustomerFlipFitMenu {
 	
 	void displayBooking(List<Booking> bookedSlots) {
 		// Print table header
-		System.out.println("-----------------------------------------------------------------------");
-		System.out.printf("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
+		Utils.printFormattedTableHeader("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
 		        "Booking ID", "Gym Name", "Slot Start Time", "Slot Time", "Booking Date", "Cancelled");
-		System.out.println("-----------------------------------------------------------------------");
 
 		// Print booking history details
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -317,12 +307,11 @@ public class GymCustomerFlipFitMenu {
 		    String gymName = gymService.getGym(booking.getGymId()).getGymName();
 		    // Fetch slot start time using slot ID
 		    LocalTime slotStartTime = slotService.getSlot(booking.getSlotId()).getStartTime();
-		    System.out.printf("| %-12d | %-20s | %-20s | %-20d | %-20s | %-15s |\n",
+			Utils.printFormattedTableRow("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
 		            booking.getBookingId(), gymName, slotStartTime, booking.getSlotId(),
 		            booking.getBookingDate().format(formatter), cancelledStatus);
 		}
 
-		System.out.println("-----------------------------------------------------------------------");
 
 	}
 
@@ -334,19 +323,5 @@ public class GymCustomerFlipFitMenu {
 		
 	}
 
-//    private void modifyBooking() {
-//        // Implement logic to modify a booked slot
-//    }
 
-//    private void browseWaitlist() {
-//        // Implement logic to browse the waitlist
-//    }
-//
-//    private void cancelWaitlist() {
-//    	System.out.println("Cancel Waitlist");
-//    }
-//
-//    private void payment() {
-//    	 System.out.println("Payment Function");
-//    }
 }

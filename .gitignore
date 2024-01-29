@@ -15,18 +15,12 @@ tmp/
 local.properties
 .loadpath
 .factorypath
-<<<<<<< HEAD
 .idea
-<<<<<<< HEAD
-=======
+
 ./JEDI-Flipfit-JAVA-POS/src/config.properties
 ./JEDI-Flipfit-JAVA-POS/src/com/flipkart/utils/DBUtils.java
 
-
-=======
 *.idea*
->>>>>>> 605d406 (fix: refactor)
->>>>>>> a7fb23a (fix: refactor)
 
 # Mac
 .DS_Store
@@ -58,8 +52,6 @@ local.properties
 hs_err_pid*
 replay_pid*
 
-<<<<<<< HEAD
 src/com/flipkart/utils/DBUtils.java
-=======
+
 config.properties
->>>>>>> a7fb23a (fix: refactor)

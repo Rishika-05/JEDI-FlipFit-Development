@@ -26,33 +26,6 @@ public class AdminDAOImpl implements AdminDAO {
     }
 
 
-    @Override
-    public boolean approveGymOwner() {
-        // TODO Auto-generated method stub
-
-        return false;
-    }
-
-    @Override
-    public ArrayList<GymOwner> getPendingGymOwnerApprovals() {
-        return null;
-
-    }
-
-    @Override
-    public boolean approveGymRegistrationRequest() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public void getPendingGymLocationRegistrationRequests() {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void viewAllGymOwners() {
-
-    }
+   
 
 }

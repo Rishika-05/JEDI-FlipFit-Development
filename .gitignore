@@ -15,7 +15,7 @@ tmp/
 local.properties
 .loadpath
 .factorypath
-
+.idea
 
 # Mac
 .DS_Store

@@ -17,6 +17,7 @@ import com.flipkart.dao.DBConnection;
 import com.flipkart.dao.UserDAO;
 import com.flipkart.service.UserFlipFitService;
 import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;
+import com.flipkart.utils.DBUtils;
 
 /**
  * 
@@ -40,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int createUser(User user) {
 		int rowsUpdated = 0;
-		Connection connection = DBConnection.getConnection();
+		Connection connection = DBUtils.getConnection();
 		if (connection != null) {
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.INSERT_USER);
@@ -66,7 +67,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int verifyUser(String username, String password) {
 		User user = null;
-		Connection connection = DBConnection.getConnection();
+		Connection connection = DBUtils.getConnection();
 		String generatedColumns[] = { "ID" };
 		if (connection != null) {
 			try {
@@ -106,7 +107,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean updatePassword(String userName, String newPassword) {
 		int rowsUpdated = 0;
-		Connection connection = DBConnection.getConnection();
+		Connection connection = DBUtils.getConnection();
 		if (connection != null) {
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.UPDATE_USER_PASSWORD);
@@ -130,7 +131,7 @@ public class UserDAOImpl implements UserDAO {
 	public RoleType getUserRole(int userId) {
 		
 		RoleType role = null;
-	    Connection connection = DBConnection.getConnection();
+	    Connection connection = DBUtils.getConnection();
 	    if (connection != null) {
 	        try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_USER +
 	                SQLConstants.WHERE_ID)) {
@@ -157,7 +158,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User getUser(int userId) {
 		User user = null;
-	    Connection connection = DBConnection.getConnection();
+	    Connection connection = DBUtils.getConnection();
 	    if (connection != null) {
 	        try (PreparedStatement preparedStatement = connection.prepareStatement(SQLConstants.SELECT_USER +
 	                SQLConstants.WHERE_ID)) {

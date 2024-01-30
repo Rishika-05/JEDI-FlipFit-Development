@@ -87,7 +87,7 @@ public class FlipfitController {
     }
 	
 	@POST
-    @Path("/login")
+    @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updatePassword(Map<String, String> map){

@@ -221,7 +221,7 @@ public class GymCustomerFlipFitMenu {
 	}
 
 
-	    private void bookSlot(Scanner sc, int userId) {
+    private void bookSlot(Scanner sc, int userId) {
 //	    	GymCustomer gymCustomer = customerService.viewProfile(userId);
 	    	 // Ask the user to select a location
 			System.out.println("\033[1mSelect a location:\033[0m");

@@ -15,7 +15,7 @@ public class Slot {
     private int gymId; // The ID of the gym associated with the slot
     private LocalTime startTime; // The start time of the slot
     private int slotTime = 1; // The duration of the slot in hours
-    private int totalSeats; // The total number of seats available in the slot
+    private Integer totalSeats; // The total number of seats available in the slot
 	private boolean active = true; // Indicates if the slot is active or not
 	private boolean approved = false; // Indicates if the slot is approved or not
 
@@ -132,7 +132,7 @@ public class Slot {
      * 
      * @return the total number of seats
      */
-    public int getTotalSeats() {
+    public Integer getTotalSeats() {
         return totalSeats;
     }
 

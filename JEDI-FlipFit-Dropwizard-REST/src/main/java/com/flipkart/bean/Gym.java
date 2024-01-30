@@ -36,7 +36,7 @@ public class Gym {
 	/**
 	 * @return the totalSlots
 	 */
-	public int getTotalSlots() {
+	public Integer getTotalSlots() {
 		return totalSlots;
 	}
 
@@ -177,7 +177,7 @@ public class Gym {
 
 
 	private int gymId;
-    private int totalSlots;
+    private Integer totalSlots;
     private boolean approved = false;
     private boolean active = true;
 	private String location;
@@ -187,7 +187,7 @@ public class Gym {
     /**
 	 * @return the pricePerSlot
 	 */
-	public int getPricePerSlot() {
+	public Integer getPricePerSlot() {
 		return pricePerSlot;
 	}
 
@@ -204,7 +204,7 @@ public class Gym {
 
 
 
-	private int pricePerSlot;
+	private Integer pricePerSlot;
 //    private List<Slot> slots;
     
     

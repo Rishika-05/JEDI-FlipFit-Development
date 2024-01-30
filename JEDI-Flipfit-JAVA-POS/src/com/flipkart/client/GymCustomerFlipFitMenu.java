@@ -26,7 +26,7 @@ import com.flipkart.service.serviceImpl.BookingFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.GymCustomerFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.GymFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.SlotFlipFitServiceImpl;
-import com.flipkart.utils.Utils;
+import com.flipkart.utils.FormatterUtils;
 
 /**
  *
@@ -37,7 +37,7 @@ public class GymCustomerFlipFitMenu {
 	SlotFlipFitService slotService = new SlotFlipFitServiceImpl();
 	BookingFlipFitServiceImpl bookingService = new BookingFlipFitServiceImpl();
 
-	Utils utils = new Utils();
+	FormatterUtils formatterUtils = new FormatterUtils();
 	int index = 1;
 
 	public void displayCustomerMenu(int userId) {
@@ -135,7 +135,7 @@ public class GymCustomerFlipFitMenu {
 	        case 3:
 	            System.out.println("Enter your location: ");
 	            String location = in.nextLine();
-				String formattedLocation = Utils.convertFirstLetterCapital(location);
+				String formattedLocation = FormatterUtils.convertFirstLetterCapital(location);
 	            customer.setLocation(formattedLocation);
 	            break;
 
@@ -156,10 +156,10 @@ public class GymCustomerFlipFitMenu {
 	private void viewProfile(int gymCustomerId) {
 	    GymCustomer gymCustomer = customerService.viewProfile(gymCustomerId);
 
-	    Utils.printFormattedTableHeader("| %-15s | %-20s | %-15s | %-10s | %-5s | %-15s |",
+	    FormatterUtils.printFormattedTableHeader("| %-15s | %-20s | %-15s | %-10s | %-5s | %-15s |",
 	            "Customer ID", "Name", "Location", "Age", "Phone Number", "Email");
 
-	    Utils.printFormattedTableRow("| %-15s | %-20s | %-15s | %-10s | %-5s | %-15s |",
+	    FormatterUtils.printFormattedTableRow("| %-15s | %-20s | %-15s | %-10s | %-5s | %-15s |",
 	            gymCustomerId,
 	            gymCustomer.getName(),
 	            gymCustomer.getLocation(),
@@ -208,12 +208,12 @@ public class GymCustomerFlipFitMenu {
 	}
 	
 	void displayGyms(List<Gym> gyms) {
-		Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s |",
+		FormatterUtils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s |",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot");
 
 	    // Print gym details
 		gyms.forEach((gym) -> {
-			Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s |\n",
+			FormatterUtils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s |\n",
 					gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 					gym.getTotalSlots(), gym.getPricePerSlot());
 		});
@@ -263,13 +263,13 @@ public class GymCustomerFlipFitMenu {
 	            // Get the list of slots for the selected gym
 	            List<Slot> slots = slotService.getAllSlotsByGymId(gymId);
 	         // Print table header for slots
-				Utils.printFormattedTableHeader("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
+				FormatterUtils.printFormattedTableHeader("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
 	                    "Slot ID", "Start Time", "Slot Time", "Total Seats", "Available Seats");
 
 	            // Print slot details
 				slots.forEach((slot)->{
 					int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
-					Utils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
+					FormatterUtils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-15s |\n",
 							slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(), availableSeats);
 
 				});
@@ -304,7 +304,7 @@ public class GymCustomerFlipFitMenu {
 	
 	void displayBooking(List<Booking> bookedSlots) {
 	    // Print table header
-	    Utils.printFormattedTableHeader("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
+	    FormatterUtils.printFormattedTableHeader("| %-12s | %-20s | %-20s | %-20s | %-20s | %-15s |\n",
 	            "Booking ID", "Gym Name", "Slot Start Time", "Slot Time", "Booking Date", "Cancelled");
 
 	    // Print booking history details using Stream API
@@ -320,7 +320,7 @@ public class GymCustomerFlipFitMenu {
 	                        booking.getBookingId(), gymName, slotStartTime, booking.getSlotId(),
 	                        booking.getBookingDate().format(formatter), cancelledStatus);
 	            })
-	            .forEach(Utils::printFormattedTableRow);
+	            .forEach(FormatterUtils::printFormattedTableRow);
 	}
 
 	private void viewBookingHistory(int userId) {

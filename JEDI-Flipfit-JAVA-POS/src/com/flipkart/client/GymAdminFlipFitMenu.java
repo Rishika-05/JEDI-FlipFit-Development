@@ -8,7 +8,7 @@ package com.flipkart.client;
 
 import java.util.List;
 import java.util.Scanner;
-import com.flipkart.utils.Utils;
+import com.flipkart.utils.FormatterUtils;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
@@ -31,7 +31,7 @@ public class GymAdminFlipFitMenu {
     public void displayAdminMenu() {
         int menuOption;
         do {
-            Utils.displayLogoUtil("Gym Admin Menu");
+            FormatterUtils.displayLogoUtil("Gym Admin Menu");
             System.out.println("\nPress 1. Browse Owner Registrations" +
 				 "\nPress 2. Browse Gym Registrations " +
 				 "\nPress 3. Browse Slot Registrations " + 
@@ -66,10 +66,10 @@ public class GymAdminFlipFitMenu {
     private void browseGyms() {
         List<Gym> gyms = gymService.viewAllGyms();
 
-	    Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |",
+	    FormatterUtils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved");
 
-        gyms.forEach(gym -> Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
+        gyms.forEach(gym -> FormatterUtils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
                 gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
                 gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing"));
 
@@ -86,7 +86,7 @@ public class GymAdminFlipFitMenu {
             }
 
             // Print the table header
-            Utils.printFormattedTableHeader("| %-5s | %-20s | %-5s | %-15s | %-15s | %-15s | %-10s | %-8s |",
+            FormatterUtils.printFormattedTableHeader("| %-5s | %-20s | %-5s | %-15s | %-15s | %-15s | %-10s | %-8s |",
                     "ID", "Name", "Age", "PAN Card", "Aadhar Card", "GSTIN", "Location", "Approved");
 
             // Print gym owner details in tabular format
@@ -95,7 +95,7 @@ public class GymAdminFlipFitMenu {
             *
             * */
             owners.forEach((owner) -> {
-                Utils.printFormattedTableRow("| %-5s | %-20s | %-5s | %-15s | %-15s | %-15s | %-10s | %-8s |",
+                FormatterUtils.printFormattedTableRow("| %-5s | %-20s | %-5s | %-15s | %-15s | %-15s | %-10s | %-8s |",
                         owner.getOwnerId(), owner.getName(), owner.getAge(), owner.getPanCard(),
                         owner.getAadharCard(), owner.getGstin(), owner.getLocation(), owner.isApproved() ? "Approved" : "Processsing");
             });
@@ -139,7 +139,7 @@ public class GymAdminFlipFitMenu {
             return;
         }
 
-        Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |",
+        FormatterUtils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s |",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved");
 
 	    // Print gym details
@@ -147,7 +147,7 @@ public class GymAdminFlipFitMenu {
         pendingGyms.forEach((gym)->
         {
             String textColor = gym.isApproved() ? "\033[0;32m" : "\033[0;31m";
-            Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
+            FormatterUtils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s |",
                     gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
                     gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing");
         });
@@ -190,13 +190,13 @@ public class GymAdminFlipFitMenu {
         }
 
         // Print the table header
-        Utils.printFormattedTableHeader("| %-5s | %-5s | %-20s | %-15s | %-5s |",
+        FormatterUtils.printFormattedTableHeader("| %-5s | %-5s | %-20s | %-15s | %-5s |",
                 "ID", "Gym ID", "Start Time", "Total Seats", "Approved");
 
         // Print slot details in tabular format
 
         pendingSlots.forEach ((slot)->{
-            Utils.printFormattedTableRow("| %-5s | %-5s | %-20s | %-15s | %-5s |",
+            FormatterUtils.printFormattedTableRow("| %-5s | %-5s | %-20s | %-15s | %-5s |",
                     slot.getSlotId(), slot.getGymId(), slot.getStartTime(), slot.getTotalSeats(), slot.isApproved() ? "Approved" : "Processing");
         }) ;
 

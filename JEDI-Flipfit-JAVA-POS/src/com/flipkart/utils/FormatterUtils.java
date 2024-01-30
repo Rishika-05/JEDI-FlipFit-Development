@@ -1,6 +1,6 @@
 package com.flipkart.utils;
 
-public class Utils {
+public class FormatterUtils {
 
     public static String convertFirstLetterCapital(String input) {
         if (input == null || input.isEmpty()) {

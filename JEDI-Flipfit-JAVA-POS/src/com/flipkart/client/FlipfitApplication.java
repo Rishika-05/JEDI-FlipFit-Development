@@ -19,7 +19,7 @@ import com.flipkart.exception.InvalidPanCardException;
 import com.flipkart.service.UserFlipFitService;
 import com.flipkart.service.serviceImpl.GymCustomerFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.UserFlipFitServiceImpl;
-import com.flipkart.utils.Utils;
+import com.flipkart.utils.FormatterUtils;
 import com.flipkart.validators.Validator;
 
 /**
@@ -29,13 +29,13 @@ import com.flipkart.validators.Validator;
  */
 public class FlipfitApplication {
 
-	static Utils utils = new Utils();
+	static FormatterUtils formatterUtils = new FormatterUtils();
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Utils.logo();
+		FormatterUtils.logo();
 		displayLogo("Welcome");
 
 
@@ -251,7 +251,7 @@ public class FlipfitApplication {
 
 				System.out.print("\033[0;34mEnter your location: \033[0m");
 				String location = in.nextLine();
-				String formattedLocation = Utils.convertFirstLetterCapital(location);
+				String formattedLocation = FormatterUtils.convertFirstLetterCapital(location);
 				customer.setLocation(formattedLocation);
 				String email = "", phoneNo = "";
 				do {
@@ -275,8 +275,8 @@ public class FlipfitApplication {
 				    // Display customer details
 				    System.out.println("Customer Details:");
 				    String format = "︳ %-20s ︳ %-12s | %-5s | %-16s | %-12s | %-20s |";
-				    Utils.printFormattedTableHeader(format, "User ID", "Name", "Age", "Location", "Phone Number", "Email");
-				    Utils.printFormattedTableRow(format, String.valueOf(userId), name, String.valueOf(age), formattedLocation,
+				    FormatterUtils.printFormattedTableHeader(format, "User ID", "Name", "Age", "Location", "Phone Number", "Email");
+				    FormatterUtils.printFormattedTableRow(format, String.valueOf(userId), name, String.valueOf(age), formattedLocation,
 				            phoneNo, email);
 				} else {
 				    System.out.println("Some Error occurred");
@@ -297,7 +297,7 @@ public class FlipfitApplication {
 
 			    System.out.print("\033[0;34mEnter your location: \033[0m");
 			    String address = in.nextLine();
-			    String formattedAddress = Utils.convertFirstLetterCapital(address);
+			    String formattedAddress = FormatterUtils.convertFirstLetterCapital(address);
 			    newGymOwner.setLocation(formattedAddress);
 
 			    String panCard;
@@ -348,8 +348,8 @@ public class FlipfitApplication {
 
 			            // Display gym owner details
 			            String format_2 = "| %-20s | %-12s | %-5s | %-16s | %-10s | %-10s | %-15s | %-15s |\n";
-			            Utils.printFormattedTableHeader(format_2, "User ID", "Name", "Age", "Location", "PAN Card", "Aadhar Card", "GSTIN", "Phone Number", "Email");
-			            Utils.printFormattedTableRow(format_2,
+			            FormatterUtils.printFormattedTableHeader(format_2, "User ID", "Name", "Age", "Location", "PAN Card", "Aadhar Card", "GSTIN", "Phone Number", "Email");
+			            FormatterUtils.printFormattedTableRow(format_2,
 			                    String.valueOf(newGymOwner.getUserId()),
 			                    newGymOwner.getName(),
 			                    String.valueOf(newGymOwner.getAge()),

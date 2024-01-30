@@ -18,7 +18,7 @@ import com.flipkart.service.SlotFlipFitService;
 import com.flipkart.service.serviceImpl.GymFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.GymOwnerFlipFitServiceImpl;
 import com.flipkart.service.serviceImpl.SlotFlipFitServiceImpl;
-import com.flipkart.utils.Utils;
+import com.flipkart.utils.FormatterUtils;
 
 /**
  *
@@ -28,7 +28,7 @@ public class GymOwnerFlipFitMenu {
 	GymFlipFitService gymService = new GymFlipFitServiceImpl();
 	SlotFlipFitService slotService = new SlotFlipFitServiceImpl();
 
-    Utils utils = new Utils();
+    FormatterUtils formatterUtils = new FormatterUtils();
     public void displayGymOwnerMenu(int userId) {
         int menuOption;
         int gymOwnerId = ownerService.getGymOwnerId(userId);
@@ -40,7 +40,7 @@ public class GymOwnerFlipFitMenu {
         	return;
         }
         do {
-            Utils.displayLogoUtil("Gym Owner Menu");
+            FormatterUtils.displayLogoUtil("Gym Owner Menu");
             System.out.println("\n\033[1;33mPress 1.\033[0m Add a new gym Centre" +
                     "\n\033[1;33mPress 2.\033[0m View Gyms" +
                     "\n\033[1;33mPress 3.\033[0m Remove Gym" +
@@ -157,7 +157,7 @@ public class GymOwnerFlipFitMenu {
                 case 2:
                     System.out.print("Enter new Location: ");
                     String newLocation = scanner.nextLine();
-                    String formattedNewLoc = utils.convertFirstLetterCapital(newLocation);
+                    String formattedNewLoc = formatterUtils.convertFirstLetterCapital(newLocation);
                     selectedGym.setLocation(formattedNewLoc);
                     break;
 
@@ -283,9 +283,9 @@ public class GymOwnerFlipFitMenu {
 
             String format = "| %-8s | %-20s | %-10s | %-15s | %-12s |";
 
-            Utils.printFormattedTableHeader(format, "Slot ID", "Start Time", "Slot Time", "Total Seats");
+            FormatterUtils.printFormattedTableHeader(format, "Slot ID", "Start Time", "Slot Time", "Total Seats");
             slots.forEach((slot) -> {
-                Utils.printFormattedTableRow(format,
+                FormatterUtils.printFormattedTableRow(format,
                         String.valueOf(slot.getSlotId()),
                         slot.getStartTime(),
                         String.valueOf(slot.getSlotTime()),
@@ -322,7 +322,7 @@ public class GymOwnerFlipFitMenu {
 
     	System.out.println("\033[0;34mEnter gym location: \033[0m");
     	String location = in.next();
-        String formattedLocation = Utils.convertFirstLetterCapital(location);
+        String formattedLocation = FormatterUtils.convertFirstLetterCapital(location);
     	newGym.setLocation(formattedLocation);
 
     	System.out.println("\033[0;34mEnter gym description: \033[0m");
@@ -346,12 +346,12 @@ public class GymOwnerFlipFitMenu {
 	    List<Gym> gyms = ownerService.getAllGyms(userId);
 
 	    // Print table header
-	    Utils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s | %-6s |",
+	    FormatterUtils.printFormattedTableHeader("| %-10s | %-20s | %-15s | %-30s | %-10s | %-15s | %-8s | %-6s |",
 	            "Gym ID", "Gym Name", "Location", "Description", "Total Slots", "Price per Slot", "Approved", "Deleted");
 
 	    // Print gym details
 	    gyms.forEach((gym) -> {
-	        Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s | %-6s |",
+	        FormatterUtils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s | %-6s |",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing",
 	                gym.isActive() ? "No" : "Yes");
@@ -405,14 +405,14 @@ public class GymOwnerFlipFitMenu {
 	        	List<Slot> slots = slotService.getAllSlotsByGymId(gymId);
 
 	        	// Print table header
-	            Utils.printFormattedTableHeader("| %-10s | %-10s | %-10s | %-15s | %-10s | %-12s | %-10s | %-10s |",
+	            FormatterUtils.printFormattedTableHeader("| %-10s | %-10s | %-10s | %-15s | %-10s | %-12s | %-10s | %-10s |",
 	                    "Slot ID", "Start Time", "Slot Time", "Total Seats", "Booked Seats", "Deleted", "Approved");
 
 	            // Print slot details
 	            slots.forEach((slot) -> {
 	                int availableSeats = slotService.getAvailableSeats(slot.getSlotId());
 	                int bookedSeats = slot.getTotalSeats() - availableSeats;
-	                Utils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-12s | %-10s | %-10s |",
+	                FormatterUtils.printFormattedTableRow("| %-10s | %-10s | %-10s | %-15s | %-12s | %-10s | %-10s |",
 	                        slot.getSlotId(), slot.getStartTime(), slot.getSlotTime(), slot.getTotalSeats(),
 	                        bookedSeats, slot.isActive() ? "No" : "Yes", slot.isApproved() ? "Approved" : "Processing");
 	            });
@@ -426,11 +426,11 @@ public class GymOwnerFlipFitMenu {
 
 		    if (gymOwner != null) {
 		        // Print table header
-		        Utils.printFormattedTableHeader("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s | %-15s |",
+		        FormatterUtils.printFormattedTableHeader("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s | %-15s |",
 		                "Name", "Age", "Pan Card", "Aadhar Card", "GSTIN", "Location", "Phone Number", "Email");
 
 		        // Print gym owner details
-		        Utils.printFormattedTableRow("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s | %-15s |",
+		        FormatterUtils.printFormattedTableRow("| %-15s | %-5s | %-15s | %-15s | %-15s | %-15s | %-15s |",
 		                gymOwner.getName(), gymOwner.getAge(),
 		                gymOwner.getPanCard(), gymOwner.getAadharCard(), gymOwner.getGstin(), gymOwner.getLocation(),
 		                gymOwner.getPhoneNo(), gymOwner.getEmail());

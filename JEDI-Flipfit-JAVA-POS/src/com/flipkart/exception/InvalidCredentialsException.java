@@ -11,6 +11,6 @@ public class InvalidCredentialsException extends Exception {
 	 * Constructs a new InvalidCredentialsException with a default error message.
 	 */
 	public InvalidCredentialsException() {
-		super("Invalid Credentials: Username or Password is wrong");
+		super("\033[1;31mInvalid Credentials: Username or Password is wrong\033[0m");
 	}
 }

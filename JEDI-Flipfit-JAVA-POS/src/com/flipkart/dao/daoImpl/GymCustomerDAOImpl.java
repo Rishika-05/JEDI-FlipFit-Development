@@ -49,7 +49,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
                         gymCustomer.setLocation(rs.getString("location"));
                         gymCustomer.setUserId(rs.getInt("userId"));
                         gymCustomer.setAge(rs.getInt("age"));
-                        gymCustomer.setPhoneNo(rs.getString("phoenNo"));
+                        gymCustomer.setPhoneNo(rs.getString("phoneNo"));
                         gymCustomer.setEmail(rs.getString("email"));
                     }
 
@@ -148,7 +148,7 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
                         gymCustomer.setLocation(rs.getString("location"));
                         gymCustomer.setUserId(rs.getInt("userId"));
                         gymCustomer.setAge(rs.getInt("age"));
-                        gymCustomer.setPhoneNo(rs.getString("phoenNo"));
+                        gymCustomer.setPhoneNo(rs.getString("phoneNo"));
                         gymCustomer.setEmail(rs.getString("email"));
                         gymCustomers.add(gymCustomer);
                     }

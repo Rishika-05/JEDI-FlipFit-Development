@@ -113,7 +113,7 @@ public class GymCustomerFlipFitMenu {
 	    System.out.println("1. Full Name");
 	    System.out.println("2. Age");
 	    System.out.println("3. Location");
-
+		System.out.print("\033[1mEnter Choice ► \033[0m");
 	    int choice = in.nextInt();
 	    in.nextLine(); // consume the newline character
 
@@ -228,7 +228,7 @@ public class GymCustomerFlipFitMenu {
 			System.out.println("\033[1;34m1. Bellandur\033[0m");
 			System.out.println("\033[1;34m2. Whitefield\033[0m");
 			System.out.println("\033[1;34m3. Indiranagar\033[0m");
-
+			System.out.print("\033[1mEnter Choice ► \033[0m");
 			Scanner scanner = new Scanner(System.in);
 		    int locationChoice = scanner.nextInt();
 		    String selectedLocation;

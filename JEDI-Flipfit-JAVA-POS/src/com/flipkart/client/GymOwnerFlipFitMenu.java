@@ -143,6 +143,7 @@ public class GymOwnerFlipFitMenu {
             System.out.println("3. Gym Description");
             System.out.println("4. Total Slots");
             System.out.println("5. Price per Slots");
+    		System.out.print("\033[1mEnter Choice ► \033[0m");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character
 
@@ -353,7 +354,7 @@ public class GymOwnerFlipFitMenu {
 	        Utils.printFormattedTableRow("| %-10s | %-20s | %-15s | %-30s | %-10s | $%-15s | %-8s | %-6s |",
 	                gym.getGymId(), gym.getGymName(), gym.getLocation(), gym.getGymDescription(),
 	                gym.getTotalSlots(), gym.getPricePerSlot(), gym.isApproved() ? "Approved" : "Processing",
-	                gym.isActive() ? "Yes" : "No");
+	                gym.isActive() ? "No" : "Yes");
 	    });
 
 	}
@@ -446,11 +447,11 @@ public class GymOwnerFlipFitMenu {
           System.out.println("What do you want to update?");
           System.out.println("1. Name");
           System.out.println("2. Age");
-          System.out.println("3. Pan Card");
-          System.out.println("4. Aadhar Card");
-          System.out.println("5. GSTIN");
-          System.out.println("6. Location");
-
+          System.out.println("3. Location");
+//          System.out.println("4. Pan Card");
+//          System.out.println("5. Aadhar Card");
+//          System.out.println("6. GSTIN");
+  		  System.out.print("\033[1mEnter Choice ► \033[0m");
           int choice = sc.nextInt();
           sc.nextLine(); // Consume the newline character
 
@@ -466,30 +467,30 @@ public class GymOwnerFlipFitMenu {
                   int newAge = sc.nextInt();
                   gymOwner.setAge(newAge);
                   break;
-
+                  
               case 3:
-                  System.out.print("Enter new Pan Card No.: ");
-                  String newPanCard = sc.nextLine();
-                  gymOwner.setPanCard(newPanCard);
-                  break;
-
-              case 4:
-                  System.out.print("Enter new Aadhar Card No.: ");
-                  String newAadharCard = sc.nextLine();
-                  gymOwner.setAadharCard(newAadharCard);
-                  break;
-
-              case 5:
-                  System.out.print("Enter new GSTIN No.: ");
-                  String newGstin = sc.nextLine();
-                  gymOwner.setGstin(newGstin);
-                  break;
-
-              case 6:
                   System.out.print("Enter new location: ");
                   String newLocation = sc.nextLine();
                   gymOwner.setLocation(newLocation);
                   break;
+
+//              case 4:
+//                  System.out.print("Enter new Pan Card No.: ");
+//                  String newPanCard = sc.nextLine();
+//                  gymOwner.setPanCard(newPanCard);
+//                  break;
+//
+//              case 5:
+//                  System.out.print("Enter new Aadhar Card No.: ");
+//                  String newAadharCard = sc.nextLine();
+//                  gymOwner.setAadharCard(newAadharCard);
+//                  break;
+//
+//              case 6:
+//                  System.out.print("Enter new GSTIN No.: ");
+//                  String newGstin = sc.nextLine();
+//                  gymOwner.setGstin(newGstin);
+//                  break;
 
               default:
                   System.out.println("\033[1;31mInvalid choice. No updates performed.\033[0m");

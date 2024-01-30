@@ -19,6 +19,23 @@ import com.flipkart.service.AdminFlipfitService;
  * This class implements the AdminFlipfitService interface and provides the implementation for various administrative operations related to FlipFit.
  */
 public class AdminFlipFitServiceImpl implements AdminFlipfitService {
+	
+	private static AdminFlipfitService adminServiceObj = null;
+
+	private AdminFlipFitServiceImpl() {
+
+	}
+
+	/**
+	 * Returns the singleton instance of UserFlipFitService.
+	 * @return The singleton instance of UserFlipFitService.
+	 */
+	public static synchronized AdminFlipfitService getInstance() {
+		if (adminServiceObj == null)
+			adminServiceObj = new AdminFlipFitServiceImpl();
+
+		return adminServiceObj;
+	}
 
 	/**
 	 * Verifies the gym owner request by approving the gym owner with the given ID.

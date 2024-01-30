@@ -44,14 +44,14 @@ public class FlipfitController {
 		user.setPassword(customer.getPassword());
 		user.setRole(customer.getRole());
 		int userId = userService.registration(user);
-		if(userId != -1) {
+		if(userId == -1) {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("User not registered.").build();
 		}
 		customer.setUserId(userId);
 		if(!userService.customerRegistration(customer)) {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("User not registered.").build();
 		}
-        return Response.ok("User registered successfully !!").build();
+        return Response.ok(customerService.viewProfile(userId)).build();
     }
 	
 	@POST
@@ -64,14 +64,14 @@ public class FlipfitController {
 		user.setPassword(owner.getPassword());
 		user.setRole(owner.getRole());
 		int userId = userService.registration(user);
-		if(userId != -1) {
+		if(userId == -1) {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("User not registered.").build();
 		}
 		owner.setUserId(userId);
 		if(!userService.gymOwnerRegistration(owner)) {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("User not registered.").build();
 		}
-        return Response.ok("User registered successfully !!").build();
+        return Response.ok(ownerService.getGymOwnerById(userId)).build();
     }
 	
 	@POST

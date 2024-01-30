@@ -6,7 +6,7 @@ package com.flipkart.bean;
 /**
  * 
  */
-public class GymCustomer extends UserModule {
+public class GymCustomer extends User {
 	private String name;
 	private String location;
 	private int userId;

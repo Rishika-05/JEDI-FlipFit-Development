@@ -62,7 +62,7 @@ public class DBUtils {
         else {
             try {
                     Properties prop = new Properties();
-                    String configPath = "./src/config.properties";
+                    String configPath = "./src/main/java/com/config.properties";
                     InputStream inputStream = new FileInputStream(configPath);
                     prop.load(inputStream);
                     String driver = prop.getProperty("driver");

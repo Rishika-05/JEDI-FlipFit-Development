@@ -496,7 +496,7 @@ public class GymOwnerFlipFitMenu {
                   System.out.println("\033[1;31mInvalid choice. No updates performed.\033[0m");
                   return;
           }
-
+          ownerService.updateProfile(gymOwner);
           System.out.println("\033[1;32mProfile updated successfully!\033[0m");
       }
 

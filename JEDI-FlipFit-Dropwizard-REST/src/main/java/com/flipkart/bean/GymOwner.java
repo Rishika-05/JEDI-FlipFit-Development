@@ -10,7 +10,7 @@ public class GymOwner extends User{
 	private int userId;
 	private int ownerId;
 	private String name;
-	private int age;
+	private Integer age;
 	private String panCard;
 	private String aadharCard;
 	private String gstin;
@@ -112,7 +112,7 @@ public class GymOwner extends User{
 	 * 
 	 * @return the age
 	 */
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 	

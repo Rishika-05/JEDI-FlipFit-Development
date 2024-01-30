@@ -68,6 +68,7 @@
 /Users/rishika.raj/Documents/jedi/JEDI-FlipFit-Development/JEDI-FlipFit-Dropwizard-REST/src/main/java/com/flipkart/exception/GymNotFoundException.java
 /Users/rishika.raj/Documents/jedi/JEDI-FlipFit-Development/JEDI-FlipFit-Dropwizard-REST/src/main/java/com/flipkart/dao/BookingDAO.java
 /Users/rishika.raj/Documents/jedi/JEDI-FlipFit-Development/JEDI-FlipFit-Dropwizard-REST/src/main/java/com/flipkart/service/serviceImpl/WaitlistFlipFitServiceImpl.java
+/Users/rishika.raj/Documents/jedi/JEDI-FlipFit-Development/JEDI-FlipFit-Dropwizard-REST/src/main/java/com/flipkart/rest/FlipfitController.java
 /Users/rishika.raj/Documents/jedi/JEDI-FlipFit-Development/JEDI-FlipFit-Dropwizard-REST/src/main/java/com/flipkart/service/serviceImpl/GymOwnerFlipFitServiceImpl.java
 /Users/rishika.raj/Documents/jedi/JEDI-FlipFit-Development/JEDI-FlipFit-Dropwizard-REST/src/main/java/com/flipkart/dao/SlotDAO.java
 /Users/rishika.raj/Documents/jedi/JEDI-FlipFit-Development/JEDI-FlipFit-Dropwizard-REST/src/main/java/com/flipkart/dao/GymCustomerDAO.java

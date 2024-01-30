@@ -22,6 +22,7 @@ com/flipkart/dao/GymOwnerDAO.class
 com/flipkart/bean/UserModule.class
 com/flipkart/constant/NotificationType.class
 com/flipkart/exception/InvalidAadhaarException.class
+com/flipkart/rest/FlipfitController.class
 com/flipkart/dao/daoImpl/GymOwnerDAOImpl.class
 com/flipkart/exception/InvalidChoiceException.class
 com/flipkart/service/GymCustomerFlipFitService.class

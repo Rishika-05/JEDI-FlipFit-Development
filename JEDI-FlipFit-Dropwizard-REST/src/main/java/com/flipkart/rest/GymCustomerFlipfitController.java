@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 import com.flipkart.bean.Booking;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymCustomer;
+import com.flipkart.bean.Slot;
 import com.flipkart.service.GymCustomerFlipFitService;
 import com.flipkart.service.GymFlipFitService;
 import com.flipkart.service.SlotFlipFitService;
@@ -80,7 +81,7 @@ public class GymCustomerFlipfitController {
         }
     }
     
-    @Path("/booking/{gymId}/{userId}/{slotId}")
+    @Path("/{userId}/booking/gym/{gymId}/slot/{slotId}")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -91,6 +92,16 @@ public class GymCustomerFlipfitController {
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Update failed").build();
         }
+    }
+    
+    @Path("/gym/{gymId}/slot/")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response browseSlots(@PathParam("gymId") int gymId) {
+		
+        List<Slot> slots = slotService.getAllSlotsByGymId(gymId);
+        return Response.ok(slots).build();
     }
     
     @Path("/gym/{location}")

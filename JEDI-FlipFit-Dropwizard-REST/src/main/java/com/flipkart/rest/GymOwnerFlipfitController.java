@@ -73,7 +73,7 @@ public class GymOwnerFlipfitController {
     }
 	
 	@DELETE
-    @Path("/gym/gymId")
+    @Path("/gym/{gymId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response removeGym(@PathParam("gymId") int gymId){
 		try {
@@ -144,7 +144,8 @@ public class GymOwnerFlipfitController {
 			Slot slot = slotService.getSlot(slotId);
 			if(newSlot.getStartTime() != null) slot.setStartTime(newSlot.getStartTime());
 			if(newSlot.getTotalSeats() != null) slot.setTotalSeats(newSlot.getTotalSeats());
-			return Response.ok("To be implemented").build();
+			slotService.updateSlot(newSlot);
+			return Response.ok(newSlot).build();
 		} catch(Exception ex) {
 			//Todo: Change and add specific exceeptions
 			return Response.status(Response.Status.NOT_ACCEPTABLE).entity(ex.getMessage()).build();

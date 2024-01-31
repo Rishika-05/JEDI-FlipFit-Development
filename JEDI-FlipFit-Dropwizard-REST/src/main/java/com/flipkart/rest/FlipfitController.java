@@ -51,7 +51,7 @@ public class FlipfitController {
 		if(!userService.customerRegistration(customer)) {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("User not registered.").build();
 		}
-        return Response.ok(customerService.viewProfile(userId)).build();
+        return Response.ok(customerService.viewProfile(customerService.getGymCustomerId(userId))).build();
     }
 	
 	@POST
@@ -71,7 +71,7 @@ public class FlipfitController {
 		if(!userService.gymOwnerRegistration(owner)) {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("User not registered.").build();
 		}
-        return Response.ok(ownerService.getGymOwnerById(userId)).build();
+        return Response.ok(ownerService.getGymOwnerById(ownerService.getGymOwnerId(userId))).build();
     }
 	
 	@POST
@@ -83,7 +83,7 @@ public class FlipfitController {
 		if(userId == -1){
 			return Response.status(Response.Status.UNAUTHORIZED).entity("Login Unsuccessfully, Try again !!").build();
 		}
-        return Response.ok("Login Successful!!!").build();
+        return Response.ok("Login Successful!!! User ID: " + userId).build();
     }
 	
 	@POST
@@ -92,7 +92,7 @@ public class FlipfitController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response updatePassword(Map<String, String> map){
 		if(userService.updatePassword(map.get("username"), map.get("newPassword")))
-			return Response.ok().build();
+			return Response.ok("Password Updated successfully !!").build();
 		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Password could not be updated.").build();
     }
 }

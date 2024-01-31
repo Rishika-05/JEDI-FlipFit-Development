@@ -15,7 +15,12 @@ tmp/
 local.properties
 .loadpath
 .factorypath
+.idea
 
+./JEDI-Flipfit-JAVA-POS/src/config.properties
+./JEDI-Flipfit-JAVA-POS/src/com/flipkart/utils/DBUtils.java
+
+*.idea*
 
 # Mac
 .DS_Store
@@ -46,3 +51,7 @@ local.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+src/com/flipkart/utils/DBUtils.java
+
+config.properties

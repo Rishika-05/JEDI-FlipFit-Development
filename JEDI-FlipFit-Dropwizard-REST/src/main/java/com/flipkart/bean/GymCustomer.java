@@ -1,0 +1,110 @@
+/**
+ * 
+ */
+package com.flipkart.bean;
+
+/**
+ * 
+ */
+public class GymCustomer extends User {
+	private String name;
+	private String location;
+	private int userId;
+	private int customerId;
+	
+	/**
+	 * Returns the customer ID.
+	 *
+	 * @return the customer ID
+	 */
+	public int getCustomerId() {
+		return customerId;
+	}
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+	/**
+	 * @return the userId
+	 */
+	public int getUserId() {
+		return userId;
+	}
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	/**
+	 * @return the location
+	 */
+	public String getLocation() {
+		return location;
+	}
+	/**
+	 * @param location the location to set
+	 */
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	/**
+	 * @return the age
+	 */
+	public int getAge() {
+		return age;
+	}
+	/**
+	 * @param age the age to set
+	 */
+	public void setAge(int age) {
+		this.age = age;
+	}
+	private int age;
+	
+	
+	/**
+	 * @return the phoneNo
+	 */
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+
+	/**
+	 * @param phoneNo2 the phoneNo to set
+	 */
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	private String phoneNo;
+	private String email;
+}
